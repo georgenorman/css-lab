@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2014 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+<html>
+<head>
+  <title>Transparency/Display</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+    @import "css/base.css";
+    @import "css/cssSummaryBase.css";
+
+    .divInner {
+      border: thin solid green;
+    }
+
+    .divInner:hover {
+      cursor: pointer;
+    }
+
+    /*
+      Use the value of the h2 id as the header text, so ID and header stay in sync and only need to be specified once.
+      Cheap "hack" works here because titles have no spaces.
+    */
+    h2:before {
+      content: attr(id);
+    }
+  </style>
+  <script type="text/javascript" src="js/domHelper.js?v1"></script>
+  <script type="text/javascript" src="js/cssSummary.js?v1"></script>
+</head>
+<body onload="cssSummaryModule.performDefaultOnLoad();">
+
+<header>
+  <h1>Transparency/Display</h1>
+</header>
+
+<main>
+
+  <div aboutPagePanel style="margin-top:12px;"></div>
+
+  <nav tableOfContents='{"tocClass":"toc", "contentHeaderItemTagName":"h2"}'></nav>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="Opacity"/>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <h3>opacity: 1</h3>
+
+<script type="multiline-template" id="fullyOpaqueHtml">
+<div style="opacity:1;" class="divInner">
+  This DIV is fully opaque.
+</div>
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('fullyOpaqueHtml');</script>
+
+  <h3>opacity: 0.5</h3>
+
+<script type="multiline-template" id="partiallyOpaqueHtml">
+<div style="opacity:0.5;" class="divInner">
+  This DIV is 50% transparent.
+</div>
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('partiallyOpaqueHtml');</script>
+
+  <h3>opacity: 0</h3>
+
+<script type="multiline-template" id="invisibleHtml">
+<div style="opacity:0;" class="divInner">
+  Invisible, but occupies space and accepts events.
+</div>
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('invisibleHtml');</script>
+
+  <h3>Irreversible Opacity</h3>
+
+  <p>See <a href="#RGBa">RGBa</a> for work-around.</p>
+
+<script type="multiline-template" id="irreversibleHtml">
+<div style="opacity:1;">
+  Opacity is 1.0
+  <div style="opacity:0.6;">
+    Opacity is 1.0 * 0.6 = 0.6
+    <div style="opacity:0.5;">
+      Opacity is 1.0 * 0.6 * 0.5 = 0.3
+      <div style="opacity:1;">
+        Opacity is 1.0 * 0.6 * 0.5 * 1.0 = 0.3
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('irreversibleHtml');</script>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="Visibility"/>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <h3>visibility:visible</h3>
+
+<script type="multiline-template" id="visibilityVisibleHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="visibility:visible;" class="divInner">
+  visibility:visible.
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('visibilityVisibleHtml');</script>
+
+  <h3>visibility:hidden</h3>
+
+<script type="multiline-template" id="visibilityHiddenHtml">
+Before the DIV.
+<div style="visibility:hidden;" class="divInner">
+  visibility:hidden.
+</div>
+After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('visibilityHiddenHtml');</script>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="Display"/>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <h3>display:block</h3>
+
+<script type="multiline-template" id="displayBlockHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:block;" class="divInner">
+  display:block.
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayBlockHtml');</script>
+
+  <h3>display:block (margin+padding)</h3>
+
+<script type="multiline-template" id="displayBlockWithPadHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:block; padding:6px; margin:6px;" class="divInner">
+  display:block (margin+padding).
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayBlockWithPadHtml');</script>
+
+  <h3>display:inline</h3>
+
+<script type="multiline-template" id="displayInlineHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:inline;" class="divInner">
+  display:inline.
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineHtml');</script>
+
+  <h3>display:inline (margin+padding)</h3>
+
+<script type="multiline-template" id="displayInlineWithPadHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:inline; padding:6px; margin:6px;" class="divInner">
+  display:inline (margin+padding).
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script>cssSummaryModule.insertHtmlExample('displayInlineWithPadHtml');</script>
+
+  <h3>display:inline-block</h3>
+
+<script type="multiline-template" id="displayInlineBlockHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:inline-block;" class="divInner">
+  display:inline-block.
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineBlockHtml');</script>
+
+  <h3>display:inline-block (margin+padding)</h3>
+
+<script type="multiline-template" id="displayInlineBlockWithPadHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:inline-block; padding:6px; margin:6px;" class="divInner">
+  display:inline-block (margin+padding).
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineBlockWithPadHtml');</script>
+
+  <h3>display:none</h3>
+
+<script type="multiline-template" id="displayNoneHtml">
+Before the DIV.
+<div style="display:none;" class="divInner">
+  display:none.
+</div>
+After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayNoneHtml');</script>
+
+  <h3>display:list-item</h3>
+
+<script type="multiline-template" id="displayListItemHtml">
+Before the DIV.
+<div style="display:list-item; list-style:circle inside; " class="divInner">
+  display:list-item.
+</div>
+After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayListItemHtml');</script>
+
+  <h3>display:table</h3>
+
+<script type="multiline-template" id="displayTableHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:table;" class="divInner">
+  display:table.
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayTableHtml');</script>
+
+  <h3>display:grid</h3>
+
+<script type="multiline-template" id="displayGridHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:grid;" class="divInner">
+  display:grid.
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayGridHtml');</script>
+
+  <h3>display:inline-grid</h3>
+
+<script type="multiline-template" id="displayInlineGridHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div style="display:inline-grid;" class="divInner">
+  display:inline-grid.
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineGridHtml');</script>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="RGBa"/>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<script type="multiline-template" id="rgbaHtml">
+<div style="position:relative;">
+  <div style="color:#0a0;" class="divInner">
+    Plain old div.
+  </div>
+
+  <div style="background:rgba(0,0,0,0.3); position:absolute; top:0; right:0; bottom:0; left:0;">
+    <!--
+      1. provide a semi-transparent background on top of the div above
+      2. function as an event trap (prevent events from reaching the div above)
+    -->
+  </div>
+</div>
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('rgbaHtml');</script>
+
+  </main>
+
+  <footer/>
+
+</body>
+</html>
+
+
