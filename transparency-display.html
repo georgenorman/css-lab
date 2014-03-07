@@ -56,8 +56,10 @@
   <nav tableOfContents='{"tocClass":"toc", "contentHeaderItemTagName":"h2"}'></nav>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Opacity"/>
+  <h2 id="Opacity"></h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>Also see <a href="#RGBa">RGBa</a>.</p>
 
   <h3>opacity: 1</h3>
 
@@ -91,8 +93,6 @@
 
   <h3>Irreversible Opacity</h3>
 
-  <p>See <a href="#RGBa">RGBa</a> for work-around.</p>
-
 <script type="multiline-template" id="irreversibleHtml">
 <div style="opacity:1;">
   Opacity is 1.0
@@ -111,7 +111,7 @@
   <script type="text/javascript">cssSummaryModule.insertHtmlExample('irreversibleHtml');</script>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Visibility"/>
+  <h2 id="Visibility"></h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <h3>visibility:visible</h3>
@@ -139,7 +139,7 @@ After the DIV.
   <script type="text/javascript">cssSummaryModule.insertHtmlExample('visibilityHiddenHtml');</script>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Display"/>
+  <h2 id="Display"></h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <h3>display:block</h3>
@@ -275,25 +275,52 @@ After the DIV. After the DIV. After the DIV.
   <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineGridHtml');</script>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="RGBa"/>
+  <h2 id="RGBa"></h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-<script type="multiline-template" id="rgbaHtml">
+  <h3>Overlay with alpha of 0.1</h3>
+
+<script type="multiline-template" id="rgba-1Html">
 <div style="position:relative;">
   <div style="color:#0a0;" class="divInner">
-    Plain old div.
+    Obscured and events are blocked.
   </div>
 
-  <div style="background:rgba(0,0,0,0.3); position:absolute; top:0; right:0; bottom:0; left:0;">
+  <div style="background:rgba(184,184,184,0.1);
+              position:absolute; top:0; right:0; bottom:0; left:0;
+              text-align:right; padding:2px;">
     <!--
       1. provide a semi-transparent background on top of the div above
       2. function as an event trap (prevent events from reaching the div above)
     -->
+    <span style="color:#f00;">Not obscured and events are received.</span>
   </div>
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('rgbaHtml');</script>
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('rgba-1Html');</script>
+
+  <h3>Overlay with alpha of 0.6</h3>
+
+  <script type="multiline-template" id="rgba-2Html">
+    <div style="position:relative;">
+      <div style="color:#0a0;" class="divInner">
+        Obscured and events are blocked.
+      </div>
+
+      <div style="background:rgba(184,184,184,0.7);
+                  position:absolute; top:0; right:0; bottom:0; left:0;
+                  text-align:right; padding:2px;">
+        <!--
+          1. provide a semi-transparent background on top of the div above
+          2. function as an event trap (prevent events from reaching the div above)
+        -->
+        <span style="color:#f00;">Not obscured and events are received.</span>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('rgba-2Html');</script>
 
   </main>
 
