@@ -5,12 +5,22 @@
   ~     http://www.apache.org/licenses/LICENSE-2.0
 */
 
+/* ---------------------------------
+ * Anchors
+ * --------------------------------- */
+
 a {
   text-decoration: none;
+  color: #69c;
 }
+
 a:hover {
   text-decoration: underline;
 }
+
+/* ---------------------------------
+ * Header
+ * --------------------------------- */
 
 /* Create an empty shell for the header content */
 header {
@@ -36,17 +46,23 @@ header h1 {
 /* Move the header text off of the logo */
 header h1:before {
   content: "\00a0"; /* requires one space for margin to work */
-  margin-right:22px;
+  margin-right: 22px;
 }
+
+/* ---------------------------------
+ * Headings (h2-h4)
+ * --------------------------------- */
 
 h2 {
   border-bottom: 1px solid #999;
   padding-bottom: 6px;
+  color: #669;
 }
 
 h3 {
   border-bottom: 1px dashed #ccc;
   padding-bottom: 6px;
+  color: #033;
 }
 
 h4 {
@@ -55,49 +71,17 @@ h4 {
   color: #888;
 }
 
-/* Main content */
+/* ---------------------------------
+ * Main content
+ * --------------------------------- */
+
 main {
   margin: 0 16px;
 }
 
-/* Create an empty shell for the footer content */
-footer {
-  margin-top:48px;
-  padding: 6px;
-  color: #fff;
-  background: linear-gradient(45deg, #fcfcfc, #777);
-  text-align: right;
-}
-
-/* Add the standard header content (same for every page) */
-footer:after {
-  content: "Copyright \00a9  2014 George Norman"
-}
-
-/* Format example code blocks (CSS, JS, HTML, etc) */
-code {
-  display: block;
-  white-space: pre;
-  color: initial;
-  margin: 8px 6px;
-  padding: 6px 12px;
-  border: thin solid #ccc;
-  width: 93%;
-  overflow: auto;
-}
-
-/* Create an empty shell to render the result */
-.rendered-result {
-  margin: 8px 6px;
-  border: thin dashed #ccc;
-  padding: 6px 12px;
-  width: 93%;
-  overflow: auto;
-}
-
-/*
-  Table of Contents (TOC)
-*/
+/* ---------------------------------
+ * Table of Contents (TOC)
+ * --------------------------------- */
 
 /* TOC heading */
 nav h2 {
@@ -125,21 +109,84 @@ nav ul.toc li:before {
   margin-right: 6px;
 }
 
-.arrow {
-  width: 0px;
-  height: 0px;
+/* ---------------------------------
+ * Footer
+ * --------------------------------- */
+
+/* Create an empty shell for the footer content */
+footer {
+  margin-top: 48px;
+  padding: 6px;
+  color: #fff;
+  background: linear-gradient(45deg, #fcfcfc, #777);
+  text-align: right;
+}
+
+/* Add the standard header content (same for every page) */
+footer:after {
+  content: "Copyright \00a9  2014 George Norman"
+}
+
+/* ---------------------------------
+ * Code block
+ * --------------------------------- */
+
+/* Format example code blocks (CSS, JS, HTML, etc) */
+code {
+  display: block;
+  white-space: pre;
+  color: initial;
+  margin: 8px 6px;
+  padding: 6px 12px;
+  border: thin solid #ccc;
+  width: 93%;
+  overflow: auto;
+}
+
+/* ---------------------------------
+ * Rendered Result block
+ * --------------------------------- */
+
+/* Create an empty shell to render the result */
+.rendered-result {
+  margin: 8px 6px;
+  border: thin dashed #ccc;
+  padding: 6px 12px;
+  width: 93%;
+  overflow: auto;
+}
+
+/* ---------------------------------
+ * Simple right-arrow
+ * --------------------------------- */
+
+.arrow-right {
+  width: 0;
+  height: 0;
   border-style: solid;
   border-width: 14px 0 14px 20px;
   border-color: transparent transparent transparent #B2E0B2;
-  margin:0 0 54px 0;
-  padding-right:2px;
+  margin: 0 0 54px 0;
+  padding-right: 2px;
   display: inline-block;
 }
 
 .sq {
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   border: 7px solid #B2E0B2;
   margin: 0 -2px 61px 6px;
   display: inline-block;
+}
+
+/* ---------------------------------
+ * Inner-div box (to outline rendered example and show hover events)
+ * --------------------------------- */
+
+.divInner {
+  border: thin solid #ccc;
+}
+
+.divInner:hover {
+  cursor: pointer;
 }
