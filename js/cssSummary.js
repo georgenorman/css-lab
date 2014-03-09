@@ -19,9 +19,9 @@ var cssSummaryModule = (function(domHelper) {
      * @param templateId - ID of the element containing the CSS code to insert.
      */
     insertStyleFromTemplate: function(templateId) {
-      var styleHtml = domHelper.getInnerHtml(templateId);
+      var styleData = domHelper.getInnerHtml(templateId);
 
-      domHelper.insertElement("style", styleHtml);
+      domHelper.insertElement("style", styleData);
     },
 
     /*
@@ -30,10 +30,10 @@ var cssSummaryModule = (function(domHelper) {
      * @param templateId - ID of the element containing the HTML or JavaScript code to insert.
      * @param heading - <h4> heading for the div block.
      */
-    insertCodeExampleWithHeadingFromTemplate: function(templateId, heading) {
+    insertCodeExampleWithHeadingFromTemplate: function(templateId, heading, lang) {
       domHelper.insertElement("h4", heading);
 
-      this.insertCodeExampleFromTemplate(templateId);
+      this.insertCodeExampleFromTemplate(templateId, lang);
     },
 
     /*
@@ -41,13 +41,65 @@ var cssSummaryModule = (function(domHelper) {
      *
      * @param templateId - ID of the element containing the HTML or JavaScript code to insert.
      */
-    insertCodeExampleFromTemplate: function(templateId) {
-      var codeExample = domHelper.getInnerHtml(templateId);
+    insertCodeExampleFromTemplate: function(templateId, lang) {
+      var result = "<ol>";
+      var codeLines = domHelper.getInnerHtmlAsArray(templateId);
 
-      // XML escape the code example.
-      codeExample = codeExample.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      // create a list item for each line (to display line numbers).
+      for (var i=0; i<codeLines.length; i++) {
+        var escapedCodeLine = domHelper.xmlEscape(codeLines[i]);
+        // @-@:p0 Highlighter should be applied to the complete inner HTML, and not line-by-line as done here, but
+        //        the closing list-item (</li>) breaks the span with the style, so keeping it simple and broken, for now.
+        result += "<li> " + this.highlighter(escapedCodeLine, lang) + "</li>"
+      }
 
-      domHelper.insertElement("code", codeExample);
+      // close the list
+      result += "</ol>";
+
+      domHelper.insertElement("code", result);
+    },
+
+    /*
+     * A crude (hack), single-line code highlighter, that only highlights basic code elements (e.g., some c-style comments, etc).
+     * Borderline suitable for the simple code examples in the CSS Lab.
+     */
+    highlighter: function(code, lang) {
+      var result = code;
+
+      // simple quoted strings
+      result = result.replace(/(["'])(.*?)\1/gm, "[[quoted-string]]$1$2$1[[/quoted-string]]"); // matches quoted string: e.g., "foo"
+
+      // simple comments
+      result = result.replace(/(\/\/.*$)/gm, "[[comment]]$1[[/comment]]"); // matches comment: e.g., // comment
+      result = result.replace(/(\/\*[\s\S]+?\*\/)/gm, "[[comment]]$1[[/comment]]"); // matches comment: e.g., /* comment */
+
+      if (lang === '*ml') {
+        // simple tags
+        result = result.replace(/(&lt;\w+&gt;|&lt;\w+|&lt;\/\w+&gt;)/gm, "[[tag-name]]$1[[/tag-name]]"); // matches tag: e.g., <div ...> or </div>
+
+        // simple xml attributes
+        result = result.replace(/(\w+=)/gm, "[[attribute-name]]$1[[/attribute-name]]"); // matches attribute name: e.g., foo=
+
+        // un-escape
+        result = result.replace(/\[\[tag-name\]\]/gm, "<span class='highlight-tag-name'>").replace(/\[\[\/tag-name\]\]/gm, "</span>");
+        result = result.replace(/\[\[attribute-name\]\]/gm, "<span class='highlight-attribute-name'>").replace(/\[\[\/attribute-name\]\]/gm, "</span>");
+      } else if (lang === 'css') {
+        // selector
+        result = result.replace(/(.*\{|\})/gm, "[[css-selector]]$1[[/css-selector]]"); // matches css selector: e.g., .foo {
+
+        // property
+        result = result.replace(/(.*:)/gm, "[[css-property]]$1[[/css-property]]"); // matches css property: e.g., margin-top:
+
+        // un-escape
+        result = result.replace(/\[\[css-selector\]\]/gm, "<span class='highlight-css-selector'>").replace(/\[\[\/css-selector\]\]/gm, "</span>");
+        result = result.replace(/\[\[css-property\]\]/gm, "<span class='highlight-css-property'>").replace(/\[\[\/css-property\]\]/gm, "</span>");
+      }
+
+      // un-escape
+      result = result.replace(/\[\[quoted-string\]\]/gm, "<span class='highlight-comment'>").replace(/\[\[\/quoted-string\]\]/gm, "</span>");
+      result = result.replace(/\[\[comment\]\]/gm, "<span class='highlight-comment'>").replace(/\[\[\/comment\]\]/gm, "</span>");
+
+      return result;
     },
 
     /*
@@ -73,8 +125,8 @@ var cssSummaryModule = (function(domHelper) {
      */
     insertStyleWithExampleAndResultWithExample: function(cssTemplateId, htmlTemplateId) {
       this.insertStyleFromTemplate(cssTemplateId);
-      this.insertCodeExampleWithHeadingFromTemplate(cssTemplateId, 'CSS');
-      this.insertCodeExampleWithHeadingFromTemplate(htmlTemplateId, 'HTML');
+      this.insertCodeExampleWithHeadingFromTemplate(cssTemplateId, 'CSS', 'css');
+      this.insertCodeExampleWithHeadingFromTemplate(htmlTemplateId, 'HTML', '*ml');
       this.insertRenderedResultWithHeadingFromTemplate(htmlTemplateId, 'Rendered Result');
     },
 
@@ -99,78 +151,20 @@ var cssSummaryModule = (function(domHelper) {
      * @param htmlTemplateId - ID of the element containing the HTML code to insert.
      */
     insertHtmlExample: function(htmlTemplateId) {
-      this.insertCodeExampleWithHeadingFromTemplate(htmlTemplateId, 'HTML');
+      this.insertCodeExampleWithHeadingFromTemplate(htmlTemplateId, 'HTML', '*ml');
       this.insertRenderedResultWithHeadingFromTemplate(htmlTemplateId, 'Rendered Result');
     },
 
     /*
-     * Insert a simple, single-level, Table of Contents, inside the element selected by the given tocClassName.
-     * A default title of "Table of Contents" will be used if an optionalTitle is not provided.
-     * The title is rendered as an h2 element.
+     * Convenience function that inserts a list item for the style property identified by stylePropertyName
+     * and element identified by elementId.
      *
-     * @param contentHeaderItemTagName - tag name of the headers, in the main content, that will be included in the Table of Contents.
-     * @param optionalTitle - An optional title can be provided, if the default "Table of Contents" needs to be changed.
+     * @param elementId - ID of the element with the desired style property.
+     * @param stylePropertyName - name of the style property to render.
      */
-    insertTableOfContents: function() {
-      var tocElement = domHelper.getFirstElementByAttributeName("tableOfContents");
-      var args = JSON.parse(tocElement.getAttribute("tableOfContents"));
-
-      // add heading
-      var title = this.ensureValue(args.optionalTitle, "Table of Contents");
-      var heading = document.createElement("h2");
-      heading.innerHTML = "<b>" + title + "</b>";
-      tocElement.appendChild(heading);
-
-      // add contents
-      var ul = document.createElement("ul");
-      ul.className = args.tocClass;
-      var h2Elements = document.getElementsByTagName(args.contentHeaderItemTagName);
-      for (var i = 0; i < h2Elements.length; i++) {
-        var li = document.createElement("li");
-        var tocItem = h2Elements[i];
-
-        if (tocItem !== heading) {
-          var tocItemText = h2Elements[i].innerText;
-
-          tocItemText = this.ensureValue(tocItemText, tocItem.id);
-          li.innerHTML = "<a href=\"#" + tocItem.id + "\">" + tocItemText + "</a>";
-          ul.appendChild(li);
-        }
-      }
-      tocElement.appendChild(ul);
-    },
-
-    /*
-     * Common introduction/header displayed across all of the CSS Summary pages.
-     */
-    aboutPagePanel: function() {
-      var infoPanelElement = domHelper.getFirstElementByAttributeName('aboutPagePanel');
-
-      infoPanelElement.innerHTML += "This page contains the code examples used for the ";
-      infoPanelElement.innerHTML += "<a href='http://www.thruzero.com/jcat3/apps/resources/resources.jsf?rid=css.overview'>CSS Summary</a> ";
-      infoPanelElement.innerHTML += "at <a href='http://www.thruzero.com/'>ThruZero</a>. ";
-      infoPanelElement.innerHTML += "The CSS and HTML code is defined in templates and then rendered live, to immediately expose typos. ";
-    },
-
-    /*
-     * Perform the following tasks after all CSS, JS and HTML has loaded:
-     *   - Insert the default Table of Contents.
-     */
-    performDefaultOnLoad: function() {
-      this.aboutPagePanel();
-      this.insertTableOfContents();
-    },
-
-    /*
-     * Return the given value, if it's defined; otherwise, return the given default value.
-     *
-     * @param attributeName - name of attribute of targeted element.
-     */
-    ensureValue: function(value, defaultValue) {
-      var result = (value === undefined || value === "") ? defaultValue : value;
-
-      return result;
+    insertStylePropertyValueListItem: function(elementId, stylePropertyName) {
+      domHelper.insertElement("li", "Element '" + elementId + "' is: " + domHelperModule.getStylePropertyValue(elementId, stylePropertyName));
     }
   };
 
-}(domHelperModule)); // TODO-p1(Geo): jshint says this isn't defined. However, it is defined in the application just before importing this file.
+}(domHelperModule));

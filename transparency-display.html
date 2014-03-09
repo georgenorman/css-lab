@@ -25,7 +25,7 @@
     @import "css/cssSummaryBase.css";
 
     /*
-      Use the value of the h2 id as the header text, so ID and header stay in sync and only need to be specified once.
+      Use the value of the h2 id as the header text, so that the ID and header will stay in sync and only need to be specified once.
       Cheap "hack" works here because titles have no spaces.
     */
     h2:before {
@@ -33,9 +33,10 @@
     }
   </style>
   <script type="text/javascript" src="js/domHelper.js?v1"></script>
+  <script type="text/javascript" src="js/commonPage.js?v1"></script>
   <script type="text/javascript" src="js/cssSummary.js?v1"></script>
 </head>
-<body onload="cssSummaryModule.performDefaultOnLoad();">
+<body onload="commonPageModule.performDefaultOnLoad();">
 
 <header>
   <h1>Transparency/Display</h1>

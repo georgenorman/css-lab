@@ -8,5 +8,5 @@ CSS experiments for the [CSS Overview](http://www.thruzero.com/jcat3/apps/resour
 * [Transparency/Display](http://www.thruzero.com/pages/jcat3/css-summary/transparency-display.html)
 * [Filters](http://www.thruzero.com/pages/jcat3/css-summary/filters.html)
 * Box Model (in progress)
-* Positioning (in progress)
+* [Positioning](http://www.thruzero.com/pages/jcat3/css-summary/positioning.html)
 * Modal Dialog (in progress)

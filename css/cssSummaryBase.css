@@ -128,7 +128,7 @@ footer:after {
 }
 
 /* ---------------------------------
- * Code block
+ * Code block (with gutter and line numbers)
  * --------------------------------- */
 
 /* Format example code blocks (CSS, JS, HTML, etc) */
@@ -137,10 +137,51 @@ code {
   white-space: pre;
   color: initial;
   margin: 8px 6px;
-  padding: 6px 12px;
+  padding: 0;
   border: thin solid #ccc;
   width: 93%;
   overflow: auto;
+  background-color: #efefef;
+}
+
+code ol {
+  margin: 0 0 0 36px;
+  padding: 0;
+  list-style-type: decimal-leading-zero;
+  border-left: 2px solid #0c0;
+}
+
+code ol li:nth-child(odd) {
+  background-color: #fff;
+}
+
+/* ---------------------------------
+ * Code Highlighting
+ * --------------------------------- */
+
+.highlight-attribute-name {
+  color: #990099;
+}
+
+.highlight-attribute-value {
+  color: #2a00ff;
+}
+
+.highlight-comment {
+  color: #008200;
+}
+
+.highlight-tag-name {
+  color: #3f7f7f;
+}
+
+.highlight-css-selector {
+  color: #354B5E;
+  font-weight: bold;
+}
+
+.highlight-css-property {
+  color: #00c;
 }
 
 /* ---------------------------------
@@ -157,9 +198,40 @@ code {
 }
 
 /* ---------------------------------
+ * Inner-div box (to outline rendered example and show hover events)
+ * --------------------------------- */
+
+.divInner {
+  border: thin solid #ccc;
+}
+
+.divInner:hover {
+  cursor: pointer;
+}
+
+/* ---------------------------------
+ * A background grid to illustrate the positions
+ * --------------------------------- */
+
+/* genesis: http://lea.verou.me/css3patterns/#blueprint-grid. */
+.grid {
+  background-color: #6ad;
+  background-image:
+    linear-gradient(#fff 2px, transparent 2px),
+    linear-gradient(90deg, #fff 2px, transparent 2px),
+    linear-gradient(rgba(255, 255, 255, .6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .6) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+  padding:0;
+  margin:0;
+}
+
+/* ---------------------------------
  * Simple right-arrow
  * --------------------------------- */
 
+/* genesis: http://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-right {
   width: 0;
   height: 0;
@@ -177,16 +249,4 @@ code {
   border: 7px solid #B2E0B2;
   margin: 0 -2px 61px 6px;
   display: inline-block;
-}
-
-/* ---------------------------------
- * Inner-div box (to outline rendered example and show hover events)
- * --------------------------------- */
-
-.divInner {
-  border: thin solid #ccc;
-}
-
-.divInner:hover {
-  cursor: pointer;
 }

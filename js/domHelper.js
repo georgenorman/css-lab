@@ -25,12 +25,17 @@ var domHelperModule = (function() {
 
       if (element) {
         result = element.innerHTML;
-        // replace the first new line (side-effect of using template, the newline after the <script> tag is included).
-        result = result.replace("\n", "");
+        // replace the leading and trailing newlines (side-effect of using template, the newline after the <script> tag is included).
+        result = result.trim();
       } else {
         result = "No element found for ID: '" + elementId + "'";
-        console.log("ERROR: getInnerHtml found " + result);
       }
+
+      return result;
+    },
+
+    getInnerHtmlAsArray: function(elementId) {
+      var result = this.getInnerHtml(elementId).split("\n");
 
       return result;
     },
@@ -54,13 +59,26 @@ var domHelperModule = (function() {
     },
 
     /*
+     * Return the value of the style property, for the element with the given elementId.
+     *
+     * @param elementId - ID of the target element.
+     * @param stylePropertyName - name of the style property to retrieve the value for.
+     */
+    getStylePropertyValue: function(elementId, stylePropertyName) {
+      var element = document.getElementById(elementId);
+      var result = window.getComputedStyle(element).getPropertyValue(stylePropertyName);
+
+      return result;
+    },
+
+    /*
      * Inserts a tag, with the given tagName, and inserts the given innerHtml inside the element.
      *
      * @param tagName - name of tag (e.g., h4 => <h4>).
      * @param innerHtml - HTML to write inside of element.
      */
     insertElement: function(tagName, innerHtml) {
-      this.insertLine("<" + tagName + ">" + innerHtml + "</" + tagName + ">");
+      insertLine("<" + tagName + ">" + innerHtml + "</" + tagName + ">");
     },
 
     /*
@@ -72,17 +90,26 @@ var domHelperModule = (function() {
      */
     insertElementWithTagAttributes: function(tagName, tagAttributes, innerHtml) {
       tagAttributes = (tagAttributes.length > 0) ? " " + tagAttributes : tagAttributes;
-      this.insertLine("<" + tagName + tagAttributes + ">" + innerHtml + "</" + tagName + ">");
+      insertLine("<" + tagName + tagAttributes + ">" + innerHtml + "</" + tagName + ">");
     },
 
-    /*
-     * Inlines given text into document (equivalent to document.writeln).
-     *
-     * @param text - text to write.
-     */
-    insertLine: function(text) {
-      document.writeln(text);
-    }
+    xmlEscape: function(rawString) {
+      var result = rawString.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+      return result;
+    }
   };
+
+  // ------------------------------------------------------------------
+  // Private functions
+  // ------------------------------------------------------------------
+
+  /*
+   * Inlines given text into document (equivalent to document.writeln).
+   *
+   * @param text - text to write.
+   */
+  function insertLine(text) {
+    document.writeln(text);
+  }
 }());
