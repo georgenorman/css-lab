@@ -4,7 +4,8 @@
  ~     http://www.apache.org/licenses/LICENSE-2.0
  ~
  ~ --------------------------------------------------------------
- ~ Common page set-up functions for CSS Summary.
+ ~ Common set-up functions for each 'CSS Summary' page
+ ~ (and possibly future Summary labs on the horizon).
  ~ --------------------------------------------------------------
  ~
  */
@@ -61,10 +62,10 @@ var commonPageModule = (function(domHelper) {
     aboutPagePanel: function() {
       var infoPanelElement = domHelper.getFirstElementByAttributeName('aboutPagePanel');
 
-      infoPanelElement.innerHTML += "This page contains the code examples used for the ";
+      infoPanelElement.innerHTML += "This page contains example code used for the ";
       infoPanelElement.innerHTML += "<a href='http://www.thruzero.com/jcat3/apps/resources/resources.jsf?rid=css.overview'>CSS Summary</a> ";
       infoPanelElement.innerHTML += "at <a href='http://www.thruzero.com/'>ThruZero</a>. ";
-      infoPanelElement.innerHTML += "The CSS and HTML code is defined in templates and then rendered live, to immediately expose typos. ";
+      infoPanelElement.innerHTML += "The example code (e.g., CSS and HTML) is defined within inline-templates and then rendered live, so it will always match the rendered example. ";
     },
 
     /*
@@ -89,4 +90,4 @@ var commonPageModule = (function(domHelper) {
     }
   };
 
-}(domHelperModule)); // TODO-p1(Geo): jshint says this isn't defined. However, it is defined in the application just before importing this file.
+}(domHelperModule));

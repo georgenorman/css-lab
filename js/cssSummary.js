@@ -4,7 +4,7 @@
   ~     http://www.apache.org/licenses/LICENSE-2.0
   ~
   ~ --------------------------------------------------------------
-  ~ Simple support functions for CSS Summary.
+  ~ Simple support functions for 'CSS Summary'.
   ~ --------------------------------------------------------------
   ~
  */
