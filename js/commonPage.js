@@ -4,7 +4,7 @@
  ~     http://www.apache.org/licenses/LICENSE-2.0
  ~
  ~ --------------------------------------------------------------
- ~ Common set-up functions for each 'CSS Summary' page
+ ~ Common custom "tags" for each 'CSS Summary' page
  ~ (and possibly future Summary labs on the horizon).
  ~ --------------------------------------------------------------
  ~
@@ -17,7 +17,7 @@ var commonPageModule = (function(domHelper) {
     /*
      * Insert a simple single-level Table of Contents, inside the element selected by the given tocClassName.
      * A default title of "Table of Contents" will be used if the optionalTitle is not provided.
-     * The title is rendered as an h2 element.
+     * The title is rendered as an h2 element. There can be only one Table of Contents section per page.
      *
      * The params are read from the element with a "tableOfContents" attribute, as shown in the example below:
      *
@@ -28,11 +28,12 @@ var commonPageModule = (function(domHelper) {
      * @param optionalTitle - An optional title can be provided, if the default "Table of Contents" needs to be changed.
      */
     insertTableOfContents: function() {
+      // there can be only one 'table of contents' per page.
       var tocElement = domHelper.getFirstElementByAttributeName("tableOfContents");
       var args = JSON.parse(tocElement.getAttribute("tableOfContents"));
 
       // add heading
-      var title = this.coalesce(args.optionalTitle, "Table of Contents");
+      var title = domHelper.coalesce(args.optionalTitle, "Table of Contents");
       var heading = document.createElement("h2");
       heading.innerHTML = "<b>" + title + "</b>";
       tocElement.appendChild(heading);
@@ -48,7 +49,7 @@ var commonPageModule = (function(domHelper) {
         if (tocItem !== heading) {
           var tocItemText = h2Elements[i].innerText;
 
-          tocItemText = this.coalesce(tocItemText, tocItem.id);
+          tocItemText = domHelper.coalesce(tocItemText, tocItem.id);
           li.innerHTML = "<a href=\"#" + tocItem.id + "\">" + tocItemText + "</a>";
           ul.appendChild(li);
         }
@@ -58,8 +59,10 @@ var commonPageModule = (function(domHelper) {
 
     /*
      * Common introduction/header displayed across all of the CSS Summary pages.
+     * There can be only one Introduction section per page.
      */
     aboutPagePanel: function() {
+      // there can be only one 'about page panel' per page.
       var infoPanelElement = domHelper.getFirstElementByAttributeName('aboutPagePanel');
 
       infoPanelElement.innerHTML += "This page contains example code used for the ";
@@ -76,17 +79,6 @@ var commonPageModule = (function(domHelper) {
     performDefaultOnLoad: function() {
       this.aboutPagePanel();
       this.insertTableOfContents();
-    },
-
-    /*
-     * Returns the given value if not null, otherwise returns the given defaultValue.
-     *
-     * @param attributeName - name of attribute of targeted element.
-     */
-    coalesce: function(value, defaultValue) {
-      var result = (value === undefined || value === "") ? defaultValue : value;
-
-      return result;
     }
   };
 

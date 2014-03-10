@@ -65,8 +65,14 @@ var domHelperModule = (function() {
      * @param stylePropertyName - name of the style property to retrieve the value for.
      */
     getStylePropertyValue: function(elementId, stylePropertyName) {
+      var result;
       var element = document.getElementById(elementId);
-      var result = window.getComputedStyle(element).getPropertyValue(stylePropertyName);
+
+      if (element == null) {
+        result = "* ERROR * Element not found: " + elementId;
+      } else {
+        result = window.getComputedStyle(element).getPropertyValue(stylePropertyName);
+      }
 
       return result;
     },
@@ -97,6 +103,30 @@ var domHelperModule = (function() {
       var result = rawString.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
       return result;
+    },
+
+    /*
+     * Returns the given value if not null, otherwise returns the given defaultValue.
+     *
+     * @param value - value to return if not null.
+     * @param defaultValue - defaultValue to return if value is null.
+     */
+    coalesce: function(value, defaultValue) {
+      var result = (value === undefined || value === "") ? defaultValue : value;
+
+      return result;
+    },
+
+    show: function(elementId) {
+      var element = document.getElementById(elementId);
+
+      element.style.display = 'block';
+    },
+
+    hide: function(elementId) {
+      var element = document.getElementById(elementId);
+
+      element.style.display = 'none';
     }
   };
 

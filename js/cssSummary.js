@@ -164,6 +164,47 @@ var cssSummaryModule = (function(domHelper) {
      */
     insertStylePropertyValueListItem: function(elementId, stylePropertyName) {
       domHelper.insertElement("li", "Element '" + elementId + "' is: " + domHelperModule.getStylePropertyValue(elementId, stylePropertyName));
+    },
+
+    /*
+     * Custom "tag" handler to render the CSS styles for a series of given elements.
+     *
+     * Example:
+     *   <div styleDisplayPanel='{"elementPropertyList":[{"fixedEx1": "position"}, {"fixInnerEx1": "position"}], "useShortItems": "true"}'></div>
+     */
+    insertStyleDisplayPropertyList: function() {
+      // there can be many 'Style Display' sections per page.
+      var stylePanels = document.querySelectorAll("[" + 'styleDisplayPanel' + "]");
+
+      for (var panelIndex=0; panelIndex<stylePanels.length; panelIndex++) {
+        var generatedHtml = "<ul style='margin-top:0px;'>";
+        var stylePanelElement = stylePanels[panelIndex];
+        var styleDisplayPanelAttribute = stylePanelElement.getAttribute("styleDisplayPanel");
+
+        if (styleDisplayPanelAttribute == null) {
+          generatedHtml += "<li>ERROR: Missing params. Attribute requires minimum JSON value (styleDisplayPanel='{}').</li>";
+        } else {
+          var args = JSON.parse(styleDisplayPanelAttribute);
+          var elementPropertyList = domHelper.coalesce(args.elementPropertyList, null);
+          if (elementPropertyList == null) {
+            generatedHtml += "<li>ERROR: Missing elementPropertyList parameter (\"elementPropertyList\": [{\"id\": \"property\"}]).</li>";
+          } else {
+            var useShortItems = domHelper.coalesce(args.useShortItems, 'true');
+            for (var propertyIndex=0; propertyIndex<elementPropertyList.length; propertyIndex++) {
+              var idPropertyPair = elementPropertyList[propertyIndex];
+              for (var elementId in idPropertyPair) {
+                if (useShortItems == 'true') {
+                  generatedHtml += "<li>Element '" + elementId + "' is: " + domHelperModule.getStylePropertyValue(elementId, idPropertyPair[elementId]) + "</li>";
+                } else {
+                  generatedHtml += "<li>The '" + idPropertyPair[elementId] + "' property of element '" + elementId + "' is: " + domHelperModule.getStylePropertyValue(elementId, idPropertyPair[elementId]) + "</li>";
+                }
+              }
+            }
+          }
+        }
+        generatedHtml += "</ul>";
+        stylePanelElement.innerHTML = generatedHtml;
+      }
     }
   };
 

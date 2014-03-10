@@ -28,7 +28,7 @@
   <script type="text/javascript" src="js/commonPage.js?v1"></script>
   <script type="text/javascript" src="js/cssSummary.js?v1"></script>
 </head>
-<body onload="commonPageModule.performDefaultOnLoad();">
+<body onload="commonPageModule.performDefaultOnLoad(); cssSummaryModule.insertStyleDisplayPropertyList();">
 <header>
   <h1>Positioning</h1>
 </header>
@@ -40,10 +40,14 @@
   <nav tableOfContents='{"tocClass":"toc", "contentHeaderItemTagName":"h2"}'></nav>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="common-css">Common CSS</h2>
+  <h2 id="commonCss">Common CSS</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-<script type="multiline-template" id="commonCss">
+  <p>
+    CSS shared by all examples on this page.
+  </p>
+
+<script type="multiline-template" id="tmplCommonCss">
 /* A 300px square, expected to serve as a fixed background. */
 .outer-div-sans-border {
   background-color: #ccc;
@@ -61,6 +65,7 @@
 
 /* A relative positioned 140px square, with a 20px border and a 100px content region. */
 .relative-square {
+  position:relative;
   width: 100px;
   height: 100px;
   border: 20px solid rgba(255, 0, 0, 0.5);
@@ -68,17 +73,17 @@
 </script>
 
   <script type="text/javascript">
-    cssSummaryModule.insertStyleFromTemplate('commonCss');
-    cssSummaryModule.insertCodeExampleWithHeadingFromTemplate('commonCss', '', 'css');
+    cssSummaryModule.insertStyleFromTemplate('tmplCommonCss');
+    cssSummaryModule.insertCodeExampleWithHeadingFromTemplate('tmplCommonCss', '', 'css');
   </script>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="position-relative">Relative div nested inside static</h2>
+  <h2 id="positionRelative">Relative div nested inside static div</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
     This series of examples demonstrates some of the wacky things that happen when you nest a relative div inside a static div.
-    I'm not sure there would ever be a reason to do this, but good to know in case it's ever done by accident.
+    Not sure why this would ever be used, but good to know in case it's ever done by accident.
   </p>
 
   <!-- `````````````````````````````````` -->
@@ -86,21 +91,21 @@
   <!-- `````````````````````````````````` -->
 
   <p>
-    There are three divs: <i>innerMost</i> is nested inside of <i>middleGrid</i>, which in turn is nested inside of <i>outerMost</i>.
-    The resulting position of the <i>innerMost</i> div is exactly as expected -
+    There are three divs: <i>outerMost</i> contains <i>middleGrid</i>, which in turn contains <i>innerMost</i>.
+    In this example, the resulting position of the <i>innerMost</i> div is exactly as expected -
     it's relatively positioned inside of <i>middleGrid</i>, at 40px from the top and 40px from the left.
   </p>
 
-<script type="multiline-template" id="exampleRelInStaticNoMarginHtml">
+<script type="multiline-template" id="tmplExampleRelInStaticNoMarginHtml">
 <div class="outer-div-sans-border" id="outerMost">
   <div class="grid middle-grid" id="middleGrid">
-    <div style="position:relative; top:40px; left:40px;" class="relative-square" id="innerMost">
+    <div style="top:40px; left:40px;" class="relative-square" id="innerMost">
     </div>
   </div>
 </div>
 </script>
 
-<script type="text/javascript">cssSummaryModule.insertHtmlExample('exampleRelInStaticNoMarginHtml');</script>
+<script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelInStaticNoMarginHtml');</script>
 
   <br/>Current 'position' styles:
   <ul style="margin-top:0px;">
@@ -117,20 +122,19 @@
 
   <p>
     Now, let's keep everything the same, except add a margin to the <i>innerMost</i> div (it's relatively positioned inside two static divs).
-    <span style="color:red;">Adding a 10px margin to the <i>innerMost</i> div has <b>no effect</b> on its top position, but did affect the left position by 10px (it's now 50px from the left outer side).</span>
+    <span style="color:red;">Adding a 10px margin to the <i>innerMost</i> div has <b>no effect</b> on its top position, but does affect the left position by 10px (it's now 50px from the left outer side).</span>
   </p>
 
-<script type="multiline-template" id="exampleRelInStatic10pxMarginHtml">
+<script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">
 <div class="outer-div-sans-border">
   <div class="grid middle-grid">
-    <div style="position:relative; top:40px; left:40px; margin:10px;"
-         class="relative-square">
+    <div style="top:40px; left:40px; margin:10px;" class="relative-square">
     </div>
   </div>
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('exampleRelInStatic10pxMarginHtml');</script>
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelInStatic10pxMarginHtml');</script>
 
   <!-- `````````````````````````````````` -->
   <h3>Relative div has 40px margin</h3>
@@ -141,20 +145,19 @@
     <span style="color:red;">However, it did push down its parent and its parent's parent by about 26px, as evidenced by the gap immediately above the rendered result.</span>
   </p>
 
-<script type="multiline-template" id="exampleRelInStatic40pxMarginHtml">
+<script type="multiline-template" id="tmplExampleRelInStatic40pxMarginHtml">
 <div class="outer-div-sans-border">
   <div class="grid middle-grid">
-    <div style="position:relative; top:40px; left:40px; margin:40px;"
-         class="relative-square">
+    <div style="top:40px; left:40px; margin:40px;" class="relative-square">
     </div>
   </div>
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('exampleRelInStatic40pxMarginHtml');</script>
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelInStatic40pxMarginHtml');</script>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="position-relative-absolute">Relative div nested inside absolute</h2>
+  <h2 id="positionRelativeInAbsolute">Relative div nested inside absolute</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
@@ -162,23 +165,22 @@
   <!-- `````````````````````````````````` -->
 
   <p>
-    <span style="color:green;">Using a relative div nested inside an absolute one makes all of the issues of the previous section go away.</span>
-    The margin of the relative div is 40px and its position relative to the top and left of its immediate parent is the expected 80px.
-    Furthermore, the gap at the top of the <i>outerMost</i> div is now gone.
-    Adding a border to the <i>outerMost</i> div will not change the result (as it would if the <i>middleGrid</i> div were static).
+    <span style="color:green;">Changing the parent of the relative div from static to absolute, makes all of the issues of the previous section go away.</span>
+    So now the margin of the relative div is 40px and its position relative to the top and left of its immediate parent is the expected 80px.
+    Furthermore, the gap at the top of the <i>outerMost</i> div has been eliminated.
+    Adding a border to the <i>outerMost</i> div will not change the result (as would be the case if the <i>middleGrid</i> div were static).
   </p>
 
-<script type="multiline-template" id="exampleRelInAbsolute40pxMarginHtml">
+<script type="multiline-template" id="tmplExampleRelInAbsolute40pxMarginHtml">
 <div class="outer-div-sans-border" id="outerMostEx2">
   <div class="grid middle-grid" style="position:absolute;" id="middleGridEx2">
-    <div style="position:relative; top:40px; left:40px; margin:40px;"
-         class="relative-square" id="innerMostEx2">
+    <div style="top:40px; left:40px; margin:40px;" class="relative-square" id="innerMostEx2">
     </div>
   </div>
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('exampleRelInAbsolute40pxMarginHtml');</script>
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelInAbsolute40pxMarginHtml');</script>
 
   <br/>Current 'position' styles:
   <ul style="margin-top:0px;">
@@ -189,6 +191,82 @@
     </script>
   </ul>
 
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="fixedInStatic">Fixed divs</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <!-- `````````````````````````````````` -->
+  <h3>Fixed div nested in Static div</h3>
+  <!-- `````````````````````````````````` -->
+
+  <p>
+    A static outer div contains a fixed div which in turn contains a static text element and static button (float: right).
+  </p>
+
+<script type="multiline-template" id="tmplExampleFixedInStaticCss">
+.fixed-example-1 {
+  position: fixed;
+  top: 20%;
+  left: 10%;
+  width: 280px;
+  height: 200px;
+  background: #333;
+  border: 8px solid #999;
+  display: none;
+}
+</script>
+
+<script type="multiline-template" id="tmplExampleFixedInStaticHtml">
+<div>
+  <button onclick="domHelperModule.show('fixedInnerEx1'); return false;">Show Fixed in Static</a>
+</div>
+
+<div id="staticOuterWithFixedInnerEx1">
+  <div class="fixed-example-1" id="fixedInnerEx1">
+    <button onclick="domHelperModule.hide('fixedInnerEx1'); return false;"
+            style="float:right; margin:6px;" id="staticBtnEx1">Close</button>
+    <p style="margin-top:30px; padding:12px; text-align:center; color:#999">
+      This div position is fixed, relative to the browser window.
+      Scrolling the window does not affect its position.
+    </p>
+  </div>
+</div>
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('tmplExampleFixedInStatic');</script>
+
+  <br/>Current 'position' styles:
+  <div styleDisplayPanel='{"elementPropertyList":[{"staticOuterWithFixedInnerEx1": "position"}, {"fixedInnerEx1": "position"}, {"staticBtnEx1": "position"}]}'></div>
+
+  <!-- `````````````````````````````````` -->
+  <h3>Relative button in Fixed div in Static div</h3>
+  <!-- `````````````````````````````````` -->
+
+  <p>
+    Same as above, but now the button has been changed from static to relative and is positioned to the bottom-right corner.
+  </p>
+
+<script type="multiline-template" id="tmplExampleRelativeInFixedInStaticHtml">
+<div>
+  <button onclick="domHelperModule.show('fixedInnerEx2'); return false;">Show Relative in Fixed in Static</a>
+</div>
+
+<div id="staticOuterWithFixedInnerEx2">
+  <div class="fixed-example-1" id="fixedInnerEx2">
+    <button onclick="domHelperModule.hide('fixedInnerEx2'); return false;"
+            style="position:relative; top:170px; left:220px;" id="relativeBtnEx2">Close</button>
+    <p style="margin-top:30px; padding:12px; text-align:center; color:#999"">
+      This div position is fixed, relative to the browser window.
+      Scrolling the window does not affect its position.
+    </p>
+  </div>
+</div>
+</script>
+
+  <script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelativeInFixedInStaticHtml');</script>
+
+  <br/>Current 'position' styles:
+  <div styleDisplayPanel='{"elementPropertyList":[{"staticOuterWithFixedInnerEx2": "position"}, {"fixedInnerEx2": "position"}, {"relativeBtnEx2": "position"}]}'></div>
 
 </main>
 
