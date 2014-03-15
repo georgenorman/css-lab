@@ -22,7 +22,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <style>
     @import "css/base.css";
-    @import "css/cssSummaryBase.css";
+    @import "css/tzTableOfContents.css";
+    @import "css/cssLab.css";
 
     /*
       Use the value of the h2 id as the header text, so that the ID and header will stay in sync and only need to be specified once.
@@ -32,21 +33,17 @@
       content: attr(id);
     }
   </style>
-  <script type="text/javascript" src="js/domHelper.js?v1"></script>
-  <script type="text/javascript" src="js/commonPage.js?v1"></script>
-  <script type="text/javascript" src="js/cssSummary.js?v1"></script>
 </head>
-<body onload="commonPageModule.performDefaultOnLoad();">
+<body onload="cssLabModule.handleOnLoad();">
 
 <header>
   <h1>Transparency/Display</h1>
 </header>
 
 <main>
+  <tzAboutPage style="margin-top:12px;"/>
 
-  <div aboutPagePanel style="margin-top:12px;"></div>
-
-  <nav tableOfContents='{"tocClass":"toc", "contentHeaderItemTagName":"h2"}'></nav>
+  <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Opacity"></h2>
@@ -54,7 +51,7 @@
 
   <p>Also see <a href="#RGBa">RGBa</a>.</p>
 
-  <h3>opacity: 1</h3>
+  <h3 id="Opacity.1">opacity: 1</h3>
 
 <script type="multiline-template" id="fullyOpaqueHtml">
 <div style="opacity:1;" class="divInner">
@@ -62,9 +59,9 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('fullyOpaqueHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="fullyOpaqueHtml"></tzCssHtmlExample>
 
-  <h3>opacity: 0.5</h3>
+  <h3 id="Opacity.0.5">opacity: 0.5</h3>
 
 <script type="multiline-template" id="partiallyOpaqueHtml">
 <div style="opacity:0.5;" class="divInner">
@@ -72,9 +69,9 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('partiallyOpaqueHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="partiallyOpaqueHtml"></tzCssHtmlExample>
 
-  <h3>opacity: 0</h3>
+  <h3 id="Opacity.0">opacity: 0</h3>
 
 <script type="multiline-template" id="invisibleHtml">
 <div style="opacity:0;" class="divInner">
@@ -82,9 +79,9 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('invisibleHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="invisibleHtml"></tzCssHtmlExample>
 
-  <h3>Irreversible Opacity</h3>
+  <h3 id="Opacity.irreversible">Irreversible Opacity</h3>
 
 <script type="multiline-template" id="irreversibleHtml">
 <div style="opacity:1;">
@@ -101,13 +98,13 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('irreversibleHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="irreversibleHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Visibility"></h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <h3>visibility:visible</h3>
+  <h3 id="Visibility.visible">visibility:visible</h3>
 
 <script type="multiline-template" id="visibilityVisibleHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -117,9 +114,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('visibilityVisibleHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="visibilityVisibleHtml"></tzCssHtmlExample>
 
-  <h3>visibility:hidden</h3>
+  <h3 id="Visibility.hidden">visibility:hidden</h3>
 
 <script type="multiline-template" id="visibilityHiddenHtml">
 Before the DIV.
@@ -129,13 +126,13 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('visibilityHiddenHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="visibilityHiddenHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Display"></h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <h3>display:block</h3>
+  <h3 id="Display.block">display:block</h3>
 
 <script type="multiline-template" id="displayBlockHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -145,9 +142,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayBlockHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayBlockHtml"></tzCssHtmlExample>
 
-  <h3>display:block (margin+padding)</h3>
+  <h3 id="Display.block.margin+padding">display:block (margin+padding)</h3>
 
 <script type="multiline-template" id="displayBlockWithPadHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -157,9 +154,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayBlockWithPadHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayBlockWithPadHtml"></tzCssHtmlExample>
 
-  <h3>display:inline</h3>
+  <h3 id="Display.inline">display:inline</h3>
 
 <script type="multiline-template" id="displayInlineHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -169,9 +166,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayInlineHtml"></tzCssHtmlExample>
 
-  <h3>display:inline (margin+padding)</h3>
+  <h3 id="Display.inline.margin+padding">display:inline (margin+padding)</h3>
 
 <script type="multiline-template" id="displayInlineWithPadHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -181,9 +178,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script>cssSummaryModule.insertHtmlExample('displayInlineWithPadHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayInlineWithPadHtml"></tzCssHtmlExample>
 
-  <h3>display:inline-block</h3>
+  <h3 id="Display.inline-block">display:inline-block</h3>
 
 <script type="multiline-template" id="displayInlineBlockHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -193,9 +190,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineBlockHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayInlineBlockHtml"></tzCssHtmlExample>
 
-  <h3>display:inline-block (margin+padding)</h3>
+  <h3 id="Display.inline-block.margin+padding">display:inline-block (margin+padding)</h3>
 
 <script type="multiline-template" id="displayInlineBlockWithPadHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -205,9 +202,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineBlockWithPadHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayInlineBlockWithPadHtml"></tzCssHtmlExample>
 
-  <h3>display:none</h3>
+  <h3 id="Display.none">display:none</h3>
 
 <script type="multiline-template" id="displayNoneHtml">
 Before the DIV.
@@ -217,9 +214,9 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayNoneHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayNoneHtml"></tzCssHtmlExample>
 
-  <h3>display:list-item</h3>
+  <h3 id="Display.list-item">display:list-item</h3>
 
 <script type="multiline-template" id="displayListItemHtml">
 Before the DIV.
@@ -229,9 +226,9 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayListItemHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayListItemHtml"></tzCssHtmlExample>
 
-  <h3>display:table</h3>
+  <h3 id="Display.table">display:table</h3>
 
 <script type="multiline-template" id="displayTableHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -241,9 +238,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayTableHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayTableHtml"></tzCssHtmlExample>
 
-  <h3>display:grid</h3>
+  <h3 id="Display.grid">display:grid</h3>
 
 <script type="multiline-template" id="displayGridHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -253,9 +250,9 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayGridHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayGridHtml"></tzCssHtmlExample>
 
-  <h3>display:inline-grid</h3>
+  <h3 id="Display.inline-grid">display:inline-grid</h3>
 
 <script type="multiline-template" id="displayInlineGridHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -265,13 +262,13 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('displayInlineGridHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="displayInlineGridHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="RGBa"></h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <h3>Overlay with alpha of 0.1</h3>
+  <h3 id="RGBa.alpha-0.1">Overlay with alpha of 0.1</h3>
 
 <script type="multiline-template" id="rgba-1Html">
 <div style="position:relative;">
@@ -291,34 +288,35 @@ After the DIV. After the DIV. After the DIV.
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('rgba-1Html');</script>
+  <tzCssHtmlExample htmlTemplateId="rgba-1Html"></tzCssHtmlExample>
 
-  <h3>Overlay with alpha of 0.6</h3>
+  <h3 id="RGBa.alpha-0.6">Overlay with alpha of 0.6</h3>
 
-  <script type="multiline-template" id="rgba-2Html">
-    <div style="position:relative;">
-      <div style="color:#0a0;" class="divInner">
-        Obscured and events are blocked.
-      </div>
+<script type="multiline-template" id="rgba-2Html">
+<div style="position:relative;">
+  <div style="color:#0a0;" class="divInner">
+    Obscured and events are blocked.
+  </div>
 
-      <div style="background:rgba(184,184,184,0.7);
-                  position:absolute; top:0; right:0; bottom:0; left:0;
-                  text-align:right; padding:2px;">
-        <!--
-          1. provide a semi-transparent background on top of the div above
-          2. function as an event trap (prevent events from reaching the div above)
-        -->
-        <span style="color:#f00;">Not obscured and events are received.</span>
-      </div>
-    </div>
-  </script>
+  <div style="background:rgba(184,184,184,0.7);
+              position:absolute; top:0; right:0; bottom:0; left:0;
+              text-align:right; padding:2px;">
+    <!--
+      1. provide a semi-transparent background on top of the div above
+      2. function as an event trap (prevent events from reaching the div above)
+    -->
+    <span style="color:#f00;">Not obscured and events are received.</span>
+  </div>
+</div>
+</script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('rgba-2Html');</script>
+  <tzCssHtmlExample htmlTemplateId="rgba-2Html"></tzCssHtmlExample>
 
   </main>
 
   <footer></footer>
 
+<script type="text/javascript" src="js/all.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 </html>
 

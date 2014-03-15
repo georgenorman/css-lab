@@ -1,5 +1,5 @@
 /*!
-  ~ cssSummaryBase.css v1.0.0
+  ~ cssLab.css v1.0.0
   ~ Copyright (c) 2014 George Norman.
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~     http://www.apache.org/licenses/LICENSE-2.0
@@ -55,19 +55,23 @@ header h1:before {
 
 h2 {
   border-bottom: 1px solid #999;
+  padding-top: 6px;
   padding-bottom: 6px;
+  margin-top: 12px;
+  margin-bottom: 3px;
   color: #669;
 }
 
 h3 {
   border-bottom: 1px dashed #ccc;
+  margin-top: 4px;
+  padding-top: 6px;
   padding-bottom: 6px;
   color: #033;
 }
 
 h4 {
-  margin-left: 6px;
-  margin-bottom: 0;
+  margin: 12px 6px 0 6px;
   color: #888;
 }
 
@@ -77,36 +81,6 @@ h4 {
 
 main {
   margin: 0 16px;
-}
-
-/* ---------------------------------
- * Table of Contents (TOC)
- * --------------------------------- */
-
-/* TOC heading */
-nav h2 {
-  border: initial;
-  padding: 6px;
-  background: #eee;
-  margin-bottom: 10px;
-}
-
-/* TOC list */
-nav ul.toc {
-  list-style-type: none;
-  padding-left: 12px;
-  margin: 0;
-}
-
-/* TOC items */
-nav .toc li {
-  padding-left: 6px;
-}
-
-/* TOC bullet */
-nav ul.toc li:before {
-  content: "\2666";
-  margin-right: 6px;
 }
 
 /* ---------------------------------
@@ -142,6 +116,7 @@ code {
   width: 93%;
   overflow: auto;
   background-color: #efefef;
+  font-size: 11px;
 }
 
 code ol {
@@ -249,4 +224,13 @@ code ol li:nth-child(odd) {
   border: 7px solid #B2E0B2;
   margin: 0 -2px 61px 6px;
   display: inline-block;
+}
+
+/* ---------------------------------
+ * Note
+ * --------------------------------- */
+
+.note {
+  font-size: 12px;
+  font-style: italic;
 }

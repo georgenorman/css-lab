@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2014 George Norman.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+<html>
+<head>
+  <title>Box Model</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+    @import "css/base.css";
+    @import "css/tzTableOfContents.css";
+    @import "css/cssLab.css";
+  </style>
+</head>
+<body onload="cssLabModule.handleOnLoad();">
+<header>
+  <h1>Box Model</h1>
+</header>
+
+<main>
+  <tzAboutPage style="margin-top:12px;"/>
+
+  <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="overview">Overview</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="overview.bbm">Basic Box Model</h3>
+  <!-- `````````````````````````````````` -->
+
+  <p>In the example below, the nested div has a 10px margin, 20px border, 30px padding and 100px x 100px content area.</p>
+
+  <p class="note">Note: The text is centered using the technique described by <i>lluisaznar</i>
+    <a href="http://stackoverflow.com/questions/732337/how-do-i-vertically-align-something-inside-a-span-tag">here</a>.
+  </p>
+
+<script type="multiline-template" id="basicBoxModelCss">
+.box {
+  margin:10px;
+  border:20px solid #f00;
+  padding:30px;
+  opacity:0.5;
+}
+
+.content {
+  color: #fff;
+  background-color: #047;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+</script>
+
+<script type="multiline-template" id="basicBoxModelHtml">
+<div class="grid" style="width:220px; border:1px solid blue;" id="outerMost">
+  <div class="box" >
+    <div class="content">CONTENT<br>100px x 100px</div>
+  </div>
+</div>
+</script>
+
+
+  <tzCssHtmlExample cssTemplateId="basicBoxModelCss" htmlTemplateId="basicBoxModelHtml"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="overview.bbmsb">Basic Box Model Sans Border</h3>
+  <!-- `````````````````````````````````` -->
+
+  <p>
+    Removing the border from the outerMost div, causes the box model to collapse the top and bottom margins of the inner div.
+  </p>
+
+<script type="multiline-template" id="basicBoxModelSansBorderHtml">
+<div class="grid" style="width:220px;" id="outerMost">
+  <div class="box" >
+    <div class="content">CONTENT<br>100px x 100px</div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelSansBorderHtml"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="overview.bbmwpsb">Basic Box Model with Padding Sans Border</h3>
+  <!-- `````````````````````````````````` -->
+
+  <p>
+    Adding some padding to the outerMost div can be used instead of a border.
+    However, the width of the outer div will need to be reduced, to compensate for the missing border.
+    Furthermore, the margin of the inner div will need to be reduced by the size of the outer padding.
+    The example below shows the original rendering, with the outer border removed, its width reduced by 20px and the inner div's margin removed.
+  </p>
+
+<script type="multiline-template" id="basicBoxModelWithPaddingSansBorderCss">
+.box2 {
+  margin:0px;
+  border:20px solid #f00;
+  padding:30px;
+  opacity:0.5;
+}
+</script>
+
+<script type="multiline-template" id="basicBoxModelWithPaddingSansBorderHtml">
+<div class="grid" style="width:200px; padding:10px;" id="outerMost">
+  <div class="box2" >
+    <div class="content">CONTENT<br>100px x 100px</div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample cssTemplateId="basicBoxModelWithPaddingSansBorderCss" htmlTemplateId="basicBoxModelWithPaddingSansBorderHtml"></tzCssHtmlExample>
+
+</main>
+
+<footer></footer>
+
+<script type="text/javascript" src="js/all.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
+</body>
+</html>

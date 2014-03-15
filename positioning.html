@@ -22,22 +22,19 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <style>
     @import "css/base.css";
-    @import "css/cssSummaryBase.css";
+    @import "css/tzTableOfContents.css";
+    @import "css/cssLab.css";
   </style>
-  <script type="text/javascript" src="js/domHelper.js?v1"></script>
-  <script type="text/javascript" src="js/commonPage.js?v1"></script>
-  <script type="text/javascript" src="js/cssSummary.js?v1"></script>
 </head>
-<body onload="commonPageModule.performDefaultOnLoad(); cssSummaryModule.insertStyleDisplayPropertyList();">
+<body onload="cssLabModule.handleOnLoad();">
 <header>
   <h1>Positioning</h1>
 </header>
 
 <main>
+  <tzAboutPage style="margin-top:12px;"/>
 
-  <div aboutPagePanel style="margin-top:12px;"></div>
-
-  <nav tableOfContents='{"tocClass":"toc", "contentHeaderItemTagName":"h2"}'></nav>
+  <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="commonCss">Common CSS</h2>
@@ -72,13 +69,11 @@
 }
 </script>
 
-  <script type="text/javascript">
-    cssSummaryModule.insertStyleFromTemplate('tmplCommonCss');
-    cssSummaryModule.insertCodeExampleWithHeadingFromTemplate('tmplCommonCss', '', 'css');
-  </script>
+  <tzCssBlock templateId="tmplCommonCss"></tzCssBlock>
+  <tzCodeExample templateId="tmplCommonCss" lang="css"></tzCodeExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="positionRelative">Relative div nested inside static div</h2>
+  <h2 id="positionRelative">Relative &lt;div&gt; nested inside static &lt;div&gt;</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
@@ -87,7 +82,7 @@
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h3>Relative div has no margin</h3>
+  <h3 id="positionRelative.rdhnm">Relative &lt;div&gt; has no margin</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
@@ -105,19 +100,14 @@
 </div>
 </script>
 
-<script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelInStaticNoMarginHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStaticNoMarginHtml"></tzCssHtmlExample>
 
-  <br/>Current 'position' styles:
-  <ul style="margin-top:0px;">
-  <script>
-    cssSummaryModule.insertStylePropertyValueListItem('outerMost', 'position');
-    cssSummaryModule.insertStylePropertyValueListItem('middleGrid', 'position');
-    cssSummaryModule.insertStylePropertyValueListItem('innerMost', 'position');
-  </script>
-  </ul>
+  <br/><b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outerMost": "position"}, {"middleGrid": "position"}, {"innerMost": "position"}]}' useShortItems="true"></tzDisplayStyles>
+
 
   <!-- `````````````````````````````````` -->
-  <h3>Relative div has 10px margin</h3>
+  <h3 id="positionRelative.rdh10pxm">Relative &lt;div&gt; has 10px margin</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
@@ -134,10 +124,10 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelInStatic10pxMarginHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStatic10pxMarginHtml"></tzCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
-  <h3>Relative div has 40px margin</h3>
+  <h3 id="positionRelative.rdh40pxm">Relative &lt;div&gt; has 40px margin</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
@@ -154,14 +144,14 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelInStatic40pxMarginHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStatic40pxMarginHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="positionRelativeInAbsolute">Relative div nested inside absolute</h2>
+  <h2 id="positionRelativeInAbsolute">Relative &lt;div&gt; nested inside absolute &lt;div&gt;</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
-  <h3>Relative div has 40px margin</h3>
+  <h3 id="positionRelativeInAbsolute.rdh40pxm">Relative &lt;div&gt; has 40px margin</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
@@ -180,23 +170,17 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelInAbsolute40pxMarginHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInAbsolute40pxMarginHtml"></tzCssHtmlExample>
 
-  <br/>Current 'position' styles:
-  <ul style="margin-top:0px;">
-    <script>
-      cssSummaryModule.insertStylePropertyValueListItem('outerMostEx2', 'position');
-      cssSummaryModule.insertStylePropertyValueListItem('middleGridEx2', 'position');
-      cssSummaryModule.insertStylePropertyValueListItem('innerMostEx2', 'position');
-    </script>
-  </ul>
+  <br/><b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outerMostEx2": "position"}, {"middleGridEx2": "position"}, {"innerMostEx2": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="fixedInStatic">Fixed divs</h2>
+  <h2 id="fixedInStatic">Fixed &lt;div&gt;s</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
-  <h3>Fixed div nested in Static div</h3>
+  <h3 id="fixedInStatic.fdnisd">Fixed &lt;div&gt; nested in Static &lt;div&gt;</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
@@ -208,8 +192,8 @@
   position: fixed;
   top: 20%;
   left: 10%;
-  width: 280px;
-  height: 200px;
+  width: 250px;
+  height: 180px;
   background: #333;
   border: 8px solid #999;
   display: none;
@@ -218,13 +202,13 @@
 
 <script type="multiline-template" id="tmplExampleFixedInStaticHtml">
 <div>
-  <button onclick="domHelperModule.show('fixedInnerEx1'); return false;">Show Fixed in Static</a>
+  <button onclick="tzDomHelperModule.show('fixedInnerEx1'); return false;">Show Fixed in Static</a>
 </div>
 
 <div id="staticOuterWithFixedInnerEx1">
   <div class="fixed-example-1" id="fixedInnerEx1">
-    <button onclick="domHelperModule.hide('fixedInnerEx1'); return false;"
-            style="float:right; margin:6px;" id="staticBtnEx1">Close</button>
+    <button onclick="tzDomHelperModule.hide('fixedInnerEx1'); return false;"
+            style="float:right; margin:6px; height:21px;" id="staticBtnEx1">Close</button>
     <p style="margin-top:30px; padding:12px; text-align:center; color:#999">
       This div position is fixed, relative to the browser window.
       Scrolling the window does not affect its position.
@@ -233,13 +217,13 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('tmplExampleFixedInStatic');</script>
+  <tzCssHtmlExample cssTemplateId="tmplExampleFixedInStaticCss" htmlTemplateId="tmplExampleFixedInStaticHtml"></tzCssHtmlExample>
 
-  <br/>Current 'position' styles:
-  <div styleDisplayPanel='{"elementPropertyList":[{"staticOuterWithFixedInnerEx1": "position"}, {"fixedInnerEx1": "position"}, {"staticBtnEx1": "position"}]}'></div>
+  <br>Current 'position' styles:
+  <tzDisplayStyles items='{"idStylePairs":[{"staticOuterWithFixedInnerEx1": "position"}, {"fixedInnerEx1": "position"}, {"staticBtnEx1": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3>Relative button in Fixed div in Static div</h3>
+  <h3 id="fixedInStatic.rbifdisd">Relative &lt;button&gt; in Fixed &lt;div&gt; in Static &lt;div&gt;</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
@@ -248,13 +232,13 @@
 
 <script type="multiline-template" id="tmplExampleRelativeInFixedInStaticHtml">
 <div>
-  <button onclick="domHelperModule.show('fixedInnerEx2'); return false;">Show Relative in Fixed in Static</a>
+  <button onclick="tzDomHelperModule.show('fixedInnerEx2'); return false;">Show Relative in Fixed in Static</a>
 </div>
 
 <div id="staticOuterWithFixedInnerEx2">
   <div class="fixed-example-1" id="fixedInnerEx2">
-    <button onclick="domHelperModule.hide('fixedInnerEx2'); return false;"
-            style="position:relative; top:170px; left:220px;" id="relativeBtnEx2">Close</button>
+    <button onclick="tzDomHelperModule.hide('fixedInnerEx2'); return false;"
+            style="position:relative; top:150px; left:195px; height:21px;" id="relativeBtnEx2">Close</button>
     <p style="margin-top:30px; padding:12px; text-align:center; color:#999"">
       This div position is fixed, relative to the browser window.
       Scrolling the window does not affect its position.
@@ -263,15 +247,16 @@
 </div>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertHtmlExample('tmplExampleRelativeInFixedInStaticHtml');</script>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelativeInFixedInStaticHtml"></tzCssHtmlExample>
 
-  <br/>Current 'position' styles:
-  <div styleDisplayPanel='{"elementPropertyList":[{"staticOuterWithFixedInnerEx2": "position"}, {"fixedInnerEx2": "position"}, {"relativeBtnEx2": "position"}]}'></div>
+  <br>Current 'position' styles:
+  <tzDisplayStyles items='{"idStylePairs":[{"staticOuterWithFixedInnerEx2": "position"}, {"fixedInnerEx2": "position"}, {"relativeBtnEx2": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
 </main>
 
 <footer></footer>
 
+<script type="text/javascript" src="js/all.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 
 </html>

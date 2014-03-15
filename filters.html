@@ -22,29 +22,27 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <style>
     @import "css/base.css";
-    @import "css/cssSummaryBase.css";
+    @import "css/tzTableOfContents.css";
+    @import "css/cssLab.css";
 
     /*
-      Use the value of the h2 id as the header text, so ID and header stay in sync and only need to be specified once.
+      Use the value of the h2 id as the header text, so that both the ID and header text stay in sync.
       Cheap "hack" works here because titles have no spaces.
     */
     h2:before {
       content: attr(id);
     }
   </style>
-  <script type="text/javascript" src="js/domHelper.js?v1"></script>
-  <script type="text/javascript" src="js/commonPage.js?v1"></script>
-  <script type="text/javascript" src="js/cssSummary.js?v1"></script>
 </head>
-<body onload="commonPageModule.performDefaultOnLoad();">
+<body onload="cssLabModule.handleOnLoad();">
 <header>
   <h1>Filters</h1>
 </header>
 
 <main>
-  <div aboutPagePanel style="margin-top:12px;"></div>
+  <tzAboutPage style="margin-top:12px;"/>
 
-  <nav tableOfContents='{"tocClass":"toc", "contentHeaderItemTagName":"h2"}'></nav>
+  <tzTableOfContents class="toc" level1ItemsTagName="h2"></tzTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Grayscale"></h2>
@@ -65,8 +63,7 @@
 </article>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('filterGray');</script>
-
+  <tzCssHtmlExample cssTemplateId="filterGrayCss" htmlTemplateId="filterGrayHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Sepia" ></h2>
@@ -87,7 +84,7 @@
 </article>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('filterSepia');</script>
+  <tzCssHtmlExample cssTemplateId="filterSepiaCss" htmlTemplateId="filterSepiaHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Brightness" ></h2>
@@ -108,7 +105,7 @@
 </article>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('filterBrightness');</script>
+  <tzCssHtmlExample cssTemplateId="filterBrightnessCss" htmlTemplateId="filterBrightnessHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Contrast" ></h2>
@@ -129,7 +126,7 @@
 </article>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('filterContrast');</script>
+  <tzCssHtmlExample cssTemplateId="filterContrastCss" htmlTemplateId="filterContrastHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Blur" ></h2>
@@ -150,8 +147,7 @@
 </article>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('filterBlur');</script>
-
+  <tzCssHtmlExample cssTemplateId="filterBlurCss" htmlTemplateId="filterBlurHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Shadow" ></h2>
@@ -172,8 +168,7 @@
 </article>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('filterShadow');</script>
-
+  <tzCssHtmlExample cssTemplateId="filterShadowCss" htmlTemplateId="filterShadowHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Hue-rotate" ></h2>
@@ -194,11 +189,12 @@
 </article>
 </script>
 
-  <script type="text/javascript">cssSummaryModule.insertCssHtmlExample('filterHueRotate');</script>
+  <tzCssHtmlExample cssTemplateId="filterHueRotateCss" htmlTemplateId="filterHueRotateHtml"></tzCssHtmlExample>
 
 </main>
 
 <footer></footer>
 
+<script type="text/javascript" src="js/all.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 </html>

@@ -4,12 +4,11 @@
  ~     http://www.apache.org/licenses/LICENSE-2.0
  ~
  ~ --------------------------------------------------------------
- ~ Simple dom functions.
+ ~ Simple DOM helper functions - sharable among all projects.
  ~ --------------------------------------------------------------
- ~
  */
 
-var domHelperModule = (function() {
+var tzDomHelperModule = (function(tzLogHelper) {
   "use strict";
 
   return {
@@ -25,7 +24,7 @@ var domHelperModule = (function() {
 
       if (element) {
         result = element.innerHTML;
-        // replace the leading and trailing newlines (side-effect of using template, the newline after the <script> tag is included).
+        // remove the leading and trailing newlines (side-effect of using template, the newline after the <script> tag is included).
         result = result.trim();
       } else {
         result = "No element found for ID: '" + elementId + "'";
@@ -34,6 +33,11 @@ var domHelperModule = (function() {
       return result;
     },
 
+    /*
+     * Return the inner HTML as an array of lines, from an element with the given elementId.
+     *
+     * @param elementId - ID of the element with the desired HTML.
+     */
     getInnerHtmlAsArray: function(elementId) {
       var result = this.getInnerHtml(elementId).split("\n");
 
@@ -50,7 +54,20 @@ var domHelperModule = (function() {
       var elementList = document.querySelectorAll("[" + attributeName + "]");
 
       if (elementList === null || elementList.length === 0) {
-        console.log("ERROR: getFirstElementByAttributeName didn't find an element with an attribute named: " + attributeName);
+        console.log(tzLogHelper.warning("getFirstElementByAttributeName didn't find an element with an attribute named: " + attributeName));
+      } else {
+        result = elementList[0];
+      }
+
+      return result;
+    },
+
+    getFirstElementByTagName: function(tagName) {
+      var result = null;
+      var elementList = document.getElementsByTagName(tagName);
+
+      if (elementList === null || elementList.length === 0) {
+        console.log(tzLogHelper.warning("getFirstElementByTagName didn't find an element named: " + tagName));
       } else {
         result = elementList[0];
       }
@@ -69,7 +86,7 @@ var domHelperModule = (function() {
       var element = document.getElementById(elementId);
 
       if (element == null) {
-        result = "* ERROR * Element not found: " + elementId;
+        result = "getStylePropertyValue didn't find element with ID: " + elementId;
       } else {
         result = window.getComputedStyle(element).getPropertyValue(stylePropertyName);
       }
@@ -112,9 +129,21 @@ var domHelperModule = (function() {
      * @param defaultValue - defaultValue to return if value is null.
      */
     coalesce: function(value, defaultValue) {
-      var result = (value === undefined || value === "") ? defaultValue : value;
+      var result = this.isEmpty(value) ? defaultValue : value;
+
+      tzLogHelper.debug(value);
 
       return result;
+    },
+
+    isEmpty: function(value) {
+      var result = (value === undefined || value === null || value === "");
+
+      return result;
+    },
+
+    isNotEmpty: function(value) {
+      return !this.isEmpty(value);
     },
 
     show: function(elementId) {
@@ -142,4 +171,4 @@ var domHelperModule = (function() {
   function insertLine(text) {
     document.writeln(text);
   }
-}());
+}(tzLogHelperModule));
