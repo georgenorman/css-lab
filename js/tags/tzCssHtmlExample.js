@@ -62,41 +62,58 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCssBlock, tzHtmlBlock, tzCode
      */
     renderTag: function(tzHtmlCssExampleTagNode) {
       // get the attributes
-      var styleData = null;
-      var cssTemplateId = tzHtmlCssExampleTagNode.getAttribute("cssTemplateId");
-
-      if (tzDomHelper.isNotEmpty(cssTemplateId)) {
-        styleData = tzDomHelper.getInnerHtml(cssTemplateId);
+      var cssComment;
+      var cssTemplateId;
+      var htmlTemplateId;
+      if (tzDomHelper.isNotEmpty(tzHtmlCssExampleTagNode.getAttribute("templateId"))) {
+        cssTemplateId = tzHtmlCssExampleTagNode.getAttribute("templateId") + "Css";
+        htmlTemplateId = tzHtmlCssExampleTagNode.getAttribute("templateId") + "Html";
+      } else {
+        cssTemplateId = tzHtmlCssExampleTagNode.getAttribute("cssTemplateId");
+        htmlTemplateId = tzHtmlCssExampleTagNode.getAttribute("htmlTemplateId");
       }
 
-      var htmlTemplateId = tzHtmlCssExampleTagNode.getAttribute("htmlTemplateId");
+      var rawCss = null;
+      if (tzDomHelper.isNotEmpty(cssTemplateId)) {
+        rawCss = tzDomHelper.getInnerHtml(cssTemplateId);
+        cssComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzCssComment");
+      }
+
       var rawHtml = tzDomHelper.getInnerHtml(htmlTemplateId);
+      var htmlComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzHtmlComment");
+      var resultComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzResultComment");
+
+      // remove child nodes (e.g., optional comment nodes)
+      tzDomHelper.removeAllChildNodes(tzHtmlCssExampleTagNode);
 
       // render the result
-      this.render(tzHtmlCssExampleTagNode, styleData, rawHtml);
+      this.render(tzHtmlCssExampleTagNode, cssComment, rawCss, htmlComment, resultComment, rawHtml);
     },
 
     /**
      * Render the code examples and live code block, into the given containerNode.
      *
      * @param containerNode where to render the result.
-     * @param styleData the CSS code to insert.
+     * @param cssComment optional comment to render above the CSS code block.
+     * @param rawCss the CSS code to insert.
+     * @param htmlComment optional comment to render above the HTML code block.
+     * @param resultComment optional comment to render above the live result.
      * @param rawHtml the HTML code to insert.
      */
-    render: function(containerNode, styleData, rawHtml) {
+    render: function(containerNode, cssComment, rawCss, htmlComment, resultComment, rawHtml) {
       // render the live CSS, if present
-      if (tzDomHelper.isNotEmpty(styleData)) {
-        tzCssBlock.render(containerNode, styleData);
+      if (tzDomHelper.isNotEmpty(rawCss)) {
+        tzCssBlock.render(containerNode, rawCss);
 
         // render the CSS code example
-        tzCodeExample.render(containerNode, "CSS", "css", styleData);
+        tzCodeExample.render(containerNode, "CSS", cssComment, "css", rawCss);
       }
 
       // render the HTML code example
-      tzCodeExample.render(containerNode, "HTML", "*ml", rawHtml);
+      tzCodeExample.render(containerNode, "HTML", htmlComment, "*ml", rawHtml);
 
       // render the live result
-      tzHtmlBlock.render(containerNode, "Rendered Result", rawHtml);
+      tzHtmlBlock.render(containerNode, "Rendered Result", resultComment, rawHtml);
     }
 
   }

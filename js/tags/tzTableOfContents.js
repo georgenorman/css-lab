@@ -10,8 +10,8 @@
 
 //document.createElement("tzTableOfContents");
 
-/*
- * The <tzTableOfContents> tag renders a simple two-level Table of Contents, inside the element selected by the given tocClassName.
+/**
+ * The &lt;tzTableOfContents&gt; tag renders a simple two-level Table of Contents, inside the element selected by the given tocClassName.
  * A default title of "Table of Contents" will be used if the optionalTitle is not provided.
  * The title is rendered as an h2 element.
  *
@@ -21,7 +21,7 @@
  *
  * The tag attributes are read from the tzTableOfContents element, as shown in the example below:
  *
- *    <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
+ *    &lt;tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"&gt;&lt;/tzTableOfContents&gt;
  *
  * @attribute class - the CSS class to apply to the rendered Table of Contents
  * @attribute level1ItemsTagName - tag name used to identify the level-1 headers to be included in the Table of Contents
@@ -62,24 +62,25 @@ var tableOfContentsTag = (function(tzDomHelper) {
      */
     renderTag: function (tocNode) {
       // get the attributes
-      var styleClass = tocNode.getAttribute("class");
+      var cssClassName = tocNode.getAttribute("class");
       var level1ItemsTagName = tocNode.getAttribute("level1ItemsTagName");
       var level2ItemsTagName = tocNode.getAttribute("level2ItemsTagName");
       var title = tocNode.getAttribute("title");
 
       // render the result
-      this.render(tocNode, styleClass, level1ItemsTagName, level2ItemsTagName, title);
+      this.render(tocNode, cssClassName, level1ItemsTagName, level2ItemsTagName, title);
     },
 
     /**
      * Render the 'Table of Contents' into the given containerNode.
      *
      * @param containerNode where to render the result.
+     * @param cssClassName css class name to use for the Table of Contents.
      * @param level1ItemsTagName tag name used to identify the level-1 headers to be included in the Table of Contents.
      * @param level2ItemsTagName tag name used to identify the level-2 headers to be included under each level-1 header.
      * @param title optional title (default is "Table of Contents").
      */
-    render: function (containerNode, styleClass, level1ItemsTagName, level2ItemsTagName, title) {
+    render: function (containerNode, cssClassName, level1ItemsTagName, level2ItemsTagName, title) {
       // find all level-1 nodes
       var level1NodeList = document.getElementsByTagName(level1ItemsTagName);
 
@@ -91,7 +92,7 @@ var tableOfContentsTag = (function(tzDomHelper) {
 
       // start ToC
       var toc = document.createElement("ul");
-      toc.className = styleClass;
+      toc.className = cssClassName;
 
       // generate list of level-1 and level-2 ToC items
       for (var i = 0; i < level1NodeList.length; i++) {
@@ -114,7 +115,7 @@ var tableOfContentsTag = (function(tzDomHelper) {
       }
 
       // add heading
-      var title = tzDomHelper.coalesce(title, "Table of Contents");
+      title = tzDomHelper.coalesce(title, "Table of Contents");
       var heading = document.createElement("h2");
       heading.insertAdjacentHTML("afterbegin", "<b>" + title + "</b>");
       containerNode.appendChild(heading);

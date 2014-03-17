@@ -60,11 +60,15 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCodeHighlighter) {
       // get the attributes
       var templateId = tzCodeExampleTagNode.getAttribute("templateId");
       var heading = tzCodeExampleTagNode.getAttribute("heading");
+      var codeBlockComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzCodeExampleTagNode, "tzCodeBlockComment");
       var lang = tzCodeExampleTagNode.getAttribute("lang");
       var rawHtml = tzDomHelper.getInnerHtml(templateId);
 
+      // remove child nodes (e.g., optional codeBlockComment node)
+      tzDomHelper.removeAllChildNodes(tzCodeExampleTagNode);
+
       // render the result
-      this.render(tzCodeExampleTagNode, heading, lang, rawHtml);
+      this.render(tzCodeExampleTagNode, heading, codeBlockComment, lang, rawHtml);
     },
 
     /**
@@ -72,15 +76,24 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCodeHighlighter) {
      *
      * @param containerNode where to render the result.
      * @param heading optional heading to use.
+     * @param codeBlockComment optional comment to render above the code block.
      * @param lang language ID for the code syntax highlighter (e.g., "css", "*ml").
      * @param rawHtml the code that will be XML escaped and rendered into the given containerNode.
      */
-    render: function(containerNode, heading, lang, rawHtml) {
+    render: function(containerNode, heading, codeBlockComment, lang, rawHtml) {
       // render optional heading, if present
       if (tzDomHelper.isNotEmpty(heading)) {
         var headingElement = document.createElement("h4");
         headingElement.insertAdjacentHTML("afterbegin", heading);
         containerNode.appendChild(headingElement);
+      }
+
+      // render optional HTML comment, if present
+      if (tzDomHelper.isNotEmpty(codeBlockComment)) {
+        var commentElement = document.createElement("p");
+        commentElement.className += " tz-code-example-comment";
+        commentElement.insertAdjacentHTML("afterbegin", codeBlockComment);
+        containerNode.appendChild(commentElement);
       }
 
       var olElement = document.createElement("ol");
@@ -97,6 +110,7 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCodeHighlighter) {
       }
 
       var codeElement = document.createElement("code");
+      codeElement.className += " tz-code-example";
       codeElement.appendChild(olElement);
 
       containerNode.appendChild(codeElement);
@@ -111,9 +125,7 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCodeHighlighter) {
       var tzCodeExampleTag = document.getElementById(tagId);
 
       // first, remove all child nodes, previously added from render (or renderAll).
-      while (tzCodeExampleTag.hasChildNodes()) {
-        tzCodeExampleTag.removeChild(tzCodeExampleTag.lastChild);
-      }
+      tzDomHelper.removeAllChildNodes(tzCodeExampleTag);
 
       // re-render the tag
       this.renderTag(tzCodeExampleTag);

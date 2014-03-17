@@ -21,9 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <style>
-    @import "css/base.css";
-    @import "css/tzTableOfContents.css";
-    @import "css/cssLab.css";
+    @import "css/all-css.css";
   </style>
 </head>
 <body onload="cssLabModule.handleOnLoad();">
@@ -36,29 +34,34 @@
 
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="overview">Overview</h2>
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="commonCss">Shared CSS</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <!-- `````````````````````````````````` -->
-  <h3 id="overview.bbm">Basic Box Model</h3>
-  <!-- `````````````````````````````````` -->
-
-  <p>In the example below, the nested div has a 10px margin, 20px border, 30px padding and 100px x 100px content area.</p>
-
-  <p class="note">Note: The text is centered using the technique described by <i>lluisaznar</i>
-    <a href="http://stackoverflow.com/questions/732337/how-do-i-vertically-align-something-inside-a-span-tag">here</a>.
+  <p>
+    CSS shared by all examples on this page (<span class="note">Note: The text is centered using the table-cell technique described by <i>lluisaznar</i>
+    <a href="http://stackoverflow.com/questions/732337/how-do-i-vertically-align-something-inside-a-span-tag">here</a></span>).
   </p>
 
-<script type="multiline-template" id="basicBoxModelCss">
-.box {
-  margin:10px;
-  border:20px solid #f00;
-  padding:30px;
-  opacity:0.5;
+<script type="multiline-template" id="tmplCommonCss">
+/* A 300px square, expected to serve as a fixed background. */
+.outermost-div {
+  background-color: #ccc;
+  width: 240px;
+  height: 240px;
+  padding: 0;
+  margin: 0;
 }
 
-.content {
+/* A 240px square grid, with margin, to illustrate the position of child divs. */
+.grid.middle-grid {
+  width: 220px;
+  height: 220px;
+  margin: 10px;
+}
+
+/* A simple content box */
+.content-area {
   color: #fff;
   background-color: #047;
   width: 100px;
@@ -69,69 +72,153 @@
 }
 </script>
 
-<script type="multiline-template" id="basicBoxModelHtml">
-<div class="grid" style="width:220px; border:1px solid blue;" id="outerMost">
-  <div class="box" >
-    <div class="content">CONTENT<br>100px x 100px</div>
+  <tzCssBlock templateId="tmplCommonCss"></tzCssBlock>
+
+  <tzCodeExample templateId="tmplCommonCss" lang="css"></tzCodeExample>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="basicBoxModel">Basic Box Model</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="basicBoxModel.positionAbsolute">Position - Absolute</h3>
+  <!-- `````````````````````````````````` -->
+
+  <p>
+    In the example below, <i>innerBoxEx1</i> has a 10px margin, 20px redish border, 30px padding and 100px x 100px content area.
+    To avoid issues with <a href="positioning.html#positionRelative.verticalMarginTransfer">Margin Transfer</a>, <i>middleGridEx1</i> has position:absolute.
+  </p>
+
+<script type="multiline-template" id="basicBoxModelPositionAbsoluteCss">
+.inner-box-ex1 {
+  margin: 10px;
+  border: 20px solid #f00;
+  padding: 30px;
+  opacity: 0.5;
+}
+</script>
+
+<script type="multiline-template" id="basicBoxModelPositionAbsoluteHtml">
+<div class="outermost-div" id="outermostEx1">
+  <div class="grid middle-grid" style="position:absolute;" id="middleGridEx1">
+    <div class="inner-box-ex1" id="innerBoxEx1">
+      <div class="content-area">CONTENT<br>100px x 100px</div>
+    </div>
   </div>
 </div>
 </script>
 
 
-  <tzCssHtmlExample cssTemplateId="basicBoxModelCss" htmlTemplateId="basicBoxModelHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="basicBoxModelPositionAbsolute">
+    <tzResultComment>
+      Summary: outermostEx1 has no border, padding or margin; middleGridEx1 has a 10px margin and position:absolute; innerBoxEx1 has a 10px margin.
+    </tzResultComment>
+  </tzCssHtmlExample>
+
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermostEx1": "position"}, {"middleGridEx1": "position"}, {"innerBoxEx1": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="overview.bbmsb">Basic Box Model Sans Border</h3>
+  <h3 id="basicBoxModel.positionStatic">Position - Static</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
-    Removing the border from the outerMost div, causes the box model to collapse the top and bottom margins of the inner div.
+    Now, let's keep everything the same, except change the position of the middle grid from absolute to <b>static</b>.
+    This causes the top margins of the inner divs to transfer to the outermost div (as evidenced by the more than 10px gap above the outermost div).
+    This is very similar to what was described in the Positioning lab - See the <a href="positioning.html#positionRelative.verticalMarginTransfer">Margin Transfer</a> section for details.
   </p>
 
-<script type="multiline-template" id="basicBoxModelSansBorderHtml">
-<div class="grid" style="width:220px;" id="outerMost">
-  <div class="box" >
-    <div class="content">CONTENT<br>100px x 100px</div>
+<script type="multiline-template" id="basicBoxModelPositionStaticHtml">
+<div class="outermost-div" id="outermostEx2">
+  <div class="grid middle-grid" style="position:static;" id="middleGridEx2">
+    <div class="inner-box-ex1" id="innerBoxEx2">
+      <div class="content-area">CONTENT<br>100px x 100px</div>
+    </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelSansBorderHtml"></tzCssHtmlExample>
+
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionStaticHtml">
+    <tzResultComment>
+      Summary: outermostEx2 has no border, padding or margin; middleGridEx2 has a 10px margin and position:static; innerBoxEx2 has a 10px margin.
+    </tzResultComment>
+  </tzCssHtmlExample>
+
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermostEx2": "position"}, {"middleGridEx2": "position"}, {"innerBoxEx2": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="overview.bbmwpsb">Basic Box Model with Padding Sans Border</h3>
+  <h3 id="basicBoxModel.positionStaticWithBorder">Position - Static with Border</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
-    Adding some padding to the outerMost div can be used instead of a border.
-    However, the width of the outer div will need to be reduced, to compensate for the missing border.
-    Furthermore, the margin of the inner div will need to be reduced by the size of the outer padding.
-    The example below shows the original rendering, with the outer border removed, its width reduced by 20px and the inner div's margin removed.
+    Similar to what was found in the Positioning lab, by adding a top border to an outer div, the Margin Transfer "feature" can be blocked.
+    The example below, shows that adding a top border to <i>middleGridEx3</i> protects it from the margin transfer.
+    However, <i>outermostEx3</i> is still affected by the margin transfer, as evidenced by the more than 10px gap above <i>outermostEx3</i>.
   </p>
 
-<script type="multiline-template" id="basicBoxModelWithPaddingSansBorderCss">
-.box2 {
-  margin:0px;
+<script type="multiline-template" id="basicBoxModelPositionStaticWithBorderHtml">
+<div class="outermost-div" id="outermostEx3">
+  <div class="grid middle-grid" style="position:static; border-top:thin solid red;" id="middleGridEx3">
+    <div class="inner-box-ex1" id="innerBoxEx3">
+      <div class="content-area">CONTENT<br>100px x 100px</div>
+    </div>
+  </div>
+</div>
+</script>
+
+
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionStaticWithBorderHtml">
+    <tzResultComment>
+      Summary: outermostEx3 has no border, padding or margin; middleGridEx3 has a 10px margin, position:static and a thin top border; innerBoxEx3 has a 10px margin.
+    </tzResultComment>
+  </tzCssHtmlExample>
+
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermostEx3": "position"}, {"middleGridEx3": "position"}, {"innerBoxEx3": "position"}]}' useShortItems="true"></tzDisplayStyles>
+
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="basicBoxModel.positionStaticWithPadding">Position - Static with Padding</h3>
+  <!-- `````````````````````````````````` -->
+
+  <p>
+    Adding some padding to the outermost div can also mitigate the affects of Margin Transfer, when using static divs.
+    However, the width of the outer div, as well as the margin of the inner div, will need to be reduced, to compensate.
+  </p>
+
+<script type="multiline-template" id="basicBoxModelPositionStaticWithPaddingCss">
+.inner-box-ex2 {
+  margin:0;
   border:20px solid #f00;
   padding:30px;
   opacity:0.5;
 }
+
+.grid.middle-grid-ex2 {
+  width: 200px;
+  height: 200px;
+  margin: 0;
+}
 </script>
 
-<script type="multiline-template" id="basicBoxModelWithPaddingSansBorderHtml">
-<div class="grid" style="width:200px; padding:10px;" id="outerMost">
-  <div class="box2" >
-    <div class="content">CONTENT<br>100px x 100px</div>
+<script type="multiline-template" id="basicBoxModelPositionStaticWithPaddingHtml">
+<div class="outermost-div" style="padding:10px;" id="outermostEx4">
+  <div class="grid middle-grid-ex2" style="position:static; padding:10px;" id="middleGridEx4">
+    <div class="inner-box-ex2" id="innerBoxEx4">
+      <div class="content-area">CONTENT<br>100px x 100px</div>
+    </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="basicBoxModelWithPaddingSansBorderCss" htmlTemplateId="basicBoxModelWithPaddingSansBorderHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="basicBoxModelPositionStaticWithPadding"></tzCssHtmlExample>
 
 </main>
 
 <footer></footer>
 
-<script type="text/javascript" src="js/all.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
+<script type="text/javascript" src="js/all-javascript.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 </html>

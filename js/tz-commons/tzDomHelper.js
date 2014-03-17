@@ -75,6 +75,32 @@ var tzDomHelperModule = (function(tzLogHelper) {
       return result;
     },
 
+    getFirstChildElementByTagName: function(parentNode, tagName) {
+      var result = null;
+
+      for (var i=0; i<parentNode.children.length; ++i) {
+        if (parentNode.children[i].nodeName === tagName.toUpperCase()) {
+          result = parentNode.children[i];
+          break;
+        }
+      }
+
+      return result;
+    },
+
+    getFirstChildElementInnerHtmlByTagName: function(parentNode, tagName) {
+      var result = null;
+
+      for (var i=0; i<parentNode.children.length; ++i) {
+        if (parentNode.children[i].nodeName === tagName.toUpperCase()) {
+          result = parentNode.children[i];
+          break;
+        }
+      }
+
+      return result == null ? result : result.innerHTML;
+    },
+
     /*
      * Return the value of the style property, for the element with the given elementId.
      *
@@ -114,6 +140,12 @@ var tzDomHelperModule = (function(tzLogHelper) {
     insertElementWithTagAttributes: function(tagName, tagAttributes, innerHtml) {
       tagAttributes = (tagAttributes.length > 0) ? " " + tagAttributes : tagAttributes;
       insertLine("<" + tagName + tagAttributes + ">" + innerHtml + "</" + tagName + ">");
+    },
+
+    removeAllChildNodes: function(parentNode) {
+      while (parentNode.hasChildNodes()) {
+        parentNode.removeChild(parentNode.lastChild);
+      }
     },
 
     xmlEscape: function(rawString) {

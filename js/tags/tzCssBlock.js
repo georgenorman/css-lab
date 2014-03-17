@@ -56,21 +56,21 @@ var tzCssBlockTag = (function(tzDomHelper) {
     renderTag: function(tzStyleTagNode) {
       // get the attributes
       var templateId = tzStyleTagNode.getAttribute("templateId");
-      var styleData = tzDomHelper.getInnerHtml(templateId);
+      var rawCss = tzDomHelper.getInnerHtml(templateId);
 
       // render the result
-      this.render(tzStyleTagNode, styleData);
+      this.render(tzStyleTagNode, rawCss);
     },
 
     /**
      * Render the <style> block into the given containerNode.
      *
      * @param containerNode where to render the result.
-     * @param styleData the raw styles to render into the given containerNode.
+     * @param rawCss the raw styles to render into the given containerNode.
      */
-    render: function(containerNode, styleData) {
+    render: function(containerNode, rawCss) {
       var styleElement = document.createElement("style");
-      styleElement.insertAdjacentHTML("afterbegin", styleData);
+      styleElement.insertAdjacentHTML("afterbegin", rawCss);
       containerNode.appendChild(styleElement);
     }
   }

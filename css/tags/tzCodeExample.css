@@ -1,0 +1,41 @@
+/*!
+  ~ tzCodeExample.css v1.0.0
+  ~ Copyright (c) 2014 George Norman.
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+*/
+
+
+/* ---------------------------------
+ * Code block (with gutter and line numbers)
+ * --------------------------------- */
+
+/* Format example code blocks (CSS, JS, HTML, etc) */
+code.tz-code-example {
+  display: block;
+  white-space: pre;
+  color: initial;
+  margin: 8px 6px;
+  padding: 0;
+  border: thin solid #ccc;
+  width: 93%;
+  overflow: auto;
+  background-color: #efefef;
+  font-size: 11px;
+}
+
+code.tz-code-example ol {
+  margin: 0 0 0 36px;
+  padding: 0;
+  list-style-type: decimal-leading-zero;
+  border-left: 2px solid #0c0;
+}
+
+code.tz-code-example ol li:nth-child(odd) {
+  background-color: #fff;
+}
+
+.tz-code-example-comment {
+  margin: 6px 0 10px 6px;
+  color: #777;
+}

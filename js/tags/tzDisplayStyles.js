@@ -97,7 +97,7 @@ var tzDisplayStylesTag = (function(tzDomHelper) {
             if (useShortItems == 'true') {
               generatedHtml = "Element '" + elementId + "' is: " + tzDomHelper.getStylePropertyValue(elementId, idPropertyPair[elementId]);
             } else {
-              generatedHtml = "The '" + idPropertyPair[elementId] + "' property of element '" + elementId + "' is: " + tzDomHelper.getStylePropertyValue(elementId, idPropertyPair[elementId]);
+              generatedHtml = "Element " + elementId + " has " + idPropertyPair[elementId] + ":" + tzDomHelper.getStylePropertyValue(elementId, idPropertyPair[elementId]);
             }
           }
           li.insertAdjacentHTML("afterbegin", generatedHtml);

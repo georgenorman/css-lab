@@ -21,9 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <style>
-    @import "css/base.css";
-    @import "css/tzTableOfContents.css";
-    @import "css/cssLab.css";
+    @import "css/all-css.css";
   </style>
 </head>
 <body onload="cssLabModule.handleOnLoad();">
@@ -37,7 +35,7 @@
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="commonCss">Common CSS</h2>
+  <h2 id="commonCss">Shared CSS</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
@@ -46,7 +44,7 @@
 
 <script type="multiline-template" id="tmplCommonCss">
 /* A 300px square, expected to serve as a fixed background. */
-.outer-div-sans-border {
+.outermost {
   background-color: #ccc;
   width: 300px;
   height: 300px;
@@ -54,8 +52,8 @@
   margin: 0;
 }
 
-/* A 240px square grid, to illustrate the position of a nested div. */
-.middle-grid {
+/* A 240px square grid, to illustrate the position of child divs. */
+.grid.middle-grid {
   width: 240px;
   height: 240px;
 }
@@ -70,10 +68,11 @@
 </script>
 
   <tzCssBlock templateId="tmplCommonCss"></tzCssBlock>
+
   <tzCodeExample templateId="tmplCommonCss" lang="css"></tzCodeExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="positionRelative">Relative &lt;div&gt; nested inside static &lt;div&gt;</h2>
+  <h2 id="positionRelative">Relative To Static</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
@@ -81,20 +80,24 @@
     Not sure why this would ever be used, but good to know in case it's ever done by accident.
   </p>
 
+  <p>
+    In each of the following examples, there are three divs: <i>outermost</i>, which contains <i>middleGrid</i>, which in turn contains <i>innermost</i>.
+  </p>
+
   <!-- `````````````````````````````````` -->
-  <h3 id="positionRelative.rdhnm">Relative &lt;div&gt; has no margin</h3>
+  <h3 id="positionRelative.rdhnm">Relative &lt;div&gt; Sans Margin</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
-    There are three divs: <i>outerMost</i> contains <i>middleGrid</i>, which in turn contains <i>innerMost</i>.
-    In this example, the resulting position of the <i>innerMost</i> div is exactly as expected -
+    In this example, the <i>innermost</i> div has no margin.
+    The resulting position of the <i>innermost</i> div is exactly as expected -
     it's relatively positioned inside of <i>middleGrid</i>, at 40px from the top and 40px from the left.
   </p>
 
 <script type="multiline-template" id="tmplExampleRelInStaticNoMarginHtml">
-<div class="outer-div-sans-border" id="outerMost">
+<div class="outermost" id="outermost">
   <div class="grid middle-grid" id="middleGrid">
-    <div style="top:40px; left:40px;" class="relative-square" id="innerMost">
+    <div style="top:40px; left:40px;" class="relative-square" id="innermost">
     </div>
   </div>
 </div>
@@ -102,23 +105,29 @@
 
   <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStaticNoMarginHtml"></tzCssHtmlExample>
 
-  <br/><b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outerMost": "position"}, {"middleGrid": "position"}, {"innerMost": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost": "position"}, {"middleGrid": "position"}, {"innermost": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
 
   <!-- `````````````````````````````````` -->
-  <h3 id="positionRelative.rdh10pxm">Relative &lt;div&gt; has 10px margin</h3>
+  <h3 id="positionRelative.verticalMarginTransfer">Top Margin Transfer</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
-    Now, let's keep everything the same, except add a margin to the <i>innerMost</i> div (it's relatively positioned inside two static divs).
-    <span style="color:red;">Adding a 10px margin to the <i>innerMost</i> div has <b>no effect</b> on its top position, but does affect the left position by 10px (it's now 50px from the left outer side).</span>
+    Now, let's keep everything the same, except add a margin to the <i>innermost</i> div.
+    Adding a 20px margin to the <i>innermost</i> div, pushes it 20px to the right, relative to the <i>middleGrid</i> (increasing the distance to 60px as expected).
+  </p>
+
+  <p>
+    <span style="color:red;">However, this has <b>no effect</b> on the distance from the <b>top</b> of the <i>middleGrid</i>.
+    Instead, the top margin bypasses the <i>middleGrid</i> and is transferred to the <i>outermost</i> div, pushing it down by 20px
+    (as evidenced by the more than 20px gap above the <i>outermost</i> div).</span>
   </p>
 
 <script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">
-<div class="outer-div-sans-border">
-  <div class="grid middle-grid">
-    <div style="top:40px; left:40px; margin:10px;" class="relative-square">
+<div class="outermost" id="outermostVmt">
+  <div class="grid middle-grid" id="middleGridVmt">
+    <div style="top:40px; left:40px; margin:20px;" class="relative-square" id="innermostVmt">
     </div>
   </div>
 </div>
@@ -126,28 +135,43 @@
 
   <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStatic10pxMarginHtml"></tzCssHtmlExample>
 
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermostVmt": "position"}, {"middleGridVmt": "position"}, {"innermostVmt": "position"}]}' useShortItems="true"></tzDisplayStyles>
+
+
   <!-- `````````````````````````````````` -->
-  <h3 id="positionRelative.rdh40pxm">Relative &lt;div&gt; has 40px margin</h3>
+  <h3 id="positionRelative.marginTransferObstacles">Margin Transfer Obstacles</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
-    Increasing the margin of the relative div to 40px, still has no effect on its position relative to the top of its immediate parent.
-    <span style="color:red;">However, it did push down its parent and its parent's parent by about 26px, as evidenced by the gap immediately above the rendered result.</span>
+    The Top Margin Transfer "feature", described above, can be undermined by setting the parent's position to absolute, as described in the next section (<a href="#positionRelativeInAbsolute">Relative To Absolute</a>).
+    However, it can also be undermined by adding a border or padding to <i>outermost</i> (or <i>middleGrid</i>), as shown below.
   </p>
 
-<script type="multiline-template" id="tmplExampleRelInStatic40pxMarginHtml">
-<div class="outer-div-sans-border">
-  <div class="grid middle-grid">
-    <div style="top:40px; left:40px; margin:40px;" class="relative-square">
+  <p>
+    The example below shows that by adding a border to <i>outermost</i>, the margin transfer from <i>innermost</i> is blocked.
+    Instead, the top margin is now transferred to <i>middleGrid</i>, which lacks a border or padding.
+    Alternatively, if we added a border to <i>middleGrid</i> it would block the margin transfer to both the <i>middleGrid</i> and <i>outermost</i> divs all at once
+    (i.e., adding a border or padding to an outer div blocks the propagation of the margin transfer feature).
+  </p>
+
+<script type="multiline-template" id="tmplExampleRelInStatic10pxMarginOutermostHasBorderHtml">
+<div class="outermost" style="border-top:thin solid red;" id="outermostMto">
+  <div class="grid middle-grid" id="middleGridMto">
+    <div style="top:40px; left:40px; margin:20px;" class="relative-square" id="innermostMto">
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStatic40pxMarginHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStatic10pxMarginOutermostHasBorderHtml"></tzCssHtmlExample>
+
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermostMto": "position"}, {"middleGridMto": "position"}, {"innermostMto": "position"}]}' useShortItems="true"></tzDisplayStyles>
+
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="positionRelativeInAbsolute">Relative &lt;div&gt; nested inside absolute &lt;div&gt;</h2>
+  <h2 id="positionRelativeInAbsolute">Relative To Absolute</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
@@ -155,16 +179,15 @@
   <!-- `````````````````````````````````` -->
 
   <p>
-    <span style="color:green;">Changing the parent of the relative div from static to absolute, makes all of the issues of the previous section go away.</span>
-    So now the margin of the relative div is 40px and its position relative to the top and left of its immediate parent is the expected 80px.
-    Furthermore, the gap at the top of the <i>outerMost</i> div has been eliminated.
-    Adding a border to the <i>outerMost</i> div will not change the result (as would be the case if the <i>middleGrid</i> div were static).
+    <span style="color:green;">Nesting a relative div inside of an absolute one, negates the Top Margin Transfer "feature", described in the previous section.</span>
+    For example, setting the margin of the <i>relative-square</i> div to 20px, causes its position, relative to its immediate parent, to be 60px for both the top and the left edges
+    (even though the outer div has no border or margin).
   </p>
 
 <script type="multiline-template" id="tmplExampleRelInAbsolute40pxMarginHtml">
-<div class="outer-div-sans-border" id="outerMostEx2">
+<div class="outermost" id="outermostEx2">
   <div class="grid middle-grid" style="position:absolute;" id="middleGridEx2">
-    <div style="top:40px; left:40px; margin:40px;" class="relative-square" id="innerMostEx2">
+    <div style="top:40px; left:40px; margin:20px;" class="relative-square" id="innermostEx2">
     </div>
   </div>
 </div>
@@ -172,19 +195,26 @@
 
   <tzCssHtmlExample htmlTemplateId="tmplExampleRelInAbsolute40pxMarginHtml"></tzCssHtmlExample>
 
-  <br/><b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outerMostEx2": "position"}, {"middleGridEx2": "position"}, {"innerMostEx2": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermostEx2": "position"}, {"middleGridEx2": "position"}, {"innermostEx2": "position"}]}' useShortItems="true"></tzDisplayStyles>
+
+  <b>Current 'margin' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermostEx2": "margin"}, {"middleGridEx2": "margin"}, {"innermostEx2": "margin"}]}' useShortItems="true"></tzDisplayStyles>
+
+  <b>Current 'padding' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermostEx2": "padding"}, {"middleGridEx2": "padding"}, {"innermostEx2": "padding"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="fixedInStatic">Fixed &lt;div&gt;s</h2>
+  <h2 id="fixedInStatic">Fixed Position</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
-  <h3 id="fixedInStatic.fdnisd">Fixed &lt;div&gt; nested in Static &lt;div&gt;</h3>
+  <h3 id="fixedInStatic.fdnisd">Fixed &lt;div&gt; with Static &lt;button&gt;</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
-    A static outer div contains a fixed div which in turn contains a static text element and static button (float: right).
+    This example shows a fixed div with statically positioned inner elements.
+    The outer container doesn't matter much, because the fixed inner div is hoisted out of it's parent container and displayed at the fixed position specified by its top/right/bottom/left properties.
   </p>
 
 <script type="multiline-template" id="tmplExampleFixedInStaticCss">
@@ -202,7 +232,7 @@
 
 <script type="multiline-template" id="tmplExampleFixedInStaticHtml">
 <div>
-  <button onclick="tzDomHelperModule.show('fixedInnerEx1'); return false;">Show Fixed in Static</a>
+  <button onclick="tzDomHelperModule.show('fixedInnerEx1'); return false;">Show Fixed with Static Button</a>
 </div>
 
 <div id="staticOuterWithFixedInnerEx1">
@@ -219,11 +249,11 @@
 
   <tzCssHtmlExample cssTemplateId="tmplExampleFixedInStaticCss" htmlTemplateId="tmplExampleFixedInStaticHtml"></tzCssHtmlExample>
 
-  <br>Current 'position' styles:
+  <b>Current 'position' styles:</b>
   <tzDisplayStyles items='{"idStylePairs":[{"staticOuterWithFixedInnerEx1": "position"}, {"fixedInnerEx1": "position"}, {"staticBtnEx1": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="fixedInStatic.rbifdisd">Relative &lt;button&gt; in Fixed &lt;div&gt; in Static &lt;div&gt;</h3>
+  <h3 id="fixedInStatic.rbifdisd">Fixed &lt;div&gt; with Relative &lt;button&gt;</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
@@ -232,7 +262,7 @@
 
 <script type="multiline-template" id="tmplExampleRelativeInFixedInStaticHtml">
 <div>
-  <button onclick="tzDomHelperModule.show('fixedInnerEx2'); return false;">Show Relative in Fixed in Static</a>
+  <button onclick="tzDomHelperModule.show('fixedInnerEx2'); return false;">Show Fixed with Relative Button</a>
 </div>
 
 <div id="staticOuterWithFixedInnerEx2">
@@ -249,15 +279,14 @@
 
   <tzCssHtmlExample htmlTemplateId="tmplExampleRelativeInFixedInStaticHtml"></tzCssHtmlExample>
 
-  <br>Current 'position' styles:
+  <b>Current 'position' styles:</b>
   <tzDisplayStyles items='{"idStylePairs":[{"staticOuterWithFixedInnerEx2": "position"}, {"fixedInnerEx2": "position"}, {"relativeBtnEx2": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
 </main>
 
 <footer></footer>
 
-<script type="text/javascript" src="js/all.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
+<script type="text/javascript" src="js/all-javascript.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 
 </html>
-

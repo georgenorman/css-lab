@@ -57,10 +57,11 @@ var tzHtmlBlockTag = (function(tzDomHelper) {
       // get the attributes
       var heading = tzHtmlTagNode.getAttribute("heading");
       var templateId = tzHtmlTagNode.getAttribute("templateId");
+      var resultComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlTagNode, "tzResultComment");
       var rawHtml = tzDomHelper.getInnerHtml(templateId);
 
       // render the result
-      this.render(tzHtmlTagNode, heading, rawHtml);
+      this.render(tzHtmlTagNode, heading, resultComment, rawHtml);
     },
 
     /**
@@ -68,9 +69,10 @@ var tzHtmlBlockTag = (function(tzDomHelper) {
      *
      * @param containerNode where to render the result.
      * @param heading optional heading to display for the live code block.
+     * @param resultComment optional comment to render above the live result.
      * @param rawHtml the code that will be rendered into the given containerNode.
      */
-    render: function(containerNode, heading, rawHtml) {
+    render: function(containerNode, heading, resultComment, rawHtml) {
       // render optional heading, if present
       if (tzDomHelper.isNotEmpty(heading)) {
         var headingElement = document.createElement("h4");
@@ -78,10 +80,18 @@ var tzHtmlBlockTag = (function(tzDomHelper) {
         containerNode.appendChild(headingElement);
       }
 
+      // render optional result comment, if present
+      if (tzDomHelper.isNotEmpty(resultComment)) {
+        var commentElement = document.createElement("p");
+        commentElement.className += " tz-html-block-comment";
+        commentElement.insertAdjacentHTML("afterbegin", resultComment);
+        containerNode.appendChild(commentElement);
+      }
+
       // render raw HTML from the template
       var divElement = document.createElement("div");
 
-      divElement.className += " rendered-result";
+      divElement.className += " tz-html-block";
       divElement.insertAdjacentHTML("afterbegin", rawHtml);
       containerNode.appendChild(divElement);
     }

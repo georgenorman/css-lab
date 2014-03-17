@@ -31,8 +31,8 @@ var tzCodeHighlighterModule = (function() {
         result = result.replace(/([-\w]+=)/gm, "[[attribute-name]]$1[[/attribute-name]]"); // matches attribute name: e.g., foo=
 
         // un-escape
-        result = result.replace(/\[\[tag-name\]\]/gm, "<span class='highlight-tag-name'>").replace(/\[\[\/tag-name\]\]/gm, "</span>");
-        result = result.replace(/\[\[attribute-name\]\]/gm, "<span class='highlight-attribute-name'>").replace(/\[\[\/attribute-name\]\]/gm, "</span>");
+        result = result.replace(/\[\[tag-name\]\]/gm, "<span class='tz-highlight-tag-name'>").replace(/\[\[\/tag-name\]\]/gm, "</span>");
+        result = result.replace(/\[\[attribute-name\]\]/gm, "<span class='tz-highlight-attribute-name'>").replace(/\[\[\/attribute-name\]\]/gm, "</span>");
       } else if (lang === 'css') {
         // selector
         result = result.replace(/(.*\{|\})/gm, "[[css-selector]]$1[[/css-selector]]"); // matches css selector: e.g., .foo {
@@ -41,13 +41,13 @@ var tzCodeHighlighterModule = (function() {
         result = result.replace(/(.*:)/gm, "[[css-property]]$1[[/css-property]]"); // matches css property: e.g., margin-top:
 
         // un-escape
-        result = result.replace(/\[\[css-selector\]\]/gm, "<span class='highlight-css-selector'>").replace(/\[\[\/css-selector\]\]/gm, "</span>");
-        result = result.replace(/\[\[css-property\]\]/gm, "<span class='highlight-css-property'>").replace(/\[\[\/css-property\]\]/gm, "</span>");
+        result = result.replace(/\[\[css-selector\]\]/gm, "<span class='tz-highlight-css-selector'>").replace(/\[\[\/css-selector\]\]/gm, "</span>");
+        result = result.replace(/\[\[css-property\]\]/gm, "<span class='tz-highlight-css-property'>").replace(/\[\[\/css-property\]\]/gm, "</span>");
       }
 
       // un-escape
-      result = result.replace(/\[\[quoted-string\]\]/gm, "<span class='highlight-comment'>").replace(/\[\[\/quoted-string\]\]/gm, "</span>");
-      result = result.replace(/\[\[comment\]\]/gm, "<span class='highlight-comment'>").replace(/\[\[\/comment\]\]/gm, "</span>");
+      result = result.replace(/\[\[quoted-string\]\]/gm, "<span class='tz-highlight-comment'>").replace(/\[\[\/quoted-string\]\]/gm, "</span>");
+      result = result.replace(/\[\[comment\]\]/gm, "<span class='tz-highlight-comment'>").replace(/\[\[\/comment\]\]/gm, "</span>");
 
       return result;
     }
