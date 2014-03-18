@@ -77,7 +77,7 @@
 
   <p>
     This series of examples demonstrates some of the wacky things that happen when you nest a relative div inside a static div.
-    Not sure why this would ever be used, but good to know in case it's ever done by accident.
+    <span style="color:#CF0000;">Not sure why this would ever be used, but good to know in case it's ever done by accident.</span>
   </p>
 
   <p>
@@ -89,9 +89,9 @@
   <!-- `````````````````````````````````` -->
 
   <p>
-    In this example, the <i>innermost</i> div has no margin.
-    The resulting position of the <i>innermost</i> div is exactly as expected -
-    it's relatively positioned inside of <i>middleGrid</i>, at 40px from the top and 40px from the left.
+    In this example, the <i>innermost</i> div has no margin and everything seems normal.
+    The result is exactly as expected -
+    the <i>innermost</i> div is relatively positioned inside of <i>middleGrid</i>, at 40px from the top and 40px from the left.
   </p>
 
 <script type="multiline-template" id="tmplExampleRelInStaticNoMarginHtml">
@@ -114,14 +114,18 @@
   <!-- `````````````````````````````````` -->
 
   <p>
-    Now, let's keep everything the same, except add a margin to the <i>innermost</i> div.
-    Adding a 20px margin to the <i>innermost</i> div, pushes it 20px to the right, relative to the <i>middleGrid</i> (increasing the distance to 60px as expected).
+    For this example, let's keep everything the same as the previous example, except add a 20px margin around the <i>innermost</i> div.
+    As expected, this pushes it 20px to the right, relative to the <i>middleGrid</i> (increasing the distance to 60px).
   </p>
 
   <p>
-    <span style="color:red;">However, this has <b>no effect</b> on the distance from the <b>top</b> of the <i>middleGrid</i>.
-    Instead, the top margin bypasses the <i>middleGrid</i> and is transferred to the <i>outermost</i> div, pushing it down by 20px
+    <span style="color:red;">Remarkably, the top margin has no effect on the <i>innermost</i> div's distance from the top of <i>middleGrid</i>.
+    Instead, the top margin bypasses both the <i>innermost</i> div and the <i>middleGrid</i> and is directly transferred to the top of the <i>outermost</i> div, pushing it down by 20px
     (as evidenced by the more than 20px gap above the <i>outermost</i> div).</span>
+  </p>
+
+  <p>
+    The effect of Top Margin Transfer can be easily circumvented by setting the parent's position to absolute, as described in the <a href="#positionRelativeInAbsolute">Relative To Absolute</a> section.
   </p>
 
 <script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">
@@ -140,18 +144,17 @@
 
 
   <!-- `````````````````````````````````` -->
-  <h3 id="positionRelative.marginTransferObstacles">Margin Transfer Obstacles</h3>
+  <h3 id="positionRelative.marginTransferObstacles">Margin Transfer Workarounds</h3>
   <!-- `````````````````````````````````` -->
 
   <p>
-    The Top Margin Transfer "feature", described above, can be undermined by setting the parent's position to absolute, as described in the next section (<a href="#positionRelativeInAbsolute">Relative To Absolute</a>).
-    However, it can also be undermined by adding a border or padding to <i>outermost</i> (or <i>middleGrid</i>), as shown below.
+    In addition to setting the parent's position to absolute, Top Margin Transfer can also be circumvented by adding a border or padding to <i>outermost</i> (or <i>middleGrid</i>).
   </p>
 
   <p>
     The example below shows that by adding a border to <i>outermost</i>, the margin transfer from <i>innermost</i> is blocked.
-    Instead, the top margin is now transferred to <i>middleGrid</i>, which lacks a border or padding.
-    Alternatively, if we added a border to <i>middleGrid</i> it would block the margin transfer to both the <i>middleGrid</i> and <i>outermost</i> divs all at once
+    Instead, the top margin is now transferred to <i>middleGrid</i>.
+    Alternatively, adding a border to <i>middleGrid</i> blocks the margin transfer to both the <i>middleGrid</i> and <i>outermost</i> divs all at once
     (i.e., adding a border or padding to an outer div blocks the propagation of the margin transfer feature).
   </p>
 
@@ -179,9 +182,8 @@
   <!-- `````````````````````````````````` -->
 
   <p>
-    <span style="color:green;">Nesting a relative div inside of an absolute one, negates the Top Margin Transfer "feature", described in the previous section.</span>
-    For example, setting the margin of the <i>relative-square</i> div to 20px, causes its position, relative to its immediate parent, to be 60px for both the top and the left edges
-    (even though the outer div has no border or margin).
+    <span style="color:green;">Nesting a relative div inside of an absolute one, negates the Top Margin Transfer "feature", described in the previous sections.</span>
+    For example, setting the margin of the <i>relative-square</i> div to 20px, causes its position, relative to its immediate parent, to be 60px for both the top and the left edges.
   </p>
 
 <script type="multiline-template" id="tmplExampleRelInAbsolute40pxMarginHtml">
