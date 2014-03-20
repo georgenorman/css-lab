@@ -60,7 +60,7 @@
 
 /* A relative positioned 140px square, with a 20px border and a 100px content region. */
 .relative-square {
-  position:relative;
+  position: relative;
   width: 100px;
   height: 100px;
   border: 20px solid rgba(255, 0, 0, 0.5);
@@ -114,18 +114,19 @@
   <!-- `````````````````````````````````` -->
 
   <p>
-    For this example, let's keep everything the same as the previous example, except add a 20px margin around the <i>innermost</i> div.
-    As expected, this pushes it 20px to the right, relative to the <i>middleGrid</i> (increasing the distance to 60px).
+    In this example, everything is the same as the previous example, except a 20px margin has been added around the <i>innermost</i> div.
+    As expected, this pushes the <i>innermost</i> div 20px to the right, relative to the <i>middleGrid</i> (increasing that distance to 60px).
   </p>
 
   <p>
-    <span style="color:red;">Remarkably, the top margin has no effect on the <i>innermost</i> div's distance from the top of <i>middleGrid</i>.
+    <span style="color:red;">Surprisingly, the top margin has no effect on the <i>innermost</i> div's distance from the top of <i>middleGrid</i>.
     Instead, the top margin bypasses both the <i>innermost</i> div and the <i>middleGrid</i> and is directly transferred to the top of the <i>outermost</i> div, pushing it down by 20px
-    (as evidenced by the more than 20px gap above the <i>outermost</i> div).</span>
+    (as evidenced by the more than 20px gap above <i>outermost</i>).</span>
   </p>
 
   <p>
-    The effect of Top Margin Transfer can be easily circumvented by setting the parent's position to absolute, as described in the <a href="#positionRelativeInAbsolute">Relative To Absolute</a> section.
+    <b>The effect of Top Margin Transfer can be circumvented by setting the position of a relative div's parent to absolute.
+    This is described in</b> <a href="#positionRelativeInAbsolute">Relative To Absolute</a>.
   </p>
 
 <script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">

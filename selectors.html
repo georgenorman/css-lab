@@ -316,15 +316,15 @@ Some text *before* the first cite (no elements allowed).
   <tzCssHtmlExample cssTemplateId="attributeNameValueContainsSelectorCss" htmlTemplateId="attributeNameValueContainsSelectorHtml"></tzCssHtmlExample>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<h2 id="pseudoSelector">The Pseudo Selector ( : )</h2>
+<h2 id="pseudoSelector">The Pseudo Selector ( : / :: )</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <!-- `````````````````````````````````` -->
-<h3 id="pseudoSelector.firstLetterPseudo">:first-letter pseudo-element #1</h3>
+<h3 id="pseudoSelector.firstLetterPseudo">::first-letter pseudo-element #1</h3>
 <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="firstLetterPseudoSelector1Css">
-article:first-letter {
+article::first-letter {
   font-size: 18px;
   color: #f90;
 }
@@ -341,11 +341,11 @@ article:first-letter {
   <tzCssHtmlExample cssTemplateId="firstLetterPseudoSelector1Css" htmlTemplateId="firstLetterPseudoSelector1Html"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="pseudoSelector.firstLetterPseudo2">:first-letter pseudo-element #2</h3>
+<h3 id="pseudoSelector.firstLetterPseudo2">::first-letter pseudo-element #2</h3>
 <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="firstLetterPseudoSelector2Css">
-article h4:first-letter {
+article h4::first-letter {
   font-size: 18px;
   color: #f90;
 }
@@ -361,14 +361,14 @@ article h4:first-letter {
   <tzCssHtmlExample cssTemplateId="firstLetterPseudoSelector2Css" htmlTemplateId="firstLetterPseudoSelector2Html"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="pseudoSelector.beforePseudo">:before and :after pseudo-elements</h3>
+<h3 id="pseudoSelector.beforePseudo">::before and ::after pseudo-elements</h3>
 <!-- `````````````````````````````````` -->
 
   <p>
   Insert and format additional content, within a targeted element, before or after the existing content of the element.
   </p>
 <script type="multiline-template" id="beforePseudoSelectorCss">
-i:before {
+i::before {
   content: "\2666\0020";
   color: #f90;
   font-style: normal;
