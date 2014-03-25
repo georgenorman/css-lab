@@ -21,12 +21,16 @@
  * @attribute heading - heading text [optional]
  * @attribute lang - language ID for the code syntax highlighter (e.g., "css", "*ml").
  */
-var tzCodeExampleTag = (function(tzDomHelper, tzCodeHighlighter) {
+var tzCodeExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCodeHighlighter) {
   "use strict";
 
   return {
+    getTagName: function() {
+      return "tzCodeExample";
+    },
+
     /**
-     * Render all tags on the page.
+     * Render all <tzCodeExample> tags on the page.
      */
     renderAll: function() {
       // find all tags
@@ -41,7 +45,7 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCodeHighlighter) {
     },
 
     /**
-     * Render the tag identified by the given tagId.
+     * Render the <tzCodeExample> tag identified by the given tagId.
      *
      * @param tagId ID of the tag to render.
      */
@@ -62,7 +66,7 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCodeHighlighter) {
       var heading = tzCodeExampleTagNode.getAttribute("heading");
       var codeBlockComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzCodeExampleTagNode, "tzCodeBlockComment");
       var lang = tzCodeExampleTagNode.getAttribute("lang");
-      var rawHtml = tzDomHelper.getInnerHtml(templateId);
+      var rawHtml = tzDomHelper.getInnerHtmlWithDefault(templateId);
 
       // remove child nodes (e.g., optional codeBlockComment node)
       tzDomHelper.removeAllChildNodes(tzCodeExampleTagNode);
@@ -132,4 +136,4 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCodeHighlighter) {
     }
   }
 
-}(tzDomHelperModule, tzCodeHighlighterModule));
+}(tzDomHelperModule, tzCustomTagHelperModule, tzCodeHighlighterModule));

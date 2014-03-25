@@ -11,7 +11,7 @@
 //document.createElement("tzTableOfContents");
 
 /**
- * The &lt;tzTableOfContents&gt; tag renders a simple two-level Table of Contents, inside the element selected by the given tocClassName.
+ * The &lt;tzTableOfContents&gt; tag auto-generates a simple two-level Table of Contents, inside the element selected by the given tocClassName.
  * A default title of "Table of Contents" will be used if the optionalTitle is not provided.
  * The title is rendered as an h2 element.
  *
@@ -30,18 +30,20 @@
  *        (e.g., "h3" would cause all h3 elements on the page, to be used as sub-items in the generated Table of Contents).
  * @attribute optionalTitle - optional title (default is "Table of Contents").
  */
-var tableOfContentsTag = (function(tzDomHelper) {
+var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
   "use strict";
 
   return {
+    getTagName: function() {
+      return "tzTableOfContents";
+    },
+
     /**
      * Render the 'Table of Contents' tag.
      */
     renderAll: function () {
       // there can be only one 'table of contents' per page.
-      var tagNode = tzDomHelper.getFirstElementByTagName("tzTableOfContents");
-
-      this.renderTag(tagNode);
+      tzCustomTagHelper.renderFirst(this);
     },
 
     /**
@@ -154,4 +156,4 @@ var tableOfContentsTag = (function(tzDomHelper) {
     return result;
   }
 
-}(tzDomHelperModule));
+}(tzDomHelperModule, tzCustomTagHelperModule));

@@ -19,18 +19,28 @@ var tzDomHelperModule = (function(tzLogHelper) {
      * @param elementId - ID of the element with the desired HTML.
      */
     getInnerHtml: function(elementId) {
-      var result;
+      var result = "";
       var element = document.getElementById(elementId);
 
       if (element) {
         result = element.innerHTML;
         // remove the leading and trailing newlines (side-effect of using template, the newline after the <script> tag is included).
         result = result.trim();
-      } else {
-        result = "No element found for ID: '" + elementId + "'";
       }
 
       return result;
+    },
+
+    /*
+     * Return the inner HTML from an element with the given elementId.
+     * Useful for returning multi-line strings from template blocks.
+     *
+     * @param elementId - ID of the element with the desired HTML.
+     */
+    getInnerHtmlWithDefault: function(elementId) {
+      var result = this.getInnerHtml(elementId);
+
+      return this.isEmpty(result) ? '<span style="color:red;">No element found for ID: ' + elementId : result;
     },
 
     /*

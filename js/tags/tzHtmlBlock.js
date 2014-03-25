@@ -18,12 +18,16 @@
  * @attribute templateId - ID of the element containing the raw HTML code to render.
  * @attribute heading - heading text [optional]
  */
-var tzHtmlBlockTag = (function(tzDomHelper) {
+var tzHtmlBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
   "use strict";
 
   return {
+    getTagName: function() {
+      return "tzHtmlBlock";
+    },
+
     /**
-     * Render all tags.
+     * Render all <tzHtmlBlock> tags on the page.
      */
     renderAll: function() {
       // find all tags
@@ -38,7 +42,7 @@ var tzHtmlBlockTag = (function(tzDomHelper) {
     },
 
     /**
-     * Render the tag identified by the given tagId.
+     * Render the <tzHtmlBlock> tag identified by the given tagId.
      *
      * @param tagId ID of the tag to render.
      */
@@ -96,4 +100,4 @@ var tzHtmlBlockTag = (function(tzDomHelper) {
       containerNode.appendChild(divElement);
     }
   }
-}(tzDomHelperModule));
+}(tzDomHelperModule, tzCustomTagHelperModule));

@@ -16,13 +16,17 @@ var cssLabModule = (function() {
      * Render all tags.
      */
     handleOnLoad: function() {
-      tzAboutPageTag.renderAll();
-      tableOfContentsTag.renderAll();
+      // Common tags for all Labs
+      tzTableOfContentsTag.renderAll();
       tzCssBlockTag.renderAll();
       tzCodeExampleTag.renderAll();
       tzHtmlBlockTag.renderAll();
       tzCssHtmlExampleTag.renderAll();
       tzDisplayStylesTag.renderAll();
+      tzBulletPointTag.renderAll();
+
+      // CSS Lab specific
+      cssLabAboutTag.renderAll();
     }
   };
 

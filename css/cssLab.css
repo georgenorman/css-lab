@@ -58,7 +58,6 @@ h2 {
   padding-top: 6px;
   padding-bottom: 6px;
   margin-top: 12px;
-  margin-bottom: 3px;
   color: #669;
 }
 
@@ -162,4 +161,15 @@ footer:after {
 .note {
   font-size: 12px;
   font-style: italic;
+}
+
+/* ---------------------------------
+ * Image Box
+ * --------------------------------- */
+
+.image-frame {
+  margin: 16px;
+  padding: 16px;
+  box-shadow: 3px 3px 4px #000;
+  border: 2px solid #ccc;
 }

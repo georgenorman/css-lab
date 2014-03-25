@@ -20,6 +20,8 @@
   <title>Selectors</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico"/>
   <style>
     @import "css/all-css.css";
   </style>
@@ -30,13 +32,15 @@
 </header>
 
 <main>
-  <tzAboutPage style="margin-top:12px;"/>
+  <cssLabAbout style="margin-top:12px;"/>
 
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="elementSelector">The Element Selector</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>Selects all elements of the specified type. The following example selects all &lt;aside&gt; elements.</p>
 
 <script type="multiline-template" id="elementSelectorCss">
 aside {
@@ -55,6 +59,8 @@ Some text after the aside.
 <h2 id="idSelector">The ID Selector ( # )</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+  <p>Selects the single element that has the specified ID. The following example selects the single element whose ID is "id-brown".</p>
+
 <script type="multiline-template" id="idSelectorCss">
 #id-brown {
   color: brown;
@@ -71,6 +77,8 @@ Some text after the aside.
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="classSelector">The Class Selector ( . )</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>Selects all elements with the specified class name. The example below selects all elements that have the "class-green" class.</p>
 
 <script type="multiline-template" id="classSelectorCss">
 .class-green {
@@ -89,9 +97,13 @@ Some text after the aside.
 <h2 id="descendentSelector">The Descendent Selector ( space )</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+  <p>Selects elements that are descendants of a specified parent element. The descendants can appear at any level. </p>
+
 <!-- `````````````````````````````````` -->
 <h3 id="descendentSelector.simple">Simple Descendent Selector</h3>
 <!-- `````````````````````````````````` -->
+
+  <p>The example below selects every element, that has a 'simple-desc-bar' class, nested anywhere inside any element with a 'simple-desc-foo' class.</p>
 
 <script type="multiline-template" id="simpleDescSelectorCss">
 .simple-desc-foo .simple-desc-bar {
@@ -116,6 +128,8 @@ Some text after the aside.
 <h3 id="descendentSelector.compound">Compound Descendent Selector</h3>
 <!-- `````````````````````````````````` -->
 
+  <p>The following example uses the universal selector to require at least one element be present between the .compound-desc-foo and .compound-desc-bar elements</p>
+
 <script type="multiline-template" id="compoundDescSelectorCss">
 .compound-desc-foo * .compound-desc-bar {
   color: #f90;
@@ -138,6 +152,16 @@ Some text after the aside.
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="childSelector">The Child Selector ( > )</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>
+    Selects elements that are <b>direct</b> descendants of a specified element (first-level children).
+    This is similar to the descendent selector, except it applies only to first-level descendents.
+    The example below selects every &lt;cite&gt; element, nested at the first-level, inside any &lt;div&gt; element that has the "child-foo" class.
+  </p>
+  <p>
+    Note: The "This inherits from cite" text, inside the &lt;b&gt; tag, is also affected, but only because of inheritance.
+    If a color reset was used (e.g., "* {color:black;}"), then the text would remain black.
+  </p>
 
 <script type="multiline-template" id="childSelectorCss">
 div.child-foo > cite {
@@ -162,6 +186,11 @@ div.child-foo > cite {
 <h2 id="adjacentSelector">The Adjacent Selector ( + )</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+  <p>
+    Selects the specified element <b>immediately</b> following the specified <b>sibling</b> element.
+    The example below selects the first &lt;cite&gt; element after any &lt;div&gt; element that has the "foo" class.
+  </p>
+
 <script type="multiline-template" id="adjacentSelectorCss">
 div.foo + cite {
   color: #f90;
@@ -184,8 +213,10 @@ Some text *before* the first cite (no elements allowed).
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <!-- `````````````````````````````````` -->
-<h3 id="attributeSelector.attributeName">[attribute-name]</h3>
+<h3 id="attributeSelector.attributeName">[name]</h3>
 <!-- `````````````````````````````````` -->
+
+  <p>Selects all elements that have the specified attribute name.</p>
 
 <script type="multiline-template" id="attributeNameSelectorCss">
 [data-fad] {
@@ -202,8 +233,10 @@ Some text *before* the first cite (no elements allowed).
   <tzCssHtmlExample cssTemplateId="attributeNameSelectorCss" htmlTemplateId="attributeNameSelectorHtml"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="attributeSelector.attributeNameValue">[attribute-name="attribute-value"]</h3>
+<h3 id="attributeSelector.attributeNameValue">[name="value"]</h3>
 <!-- `````````````````````````````````` -->
+
+  <p>Matches all elements that have the exact attribute name and value.</p>
 
 <script type="multiline-template" id="attributeNameValueSelectorCss">
 [data-cat="bat"] {
@@ -221,8 +254,10 @@ Some text *before* the first cite (no elements allowed).
   <tzCssHtmlExample cssTemplateId="attributeNameValueSelectorCss" htmlTemplateId="attributeNameValueSelectorHtml"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="attributeSelector.attributeNameValueWhitespace">[attribute-name~="attribute-value"]</h3>
+<h3 id="attributeSelector.attributeNameValueWhitespace">[name~="value"]</h3>
 <!-- `````````````````````````````````` -->
+
+  <p>Matches all elements that have the exact attribute name plus the exact value as a whitespace separated substring.</p>
 
 <script type="multiline-template" id="attributeNameValueWhitespaceSelectorCss">
 [data-dub~="step"] {
@@ -240,8 +275,10 @@ Some text *before* the first cite (no elements allowed).
   <tzCssHtmlExample cssTemplateId="attributeNameValueWhitespaceSelectorCss" htmlTemplateId="attributeNameValueWhitespaceSelectorHtml"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="attributeSelector.attributeNameValueDash">[attribute-name|="attribute-value"]</h3>
+<h3 id="attributeSelector.attributeNameValueDash">[name|="value"]</h3>
 <!-- `````````````````````````````````` -->
+
+  <p>Matches all elements that have the exact attribute name plus the exact value or the exact value followed by a dash (-) with optional trailing characters.</p>
 
 <script type="multiline-template" id="attributeNameValueDashSelectorCss">
 [data-far|="car"] {
@@ -259,8 +296,10 @@ Some text *before* the first cite (no elements allowed).
   <tzCssHtmlExample cssTemplateId="attributeNameValueDashSelectorCss" htmlTemplateId="attributeNameValueDashSelectorHtml"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="attributeSelector.attributeNameValueStartsWith">[attribute-name^="attribute-value"]</h3>
+<h3 id="attributeSelector.attributeNameValueStartsWith">[name^="value"]</h3>
 <!-- `````````````````````````````````` -->
+
+  <p>Matches all elements that have the exact attribute name and start with the specified value.</p>
 
 <script type="multiline-template" id="attributeNameValueStartsWithSelectorCss">
 [data-moo^="cow"] {
@@ -278,8 +317,10 @@ Some text *before* the first cite (no elements allowed).
   <tzCssHtmlExample cssTemplateId="attributeNameValueStartsWithSelectorCss" htmlTemplateId="attributeNameValueStartsWithSelectorHtml"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="attributeSelector.attributeNameValueEndsWith">[attribute-name$="attribute-value"]</h3>
+<h3 id="attributeSelector.attributeNameValueEndsWith">[name$="value"]</h3>
 <!-- `````````````````````````````````` -->
+
+  <p>Matches all elements that have the exact attribute name and end with the specified value.</p>
 
 <script type="multiline-template" id="attributeNameValueEndsWithSelectorCss">
 [data-zig$="zag"] {
@@ -297,8 +338,10 @@ Some text *before* the first cite (no elements allowed).
   <tzCssHtmlExample cssTemplateId="attributeNameValueEndsWithSelectorCss" htmlTemplateId="attributeNameValueEndsWithSelectorHtml"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="attributeSelector.attributeNameValueContains">[attribute-name*="attribute-value"]</h3>
+<h3 id="attributeSelector.attributeNameValueContains">[name*="value"]</h3>
 <!-- `````````````````````````````````` -->
+
+  <p>Matches all elements that have the exact attribute name and contains the specified value.</p>
 
 <script type="multiline-template" id="attributeNameValueContainsSelectorCss">
 [data-zoo*="boa"] {
@@ -318,6 +361,10 @@ Some text *before* the first cite (no elements allowed).
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="pseudoSelector">The Pseudo Selector ( : / :: )</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>The pseudo selector (pseudo-classes and pseudo-elements) can match useful facets in a DOM, based on information that's not directly represented
+    (e.g., the first character in the content of a &lt;div&gt;).
+  </p>
 
 <!-- `````````````````````````````````` -->
 <h3 id="pseudoSelector.firstLetterPseudo">::first-letter pseudo-element #1</h3>
@@ -380,6 +427,23 @@ i::before {
 </script>
 
   <tzCssHtmlExample cssTemplateId="beforePseudoSelectorCss" htmlTemplateId="beforePseudoSelectorHtml"></tzCssHtmlExample>
+
+  <p>
+    Unless you're attempting to do so for an element that can't contain text (e.g., img tag).
+  </p>
+<script type="multiline-template" id="beforePseudoSelectorNotSupportedCss">
+img::after {
+  content: "** Not Supported **";
+  color: #f90;
+  font-style: normal;
+}
+</script>
+
+<script type="multiline-template" id="beforePseudoSelectorNotSupportedHtml">
+<img src="img/tz-icon-16.png">
+</script>
+
+  <tzCssHtmlExample cssTemplateId="beforePseudoSelectorNotSupportedCss" htmlTemplateId="beforePseudoSelectorNotSupportedHtml"></tzCssHtmlExample>
 
 </main>
 

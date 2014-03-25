@@ -18,12 +18,16 @@
  *
  * @attribute templateId - ID of the element containing the CSS code to insert.
  */
-var tzCssBlockTag = (function(tzDomHelper) {
+var tzCssBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
   "use strict";
 
   return {
+    getTagName: function() {
+      return "tzCssBlock";
+    },
+
     /**
-     * Render all tags on the page.
+     * Render all <tzCssBlock> tags on the page.
      */
     renderAll: function() {
       // find all tags
@@ -38,7 +42,7 @@ var tzCssBlockTag = (function(tzDomHelper) {
     },
 
     /**
-     * Render the tag identified by the given tagId.
+     * Render the <tzCssBlock> tag identified by the given tagId.
      *
      * @param tagId ID of the tag to render.
      */
@@ -56,7 +60,7 @@ var tzCssBlockTag = (function(tzDomHelper) {
     renderTag: function(tzStyleTagNode) {
       // get the attributes
       var templateId = tzStyleTagNode.getAttribute("templateId");
-      var rawCss = tzDomHelper.getInnerHtml(templateId);
+      var rawCss = tzDomHelper.getInnerHtmlWithDefault(templateId);
 
       // render the result
       this.render(tzStyleTagNode, rawCss);
@@ -75,4 +79,4 @@ var tzCssBlockTag = (function(tzDomHelper) {
     }
   }
 
-}(tzDomHelperModule));
+}(tzDomHelperModule, tzCustomTagHelperModule));

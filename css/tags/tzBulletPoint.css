@@ -1,0 +1,47 @@
+/*!
+  ~ tzTableOfContents.css v1.0.0
+  ~ Copyright (c) 2014 George Norman.
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+*/
+
+.tz-bullet-point-left {
+  float: left;
+  margin-top: 4px;
+}
+
+.tz-bullet-point-pass {
+  color: green;
+  border: 1px solid green;
+  padding: 1px 3px 1px 3px;
+  border-radius: 50%;
+}
+
+.tz-bullet-point-pass::after {
+  content: "\2714";
+  font-style: normal;
+}
+
+.tz-bullet-point-wtf {
+  color: #f83;
+}
+
+.tz-bullet-point-wtf::after {
+  content: "\2620";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.tz-bullet-point-fail {
+  color: red;
+  border: 1px solid red;
+  padding: 1px 3px 1px 3px;
+  border-radius: 50%;
+}
+
+.tz-bullet-point-fail::after {
+  content: "\2718";
+  font-style: normal;
+}
+

@@ -21,33 +21,27 @@
  * @attribute useShortItems - if true, then displays a list of property/value pairs (without the element name); otherwise, displays the same list,
  *            but includes the element-name for each item in the list.
  */
-var tzDisplayStylesTag = (function(tzDomHelper) {
+var tzDisplayStylesTag = (function(tzDomHelper, tzCustomTagHelper) {
 
   return {
-    /**
-     * Render all tags on the page.
-     */
-    renderAll: function() {
-      // find all tags
-      var tagNodeList = document.getElementsByTagName("tzDisplayStyles");
-
-      // render each tag
-      for (var i = 0; i < tagNodeList.length; i++) {
-        var tagNode = tagNodeList[i];
-
-        this.renderTag(tagNode);
-      }
+    getTagName: function() {
+      return "tzDisplayStyles";
     },
 
     /**
-     * Render the tag identified by the given tagId.
+     * Render all <tzDisplayStyles> tags on the page.
+     */
+    renderAll: function() {
+      tzCustomTagHelper.renderAll(this);
+    },
+
+    /**
+     * Render the <tzDisplayStyles> tag identified by the given tagId.
      *
      * @param tagId ID of the tag to render.
      */
     renderTagById: function(tagId) {
-      var tagNode = tzDomHelper.getFirstElementByTagName(tagId);
-
-      this.renderTag(tagNode);
+      tzCustomTagHelper.renderTagById(this, tagId);
     },
 
     /**
@@ -83,9 +77,11 @@ var tzDisplayStylesTag = (function(tzDomHelper) {
       ul.style.marginTop = "0";
 
       if (tzDomHelper.isEmpty(elementPropertyList)) {
+        // property list was not provided, so display an error.
         li = document.createElement("li");
         li.insertAdjacentHTML("afterbegin", "ERROR: Missing or empty elementPropertyList attribute (elementPropertyList=\"[{\"id\": \"property\"}]\"");
       } else {
+        // retrieve each property, specified by the given elementPropertyList, and render it.
         useShortItems = tzDomHelper.coalesce(useShortItems, 'true');
 
         for (var propertyIndex=0; propertyIndex<elementPropertyList.length; propertyIndex++) {
@@ -109,4 +105,4 @@ var tzDisplayStylesTag = (function(tzDomHelper) {
     }
   }
 
-}(tzDomHelperModule));
+}(tzDomHelperModule, tzCustomTagHelperModule));

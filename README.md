@@ -13,9 +13,11 @@ instead, I want to explore it on foot, even if it means sinking to my eyebrows i
 
 ## Demo
 
+* At Rules (in progress)
 * [Selectors](http://www.thruzero.com/pages/jcat3/css-lab/selectors.html)
-* [Transparency/Display](http://www.thruzero.com/pages/jcat3/css-lab/transparencyDisplay.html)
-* [Filters](http://www.thruzero.com/pages/jcat3/css-lab/filters.html)
 * [Box Model](http://www.thruzero.com/pages/jcat3/css-lab/boxModel.html)
 * [Positioning](http://www.thruzero.com/pages/jcat3/css-lab/positioning.html)
 * Modal Dialog (in progress)
+* Floats (in progress)
+* [Transparency/Display](http://www.thruzero.com/pages/jcat3/css-lab/transparencyDisplay.html)
+* [Filters](http://www.thruzero.com/pages/jcat3/css-lab/filters.html)

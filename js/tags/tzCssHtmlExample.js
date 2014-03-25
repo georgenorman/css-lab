@@ -25,12 +25,16 @@
  *
  * Example:
  */
-var tzCssHtmlExampleTag = (function(tzDomHelper, tzCssBlock, tzHtmlBlock, tzCodeExample) {
+var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, tzHtmlBlock, tzCodeExample) {
   "use strict";
 
   return {
+    getTagName: function() {
+      return "tzCssHtmlExample";
+    },
+
     /**
-     * Render all tags.
+     * Render all <tzCssHtmlExample> tags on the page.
      */
     renderAll: function() {
       // find all tags
@@ -45,7 +49,7 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCssBlock, tzHtmlBlock, tzCode
     },
 
     /**
-     * Render the tag identified by the given tagId.
+     * Render the <tzCssHtmlExample> tag identified by the given tagId.
      *
      * @param tagId ID of the tag to render.
      */
@@ -75,11 +79,11 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCssBlock, tzHtmlBlock, tzCode
 
       var rawCss = null;
       if (tzDomHelper.isNotEmpty(cssTemplateId)) {
-        rawCss = tzDomHelper.getInnerHtml(cssTemplateId);
+        rawCss = tzDomHelper.getInnerHtmlWithDefault(cssTemplateId);
         cssComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzCssComment");
       }
 
-      var rawHtml = tzDomHelper.getInnerHtml(htmlTemplateId);
+      var rawHtml = tzDomHelper.getInnerHtmlWithDefault(htmlTemplateId);
       var htmlComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzHtmlComment");
       var resultComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzResultComment");
 
@@ -118,4 +122,4 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCssBlock, tzHtmlBlock, tzCode
 
   }
 
-}(tzDomHelperModule, tzCssBlockTag, tzHtmlBlockTag, tzCodeExampleTag));
+}(tzDomHelperModule, tzCustomTagHelperModule, tzCssBlockTag, tzHtmlBlockTag, tzCodeExampleTag));

@@ -14,9 +14,12 @@
 
 @import "base.css";
 
+/* Common tags for all Labs */
+@import "tags/tzBulletPoint.css";
 @import "tags/tzCodeExample.css";
 @import "tags/tzDisplayStyles.css";
 @import "tags/tzHtmlBlock.css";
 @import "tags/tzTableOfContents.css";
 
+/* CSS Lab specific */
 @import "cssLab.css";

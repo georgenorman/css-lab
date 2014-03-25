@@ -20,6 +20,8 @@
   <title>Transparency/Display</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico"/>
   <style>
     @import "css/all-css.css";
 
@@ -39,7 +41,7 @@
 </header>
 
 <main>
-  <tzAboutPage style="margin-top:12px;"/>
+  <cssLabAbout style="margin-top:12px;"/>
 
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
@@ -47,9 +49,13 @@
   <h2 id="Opacity"></h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+  <p>Specifies the transparency of a rendered element, without affecting the space it occupies, its handling of events or its ability to receive focus.</p>
+
   <p>Also see <a href="#RGBa">RGBa</a>.</p>
 
   <h3 id="Opacity.1">opacity: 1</h3>
+
+  <p>The element is fully opaque.</p>
 
 <script type="multiline-template" id="fullyOpaqueHtml">
 <div style="opacity:1;" class="divInner">
@@ -61,6 +67,8 @@
 
   <h3 id="Opacity.0.5">opacity: 0.5</h3>
 
+  <p>The element is 50% transparent.</p>
+
 <script type="multiline-template" id="partiallyOpaqueHtml">
 <div style="opacity:0.5;" class="divInner">
   This DIV is 50% transparent.
@@ -71,6 +79,8 @@
 
   <h3 id="Opacity.0">opacity: 0</h3>
 
+  <p>The element is invisible, but still occupies the space, remains a focus target and can accept events (e.g., mouse-over can cause the cursor to change).</p>
+
 <script type="multiline-template" id="invisibleHtml">
 <div style="opacity:0;" class="divInner">
   Invisible, but occupies space and accepts events.
@@ -80,6 +90,12 @@
   <tzCssHtmlExample htmlTemplateId="invisibleHtml"></tzCssHtmlExample>
 
   <h3 id="Opacity.irreversible">Irreversible Opacity</h3>
+
+  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+    The opacity of a nested element is calculated by multiplying the opacity of all parent elements.
+    For example, if the opacity of an outer element is set to 0.5, then setting the opacity of a nested element to 1.0 results
+    in the nested element having an opacity of 0.5 * 1.0 = 0.5 (no change).
+  </tzBulletPoint>
 
 <script type="multiline-template" id="irreversibleHtml">
 <div style="opacity:1;">
@@ -104,6 +120,8 @@
 
   <h3 id="Visibility.visible">visibility:visible</h3>
 
+  <p>The element is displayed normally and accepts events and focus.</p>
+
 <script type="multiline-template" id="visibilityVisibleHtml">
 Before the DIV. Before the DIV. Before the DIV.
 <div style="visibility:visible;" class="divInner">
@@ -115,6 +133,8 @@ After the DIV. After the DIV. After the DIV.
   <tzCssHtmlExample htmlTemplateId="visibilityVisibleHtml"></tzCssHtmlExample>
 
   <h3 id="Visibility.hidden">visibility:hidden</h3>
+
+  <p>The element is visually transparent, but the space it occupies remains, and it doesn't receive events or focus.</p>
 
 <script type="multiline-template" id="visibilityHiddenHtml">
 Before the DIV.
@@ -131,6 +151,8 @@ After the DIV.
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <h3 id="Display.block">display:block</h3>
+
+  <p>The element is displayed as a block element (e.g., &lt;div&gt;) and accepts events and focus.</p>
 
 <script type="multiline-template" id="displayBlockHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -156,6 +178,8 @@ After the DIV. After the DIV. After the DIV.
 
   <h3 id="Display.inline">display:inline</h3>
 
+  <p>The element is displayed inline (e.g., &lt;span&gt;) and accepts events and focus.</p>
+
 <script type="multiline-template" id="displayInlineHtml">
 Before the DIV. Before the DIV. Before the DIV.
 <div style="display:inline;" class="divInner">
@@ -179,6 +203,8 @@ After the DIV. After the DIV. After the DIV.
   <tzCssHtmlExample htmlTemplateId="displayInlineWithPadHtml"></tzCssHtmlExample>
 
   <h3 id="Display.inline-block">display:inline-block</h3>
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">The element is rendered as a box, but flows as if it were an inline element.</tzBulletPoint>
 
 <script type="multiline-template" id="displayInlineBlockHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -204,6 +230,8 @@ After the DIV. After the DIV. After the DIV.
 
   <h3 id="Display.none">display:none</h3>
 
+  <p>The element is not displayed and does not accept events or focus.</p>
+
 <script type="multiline-template" id="displayNoneHtml">
 Before the DIV.
 <div style="display:none;" class="divInner">
@@ -215,6 +243,8 @@ After the DIV.
   <tzCssHtmlExample htmlTemplateId="displayNoneHtml"></tzCssHtmlExample>
 
   <h3 id="Display.list-item">display:list-item</h3>
+
+  <p>The element is displayed as a list item element (i.e., &lt;li&gt;).</p>
 
 <script type="multiline-template" id="displayListItemHtml">
 Before the DIV.
@@ -268,15 +298,24 @@ After the DIV. After the DIV. After the DIV.
 
   <h3 id="RGBa.alpha-0.1">Overlay with alpha of 0.1</h3>
 
+<script type="multiline-template" id="rgba-Css">
+.overlay {
+  position:absolute;
+  top:0; right:0;
+  bottom:0;
+  left:0;
+  text-align:right;
+  padding:2px;
+}
+</script>
+
 <script type="multiline-template" id="rgba-1Html">
 <div style="position:relative;">
   <div style="color:#0a0;" class="divInner">
     Obscured and events are blocked.
   </div>
 
-  <div style="background:rgba(184,184,184,0.1);
-              position:absolute; top:0; right:0; bottom:0; left:0;
-              text-align:right; padding:2px;">
+  <div style="background:rgba(184,184,184,0.7);" class="overlay">
     <!--
       1. provide a semi-transparent background on top of the div above
       2. function as an event trap (prevent events from reaching the div above)
@@ -286,7 +325,7 @@ After the DIV. After the DIV. After the DIV.
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="rgba-1Html"></tzCssHtmlExample>
+  <tzCssHtmlExample cssTemplateId="rgba-Css" htmlTemplateId="rgba-1Html"></tzCssHtmlExample>
 
   <h3 id="RGBa.alpha-0.6">Overlay with alpha of 0.6</h3>
 
@@ -296,9 +335,7 @@ After the DIV. After the DIV. After the DIV.
     Obscured and events are blocked.
   </div>
 
-  <div style="background:rgba(184,184,184,0.7);
-              position:absolute; top:0; right:0; bottom:0; left:0;
-              text-align:right; padding:2px;">
+  <div style="background:rgba(184,184,184,0.7);" class="overlay">
     <!--
       1. provide a semi-transparent background on top of the div above
       2. function as an event trap (prevent events from reaching the div above)

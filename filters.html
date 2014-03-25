@@ -20,16 +20,10 @@
   <title>Filters</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico"/>
   <style>
     @import "css/all-css.css";
-
-    /*
-      Use the value of the h2 id as the header text, so that both the ID and header text stay in sync.
-      Cheap "hack" works here because titles have no spaces.
-    */
-    h2:before {
-      content: attr(id);
-    }
   </style>
 </head>
 <body onload="cssLabModule.handleOnLoad();">
@@ -38,13 +32,20 @@
 </header>
 
 <main>
-  <tzAboutPage style="margin-top:12px;"/>
+  <cssLabAbout style="margin-top:12px;"/>
 
-  <tzTableOfContents class="toc" level1ItemsTagName="h2"></tzTableOfContents>
+  <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Grayscale"></h2>
+  <h2 id="grayscale">Grayscale</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <code>
+    grayscale( &lt;number&gt; | &lt;percentage&gt; );
+  </code>
+  <p>
+    Converts the input image to grayscale.
+  </p>
 
 <script type="multiline-template" id="filterGrayCss">
 .filter-gray {
@@ -54,18 +55,23 @@
 </script>
 
 <script type="multiline-template" id="filterGrayHtml">
-<article>
-  <img src="./img/scenic/Yosemite.png">
-  <i class="sq"></i><i class="arrow-right"></i>
-  <img class="filter-gray" src="./img/scenic/Yosemite.png">
-</article>
+<img src="./img/scenic/Yosemite.png">
+<i class="sq"></i><i class="arrow-right"></i>
+<img class="filter-gray" src="./img/scenic/Yosemite.png">
 </script>
 
   <tzCssHtmlExample cssTemplateId="filterGrayCss" htmlTemplateId="filterGrayHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Sepia" ></h2>
+  <h2 id="sepia">Sepia</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <code>
+    sepia( &lt;number&gt; | &lt;percentage&gt; );
+  </code>
+  <p>
+    Converts the input image to sepia.
+  </p>
 
 <script type="multiline-template" id="filterSepiaCss">
 .filter-sepia {
@@ -75,18 +81,23 @@
 </script>
 
 <script type="multiline-template" id="filterSepiaHtml">
-<article>
-  <img src="./img/scenic/Yosemite.png">
-  <i class="sq"></i><i class="arrow-right"></i>
-  <img class="filter-sepia" src="./img/scenic/Yosemite.png">
-</article>
+<img src="./img/scenic/Yosemite.png">
+<i class="sq"></i><i class="arrow-right"></i>
+<img class="filter-sepia" src="./img/scenic/Yosemite.png">
 </script>
 
   <tzCssHtmlExample cssTemplateId="filterSepiaCss" htmlTemplateId="filterSepiaHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Brightness" ></h2>
+  <h2 id="brightness">Brightness</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <code>
+    brightness( &lt;number&gt; | &lt;percentage&gt; );
+  </code>
+  <p>
+    Makes the image less or more bright.
+  </p>
 
 <script type="multiline-template" id="filterBrightnessCss">
 .filter-brightness {
@@ -96,18 +107,23 @@
 </script>
 
 <script type="multiline-template" id="filterBrightnessHtml">
-<article>
-  <img src="./img/scenic/Yosemite.png">
-  <i class="sq"></i><i class="arrow-right"></i>
-  <img class="filter-brightness" src="./img/scenic/Yosemite.png">
-</article>
+<img src="./img/scenic/Yosemite.png">
+<i class="sq"></i><i class="arrow-right"></i>
+<img class="filter-brightness" src="./img/scenic/Yosemite.png">
 </script>
 
   <tzCssHtmlExample cssTemplateId="filterBrightnessCss" htmlTemplateId="filterBrightnessHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Contrast" ></h2>
+  <h2 id="contrast">Contrast</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <code>
+    contrast( &lt;number&gt; | &lt;percentage&gt; );
+  </code>
+  <p>
+    Adjusts the contrast of the input.
+  </p>
 
 <script type="multiline-template" id="filterContrastCss">
 .filter-contrast {
@@ -117,18 +133,23 @@
 </script>
 
 <script type="multiline-template" id="filterContrastHtml">
-<article>
-  <img src="./img/scenic/Yosemite.png">
-  <i class="sq"></i><i class="arrow-right"></i>
-  <img class="filter-contrast" src="./img/scenic/Yosemite.png">
-</article>
+<img src="./img/scenic/Yosemite.png">
+<i class="sq"></i><i class="arrow-right"></i>
+<img class="filter-contrast" src="./img/scenic/Yosemite.png">
 </script>
 
   <tzCssHtmlExample cssTemplateId="filterContrastCss" htmlTemplateId="filterContrastHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Blur" ></h2>
+  <h2 id="blur">Blur</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <code>
+    blur( &lt;radius&gt; );
+  </code>
+  <p>
+    Applies a Gaussian blur to the input image.
+  </p>
 
 <script type="multiline-template" id="filterBlurCss">
 .filter-blur {
@@ -138,18 +159,23 @@
 </script>
 
 <script type="multiline-template" id="filterBlurHtml">
-<article>
-  <img src="./img/scenic/Yosemite.png">
-  <i class="sq"></i><i class="arrow-right"></i>
-  <img class="filter-blur" src="./img/scenic/Yosemite.png">
-</article>
+<img src="./img/scenic/Yosemite.png">
+<i class="sq"></i><i class="arrow-right"></i>
+<img class="filter-blur" src="./img/scenic/Yosemite.png">
 </script>
 
   <tzCssHtmlExample cssTemplateId="filterBlurCss" htmlTemplateId="filterBlurHtml"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Shadow" ></h2>
+  <h2 id="drop-shadow">Drop Shadow</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <code>
+    drop-shadow( &lt;right-offset&gt; &lt;bottom-offset&gt; &lt;blur&gt; &lt;color&gt; );
+  </code>
+  <p>
+    Applies a blurred offset version of the image's alpha mask, drawn with a specified color, below the image.
+  </p>
 
 <script type="multiline-template" id="filterShadowCss">
 .filter-drop-shadow {
@@ -159,18 +185,98 @@
 </script>
 
 <script type="multiline-template" id="filterShadowHtml">
-<article>
-  <img src="./img/scenic/Yosemite.png">
-  <i class="sq"></i><i class="arrow-right"></i>
-  <img class="filter-drop-shadow" src="./img/scenic/Yosemite.png">
-</article>
+<img src="./img/scenic/Yosemite.png">
+<i class="sq"></i><i class="arrow-right"></i>
+<img class="filter-drop-shadow" src="./img/scenic/Yosemite.png">
 </script>
 
   <tzCssHtmlExample cssTemplateId="filterShadowCss" htmlTemplateId="filterShadowHtml"></tzCssHtmlExample>
 
+  <!-- `````````````````````````````````` -->
+  <h3 id="drop-shadow.caveat-border">With Border</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+    Adding a border to the image, causes the border and the image to both have drop-shadows.
+    This is not the effect I was looking for.
+  </tzBulletPoint>
+
+<script type="multiline-template" id="filterShadowBorderCss">
+.drop-shadow_border {
+  -webkit-filter: drop-shadow(6px 6px 8px #000);
+  filter: drop-shadow(6px 6px 8px #000);
+  border: 2px solid #ccc;
+  padding: 12px;
+}
+</script>
+
+<script type="multiline-template" id="filterShadowBorderHtml">
+<img class="drop-shadow_border" src="./img/scenic/Yosemite.png">
+</script>
+
+  <tzCssHtmlExample cssTemplateId="filterShadowBorderCss" htmlTemplateId="filterShadowBorderHtml"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="drop-shadow.caveat-inherited">Inherited from Div</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+    Take the previous example and nest the image inside of a div, then move the drop-shadow from the image to the div.
+    Unfortunately, the drop-shadow is inherited by the image and the shadow is applied to both the div and the image.
+    This is still not the effect I was looking for.
+  </tzBulletPoint>
+
+<script type="multiline-template" id="filterShadowInheritedCss">
+.drop-shadow_inherited {
+  -webkit-filter: drop-shadow(6px 6px 8px #000);
+  filter: drop-shadow(6px 6px 8px #000);
+  border: 2px solid #ccc;
+  padding: 12px;
+  width: 100px;
+}
+</script>
+
+<script type="multiline-template" id="filterShadowInheritedHtml">
+<div class="drop-shadow_inherited">
+  <img src="./img/scenic/Yosemite.png">
+</div>
+</script>
+
+  <tzCssHtmlExample cssTemplateId="filterShadowInheritedCss" htmlTemplateId="filterShadowInheritedHtml"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="drop-shadow.caveat-boxShadow">Box Shadow</h3>
+  <!-- `````````````````````````````````` -->
+
+  <p>
+    Abandon the drop-shadow filter altogether and use box-shadow instead.
+    This is exactly the effect I was looking for.
+  </p>
+
+<script type="multiline-template" id="filterBoxShadowCss">
+.box-shadow {
+  box-shadow: 6px 6px 8px #000;
+  border: 1px solid #ccc;
+  padding: 12px;
+}
+</script>
+
+<script type="multiline-template" id="filterBoxShadowHtml">
+<img class="box-shadow" src="./img/scenic/Yosemite.png">
+</script>
+
+  <tzCssHtmlExample cssTemplateId="filterBoxShadowCss" htmlTemplateId="filterBoxShadowHtml"></tzCssHtmlExample>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Hue-rotate" ></h2>
+  <h2 id="hue-rotate">Hue Rotate</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <code>
+    hue-rotate( &lt;angle&gt; );
+  </code>
+  <p>
+    Applies a hue rotation on the input image. The parameter defines the number of degrees around the color circle the input samples will be adjusted.
+  </p>
 
 <script type="multiline-template" id="filterHueRotateCss">
 .filter-hue-rotate {
@@ -180,14 +286,96 @@
 </script>
 
 <script type="multiline-template" id="filterHueRotateHtml">
-<article>
-  <img src="./img/scenic/Yosemite.png">
-  <i class="sq"></i><i class="arrow-right"></i>
-  <img class="filter-hue-rotate" src="./img/scenic/Yosemite.png">
-</article>
+<img src="./img/scenic/Yosemite.png">
+<i class="sq"></i><i class="arrow-right"></i>
+<img class="filter-hue-rotate" src="./img/scenic/Yosemite.png">
 </script>
 
   <tzCssHtmlExample cssTemplateId="filterHueRotateCss" htmlTemplateId="filterHueRotateHtml"></tzCssHtmlExample>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="opacity">Opacity</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <code>
+    opacity( &lt;number&gt; | &lt;percentage&gt; );
+  </code>
+  <p>
+    Adjusts the transparency of the input.
+  </p>
+
+<script type="multiline-template" id="filterOpacityCss">
+.filter-opacity-20pc {
+  -webkit-filter: opacity(20%);
+  filter: opacity(20%);
+}
+
+.filter-opacity-50pc {
+  -webkit-filter: opacity(50%);
+  filter: opacity(50%);
+}
+
+.filter-opacity-80pc {
+  -webkit-filter: opacity(80%);
+  filter: opacity(80%);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.text-underlay {
+  height: 160px;
+  width: 100px;
+  color: #448;
+  font-weight:bold;
+  text-align: center;
+}
+</script>
+
+<script type="multiline-template" id="filterOpacityHtml">
+<div style="float:left; padding:3px;">
+  <div style="position:relative;">
+    <div class="text-underlay">
+      <br><br>Image<br>opacity<br>is 20%
+    </div>
+    <div class="image-overlay">
+      <img class="filter-opacity-20pc" src="./img/scenic/Yosemite.png">
+    </div>
+  </div>
+</div>
+<div style="float:left; padding:3px;">
+  <div style="position:relative;">
+    <div class="text-underlay">
+      <br><br>Image<br>opacity<br>is 50%
+    </div>
+    <div class="image-overlay">
+      <img class="filter-opacity-50pc" src="./img/scenic/Yosemite.png">
+    </div>
+  </div>
+</div>
+<div style="float:left; padding:3px;">
+  <div style="position:relative;">
+    <div class="text-underlay">
+      <br><br>Image<br>opacity<br>is 80%
+    </div>
+    <div class="image-overlay">
+      <img class="filter-opacity-80pc" src="./img/scenic/Yosemite.png">
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample cssTemplateId="filterOpacityCss" htmlTemplateId="filterOpacityHtml">
+    <tzResultComment>
+      At 20% opacity, the image overlay barely obscures the text.
+      At 80% opacity, the image overlay mostly obscures the text.
+    </tzResultComment>
+  </tzCssHtmlExample>
 
 </main>
 
