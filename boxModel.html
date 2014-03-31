@@ -51,7 +51,7 @@
 </div>
 </script>
 
-  <tzCodeExample templateId="basicBoxModelHtml" heading="HTML" lang="*ml"></tzCodeExample>
+  <tzCodeExample templateId="basicBoxModelHtml" heading="HTML" lang="*ml" width="750px"></tzCodeExample>
 
   <img src="img/box-model.png" class="image-frame">
 
@@ -61,32 +61,41 @@
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    This section contains CSS that's shared by all examples on this page.
+    This section contains CSS that's shared by all experiments on this page.
+    All defined classes use the default static position.
   </p>
 
 <script type="multiline-template" id="tmplCommonCss">
-/* A 300px square, expected to serve as a fixed background. */
+/* A gray box, to serve as the outermost container. */
 .outermost-div {
   background-color: #ccc;
-  width: 240px;
-  height: 240px;
+  width: 240px; /* content width */
+  height: 240px; /* content height */
   padding: 0;
   margin: 0;
 }
 
-/* A 240px square grid, with margin, to illustrate the position of child divs. */
+/* A blue grid, to be nested inside of outermost. */
 .grid.middle-grid {
-  width: 220px;
-  height: 220px;
+  width: 220px; /* content width */
+  height: 220px; /* content height */
   margin: 10px;
 }
 
-/* A simple content box */
+/* A semi-transparent box, with margin, padding and redish border, to be nested inside of middle-grid. */
+.inner-box {
+  margin: 10px;
+  border: 20px solid #f00;
+  padding: 30px;
+  opacity: 0.5;
+}
+
+/* A simple 100px x 100px content box, to be nested inside of inner-box. */
 .content-area {
   color: #fff;
   background-color: #047;
-  width: 100px;
-  height: 100px;
+  width: 100px; /* content width */
+  height: 100px; /* content height */
   text-align: center;
   display: table-cell;
   vertical-align: middle;
@@ -95,7 +104,7 @@
 
   <tzCssBlock templateId="tmplCommonCss"></tzCssBlock>
 
-  <tzCodeExample templateId="tmplCommonCss" lang="css"></tzCodeExample>
+  <tzCodeExample templateId="tmplCommonCss" lang="css" width="750px"></tzCodeExample>
 
   <p>
     <span class="note">Note: The text is centered using the <b>table-cell</b> technique described by <i>lluisaznar</i>
@@ -103,27 +112,26 @@
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h2 id="positionAbsolute">Position - Absolute</h2>
+  <h2 tzBulletPointPass id="positionAbsolute">Position - Absolute</h2>
   <!-- `````````````````````````````````` -->
 
   <p>
-    This example uses a set of nested divs, with <i>middleGrid</i> having <b>position:absolute</b>, to avoid issues with <a href="positioning.html#positionRelative.verticalMarginTransfer">Margin Transfer</a>.
-    I'm assuming this is the typical case, because using the default static position is very convoluted (as is shown in the following section).
+    This series of experiments uses a set of nested divs, with <i>middleGrid</i> and <i>innerBox</i> having <b>position:absolute</b>.
+    This avoids issues with <a href="positioning.html#relativeToStatic.topMarginTransfer">Top Margin Transfer</a>.
   </p>
 
-<script type="multiline-template" id="basicBoxModelPositionAbsoluteCss">
-.inner-box {
-  margin: 10px;
-  border: 20px solid #f00;
-  padding: 30px;
-  opacity: 0.5;
-}
-</script>
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="positionAbsolute.content">With Content Area</h3>
+  <!-- `````````````````````````````````` -->
 
-<script type="multiline-template" id="basicBoxModelPositionAbsoluteHtml">
-<div class="outermost-div" id="outermost">
-  <div class="grid middle-grid" style="position:absolute;" id="middleGrid">
-    <div class="inner-box" id="innerBox">
+  <tzBulletPoint iconClass="tz-bullet-point-pass" iconStyle="margin-top:0;">
+    <p style="">This experiment includes a single 100px by 100px content area.</p>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="basicBoxModelPositionAbsoluteWithContentHtml">
+<div class="outermost-div" id="outermost_010">
+  <div class="grid middle-grid" style="position:absolute;" id="middleGrid_010">
+    <div class="inner-box" style="position:absolute;" id="innerBox_010">
       <div class="content-area">CONTENT<br>100px x 100px</div>
     </div>
   </div>
@@ -131,50 +139,137 @@
 </script>
 
 
-  <tzCssHtmlExample templateId="basicBoxModelPositionAbsolute">
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionAbsoluteWithContentHtml" width="750px">
     <tzResultComment>
-      Summary: <i>outermost</i> has no border, padding or margin; <i>middleGrid</i> has a 10px margin and position:absolute; <i>innerBox</i> has a 10px margin, 20px redish border, 30px padding and 100px x 100px content area.
+      Summary: <i>outermost</i> has no border, padding or margin; <i>middleGrid</i> has a 10px margin and position:absolute;
+      <i>innerBox</i> also uses position:absolute and has a 10px margin, 20px redish border, 30px padding and 100px x 100px content area.
     </tzResultComment>
   </tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermost": "position"}, {"middleGrid": "position"}, {"innerBox": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_010": "position"}, {"middleGrid_010": "position"}, {"innerBox_010": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h2 id="positionStatic">Position - Static</h2>
+  <h3 tzBulletPointPass id="positionAbsolute.sansContent">Sans Content Area</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
-    This example keeps everything the same as the <a href="#positionAbsolute">Position - Absolute</a> example above, except the position of <i>middleGrid</i> has been changed from absolute to <b>static</b>.
-    This causes the top margin of <i>innerBox</i> to transfer to the outermost div (as evidenced by the more than 10px gap above the outermost div).
-    This is very similar to what was described in the Positioning lab - See the <a href="positioning.html#positionRelative.verticalMarginTransfer">Margin Transfer</a> section for details.
+  <tzBulletPoint iconClass="tz-bullet-point-pass" iconStyle="margin-top:2px;">
+    This experiment keeps everything the same as <a href="#positionAbsolute.content">Position - Absolute, With Content Area</a>,
+    except the center content-area box has been removed.
+  </tzBulletPoint>
+
+<script type="multiline-template" id="basicBoxModelPositionAbsoluteSansContentHtml">
+<div class="outermost-div" id="outermost_020">
+  <div class="grid middle-grid" style="position:absolute;" id="middleGrid_020">
+    <div class="inner-box" style="position:absolute; id="innerBox_020">
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionAbsoluteSansContentHtml" width="750px"></tzCssHtmlExample>
+
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_020": "position"}, {"middleGrid_020": "position"}, {"innerBox_020": "position"}]}' useShortItems="true"></tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="positionAbsolute.multiInnerAbsolute">Multiple Absolute Inner Boxes</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    This experiment keeps everything the same as <a href="#positionAbsolute.sansContent">Position - Absolute, Sans Content Area</a>,
+    except now there are multiple innerBoxes. Since position is absolute, they don't flow around each other.
+    Instead, they stack on top of each other (unless positioned manually, as in this example).
+  </tzBulletPoint>
+
+<script type="multiline-template" id="basicBoxModelPositionAbsoluteMultiAbsoluteInnerHtml">
+<div class="outermost-div" id="outermost_030">
+  <div class="grid middle-grid" style="position:absolute;" id="middleGrid_030">
+    <div class="inner-box" style="position:absolute;" id="innerBox_030"></div>
+    <div class="inner-box" style="position:absolute; top:30px; left:30px;" id="innerBox_031"></div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionAbsoluteMultiAbsoluteInnerHtml" width="750px"></tzCssHtmlExample>
+
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_030": "position"}, {"middleGrid_030": "position"}, {"innerBox_030": "position"}, {"innerBox_031": "position"}]}' useShortItems="true"></tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="positionAbsolute.multiInnerStatic">Multiple Static Inner Boxes</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    This experiment is the same as above, except now the multiple innerBoxes are static (static boxes nested inside of absolute boxes).
+    Note: If the innerBoxes were relative positioned, the results would be the same.
+
+    <p style="margin-bottom:0;">
+      The following behaviours of the innerBoxes can be observed:
+    </p>
+    <ul>
+      <li>They flow around each other</li>
+      <li>They stretch horizontally, to fill the space of their parent container (<i>middleGrid</i>), unless width or margin are explicitly set as is the case for the second innerBox.</li>
+      <li>The top margin of the lower box overlaps the bottom margin of its above sibling.</li>
+    </ul>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="basicBoxModelPositionAbsoluteMultiStaticInnerHtml">
+<div class="outermost-div" style="height:300px;" id="outermost_040">
+  <div class="grid middle-grid" style="position:absolute; height:260px" id="middleGrid_040">
+    <div class="inner-box" id="innerBox_040"></div>
+    <div class="inner-box" id="innerBox_041" style="width:10px; margin:auto"></div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionAbsoluteMultiStaticInnerHtml" width="750px"></tzCssHtmlExample>
+
+  <b>Current 'position' styles:</b>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_040": "position"}, {"middleGrid_040": "position"}, {"innerBox_040": "position"}, {"innerBox_041": "position"}]}' useShortItems="true"></tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h2 tzBulletPointFail id="positionStatic">Position - Static</h2>
+  <!-- `````````````````````````````````` -->
+
+  <p>
+    This series of experiments uses a set of nested divs, with <i>middleGrid</i> and <i>innerBox</i> having <b>position:static</b> (the default position).
+    This causes issues with <a href="positioning.html#relativeToStatic.topMarginTransfer">Top Margin Transfer</a>.
+  </p>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointFail id="positionStatic.content">With Content Area</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
+    This experiment includes a single 100px by 100px content area.
+    Since position is now static, the top margin of <i>innerBox</i> is transferred to the outermost div (as evidenced by the more than 10px gap above the outermost div).
   </tzBulletPoint>
 
 <script type="multiline-template" id="basicBoxModelPositionStaticHtml">
-<div class="outermost-div" id="outermostPs">
-  <div class="grid middle-grid" style="position:static;" id="middleGridPs">
-    <div class="inner-box" id="innerBoxPs">
+<div class="outermost-div" id="outermost_110">
+  <div class="grid middle-grid" style="position:static;" id="middleGrid_110">
+    <div class="inner-box" id="innerBox_110">
       <div class="content-area">CONTENT<br>100px x 100px</div>
     </div>
   </div>
 </div>
 </script>
 
-
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionStaticHtml">
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionStaticHtml" width="750px">
     <tzResultComment>
       Summary: <i>outermost</i> has no border, padding or margin; <i>middleGrid</i> has a 10px margin and position:static; <i>innerBox</i> has a 10px margin.
     </tzResultComment>
   </tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostPs": "position"}, {"middleGridPs": "position"}, {"innerBoxPs": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_110": "position"}, {"middleGrid_110": "position"}, {"innerBox_110": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="positionStatic.border">Position - Static with Border</h3>
+  <h3 tzBulletPointFail id="positionStatic.border">Position - Static with Border</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     Similar to what was found in the Positioning lab, by adding a top border to an outer div, the Margin Transfer "feature" can be blocked.
     The example below, shows that adding a top border to <i>middleGrid</i>, protects it from the margin transfer.
     However, <i>outermost</i> is still affected by the margin transfer, as evidenced by the more than 10px gap above the <i>outermost</i> div.
@@ -191,7 +286,7 @@
 </script>
 
 
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionStaticWithBorderHtml">
+  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionStaticWithBorderHtml" width="750px">
     <tzResultComment>
       Summary: <i>outermost</i> has no border, padding or margin; <i>middleGrid</i> has a 10px margin, position:static and a thin <b>top border</b>; <i>innerBox</i> has a 10px margin.
     </tzResultComment>
@@ -202,22 +297,15 @@
 
 
   <!-- `````````````````````````````````` -->
-  <h3 id="positionStatic.padding">Position - Static with Padding</h3>
+  <h3 tzBulletPointFail id="positionStatic.padding">Position - Static with Padding</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     Adding some padding to the outermost div can also mitigate the affects of Margin Transfer, when using static divs.
     Furthermore, the end result can be made to look exactly like the example that uses position:absolute, but with a lot of finagling of the outer and inner divs.
   </tzBulletPoint>
 
 <script type="multiline-template" id="basicBoxModelPositionStaticWithPaddingCss">
-.inner-box-pswp {
-  margin:0;
-  border:20px solid #f00;
-  padding:30px;
-  opacity:0.5;
-}
-
 .grid.middle-grid-pswp {
   width: 200px;
   height: 200px;
@@ -228,14 +316,14 @@
 <script type="multiline-template" id="basicBoxModelPositionStaticWithPaddingHtml">
 <div class="outermost-div" style="padding:10px 0 0 10px; width:230px; height:230px;" id="outermostPswp">
   <div class="grid middle-grid-pswp" style="position:static; padding:10px;" id="middleGridPswp">
-    <div class="inner-box-pswp" id="innerBoxPswp">
+    <div class="inner-box" style="margin:0;" id="innerBoxPswp">
       <div class="content-area">CONTENT<br>100px x 100px</div>
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample templateId="basicBoxModelPositionStaticWithPadding"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="basicBoxModelPositionStaticWithPadding" width="750px"></tzCssHtmlExample>
 
 </main>
 

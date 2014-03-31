@@ -63,7 +63,7 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="fullyOpaqueHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="fullyOpaqueHtml" width="400px"></tzCssHtmlExample>
 
   <h3 id="Opacity.0.5">opacity: 0.5</h3>
 
@@ -75,7 +75,7 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="partiallyOpaqueHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="partiallyOpaqueHtml" width="400px"></tzCssHtmlExample>
 
   <h3 id="Opacity.0">opacity: 0</h3>
 
@@ -87,11 +87,11 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="invisibleHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="invisibleHtml" width="400px"></tzCssHtmlExample>
 
-  <h3 id="Opacity.irreversible">Irreversible Opacity</h3>
+  <h3 tzBulletPointFail id="Opacity.irreversible">Irreversible Opacity</h3>
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     The opacity of a nested element is calculated by multiplying the opacity of all parent elements.
     For example, if the opacity of an outer element is set to 0.5, then setting the opacity of a nested element to 1.0 results
     in the nested element having an opacity of 0.5 * 1.0 = 0.5 (no change).
@@ -112,7 +112,7 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="irreversibleHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="irreversibleHtml" width="400px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Visibility"></h2>
@@ -130,7 +130,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="visibilityVisibleHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="visibilityVisibleHtml" width="400px"></tzCssHtmlExample>
 
   <h3 id="Visibility.hidden">visibility:hidden</h3>
 
@@ -144,7 +144,7 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="visibilityHiddenHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="visibilityHiddenHtml" width="400px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="Display"></h2>
@@ -162,7 +162,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayBlockHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayBlockHtml" width="400px"></tzCssHtmlExample>
 
   <h3 id="Display.block.margin+padding">display:block (margin+padding)</h3>
 
@@ -174,7 +174,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayBlockWithPadHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayBlockWithPadHtml" width="550px"></tzCssHtmlExample>
 
   <h3 id="Display.inline">display:inline</h3>
 
@@ -188,7 +188,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayInlineHtml" width="550px"></tzCssHtmlExample>
 
   <h3 id="Display.inline.margin+padding">display:inline (margin+padding)</h3>
 
@@ -200,11 +200,11 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineWithPadHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayInlineWithPadHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.inline-block">display:inline-block</h3>
+  <h3 tzBulletPointPass id="Display.inline-block">display:inline-block</h3>
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">The element is rendered as a box, but flows as if it were an inline element.</tzBulletPoint>
+  <tzBulletPoint iconClass="tz-bullet-point-pass" iconStyle="margin-top:0;">The element is rendered as a box, but flows as if it were an inline element.</tzBulletPoint>
 
 <script type="multiline-template" id="displayInlineBlockHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -214,7 +214,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineBlockHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayInlineBlockHtml" width="550px"></tzCssHtmlExample>
 
   <h3 id="Display.inline-block.margin+padding">display:inline-block (margin+padding)</h3>
 
@@ -226,7 +226,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineBlockWithPadHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayInlineBlockWithPadHtml" width="550px"></tzCssHtmlExample>
 
   <h3 id="Display.none">display:none</h3>
 
@@ -240,7 +240,7 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayNoneHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayNoneHtml" width="550px"></tzCssHtmlExample>
 
   <h3 id="Display.list-item">display:list-item</h3>
 
@@ -254,7 +254,7 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayListItemHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayListItemHtml" width="550px"></tzCssHtmlExample>
 
   <h3 id="Display.table">display:table</h3>
 
@@ -266,7 +266,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayTableHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayTableHtml" width="550px"></tzCssHtmlExample>
 
   <h3 id="Display.grid">display:grid</h3>
 
@@ -278,7 +278,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayGridHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayGridHtml" width="550px"></tzCssHtmlExample>
 
   <h3 id="Display.inline-grid">display:inline-grid</h3>
 
@@ -290,7 +290,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineGridHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="displayInlineGridHtml" width="550px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="RGBa"></h2>
@@ -298,7 +298,7 @@ After the DIV. After the DIV. After the DIV.
 
   <h3 id="RGBa.alpha-0.1">Overlay with alpha of 0.1</h3>
 
-<script type="multiline-template" id="rgba-Css">
+<script type="multiline-template" id="rgbaCss">
 .overlay {
   position:absolute;
   top:0; right:0;
@@ -309,7 +309,7 @@ After the DIV. After the DIV. After the DIV.
 }
 </script>
 
-<script type="multiline-template" id="rgba-1Html">
+<script type="multiline-template" id="rgba1Html">
 <div style="position:relative;">
   <div style="color:#0a0;" class="divInner">
     Obscured and events are blocked.
@@ -325,11 +325,11 @@ After the DIV. After the DIV. After the DIV.
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="rgba-Css" htmlTemplateId="rgba-1Html"></tzCssHtmlExample>
+  <tzCssHtmlExample cssTemplateId="rgbaCss" htmlTemplateId="rgba1Html" width="580px"></tzCssHtmlExample>
 
   <h3 id="RGBa.alpha-0.6">Overlay with alpha of 0.6</h3>
 
-<script type="multiline-template" id="rgba-2Html">
+<script type="multiline-template" id="rgba2Html">
 <div style="position:relative;">
   <div style="color:#0a0;" class="divInner">
     Obscured and events are blocked.
@@ -345,7 +345,7 @@ After the DIV. After the DIV. After the DIV.
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="rgba-2Html"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="rgba2Html" width="580px"></tzCssHtmlExample>
 
   </main>
 

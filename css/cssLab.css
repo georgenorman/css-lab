@@ -3,102 +3,10 @@
   ~ Copyright (c) 2014 George Norman.
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ CSS specific to CSS Lab
+  ~
 */
-
-/* ---------------------------------
- * Anchors
- * --------------------------------- */
-
-a {
-  text-decoration: none;
-  color: #69c;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* ---------------------------------
- * Header
- * --------------------------------- */
-
-/* Create an empty shell for the header content */
-header {
-  background: linear-gradient(45deg, #777, #fcfcfc);
-  color: #fff;
-  padding: 8px;
-  white-space: nowrap;
-}
-
-/* Add a logo, align the header text */
-header h1 {
-  margin: 0 0;
-
-  /* add the logo */
-  background: url("../img/tz-icon-24.png") no-repeat;
-  width: 24px;
-  height: 24px;
-
-  /* vertically align the header text with the logo */
-  line-height: 23px;
-}
-
-/* Move the header text off of the logo */
-header h1:before {
-  content: "\00a0"; /* requires one space for margin to work */
-  margin-right: 22px;
-}
-
-/* ---------------------------------
- * Headings (h2-h4)
- * --------------------------------- */
-
-h2 {
-  border-bottom: 1px solid #999;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  margin-top: 12px;
-  color: #669;
-}
-
-h3 {
-  border-bottom: 1px dashed #ccc;
-  margin-top: 4px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  color: #033;
-}
-
-h4 {
-  margin: 12px 6px 0 0;
-  color: #888;
-}
-
-/* ---------------------------------
- * Main content
- * --------------------------------- */
-
-main {
-  margin: 0 16px;
-}
-
-/* ---------------------------------
- * Footer
- * --------------------------------- */
-
-/* Create an empty shell for the footer content */
-footer {
-  margin-top: 48px;
-  padding: 6px;
-  color: #fff;
-  background: linear-gradient(45deg, #fcfcfc, #777);
-  text-align: right;
-}
-
-/* Add the standard header content (same for every page) */
-footer:after {
-  content: "Copyright \00a9  2014 George Norman"
-}
 
 /* ---------------------------------
  * Inner-div box (to outline rendered example and show hover events)
@@ -152,24 +60,4 @@ footer:after {
   border: 7px solid #B2E0B2;
   margin: 0 -2px 61px 6px;
   display: inline-block;
-}
-
-/* ---------------------------------
- * Note
- * --------------------------------- */
-
-.note {
-  font-size: 12px;
-  font-style: italic;
-}
-
-/* ---------------------------------
- * Image Box
- * --------------------------------- */
-
-.image-frame {
-  margin: 16px;
-  padding: 16px;
-  box-shadow: 3px 3px 4px #000;
-  border: 2px solid #ccc;
 }

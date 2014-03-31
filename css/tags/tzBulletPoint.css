@@ -22,26 +22,13 @@
   font-style: normal;
 }
 
-.tz-bullet-point-wtf {
+.tz-bullet-point-fail {
   color: #f83;
 }
 
-.tz-bullet-point-wtf::after {
+.tz-bullet-point-fail::after {
   content: "\2620";
   font-style: normal;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 26px;
 }
-
-.tz-bullet-point-fail {
-  color: red;
-  border: 1px solid red;
-  padding: 1px 3px 1px 3px;
-  border-radius: 50%;
-}
-
-.tz-bullet-point-fail::after {
-  content: "\2718";
-  font-style: normal;
-}
-

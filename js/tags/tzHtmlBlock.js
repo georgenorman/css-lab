@@ -30,15 +30,7 @@ var tzHtmlBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      * Render all <tzHtmlBlock> tags on the page.
      */
     renderAll: function() {
-      // find all tags
-      var tagNodeList = document.getElementsByTagName("tzHtmlBlock");
-
-      // render each tag
-      for (var i = 0; i < tagNodeList.length; i++) {
-        var tagNode = tagNodeList[i];
-
-        this.renderTag(tagNode);
-      }
+      tzCustomTagHelper.renderAll(this);
     },
 
     /**
@@ -47,9 +39,7 @@ var tzHtmlBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param tagId ID of the tag to render.
      */
     renderTagById: function(tagId) {
-      var tagNode = tzDomHelper.getFirstElementByTagName(tagId);
-
-      this.renderTag(tagNode);
+      tzCustomTagHelper.renderTagById(this, tagId);
     },
 
     /**
@@ -58,45 +48,48 @@ var tzHtmlBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param tzHtmlTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(tzHtmlTagNode) {
-      // get the attributes
-      var heading = tzHtmlTagNode.getAttribute("heading");
       var templateId = tzHtmlTagNode.getAttribute("templateId");
-      var resultComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlTagNode, "tzResultComment");
-      var rawHtml = tzDomHelper.getInnerHtml(templateId);
+
+      // get the attributes
+      var context = {
+        "heading": tzHtmlTagNode.getAttribute("heading"),
+        "resultComment": tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlTagNode, "tzResultComment"),
+        "rawHtml": tzDomHelper.getInnerHtml(templateId)
+      };
 
       // render the result
-      this.render(tzHtmlTagNode, heading, resultComment, rawHtml);
+      this.render(tzHtmlTagNode, context);
     },
 
     /**
      * Render the HTML code block into the given containerNode.
      *
      * @param containerNode where to render the result.
-     * @param heading optional heading to display for the live code block.
-     * @param resultComment optional comment to render above the live result.
-     * @param rawHtml the code that will be rendered into the given containerNode.
+     * @param context object containing the values needed to render the result:
+     *            - heading optional heading to display for the live code block.
+     *            - resultComment optional comment to render above the live result.
+     *            - rawHtml the code that will be rendered into the given containerNode.
      */
-    render: function(containerNode, heading, resultComment, rawHtml) {
+    render: function(containerNode, context) {
       // render optional heading, if present
-      if (tzDomHelper.isNotEmpty(heading)) {
+      if (tzDomHelper.isNotEmpty(context.heading)) {
         var headingElement = document.createElement("h4");
-        headingElement.insertAdjacentHTML("afterbegin", heading);
+        headingElement.insertAdjacentHTML("afterbegin", context.heading);
         containerNode.appendChild(headingElement);
       }
 
       // render optional result comment, if present
-      if (tzDomHelper.isNotEmpty(resultComment)) {
+      if (tzDomHelper.isNotEmpty(context.resultComment)) {
         var commentElement = document.createElement("p");
         commentElement.className += " tz-html-block-comment";
-        commentElement.insertAdjacentHTML("afterbegin", resultComment);
+        commentElement.insertAdjacentHTML("afterbegin", context.resultComment);
         containerNode.appendChild(commentElement);
       }
 
       // render raw HTML from the template
       var divElement = document.createElement("div");
-
       divElement.className += " tz-html-block";
-      divElement.insertAdjacentHTML("afterbegin", rawHtml);
+      divElement.insertAdjacentHTML("afterbegin", context.rawHtml);
       containerNode.appendChild(divElement);
     }
   }

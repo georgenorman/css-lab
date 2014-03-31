@@ -22,8 +22,26 @@
  *
  * @attribute cssTemplateId - ID of the element containing the CSS code to insert.
  * @attribute htmlTemplateId - ID of the element containing the HTML code to insert.
+ * @attribute templateId - optional; use this instead of cssTemplateId and htmlTemplateId to simplify the code.
+ *     "Css" and "Html" will be appended to the given templateId, to form the IDs to the CSS and HTML templates.
  *
  * Example:
+ *
+ * <script type="multiline-template" id="simpleTemplateCss">
+ *   .foo {color: red;}
+ * </script>
+ *
+ * <script type="multiline-template" id="simpleTemplateHtml">
+ *   <span class="foo">This is red</span>
+ * </script>
+ *
+ * <tzCssHtmlExample templateId="simpleTemplate" width="750px">
+ *   <cssComment>A comment rendered beneath the CSS header.</cssComment>
+ *   <htmlComment>A comment rendered beneath the HTML header.</htmlComment>
+ *   <tzResultComment>A comment rendered beneath the Result header.</tzResultComment>
+ * </tzCssHtmlExample>
+ *
+ *
  */
 var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, tzHtmlBlock, tzCodeExample) {
   "use strict";
@@ -37,15 +55,7 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, 
      * Render all <tzCssHtmlExample> tags on the page.
      */
     renderAll: function() {
-      // find all tags
-      var tagNodeList = document.getElementsByTagName("tzCssHtmlExample");
-
-      // render each tag
-      for (var i = 0; i < tagNodeList.length; i++) {
-        var tagNode = tagNodeList[i];
-
-        this.renderTag(tagNode);
-      }
+      tzCustomTagHelper.renderAll(this);
     },
 
     /**
@@ -54,9 +64,7 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, 
      * @param tagId ID of the tag to render.
      */
     renderTagById: function(tagId) {
-      var tagNode = tzDomHelper.getFirstElementByTagName(tagId);
-
-      this.renderTag(tagNode);
+      tzCustomTagHelper.renderTagById(this, tagId);
     },
 
     /**
@@ -65,8 +73,6 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, 
      * @param tzHtmlCssExampleTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(tzHtmlCssExampleTagNode) {
-      // get the attributes
-      var cssComment;
       var cssTemplateId;
       var htmlTemplateId;
       if (tzDomHelper.isNotEmpty(tzHtmlCssExampleTagNode.getAttribute("templateId"))) {
@@ -77,47 +83,69 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, 
         htmlTemplateId = tzHtmlCssExampleTagNode.getAttribute("htmlTemplateId");
       }
 
-      var rawCss = null;
+      // get the attributes
+      var cssComment = "";
+      var rawCss = "";
       if (tzDomHelper.isNotEmpty(cssTemplateId)) {
-        rawCss = tzDomHelper.getInnerHtmlWithDefault(cssTemplateId);
         cssComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzCssComment");
+        rawCss = tzDomHelper.getInnerHtmlWithDefault(cssTemplateId);
       }
 
-      var rawHtml = tzDomHelper.getInnerHtmlWithDefault(htmlTemplateId);
-      var htmlComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzHtmlComment");
-      var resultComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzResultComment");
+      var context = {
+        "cssComment": cssComment,
+        "rawCss": rawCss,
+        "htmlComment": tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzHtmlComment"),
+        "rawHtml": tzDomHelper.getInnerHtmlWithDefault(htmlTemplateId),
+        "resultComment": tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzResultComment"),
+        "width": tzHtmlCssExampleTagNode.getAttribute("width")
+      };
 
       // remove child nodes (e.g., optional comment nodes)
       tzDomHelper.removeAllChildNodes(tzHtmlCssExampleTagNode);
 
       // render the result
-      this.render(tzHtmlCssExampleTagNode, cssComment, rawCss, htmlComment, resultComment, rawHtml);
+      this.render(tzHtmlCssExampleTagNode, context);
     },
 
     /**
      * Render the code examples and live code block, into the given containerNode.
      *
      * @param containerNode where to render the result.
-     * @param cssComment optional comment to render above the CSS code block.
-     * @param rawCss the CSS code to insert.
-     * @param htmlComment optional comment to render above the HTML code block.
-     * @param resultComment optional comment to render above the live result.
-     * @param rawHtml the HTML code to insert.
+     * @param context object containing the values needed to render the result:
+     *            - cssComment optional comment to render above the CSS code block.
+     *            - rawCss the CSS code to insert.
+     *            - htmlComment optional comment to render above the HTML code block.
+     *            - rawHtml the HTML code to insert.
+     *            - resultComment optional comment to render above the live result.
+     *            - width optional width (hack) to force the zebra stripes to fill the entire code area when scrolling is required.
      */
-    render: function(containerNode, cssComment, rawCss, htmlComment, resultComment, rawHtml) {
+    render: function(containerNode, context) {
       // render the live CSS, if present
-      if (tzDomHelper.isNotEmpty(rawCss)) {
-        tzCssBlock.render(containerNode, rawCss);
+      if (tzDomHelper.isNotEmpty(context.rawCss)) {
+        tzCssBlock.render(containerNode, context);
 
         // render the CSS code example
-        tzCodeExample.render(containerNode, "CSS", cssComment, "css", rawCss);
+        tzCodeExample.render(containerNode, {
+          "heading": "CSS",
+          "codeBlockComment": context.cssComment,
+          "lang": "css",
+          "width": context.width,
+          "rawCode": context.rawCss});
       }
 
       // render the HTML code example
-      tzCodeExample.render(containerNode, "HTML", htmlComment, "*ml", rawHtml);
+      tzCodeExample.render(containerNode, {
+        "heading": "HTML",
+        "codeBlockComment": context.htmlComment,
+        "lang": "*ml",
+        "width": context.width,
+        "rawCode": context.rawHtml});
 
       // render the live result
-      tzHtmlBlock.render(containerNode, "Rendered Result", resultComment, rawHtml);
+      tzHtmlBlock.render(containerNode, {
+        "heading": "Rendered Result",
+        "resultComment": context.resultComment,
+        "rawHtml": context.rawHtml});
     }
 
   }

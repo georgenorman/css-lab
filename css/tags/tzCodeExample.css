@@ -10,18 +10,27 @@
  * Code block (with gutter and line numbers)
  * --------------------------------- */
 
-/* Format example code blocks (CSS, JS, HTML, etc) */
+/*
+  Format example code blocks (CSS, JS, HTML, etc).
+    - border color: #ccc
+    - zebra stripe color: #efefef
+    - gutter color: #efefef
+    - gutter-divider color: #0c0
+*/
 code.tz-code-example {
   display: block;
   white-space: pre;
   color: initial;
   margin: 8px 6px;
   padding: 0;
-  border: thin solid #ccc;
+  border-left: thin solid #ccc;
   width: 93%;
   overflow: auto;
-  background-color: #efefef;
   font-size: 11px;
+
+  /* hack to shade gutter, without also shading the code area. */
+  background-image: -webkit-gradient(linear, 0% 0%, 40% 0%, from(#efefef), to(#fff) );
+  background: linear-gradient(to right, #efefef, #fff 40%);
 }
 
 code.tz-code-example ol {
@@ -29,10 +38,16 @@ code.tz-code-example ol {
   padding: 0;
   list-style-type: decimal-leading-zero;
   border-left: 2px solid #0c0;
+  border-top: thin solid #ccc;
+  border-bottom: thin solid #ccc;
 }
 
 code.tz-code-example ol li:nth-child(odd) {
   background-color: #fff;
+}
+
+code.tz-code-example ol li:nth-child(even) {
+  background-color: #efefef;
 }
 
 .tz-code-example-comment {

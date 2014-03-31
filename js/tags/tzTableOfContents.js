@@ -41,7 +41,7 @@ var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
     /**
      * Render the 'Table of Contents' tag.
      */
-    renderAll: function () {
+    renderAll: function() {
       // there can be only one 'table of contents' per page.
       tzCustomTagHelper.renderFirst(this);
     },
@@ -51,10 +51,8 @@ var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
      *
      * @param tagId ID of the tag to render.
      */
-    renderTagById: function (tagId) {
-      var tagNode = tzDomHelper.getFirstElementByTagName(tagId);
-
-      this.renderTag(tagNode);
+    renderTagById: function(tagId) {
+      tzCustomTagHelper.renderTagById(this, tagId);
     },
 
     /**
@@ -62,39 +60,42 @@ var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
      *
      * @param tocNode the node to retrieve the attributes from and then render the result to.
      */
-    renderTag: function (tocNode) {
+    renderTag: function(tocNode) {
       // get the attributes
-      var cssClassName = tocNode.getAttribute("class");
-      var level1ItemsTagName = tocNode.getAttribute("level1ItemsTagName");
-      var level2ItemsTagName = tocNode.getAttribute("level2ItemsTagName");
-      var title = tocNode.getAttribute("title");
+      var context = {
+        "cssClassName": tocNode.getAttribute("class"),
+        "level1ItemsTagName": tocNode.getAttribute("level1ItemsTagName"),
+        "level2ItemsTagName": tocNode.getAttribute("level2ItemsTagName"),
+        "title": tocNode.getAttribute("title")
+      };
 
       // render the result
-      this.render(tocNode, cssClassName, level1ItemsTagName, level2ItemsTagName, title);
+      this.render(tocNode, context);
     },
 
     /**
      * Render the 'Table of Contents' into the given containerNode.
      *
      * @param containerNode where to render the result.
-     * @param cssClassName css class name to use for the Table of Contents.
-     * @param level1ItemsTagName tag name used to identify the level-1 headers to be included in the Table of Contents.
-     * @param level2ItemsTagName tag name used to identify the level-2 headers to be included under each level-1 header.
-     * @param title optional title (default is "Table of Contents").
+     * @param context object containing the values needed to render the result:
+     *            - cssClassName css class name to use for the Table of Contents.
+     *            - level1ItemsTagName tag name used to identify the level-1 headers to be included in the Table of Contents.
+     *            - level2ItemsTagName tag name used to identify the level-2 headers to be included under each level-1 header.
+     *            - title optional title (default is "Table of Contents").
      */
-    render: function (containerNode, cssClassName, level1ItemsTagName, level2ItemsTagName, title) {
+    render: function(containerNode, context) {
       // find all level-1 nodes
-      var level1NodeList = document.getElementsByTagName(level1ItemsTagName);
+      var level1NodeList = document.getElementsByTagName(context.level1ItemsTagName);
 
       // find all level-2 nodes (if tag name is given)
       var level2NodeList = null;
-      if (tzDomHelper.isNotEmpty(level2ItemsTagName)) {
-        level2NodeList = document.getElementsByTagName(level2ItemsTagName);
+      if (tzDomHelper.isNotEmpty(context.level2ItemsTagName)) {
+        level2NodeList = document.getElementsByTagName(context.level2ItemsTagName);
       }
 
       // start ToC
       var toc = document.createElement("ul");
-      toc.className = cssClassName;
+      toc.className = "toc";// tzDomHelper.coalesce(cssClassName, "toc"); // default to "toc"
 
       // generate list of level-1 and level-2 ToC items
       for (var i = 0; i < level1NodeList.length; i++) {
@@ -117,15 +118,19 @@ var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
       }
 
       // add heading
-      title = tzDomHelper.coalesce(title, "Table of Contents");
+      context.title = tzDomHelper.coalesce(context.title, "Table of Contents");
       var heading = document.createElement("h2");
-      heading.insertAdjacentHTML("afterbegin", "<b>" + title + "</b>");
+      heading.insertAdjacentHTML("afterbegin", "<b>" + context.title + "</b>");
       containerNode.appendChild(heading);
 
       // add all items to ToC element
       containerNode.appendChild(toc);
     }
   };
+
+  // --------------------------------------------------------
+  // private functions
+  // --------------------------------------------------------
 
   /**
    * Return the subset of given nodesToSearch, that have IDs that begin with the given searchString.
@@ -137,8 +142,8 @@ var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
     var result = [];
 
     if (nodesToSearch != null) {
-      for(var i=0; i<nodesToSearch.length; i++) {
-        if(nodesToSearch[i].id.indexOf(searchString) == 0) {
+      for (var i = 0; i < nodesToSearch.length; i++) {
+        if (nodesToSearch[i].id.indexOf(searchString) == 0) {
           result.push(nodesToSearch[i]);
         }
       }
@@ -149,8 +154,14 @@ var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
 
   function createTableOfContentsItem(node) {
     var result = document.createElement("li");
-    var tocItemText = tzDomHelper.coalesce(node.innerHTML, node.id);
 
+    if (node.hasAttribute("tzBulletPointPass")) {
+      result.className += " pass";
+    } else if (node.hasAttribute("tzBulletPointFail")) {
+      result.className += " fail";
+    }
+
+    var tocItemText = tzDomHelper.coalesce(node.innerHTML, node.id);
     result.insertAdjacentHTML("afterbegin", "<a href=\"#" + node.id + "\">" + tocItemText + "</a>");
 
     return result;

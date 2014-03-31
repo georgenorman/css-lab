@@ -50,47 +50,50 @@ var tzDisplayStylesTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param displayStylesTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(displayStylesTagNode) {
-      // get the attributes
       var itemsAsString = displayStylesTagNode.getAttribute("items");
       var items = JSON.parse(itemsAsString);
-      var elementPropertyList = items.idStylePairs;
 
-      var useShortItems = displayStylesTagNode.getAttribute("useShortItems");
+      // get the attributes
+      var context = {
+        "elementPropertyList": items.idStylePairs,
+        "useShortItems": displayStylesTagNode.getAttribute("useShortItems")
+      };
 
       // render the result
-      this.render(displayStylesTagNode, elementPropertyList, useShortItems);
+      this.render(displayStylesTagNode, context);
     },
 
     /**
      * Render into the given containerNode, the style property names and values, for the elements in the given elementPropertyList.
      *
      * @param containerNode where to render the result.
-     * @param elementPropertyList list of element-id/css-property-name pairs used to render the result. The element-id is used to lookup an
-     *        element and the css-property-name is used to read and display its property value.
-     * @param useShortItems if true, then displays a list of property/value pairs (without the element name); otherwise, displays the same list,
-     *        but includes the element-name for each item in the list.
+     * @param context object containing the values needed to render the result:
+     *            - elementPropertyList list of element-id/css-property-name pairs used to render the result. The element-id is used to lookup an
+     *              element and the css-property-name is used to read and display its property value.
+     *            - useShortItems if true, then displays a list of property/value pairs (without the element name); otherwise, displays the same list,
+     *              but includes the element-name for each item in the list.
      */
-    render: function(containerNode, elementPropertyList, useShortItems) {
+    render: function(containerNode, context) {
       var ul = document.createElement("ul");
       var li;
 
       ul.style.marginTop = "0";
 
-      if (tzDomHelper.isEmpty(elementPropertyList)) {
+      if (tzDomHelper.isEmpty(context.elementPropertyList)) {
         // property list was not provided, so display an error.
         li = document.createElement("li");
         li.insertAdjacentHTML("afterbegin", "ERROR: Missing or empty elementPropertyList attribute (elementPropertyList=\"[{\"id\": \"property\"}]\"");
       } else {
         // retrieve each property, specified by the given elementPropertyList, and render it.
-        useShortItems = tzDomHelper.coalesce(useShortItems, 'true');
+        context.useShortItems = tzDomHelper.coalesce(context.useShortItems, 'true');
 
-        for (var propertyIndex=0; propertyIndex<elementPropertyList.length; propertyIndex++) {
+        for (var propertyIndex = 0; propertyIndex < context.elementPropertyList.length; propertyIndex++) {
           li = document.createElement("li");
           var generatedHtml;
-          var idPropertyPair = elementPropertyList[propertyIndex];
+          var idPropertyPair = context.elementPropertyList[propertyIndex];
 
           for (var elementId in idPropertyPair) {
-            if (useShortItems == 'true') {
+            if (context.useShortItems == 'true') {
               generatedHtml = "Element '" + elementId + "' is: " + tzDomHelper.getStylePropertyValue(elementId, idPropertyPair[elementId]);
             } else {
               generatedHtml = "Element " + elementId + " has " + idPropertyPair[elementId] + ":" + tzDomHelper.getStylePropertyValue(elementId, idPropertyPair[elementId]);

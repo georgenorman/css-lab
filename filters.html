@@ -60,7 +60,7 @@
 <img class="filter-gray" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterGrayCss" htmlTemplateId="filterGrayHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterGray" width="500px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="sepia">Sepia</h2>
@@ -86,7 +86,7 @@
 <img class="filter-sepia" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterSepiaCss" htmlTemplateId="filterSepiaHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterSepia" width="500px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="brightness">Brightness</h2>
@@ -112,7 +112,7 @@
 <img class="filter-brightness" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterBrightnessCss" htmlTemplateId="filterBrightnessHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterBrightness" width="500px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="contrast">Contrast</h2>
@@ -138,7 +138,7 @@
 <img class="filter-contrast" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterContrastCss" htmlTemplateId="filterContrastHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterContrast" width="500px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="blur">Blur</h2>
@@ -164,7 +164,7 @@
 <img class="filter-blur" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterBlurCss" htmlTemplateId="filterBlurHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterBlur" width="500px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="drop-shadow">Drop Shadow</h2>
@@ -190,13 +190,13 @@
 <img class="filter-drop-shadow" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterShadowCss" htmlTemplateId="filterShadowHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterShadow" width="500px"></tzCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="drop-shadow.caveat-border">With Border</h3>
+  <h3 tzBulletPointFail id="drop-shadow.caveat-border">With Border</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     Adding a border to the image, causes the border and the image to both have drop-shadows.
     This is not the effect I was looking for.
   </tzBulletPoint>
@@ -214,13 +214,13 @@
 <img class="drop-shadow_border" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterShadowBorderCss" htmlTemplateId="filterShadowBorderHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterShadowBorder" width="500px"></tzCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="drop-shadow.caveat-inherited">Inherited from Div</h3>
+  <h3 tzBulletPointFail id="drop-shadow.caveat-inherited">Inherited from Div</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     Take the previous example and nest the image inside of a div, then move the drop-shadow from the image to the div.
     Unfortunately, the drop-shadow is inherited by the image and the shadow is applied to both the div and the image.
     This is still not the effect I was looking for.
@@ -242,16 +242,16 @@
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterShadowInheritedCss" htmlTemplateId="filterShadowInheritedHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterShadowInherited" width="500px"></tzCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="drop-shadow.caveat-boxShadow">Box Shadow</h3>
+  <h3 tzBulletPointPass id="drop-shadow.caveat-boxShadow">Box Shadow</h3>
   <!-- `````````````````````````````````` -->
 
-  <p>
+  <tzBulletPoint iconClass="tz-bullet-point-pass" iconStyle="margin-top:0;">
     Abandon the drop-shadow filter altogether and use box-shadow instead.
     This is exactly the effect I was looking for.
-  </p>
+  </tzBulletPoint>
 
 <script type="multiline-template" id="filterBoxShadowCss">
 .box-shadow {
@@ -265,7 +265,7 @@
 <img class="box-shadow" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterBoxShadowCss" htmlTemplateId="filterBoxShadowHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterBoxShadow" width="500px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="hue-rotate">Hue Rotate</h2>
@@ -291,7 +291,7 @@
 <img class="filter-hue-rotate" src="./img/scenic/Yosemite.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterHueRotateCss" htmlTemplateId="filterHueRotateHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="filterHueRotate" width="500px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="opacity">Opacity</h2>
@@ -370,7 +370,7 @@
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="filterOpacityCss" htmlTemplateId="filterOpacityHtml">
+  <tzCssHtmlExample templateId="filterOpacity" width="500px">
     <tzResultComment>
       At 20% opacity, the image overlay barely obscures the text.
       At 80% opacity, the image overlay mostly obscures the text.

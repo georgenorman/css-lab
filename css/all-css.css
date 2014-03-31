@@ -21,5 +21,8 @@
 @import "tags/tzHtmlBlock.css";
 @import "tags/tzTableOfContents.css";
 
+/* Common CSS for all Labs */
+@import "tzLab.css";
+
 /* CSS Lab specific */
 @import "cssLab.css";

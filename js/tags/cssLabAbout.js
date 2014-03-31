@@ -38,7 +38,7 @@ var cssLabAboutTag = (function(tzDomHelper, tzCustomTagHelper) {
      */
     renderAll: function() {
       // there can be only one 'About Application' per page.
-       tzCustomTagHelper.renderFirst(this);
+      tzCustomTagHelper.renderFirst(this);
     },
 
     /**

@@ -53,7 +53,7 @@ aside {
 Some text after the aside.
 </script>
 
-  <tzCssHtmlExample cssTemplateId="elementSelectorCss" htmlTemplateId="elementSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="elementSelector" width="400px"></tzCssHtmlExample>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="idSelector">The ID Selector ( # )</h2>
@@ -72,7 +72,7 @@ Some text after the aside.
 Some text after the aside.
 </script>
 
-  <tzCssHtmlExample cssTemplateId="idSelectorCss" htmlTemplateId="idSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="idSelector" width="400px"></tzCssHtmlExample>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="classSelector">The Class Selector ( . )</h2>
@@ -91,7 +91,7 @@ Some text after the aside.
 Some text after the aside.
 </script>
 
-  <tzCssHtmlExample cssTemplateId="classSelectorCss" htmlTemplateId="classSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="classSelector" width="500px"></tzCssHtmlExample>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="descendentSelector">The Descendent Selector ( space )</h2>
@@ -122,7 +122,7 @@ Some text after the aside.
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="simpleDescSelectorCss" htmlTemplateId="simpleDescSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="simpleDescSelector" width="500px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
 <h3 id="descendentSelector.compound">Compound Descendent Selector</h3>
@@ -147,7 +147,7 @@ Some text after the aside.
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="compoundDescSelectorCss" htmlTemplateId="compoundDescSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="compoundDescSelector" width="520px"></tzCssHtmlExample>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="childSelector">The Child Selector ( > )</h2>
@@ -180,11 +180,11 @@ div.child-foo > cite {
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="childSelectorCss" htmlTemplateId="childSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="childSelector" width="520px"></tzCssHtmlExample>
 
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<h2 id="adjacentSelector">The Adjacent Selector ( + )</h2>
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="adjacentSelector">The Adjacent Selector ( + )</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
     Selects the specified element <b>immediately</b> following the specified <b>sibling</b> element.
@@ -206,7 +206,35 @@ Some text *before* the first cite (no elements allowed).
 <cite>Not an adjacent cite.</cite>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="adjacentSelectorCss" htmlTemplateId="adjacentSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="adjacentSelector" width="520px"></tzCssHtmlExample>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="generalSiblingSelector">The General Sibling Selector ( ~ )</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>
+    Selects all <b>sibling</b> elements of a preceding simple selector.
+    This is similar to the Adjacent Selector, but now non-selected sibling elements are allowed.
+    The example below selects every sibling &lt;cite&gt; element after any &lt;div&gt; element that has the "general" class.
+  </p>
+
+<script type="multiline-template" id="generalSiblingSelectorCss">
+div.general ~ cite {
+  color: #f90;
+}
+</script>
+
+<script type="multiline-template" id="generalSiblingSelectorHtml">
+<div class="general">
+  <cite>Not a sibling cite.</cite>
+</div>
+Some text *before* the first cite (<b>non-selected siblings are now allowed</b>).
+<cite>The first sibling cite. <b>This inherits from cite.</b></cite>
+<b>Another non-selected sibling element.</b>
+<cite>The second sibling cite.</cite>
+</script>
+
+  <tzCssHtmlExample templateId="generalSiblingSelector" width="520px"></tzCssHtmlExample>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="attributeSelector">The Attribute Selector ( [] )</h2>
@@ -230,7 +258,7 @@ Some text *before* the first cite (no elements allowed).
 <div data-fad-rad>Does not match (data-fad-rad)</div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="attributeNameSelectorCss" htmlTemplateId="attributeNameSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="attributeNameSelector" width="520px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
 <h3 id="attributeSelector.attributeNameValue">[name="value"]</h3>
@@ -251,7 +279,7 @@ Some text *before* the first cite (no elements allowed).
 <div data-cat="catbat">Does not match (data-cat="catbat")</div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="attributeNameValueSelectorCss" htmlTemplateId="attributeNameValueSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="attributeNameValueSelector" width="520px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
 <h3 id="attributeSelector.attributeNameValueWhitespace">[name~="value"]</h3>
@@ -272,7 +300,7 @@ Some text *before* the first cite (no elements allowed).
 <div data-dub="dubstep">Does not match (data-dub="dubstep")</div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="attributeNameValueWhitespaceSelectorCss" htmlTemplateId="attributeNameValueWhitespaceSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="attributeNameValueWhitespaceSelector" width="520px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
 <h3 id="attributeSelector.attributeNameValueDash">[name|="value"]</h3>
@@ -293,7 +321,7 @@ Some text *before* the first cite (no elements allowed).
 <div data-far="car-door">Matches (data-far="car-door")</div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="attributeNameValueDashSelectorCss" htmlTemplateId="attributeNameValueDashSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="attributeNameValueDashSelector" width="520px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
 <h3 id="attributeSelector.attributeNameValueStartsWith">[name^="value"]</h3>
@@ -314,7 +342,7 @@ Some text *before* the first cite (no elements allowed).
 <div data-moo="cow-bell">Matches (data-moo="cow-bell")</div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="attributeNameValueStartsWithSelectorCss" htmlTemplateId="attributeNameValueStartsWithSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="attributeNameValueStartsWithSelector" width="520px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
 <h3 id="attributeSelector.attributeNameValueEndsWith">[name$="value"]</h3>
@@ -335,7 +363,7 @@ Some text *before* the first cite (no elements allowed).
 <div data-zig="zag-car">Does not match (data-zig="zag-car")</div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="attributeNameValueEndsWithSelectorCss" htmlTemplateId="attributeNameValueEndsWithSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="attributeNameValueEndsWithSelector" width="520px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
 <h3 id="attributeSelector.attributeNameValueContains">[name*="value"]</h3>
@@ -356,28 +384,154 @@ Some text *before* the first cite (no elements allowed).
 <div data-zoo="boa-eel">Matches (data-zoo="boa-eel")</div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="attributeNameValueContainsSelectorCss" htmlTemplateId="attributeNameValueContainsSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="attributeNameValueContainsSelector" width="520px"></tzCssHtmlExample>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="pseudoSelector">The Pseudo Selector ( : / :: )</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <p>The pseudo selector (pseudo-classes and pseudo-elements) can match useful facets in a DOM, based on information that's not directly represented
-    (e.g., the first character in the content of a &lt;div&gt;).
+  <p>
+    The pseudo selector (<a href="http://www.w3.org/TR/selectors/#pseudo-classes">:pseudo-classes</a> and
+    <a href="http://www.w3.org/TR/selectors/#pseudo-elements">::pseudo-elements</a>) can match useful facets in a DOM, based on information that's not directly represented
+    (e.g., a visited link or the first character in the content of a &lt;div&gt;).
   </p>
 
-<!-- `````````````````````````````````` -->
-<h3 id="pseudoSelector.firstLetterPseudo">::first-letter pseudo-element #1</h3>
-<!-- `````````````````````````````````` -->
+  <!-- `````````````````````````````````` -->
+  <h3 id="pseudoSelector.firstChildPseudoClass">:firstChild pseudo-class</h3>
+  <!-- `````````````````````````````````` -->
 
-<script type="multiline-template" id="firstLetterPseudoSelector1Css">
+<script type="multiline-template" id="firstChildPseudoClassSelectorCss">
+ol#firstChild > li:first-child {
+  font-weight: bold;
+  color: #800;
+}
+</script>
+
+<script type="multiline-template" id="firstChildPseudoClassSelectorHtml">
+<ol id="firstChild" style="margin-bottom:0;">
+  <li>Item-1</li>
+  <li>Item-2</li>
+  <li>Item-3</li>
+</ol>
+</script>
+
+  <tzCssHtmlExample templateId="firstChildPseudoClassSelector" width="400px"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="pseudoSelector.lastChildPseudoClass">:lastChild pseudo-class</h3>
+  <!-- `````````````````````````````````` -->
+
+<script type="multiline-template" id="lastChildPseudoClassSelectorCss">
+ol#lastChild > li:last-child {
+  font-weight: bold;
+  color: #800;
+}
+</script>
+
+<script type="multiline-template" id="lastChildPseudoClassSelectorHtml">
+<ol id="lastChild" style="margin-bottom:0;">
+  <li>Item-1</li>
+  <li>Item-2</li>
+  <li>Item-3</li>
+</ol>
+</script>
+
+  <tzCssHtmlExample templateId="lastChildPseudoClassSelector" width="400px"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="pseudoSelector.nthChildPseudoClass">:nth-child() pseudo-class</h3>
+  <!-- `````````````````````````````````` -->
+
+<script type="multiline-template" id="nthChildPseudoClassSelectorCss">
+/* start at third child */
+ol#nthChild1 > li:nth-child(n+3) {
+  font-weight: bold;
+  color: #800;
+}
+
+/* select every second item; starting at first child */
+ol#nthChild2 > li:nth-child(2n+1) {
+  font-weight: bold;
+  color: #800;
+}
+</script>
+
+<script type="multiline-template" id="nthChildPseudoClassSelectorHtml">
+<ol id="nthChild1" style="margin-bottom:0; float:left">
+  <li>Item-1</li>
+  <li>Item-2</li>
+  <li>Item-3</li>
+  <li>Item-4</li>
+</ol>
+<ol id="nthChild2" style="margin-bottom:0; margin-left:100px;">
+  <li>Item-1</li>
+  <li>Item-2</li>
+  <li>Item-3</li>
+  <li>Item-4</li>
+</ol>
+</script>
+
+  <tzCssHtmlExample templateId="nthChildPseudoClassSelector" width="500px"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="pseudoSelector.checkedPseudoClass">:checked pseudo-class</h3>
+  <!-- `````````````````````````````````` -->
+
+<script type="multiline-template" id="checkedPseudoClassSelectorCss">
+form#checkedForm > input[type="checkbox"]:checked + label {
+  border: thin solid #f00;
+}
+
+form#checkedForm > input[type="radio"]:checked + label {
+  font-weight: bold;
+}
+</script>
+
+<script type="multiline-template" id="checkedPseudoClassSelectorHtml">
+<form id="checkedForm">
+  <input type="checkbox" id="ck1">
+  <label for="ck1">Simple Checkbox</label>
+  <br>
+  <input type="radio" name="group1" id="rad1">
+  <label for="rad1">Radio #1</label>
+  <input type="radio" name="group1" id="rad2">
+  <label for="rad2">Radio #2</label>
+</form>
+</script>
+
+  <tzCssHtmlExample templateId="checkedPseudoClassSelector" width="500px"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="pseudoSelector.negationPseudoClass">:negation pseudo-class</h3>
+  <!-- `````````````````````````````````` -->
+
+<script type="multiline-template" id="negationPseudoClassSelectorCss">
+form#negationForm > input[type="checkbox"]:not(:checked) + label {
+  color: #f00;
+}
+</script>
+
+<script type="multiline-template" id="negationPseudoClassSelectorHtml">
+<form id="negationForm">
+  <input type="checkbox" id="ck11">
+  <label for="ck11">Simple Checkbox</label>
+</form>
+</script>
+
+  <tzCssHtmlExample templateId="negationPseudoClassSelector" width="500px"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="pseudoSelector.firstLetterPseudoElement">::first-letter pseudo-element #1</h3>
+  <!-- `````````````````````````````````` -->
+
+<script type="multiline-template" id="firstLetterPseudoElementSelector1Css">
 article::first-letter {
   font-size: 18px;
   color: #f90;
 }
 </script>
 
-<script type="multiline-template" id="firstLetterPseudoSelector1Html">
+<script type="multiline-template" id="firstLetterPseudoElementSelector1Html">
 <article>
   <p>The first paragraph.</p>
 
@@ -385,27 +539,27 @@ article::first-letter {
 </article>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="firstLetterPseudoSelector1Css" htmlTemplateId="firstLetterPseudoSelector1Html"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="firstLetterPseudoElementSelector1" width="400px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
-<h3 id="pseudoSelector.firstLetterPseudo2">::first-letter pseudo-element #2</h3>
+<h3 id="pseudoSelector.firstLetterPseudoElement2">::first-letter pseudo-element #2</h3>
 <!-- `````````````````````````````````` -->
 
-<script type="multiline-template" id="firstLetterPseudoSelector2Css">
+<script type="multiline-template" id="firstLetterPseudoElementSelector2Css">
 article h4::first-letter {
   font-size: 18px;
   color: #f90;
 }
 </script>
 
-<script type="multiline-template" id="firstLetterPseudoSelector2Html">
+<script type="multiline-template" id="firstLetterPseudoElementSelector2Html">
 <article>
   <h4>The first heading.</h4>
   <h4>Followed by another heading.</h4>
 </article>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="firstLetterPseudoSelector2Css" htmlTemplateId="firstLetterPseudoSelector2Html"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="firstLetterPseudoElementSelector2" width="400px"></tzCssHtmlExample>
 
 <!-- `````````````````````````````````` -->
 <h3 id="pseudoSelector.beforePseudo">::before and ::after pseudo-elements</h3>
@@ -415,7 +569,7 @@ article h4::first-letter {
   Insert and format additional content, within a targeted element, before or after the existing content of the element.
   </p>
 <script type="multiline-template" id="beforePseudoSelectorCss">
-i::before {
+em::before {
   content: "\2666\0020";
   color: #f90;
   font-style: normal;
@@ -423,14 +577,15 @@ i::before {
 </script>
 
 <script type="multiline-template" id="beforePseudoSelectorHtml">
-<i>Before</i> - pseudo-element Example
+<em>Before</em> - pseudo-element Example
 </script>
 
-  <tzCssHtmlExample cssTemplateId="beforePseudoSelectorCss" htmlTemplateId="beforePseudoSelectorHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="beforePseudoSelector" width="400px"></tzCssHtmlExample>
+<br>
+  <tzBulletPoint iconClass="tz-bullet-point-fail" iconStyle="margin-top:2px;">
+    This isn't supported for an element that can't contain text (e.g., img tag).
+  </tzBulletPoint>
 
-  <p>
-    Unless you're attempting to do so for an element that can't contain text (e.g., img tag).
-  </p>
 <script type="multiline-template" id="beforePseudoSelectorNotSupportedCss">
 img::after {
   content: "** Not Supported **";
@@ -443,7 +598,9 @@ img::after {
 <img src="img/tz-icon-16.png">
 </script>
 
-  <tzCssHtmlExample cssTemplateId="beforePseudoSelectorNotSupportedCss" htmlTemplateId="beforePseudoSelectorNotSupportedHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="beforePseudoSelectorNotSupported" width="400px">
+    <tzResultComment>The content is not rendered because this feature is not supported by the &lt;img&gt; tag.</tzResultComment>
+  </tzCssHtmlExample>
 
 </main>
 

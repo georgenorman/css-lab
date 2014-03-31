@@ -8,7 +8,7 @@
  ~ --------------------------------------------------------------
  */
 
-var tzCustomTagHelperModule = (function(tzDomHelper) {
+var tzCustomTagHelperModule = (function( tzDomHelper ) {
   "use strict";
 
   return {
@@ -18,7 +18,7 @@ var tzCustomTagHelperModule = (function(tzDomHelper) {
      *
      * @param tagModule the module that's responsible for rendering a particular custom tag.
      */
-    getTemplateId: function(tagModule) {
+    getTemplateId: function( tagModule ) {
       return tagModule.getTagName() + "TagTemplate";
     },
 
@@ -27,15 +27,15 @@ var tzCustomTagHelperModule = (function(tzDomHelper) {
      *
      * @param tagModule the module that's responsible for rendering a particular custom tag.
      */
-    renderAll: function(tagModule) {
+    renderAll: function( tagModule ) {
       // find all tags
-      var tagNodeList = document.getElementsByTagName(tagModule.getTagName());
+      var tagNodeList = document.getElementsByTagName( tagModule.getTagName() );
 
       // render each tag
       for (var i = 0; i < tagNodeList.length; i++) {
         var tagNode = tagNodeList[i];
 
-        tagModule.renderTag(tagNode);
+        tagModule.renderTag( tagNode );
       }
     },
 
@@ -45,10 +45,12 @@ var tzCustomTagHelperModule = (function(tzDomHelper) {
      *
      * @param tagModule the module that's responsible for rendering a particular custom tag.
      */
-    renderFirst: function(tagModule) {
-      var tagNode = tzDomHelper.getFirstElementByTagName(tagModule.getTagName());
+    renderFirst: function( tagModule ) {
+      var tagNode = tzDomHelper.getFirstElementByTagName( tagModule.getTagName() );
 
-      tagModule.renderTag(tagNode);
+      if (tagNode != null) {
+        tagModule.renderTag( tagNode );
+      }
     },
 
     /**
@@ -57,10 +59,12 @@ var tzCustomTagHelperModule = (function(tzDomHelper) {
      * @param tagModule the module that's responsible for rendering a particular custom tag.
      * @param tagId ID of the tag to render.
      */
-    renderTagById: function(tagModule, tagId) {
-      var tagNode = tzDomHelper.getFirstElementByTagName(tagId);
+    renderTagById: function( tagModule, tagId ) {
+      var tagNode = tzDomHelper.getElementById( tagId );
 
-      tagModule.renderTag(tagNode);
+      if (tagNode != null) {
+        tagModule.renderTag( tagNode );
+      }
     },
 
     /**
@@ -71,17 +75,17 @@ var tzCustomTagHelperModule = (function(tzDomHelper) {
      * @param template the HTML template used to render the tag.
      * @param context a custom-tag specific JSON object that contains property values used for the transliteration process of the HTML template.
      */
-    renderTagFromTemplate: function(containerNode, template, context) {
+    renderTagFromTemplate: function( containerNode, template, context ) { // context defined here is used by eval($1) below. The template must use {{context.foo}}.
       var evaluatedTemplate;
-      var re = new RegExp("{{(.*?)}}", "g");
+      var re = new RegExp( "{{(.*?)}}", "g" );
 
-      evaluatedTemplate = template.replace(re, function($0, $1) {
-        var result = eval( $1 ); // @-@:p0(geo) Check out "eval is evil" - investigate alternate solutions
+      evaluatedTemplate = template.replace( re, function( $0, $1 ) {
+        var result = eval( $1 ); // @-@:p1(geo) Check out "eval is evil" - investigate alternate solutions
 
         return result;
-      });
+      } );
 
-      containerNode.insertAdjacentHTML("afterbegin", evaluatedTemplate);
+      containerNode.insertAdjacentHTML( "afterbegin", evaluatedTemplate );
     },
 
     /**
@@ -89,14 +93,14 @@ var tzCustomTagHelperModule = (function(tzDomHelper) {
      *
      * @param templateId ID of the node that contains the template text.
      */
-    getTemplate: function(templateId) {
-      var result = tzDomHelper.getInnerHtml(templateId);
+    getTemplate: function( templateId ) {
+      var result = tzDomHelper.getInnerHtml( templateId );
 
-      if (tzDomHelper.isEmpty(result)) {
+      if (tzDomHelper.isEmpty( result )) {
         result = '<span style="color:red;">Template was not found: ' + templateId + '</span>';
       }
 
       return result;
     }
   }
-}(tzDomHelperModule));
+}( tzDomHelperModule ));

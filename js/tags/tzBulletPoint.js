@@ -16,15 +16,16 @@
  *    <tzBulletPoint iconClass="success" widthLeft="25px">This experiment successfully shows that...</tzBulletPoint>
  *
  * @attribute iconClass class name used to style the <i> element used as a placeholder for the icon.
- *      The following icons are predefined: "success", "fail" (see css/tzBulletPoint.css).
+ *      The following icons are predefined: "tz-bullet-point-pass", "tz-bullet-point-fail" (see css/tzBulletPoint.css).
+ * @attribute iconStyle styles used to style the <div> element icon wrapper.
  * @attribute leftColumnWidth width of the left column.
  */
 var tzBulletPointTag = (function(tzDomHelper, tzCustomTagHelper) {
   "use strict";
 
   var template =
-      ['<div class="tz-bullet-point-left"><i class="{{context.iconClass}}"></i></div>',
-       '<div style="margin-left:{{context.leftColumnWidth}};">{{context.rawRightColumnHtml}}</div>'
+      ['<div class="tz-bullet-point-left" {{context.iconStyleAttribute}}><i class="{{context.iconClass}}"></i></div>',
+        '<div style="margin-left:{{context.leftColumnWidth}};">{{context.rawRightColumnHtml}}</div>'
       ].join('\n');
 
   return {
@@ -55,13 +56,10 @@ var tzBulletPointTag = (function(tzDomHelper, tzCustomTagHelper) {
      */
     renderTag: function(tzBulletPointTagNode) {
       // get the attributes
-      var iconClass = tzBulletPointTagNode.getAttribute("iconClass");
-      var leftColumnWidth = tzDomHelper.coalesce(tzBulletPointTagNode.getAttribute("leftColumnWidth"), "25px");
-      var rawRightColumnHtml = tzBulletPointTagNode.innerHTML;
-
       var context = {
         "iconClass": tzBulletPointTagNode.getAttribute("iconClass"),
-        "leftColumnWidth": tzDomHelper.coalesce(tzBulletPointTagNode.getAttribute("leftColumnWidth"), "25px"),
+        "iconStyleAttribute": tzDomHelper.coalesce("", "style='" + tzBulletPointTagNode.getAttribute("iconStyle") + "'"),
+        "leftColumnWidth": tzDomHelper.coalesce(tzBulletPointTagNode.getAttribute("leftColumnWidth"), "28px"),
         "rawRightColumnHtml": tzBulletPointTagNode.innerHTML
       };
 
@@ -73,7 +71,7 @@ var tzBulletPointTag = (function(tzDomHelper, tzCustomTagHelper) {
      * Render the <tzBulletPoint> tag into the given containerNode.
      *
      * @param containerNode where to render the result.
-     * @param context object containing the values needed to render the bullet point:
+     * @param context object containing the values needed to render the result:
      *            - iconClass css used to render an icon in the left column.
      *            - leftColumnWidth width of the left column.
      *            - rawRightColumnHtml the raw HTML to render into the right column.

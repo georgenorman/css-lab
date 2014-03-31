@@ -20,6 +20,7 @@
  * @attribute templateId - ID of the element containing the HTML or JavaScript code to render.
  * @attribute heading - heading text [optional]
  * @attribute lang - language ID for the code syntax highlighter (e.g., "css", "*ml").
+ * @attribute width - optional width (hack) to force the zebra stripes to fill the entire code area when scrolling is required.
  */
 var tzCodeExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCodeHighlighter) {
   "use strict";
@@ -33,15 +34,7 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCodeHighlight
      * Render all <tzCodeExample> tags on the page.
      */
     renderAll: function() {
-      // find all tags
-      var tagNodeList = document.getElementsByTagName("tzCodeExample");
-
-      // render each tag
-      for (var i=0; i<tagNodeList.length; i++) {
-        var tagNode = tagNodeList[i];
-
-        this.renderTag(tagNode);
-      }
+      tzCustomTagHelper.renderAll(this);
     },
 
     /**
@@ -50,9 +43,7 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCodeHighlight
      * @param tagId ID of the tag to render.
      */
     renderTagById: function(tagId) {
-      var tagNode = tzDomHelper.getFirstElementByTagName(tagId);
-
-      this.renderTag(tagNode);
+      tzCustomTagHelper.renderTagById(this, tagId);
     },
 
     /**
@@ -61,55 +52,64 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCodeHighlight
      * @param tzCodeExampleTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(tzCodeExampleTagNode) {
-      // get the attributes
       var templateId = tzCodeExampleTagNode.getAttribute("templateId");
-      var heading = tzCodeExampleTagNode.getAttribute("heading");
-      var codeBlockComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzCodeExampleTagNode, "tzCodeBlockComment");
-      var lang = tzCodeExampleTagNode.getAttribute("lang");
-      var rawHtml = tzDomHelper.getInnerHtmlWithDefault(templateId);
+
+      // get the attributes
+      var context = {
+        "heading": tzCodeExampleTagNode.getAttribute("heading"),
+        "codeBlockComment": tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzCodeExampleTagNode, "tzCodeBlockComment"),
+        "lang": tzCodeExampleTagNode.getAttribute("lang"),
+        "width": tzCodeExampleTagNode.getAttribute("width"),
+        "rawCode": tzDomHelper.getInnerHtmlWithDefault(templateId)
+      };
 
       // remove child nodes (e.g., optional codeBlockComment node)
       tzDomHelper.removeAllChildNodes(tzCodeExampleTagNode);
 
       // render the result
-      this.render(tzCodeExampleTagNode, heading, codeBlockComment, lang, rawHtml);
+      this.render(tzCodeExampleTagNode, context);
     },
 
     /**
      * Render the code example into the given containerNode.
      *
      * @param containerNode where to render the result.
-     * @param heading optional heading to use.
-     * @param codeBlockComment optional comment to render above the code block.
-     * @param lang language ID for the code syntax highlighter (e.g., "css", "*ml").
-     * @param rawHtml the code that will be XML escaped and rendered into the given containerNode.
+     * @param context object containing the values needed to render the result:
+     *            - heading optional heading to use.
+     *            - codeBlockComment optional comment to render above the code block.
+     *            - lang language ID for the code syntax highlighter (e.g., "css", "*ml").
+     *            - width optional width (hack) to force the zebra stripes to fill the entire code area when scrolling is required.
+     *            - rawCode the code that will be XML escaped and rendered into the given containerNode.
      */
-    render: function(containerNode, heading, codeBlockComment, lang, rawHtml) {
+    render: function(containerNode, context) {
       // render optional heading, if present
-      if (tzDomHelper.isNotEmpty(heading)) {
+      if (tzDomHelper.isNotEmpty(context.heading)) {
         var headingElement = document.createElement("h4");
-        headingElement.insertAdjacentHTML("afterbegin", heading);
+        headingElement.insertAdjacentHTML("afterbegin", context.heading);
         containerNode.appendChild(headingElement);
       }
 
       // render optional HTML comment, if present
-      if (tzDomHelper.isNotEmpty(codeBlockComment)) {
+      if (tzDomHelper.isNotEmpty(context.codeBlockComment)) {
         var commentElement = document.createElement("p");
         commentElement.className += " tz-code-example-comment";
-        commentElement.insertAdjacentHTML("afterbegin", codeBlockComment);
+        commentElement.insertAdjacentHTML("afterbegin", context.codeBlockComment);
         containerNode.appendChild(commentElement);
       }
 
       var olElement = document.createElement("ol");
+      if (tzDomHelper.isNotEmpty(context.width)) {
+        olElement.style.width = context.width;
+      }
 
       // create a list item for each line (to display line numbers).
-      var codeLines = rawHtml.split("\n");
-      for (var i=0; i<codeLines.length; i++) {
+      var codeLines = context.rawCode.split("\n");
+      for (var i = 0; i < codeLines.length; i++) {
         var escapedCodeLine = tzDomHelper.xmlEscape(codeLines[i]);
         // @-@:p0 Highlighter should be applied to the complete inner HTML, and not line-by-line as done here, but
         //        the closing list-item (</li>) breaks the span with the style, so keeping it simple and broken, for now.
         var liElement = document.createElement("li");
-        liElement.insertAdjacentHTML("afterbegin", " " + tzCodeHighlighter.highlight(escapedCodeLine, lang));
+        liElement.insertAdjacentHTML("afterbegin", " " + tzCodeHighlighter.highlight(escapedCodeLine, context.lang));
         olElement.appendChild(liElement);
       }
 

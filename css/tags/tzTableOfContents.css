@@ -29,12 +29,22 @@ tzTableOfContents .toc li {
 tzTableOfContents ul.toc li:before {
   content: "\2666";
   margin-right: 6px;
+  color: #ccc;
+}
+
+tzTableOfContents ul.toc li.fail:before {
+  color: #f83;
+}
+
+tzTableOfContents ul.toc li.pass:before {
+  color: #0c0;
 }
 
 /* Sub item bullet */
 tzTableOfContents ul.toc > li > ul {
-  padding-left: 15px;
-  margin-left: 15px;
+  list-style-type: none;
+  padding-left: 6px;
+  margin-left: 6px;
 }
 
 /* Sub item bullet */
@@ -44,6 +54,14 @@ tzTableOfContents ul.toc > li > ul > li {
 
 /* Sub item bullet */
 tzTableOfContents ul.toc > li > ul > li:before {
-  content: "";
-  margin: 0;
+  content: "\2022";
+  margin: 6px;
+}
+
+tzTableOfContents ul.toc > li > ul > li.fail:before {
+  color: #f83;
+}
+
+tzTableOfContents ul.toc > li > ul > li.pass:before {
+  color: #0d0;
 }

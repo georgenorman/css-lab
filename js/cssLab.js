@@ -8,15 +8,20 @@
   ~ --------------------------------------------------------------
  */
 
-var cssLabModule = (function() {
+var cssLabModule = (function(tzDomHelper) {
   "use strict";
+
+  var cssLabHome = "https://github.com/georgenorman/css-lab/blob/master/README.md";
 
   return {
     /**
-     * Render all tags.
+     * Do page setup (e.g., render all tags).
      */
     handleOnLoad: function() {
-      // Common tags for all Labs
+      //
+      setupHeader();
+
+      // Tags common to all Labs
       tzTableOfContentsTag.renderAll();
       tzCssBlockTag.renderAll();
       tzCodeExampleTag.renderAll();
@@ -25,9 +30,24 @@ var cssLabModule = (function() {
       tzDisplayStylesTag.renderAll();
       tzBulletPointTag.renderAll();
 
-      // CSS Lab specific
+      // Tags specific to CSS Lab
       cssLabAboutTag.renderAll();
     }
   };
 
-}());
+  // ----------------------------------------------
+  // Private functions
+  // ----------------------------------------------
+
+  /** add a link back to the CSS Lab home page (overlaying the logo background image in the header). */
+  function setupHeader() {
+    var h1 = tzDomHelper.getFirstElementByTagName("h1");
+    var a = document.createElement("a");
+
+    a.href = cssLabHome;
+    a.className = "labHome";
+
+    h1.appendChild(a);
+  }
+
+}(tzDomHelperModule));

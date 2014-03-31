@@ -30,15 +30,7 @@ var tzCssBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      * Render all <tzCssBlock> tags on the page.
      */
     renderAll: function() {
-      // find all tags
-      var tagNodeList = document.getElementsByTagName("tzCssBlock");
-
-      // render each tag
-      for (var i = 0; i < tagNodeList.length; i++) {
-        var tagNode = tagNodeList[i];
-
-        this.renderTag(tagNode);
-      }
+      tzCustomTagHelper.renderAll(this);
     },
 
     /**
@@ -47,9 +39,7 @@ var tzCssBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param tagId ID of the tag to render.
      */
     renderTagById: function(tagId) {
-      var tagNode = tzDomHelper.getFirstElementByTagName(tagId);
-
-      this.renderTag(tagNode);
+      tzCustomTagHelper.renderTagById(this, tagId);
     },
 
     /**
@@ -58,23 +48,27 @@ var tzCssBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param tzStyleTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(tzStyleTagNode) {
-      // get the attributes
       var templateId = tzStyleTagNode.getAttribute("templateId");
-      var rawCss = tzDomHelper.getInnerHtmlWithDefault(templateId);
+
+      // get the attributes
+      var context = {
+        "rawCss": tzDomHelper.getInnerHtmlWithDefault(templateId)
+      };
 
       // render the result
-      this.render(tzStyleTagNode, rawCss);
+      this.render(tzStyleTagNode, context);
     },
 
     /**
      * Render the <style> block into the given containerNode.
      *
      * @param containerNode where to render the result.
-     * @param rawCss the raw styles to render into the given containerNode.
+     * @param context object containing the values needed to render the result:
+     *            - rawCss the raw styles to render into the given containerNode.
      */
-    render: function(containerNode, rawCss) {
+    render: function(containerNode, context) {
       var styleElement = document.createElement("style");
-      styleElement.insertAdjacentHTML("afterbegin", rawCss);
+      styleElement.insertAdjacentHTML("afterbegin", context.rawCss);
       containerNode.appendChild(styleElement);
     }
   }

@@ -31,11 +31,6 @@
   <h1>Positioning</h1>
 </header>
 
-<script type="multiline-template" id="tzBulletPointTemplate">
-  <div style="float:left;"><i class="{{context.iconClass}}"></i></div>
-  <div style="margin-left:{{context.leftColumnWidth}};">{{context.rawRightColumnHtml}}</div>
-</script>
-
 <main>
   <cssLabAbout style="margin-top:12px;"/>
 
@@ -69,7 +64,7 @@
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    CSS shared by all examples on this page.
+    CSS shared by all experiment on this page.
   </p>
 
 <script type="multiline-template" id="tmplCommonCss">
@@ -99,17 +94,17 @@
 
   <tzCssBlock templateId="tmplCommonCss"></tzCssBlock>
 
-  <tzCodeExample templateId="tmplCommonCss" lang="css"></tzCodeExample>
+  <tzCodeExample templateId="tmplCommonCss" lang="css" width="600px"></tzCodeExample>
 
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="relativeToStatic">Relative To Static</h2>
+  <h2 tzBulletPointFail id="relativeToStatic">Relative To Static</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    This section experiments with positioning a <i>relative block</i> within a <i>static block</i> and
+    This section experiments with positioning a <b><i>relative block</i> within a <i>static block</i></b> and
     demonstrates some of the wacky side effects that result from it.
-    <span style="color:#CF0000;">Not sure why this would ever be used, but it's easy to do, since the default position is static.</span>
+    <span style="color:#f83;">Not sure why this would ever be used, but it's easy to do, since the default position is static.</span>
   </p>
 
   <p>
@@ -117,69 +112,70 @@
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="relativeToStatic.noMargin">Relative &lt;div&gt; Sans Margin</h3>
+  <h3 tzBulletPointFail id="relativeToStatic.noMargin">Relative &lt;div&gt; Sans Margin</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     In this experiment, the <i>innermost</i> div has no margin and everything seems normal.
     The result is exactly as expected -
     the <i>innermost</i> div is relatively positioned inside of <i>middleGrid</i>, at 40px from the top and 40px from the left.
+    <span style="color:#f83">However, this is a setup fraught with peril, once margins, padding and borders are introduced.</span>
   </tzBulletPoint>
 
 <script type="multiline-template" id="tmplExampleRelInStaticNoMarginHtml">
-<div class="outermost-box" id="outermost">
-  <div class="grid middle-box" id="middleGrid">
-    <div style="top:40px; left:40px; position:relative;" class="innermost-box" id="innermost">
+<div class="outermost-box" id="outermost_010">
+  <div class="grid middle-box" id="middleGrid_010">
+    <div style="top:40px; left:40px; position:relative;" class="innermost-box" id="innermost_010">
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStaticNoMarginHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStaticNoMarginHtml" width="840px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermost": "position"}, {"middleGrid": "position"}, {"innermost": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_010": "position"}, {"middleGrid_010": "position"}, {"innermost_010": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
 
   <!-- `````````````````````````````````` -->
-  <h3 id="relativeToStatic.topMarginTransfer">Top Margin Transfer</h3>
+  <h3 tzBulletPointFail id="relativeToStatic.topMarginTransfer">Top Margin Transfer</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     For this experiment, everything is the same as the previous one, except a 20px margin has been added around the <i>innermost</i> div.
     As expected, this pushes the <i>innermost</i> div 20px to the right, relative to the <i>middle</i> div (increasing that distance to 60px).
     <p>
-    <span style="color:red;">Surprisingly, the top margin has no effect on the <i>innermost</i> div's distance from the top of the <i>middle</i> div.
+    <span style="color:#f83;">Surprisingly, the top margin has no effect on the <i>innermost</i> div's distance from the top of the <i>middle</i> div.
     Instead, the top margin bypasses both the <i>innermost</i> and the <i>middle</i> divs and is directly transferred to the top of the <i>outermost</i> div, pushing it down by 20px
     (as evidenced by the more than 20px gap above <i>outermost</i>).</span>
     </p>
     <p>
-      <b>The effect of Top Margin Transfer can be circumvented by setting the position of a relative div's parent to absolute.
-        This is described in</b> <a href="#relativeToAbsolute">Relative To Absolute</a>.
+      <b><i>Note: The effect of Top Margin Transfer can be circumvented by setting the position of a relative div's parent to absolute.
+        This is described in</i></b> <a href="#relativeToAbsolute">Relative To Absolute</a>.
     </p>
   </tzBulletPoint>
 
 
 <script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">
-<div class="outermost-box" id="outermostTmt">
-  <div class="grid middle-box" id="middleGridTmt">
-    <div style="top:40px; left:40px; margin:20px; position:relative;" class="innermost-box" id="innermostTmt">
+<div class="outermost-box" id="outermost_010">
+  <div class="grid middle-box" id="middleGrid_010">
+    <div style="margin:20px; top:40px; left:40px; position:relative;" class="innermost-box" id="innermost_010">
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStatic10pxMarginHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStatic10pxMarginHtml" width="840px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostTmt": "position"}, {"middleGridTmt": "position"}, {"innermostTmt": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_010": "position"}, {"middleGrid_010": "position"}, {"innermost_010": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
 
   <!-- `````````````````````````````````` -->
-  <h3 id="relativeToStatic.marginTransferWorkarounds">Margin Transfer Workarounds</h3>
+  <h3 tzBulletPointFail id="relativeToStatic.marginTransferWorkarounds">Margin Transfer Workarounds</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     Top Margin Transfer can be circumvented by adding a border or padding to the <i>outermost</i> (or <i>middle</i>) div.
     The example below shows that by adding a border to <i>outermost</i>, the margin transfer from <i>innermost</i> is blocked.
     Instead, the top margin is now transferred to the <i>middle</i> div.
@@ -188,94 +184,94 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="relativeToStatic10pxMarginOutermostHasBorderHtml">
-<div class="outermost-box" style="border-top:thin solid red;" id="outermostMto">
-  <div class="grid middle-box" id="middleGridMto">
-    <div style="top:40px; left:40px; margin:20px; position:relative;" class="innermost-box" id="innermostMto">
+<div class="outermost-box" style="border-top:thin solid red;" id="outermost_020">
+  <div class="grid middle-box" id="middleGrid_020">
+    <div style="margin:20px; top:40px; left:40px; position:relative;" class="innermost-box" id="innermost_020">
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="relativeToStatic10pxMarginOutermostHasBorderHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="relativeToStatic10pxMarginOutermostHasBorderHtml" width="840px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostMto": "position"}, {"middleGridMto": "position"}, {"innermostMto": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_020": "position"}, {"middleGrid_020": "position"}, {"innermost_020": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="absoluteToRelative">Absolute To Relative</h2>
+  <h2 tzBulletPointFail id="absoluteToRelative">Absolute To Relative</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    This section experiments with positioning an <i>absolute block</i> within a <i>relative block</i>.
+    This section experiments with positioning an <b><i>absolute block</i> within a <i>relative block</i></b>.
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="absoluteToRelative.20pxMargin">Absolute &lt;div&gt; has 20px margin</h3>
+  <h3 tzBulletPointFail id="absoluteToRelative.20pxMargin">Absolute &lt;div&gt; has 20px margin</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     In this experiment, <i>innermost</i> is positioned at 40px from the top and left of the <i>middle</i> div.
     Furthermore, a margin of 10px is applied to the <i>middle</i> div and a margin of 20px is applied to <i>innermost</i>.
-    The result is that the side margins work as expected and the top margins are collapsed and transferred.
+    The result is that the side margins work as expected and <span style="color:#f83;">the top margins are collapsed and transferred</span>.
   </tzBulletPoint>
 
 <script type="multiline-template" id="absoluteToRelative4pmHtml">
-<div class="outermost-box" id="outermostAtr4pm">
-  <div class="grid middle-box" style="position:relative; margin:10px;" id="middleGridAtr4pm">
-    <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost-box" id="innermostAtr4pm">
+<div class="outermost-box" id="outermost_110">
+  <div class="grid middle-box" style="position:relative; margin:10px;" id="middleGrid_110">
+    <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost-box" id="innermost_110">
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="absoluteToRelative4pmHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="absoluteToRelative4pmHtml" width="840px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostAtr4pm": "position"}, {"middleGridAtr4pm": "position"}, {"innermostAtr4pm": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_110": "position"}, {"middleGrid_110": "position"}, {"innermost_110": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <b>Current 'margin' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostAtr4pm": "margin"}, {"middleGridAtr4pm": "margin"}, {"innermostAtr4pm": "margin"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_110": "margin"}, {"middleGrid_110": "margin"}, {"innermost_110": "margin"}]}' useShortItems="true"></tzDisplayStyles>
 
   <b>Current 'padding' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostAtr4pm": "padding"}, {"middleGridAtr4pm": "padding"}, {"innermostAtr4pm": "padding"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_110": "padding"}, {"middleGrid_110": "padding"}, {"innermost_110": "padding"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="absoluteToRelative.overlap">Two Innermost Boxes Overlap</h3>
+  <h3 tzBulletPointFail id="absoluteToRelative.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-wtf">
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
     In this experiment, two <i>innermost</i> divs use absolute positioning inside of a relatively positioned <i>middle</i> div.
-    The result is that the side margins work as expected and the top margins are collapsed and transferred.
+    The result is that the side margins work as expected and <span style="color:#f83;">the top margins are collapsed and transferred</span>.
   </tzBulletPoint>
 
 <script type="multiline-template" id="absoluteToRelativeHtml">
-<div class="outermost-box" id="outermostAtro">
-  <div class="grid middle-box" style="position:relative; margin:10px;" id="middleGridAtro">
-    <div style="top:40px; left:40px; position:absolute;" class="innermost-box" id="innermostAtro1">
+<div class="outermost-box" id="outermost_120">
+  <div class="grid middle-box" style="position:relative; margin:10px;" id="middleGrid_120">
+    <div style="top:40px; left:40px; position:absolute;" class="innermost-box" id="innermost_1201">
     </div>
-    <div style="top:80px; left:80px; position:absolute;" class="innermost-box" id="innermostAtro2">
+    <div style="top:80px; left:80px; position:absolute;" class="innermost-box" id="innermost_1202">
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="absoluteToRelativeHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="absoluteToRelativeHtml" width="840px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostAtro": "position"}, {"middleGridAtro": "position"}, {"innermostAtro1": "position"}, {"innermostAtro2": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_120": "position"}, {"middleGrid_120": "position"}, {"innermost_1201": "position"}, {"innermost_1202": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="relativeToAbsolute">Relative To Absolute</h2>
+  <h2 tzBulletPointPass id="relativeToAbsolute">Relative To Absolute</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    This section experiments with positioning a <i>relative block</i> within an <i>absolute block</i>.
+    This section experiments with positioning a <b><i>relative block</i> within an <i>absolute block</i></b>.
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="relativeToAbsolute.40pxMargin">Relative &lt;div&gt; has 40px margin</h3>
+  <h3 tzBulletPointPass id="relativeToAbsolute.40pxMargin">Relative &lt;div&gt; has 40px margin</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
@@ -284,28 +280,28 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="relativeToAbsolute4pmHtml">
-<div class="outermost-box" id="outermostRta">
-  <div class="grid middle-box" style="position:absolute; margin:10px;" id="middleGridRta">
-    <div style="top:40px; left:40px; margin:20px; position:relative;" class="innermost-box" id="innermostRta">
+<div class="outermost-box" id="outermost_210">
+  <div class="grid middle-box" style="position:absolute; margin:10px;" id="middleGrid_210">
+    <div style="top:40px; left:40px; margin:20px; position:relative;" class="innermost-box" id="innermost_210">
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="relativeToAbsolute4pmHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="relativeToAbsolute4pmHtml" width="840px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostRta": "position"}, {"middleGridRta": "position"}, {"innermostRta": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_210": "position"}, {"middleGrid_210": "position"}, {"innermost_210": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <b>Current 'margin' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostRta": "margin"}, {"middleGridRta": "margin"}, {"innermostRta": "margin"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_210": "margin"}, {"middleGrid_210": "margin"}, {"innermost_210": "margin"}]}' useShortItems="true"></tzDisplayStyles>
 
   <b>Current 'padding' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostRta": "padding"}, {"middleGridRta": "padding"}, {"innermostRta": "padding"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_210": "padding"}, {"middleGrid_210": "padding"}, {"innermost_210": "padding"}]}' useShortItems="true"></tzDisplayStyles>
 
 
   <!-- `````````````````````````````````` -->
-  <h3 id="relativeToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
+  <h3 tzBulletPointPass id="relativeToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
@@ -314,24 +310,24 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="exampleRelToAbsoluteOverlapHtml">
-<div class="outermost-box" id="outermostRtao">
-  <div class="grid middle-box" style="position:absolute; margin:10px;" id="middleGridRtao">
-    <div style="top:60px; left:40px; position:relative;" class="innermost-box" id="innermostRtao1">
+<div class="outermost-box" id="outermost_220">
+  <div class="grid middle-box" style="position:absolute; margin:10px;" id="middleGrid_220">
+    <div style="top:60px; left:40px; position:relative;" class="innermost-box" id="innermost_2201">
     </div>
-    <div style="top:0; left:80px; position:relative;" class="innermost-box" id="innermostRtao2">
+    <div style="top:0; left:80px; position:relative;" class="innermost-box" id="innermost_2202">
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="exampleRelToAbsoluteOverlapHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="exampleRelToAbsoluteOverlapHtml" width="740px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostRtao": "position"}, {"middleGridRtao": "position"}, {"innermostRtao1": "position"}, {"innermostRtao2": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles items='{"idStylePairs":[{"outermost_220": "position"}, {"middleGrid_220": "position"}, {"innermost_2201": "position"}, {"innermost_2202": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
 
   <!-- `````````````````````````````````` -->
-  <h3 id="relativeToAbsolute.flow">Flow</h3>
+  <h3 tzBulletPointPass id="relativeToAbsolute.flow">Flow</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
@@ -352,22 +348,22 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="relativeToAbsoluteFlowHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="relativeToAbsoluteFlowHtml" width="600px"></tzCssHtmlExample>
 
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="absoluteToAbsolute">Absolute To Absolute</h2>
+  <h2 tzBulletPointPass id="absoluteToAbsolute">Absolute To Absolute</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    This section experiments with positioning an <i>absolute block</i> within an <i>absolute block</i>.
+    This section experiments with positioning an <b><i>absolute block</i> within an <i>absolute block</i></b>.
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="absoluteToAbsolute.40pxMargin">Innermost and Middle have Margins</h3>
+  <h3 tzBulletPointPass id="absoluteToAbsolute.40pxMargin">Innermost and Middle have Margins</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <tzBulletPoint iconStyle="margin-top:2px;" iconClass="tz-bullet-point-pass">
     This experiment shows that an absolute box is easy to position and adjust with margins.
   </tzBulletPoint>
 
@@ -380,14 +376,14 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="absoluteToAbsolute4pmHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="absoluteToAbsolute4pmHtml" width="700px"></tzCssHtmlExample>
 
 
   <!-- `````````````````````````````````` -->
-  <h3 id="absoluteToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
+  <h3 tzBulletPointPass id="absoluteToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <tzBulletPoint iconStyle="margin-top:2px;" iconClass="tz-bullet-point-pass">
     This experiment shows that multiple absolute boxes are easy to position and adjust with margins.
   </tzBulletPoint>
 
@@ -403,15 +399,15 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="absoluteToAbsoluteOverlapHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="absoluteToAbsoluteOverlapHtml" width="600px"></tzCssHtmlExample>
 
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="fixedPosition">Fixed Position</h2>
+  <h2 tzBulletPointPass id="fixedPosition">Fixed Position</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
-  <h3 id="fixedPosition.staticButton">Fixed &lt;div&gt; with Static &lt;button&gt;</h3>
+  <h3 tzBulletPointPass id="fixedPosition.staticButton">Fixed &lt;div&gt; with Static &lt;button&gt;</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
@@ -449,13 +445,13 @@
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="fixedWithStaticBtnCss" htmlTemplateId="fixedWithStaticBtnHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="fixedWithStaticBtn" width="840px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
   <tzDisplayStyles items='{"idStylePairs":[{"outerForFixedWithStaticBtn": "position"}, {"fixedWithStaticBtn": "position"}, {"staticBtnEx1": "position"}]}' useShortItems="true"></tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 id="fixedPosition.relativeButton">Fixed &lt;div&gt; with Relative &lt;button&gt;</h3>
+  <h3 tzBulletPointPass id="fixedPosition.relativeButton">Fixed &lt;div&gt; with Relative &lt;button&gt;</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
@@ -479,7 +475,7 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="fixedWithRelativeBtnHtml"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="fixedWithRelativeBtnHtml" width="840px"></tzCssHtmlExample>
 
   <b>Current 'position' styles:</b>
   <tzDisplayStyles items='{"idStylePairs":[{"outerForFixedWithRelativeBtn": "position"}, {"fixedWithRelativeBtn": "position"}, {"relativeBtnFwrb": "position"}]}' useShortItems="true"></tzDisplayStyles>
