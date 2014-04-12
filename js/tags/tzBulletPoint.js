@@ -17,15 +17,17 @@
  *
  * @attribute iconClass class name used to style the <i> element used as a placeholder for the icon.
  *      The following icons are predefined: "tz-bullet-point-pass", "tz-bullet-point-fail" (see css/tzBulletPoint.css).
- * @attribute iconStyle styles used to style the <div> element icon wrapper.
- * @attribute leftColumnWidth width of the left column.
+ * @attribute leftColumnWidth optional width of the left column.
+ * @attribute style optional style for the wrapper div.
  */
 var tzBulletPointTag = (function(tzDomHelper, tzCustomTagHelper) {
   "use strict";
 
   var template =
-      ['<div class="tz-bullet-point-left" {{context.iconStyleAttribute}}><i class="{{context.iconClass}}"></i></div>',
-        '<div style="margin-left:{{context.leftColumnWidth}};">{{context.rawRightColumnHtml}}</div>'
+      ['<div class="group" {{context.styleAttribute}}>',
+       '  <div class="tz-bullet-point-left"><i class="{{context.iconClass}}"></i></div>',
+       '  <div style="margin-left:{{context.leftColumnWidth}};">{{context.rawRightColumnHtml}}</div>',
+       '</div>'
       ].join('\n');
 
   return {
@@ -55,13 +57,17 @@ var tzBulletPointTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param tzBulletPointTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(tzBulletPointTagNode) {
-      // get the attributes
+      // build the context
+      var style = tzBulletPointTagNode.getAttribute("style");
       var context = {
-        "iconClass": tzBulletPointTagNode.getAttribute("iconClass"),
-        "iconStyleAttribute": tzDomHelper.coalesce("", "style='" + tzBulletPointTagNode.getAttribute("iconStyle") + "'"),
-        "leftColumnWidth": tzDomHelper.coalesce(tzBulletPointTagNode.getAttribute("leftColumnWidth"), "28px"),
+        "iconClass": tzBulletPointTagNode.getAttribute("iconClass"), // class name
+        "styleAttribute": tzDomHelper.isEmpty(style) ? "" : "style='" + style + "'", // complete style attribute
+        "leftColumnWidth": tzDomHelper.coalesce(tzBulletPointTagNode.getAttribute("leftColumnWidth"), "24px"),
         "rawRightColumnHtml": tzBulletPointTagNode.innerHTML
       };
+
+      // remove child nodes (e.g., rawRightColumnHtml retrieved for use by the right column)
+      tzDomHelper.removeAllChildNodes(tzBulletPointTagNode);
 
       // render the result
       this.render(tzBulletPointTagNode, context);
@@ -77,9 +83,6 @@ var tzBulletPointTag = (function(tzDomHelper, tzCustomTagHelper) {
      *            - rawRightColumnHtml the raw HTML to render into the right column.
      */
     render: function(containerNode, context) {
-      // remove child nodes (e.g., rawRightColumnHtml retrieved for use by the right column)
-      tzDomHelper.removeAllChildNodes(containerNode);
-
       //var template = tzCustomTagHelper.getTemplate(this.getTagName() + "Template"); // @-@:p1(geo) Experimental
 
       tzCustomTagHelper.renderTagFromTemplate(containerNode, template, context);

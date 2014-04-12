@@ -82,10 +82,11 @@ h2 {
 
 h3 {
   border-bottom: 1px dashed #ccc;
-  margin-top: 4px;
+  margin-top: 14px;
   padding-top: 6px;
   padding-bottom: 6px;
-  color: #033;
+  color: #669;
+  font-style: italic;
 }
 
 h4 {

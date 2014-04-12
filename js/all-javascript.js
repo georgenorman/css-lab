@@ -26,6 +26,7 @@ document.write('<script type="text/javascript" src="js/tags/tzCssBlock.js?v2"></
 document.write('<script type="text/javascript" src="js/tags/tzCodeExample.js?v2"></script>');
 document.write('<script type="text/javascript" src="js/tags/tzCssHtmlExample.js?v2"></script>');
 document.write('<script type="text/javascript" src="js/tags/tzDisplayStyles.js?v2"></script>');
+document.write('<script type="text/javascript" src="js/tags/tzAncestorStyles.js?v2"></script>');
 
 /* CSS Lab specific */
 document.write('<script type="text/javascript" src="js/tags/cssLabAbout.js?v2"></script>');

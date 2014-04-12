@@ -32,7 +32,7 @@
 </header>
 
 <main>
-  <cssLabAbout style="margin-top:12px;"/>
+  <cssLabAbout style="margin-top:12px;"></cssLabAbout>
 
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
@@ -223,6 +223,7 @@
   <tzBulletPoint iconClass="tz-bullet-point-fail">
     Take the previous example and nest the image inside of a div, then move the drop-shadow from the image to the div.
     Unfortunately, the drop-shadow is inherited by the image and the shadow is applied to both the div and the image.
+    Attempting to override the filter on the image is ignored.
     This is still not the effect I was looking for.
   </tzBulletPoint>
 
@@ -233,6 +234,11 @@
   border: 2px solid #ccc;
   padding: 12px;
   width: 100px;
+}
+
+.drop-shadow_inherited > img {
+  -webkit-filter: drop-shadow(10 10 10 #fff) !important;
+  filter: drop-shadow(10 10 10 #fff) !important;
 }
 </script>
 
@@ -248,7 +254,7 @@
   <h3 tzBulletPointPass id="drop-shadow.caveat-boxShadow">Box Shadow</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass" iconStyle="margin-top:0;">
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
     Abandon the drop-shadow filter altogether and use box-shadow instead.
     This is exactly the effect I was looking for.
   </tzBulletPoint>

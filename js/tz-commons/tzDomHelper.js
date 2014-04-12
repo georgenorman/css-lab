@@ -98,31 +98,36 @@ var tzDomHelperModule = (function( tzLogHelper ) {
       return result;
     },
 
-    getFirstChildElementInnerHtmlByTagName: function( parentNode, tagName ) {
-      var result = null;
-
-      for (var i = 0; i < parentNode.children.length; ++i) {
-        if (parentNode.children[i].nodeName === tagName.toUpperCase()) {
-          result = parentNode.children[i];
-          break;
-        }
-      }
-
-      return result == null ? result : result.innerHTML;
-    },
-
     /*
      * Return the value of the style property, for the element with the given elementId.
      *
      * @param elementId - ID of the target element.
      * @param stylePropertyName - name of the style property to retrieve the value for.
      */
-    getStylePropertyValue: function( elementId, stylePropertyName ) {
+    getStyleValueById: function( elementId, stylePropertyName ) {
       var result;
       var element = document.getElementById( elementId );
 
       if (element == null) {
-        result = "getStylePropertyValue didn't find element with ID: " + elementId;
+        result = "getStyleValueById didn't find element with ID: " + elementId;
+      } else {
+        result = this.getStyleValue( element, stylePropertyName );
+      }
+
+      return result;
+    },
+
+    /*
+     * Return the value of the style property, for the given element.
+     *
+     * @param element - target element.
+     * @param stylePropertyName - name of the style property to retrieve the value for.
+     */
+    getStyleValue: function( element, stylePropertyName ) {
+      var result;
+
+      if (element == null) {
+        result = "";
       } else {
         result = window.getComputedStyle( element ).getPropertyValue( stylePropertyName );
       }
@@ -152,14 +157,77 @@ var tzDomHelperModule = (function( tzLogHelper ) {
       insertLine( "<" + tagName + tagAttributes + ">" + innerHtml + "</" + tagName + ">" );
     },
 
+    /**
+     * Return a new element of type elementName, with optional parent and attributes.
+     *
+     * @param parent optional parent node for the new element.
+     * @param elementName type of element to create
+     * @param attributes optional attributes. Simple styles are supported (e.g., "style.color": "#800")
+     * @returns {HTMLElement}
+     */
+    createElement: function(parent, elementName, attributes) {
+      var result = document.createElement(elementName);
+
+      if (this.isNotEmpty(attributes)) {
+        var attributeMap = JSON.parse(attributes);
+        for (var key in attributeMap) {
+          // support simple styles
+          if (key.indexOf("style.") == 0) {
+            var styleKey = key.split(".")[1];
+            result.style[styleKey] = attributeMap[key];
+          } else {
+            result[key] = attributeMap[key];
+          }
+        }
+      }
+
+      if (parent != null) {
+        parent.appendChild(result);
+      }
+
+      return result;
+    },
+
+    createElementWithAdjacentHtml: function(parent, name, attributes, adjacentHtml) {
+      var result = this.createElement(parent, name, attributes);
+
+      result.insertAdjacentHTML("afterbegin", adjacentHtml);
+
+      return result;
+    },
+
     removeAllChildNodes: function( parentNode ) {
       while (parentNode.hasChildNodes()) {
         parentNode.removeChild( parentNode.lastChild );
       }
     },
 
+    // @-@:p0 move to general utils
     xmlEscape: function( rawString ) {
       var result = rawString.replace( /&/g, '&amp;' ).replace( /</g, '&lt;' ).replace( />/g, '&gt;' );
+
+      return result;
+    },
+
+    // @-@:p0 move to general utils
+    splitWithTrim: function(srcString) {
+      var result = this.isEmpty(srcString) ? srcString : srcString.split(/[\s,]+/);
+
+      return result;
+    },
+
+    // @-@:p0 move to general utils
+    quoteList: function( itemsArray ) {
+      var result = "";
+
+      if (itemsArray != null) {
+        var separator = "";
+
+        for (var i=0; i<itemsArray.length; i++) {
+          result += separator + "\"" + itemsArray[i].trim() + "\"";
+          separator = ",";
+        }
+      }
 
       return result;
     },
@@ -170,6 +238,7 @@ var tzDomHelperModule = (function( tzLogHelper ) {
      * @param value - value to return if not null.
      * @param defaultValue - defaultValue to return if value is null.
      */
+    // @-@:p0 move to general utils
     coalesce: function( value, defaultValue ) {
       var result = this.isEmpty( value ) ? defaultValue : value;
 
@@ -178,12 +247,14 @@ var tzDomHelperModule = (function( tzLogHelper ) {
       return result;
     },
 
+    // @-@:p0 move to general utils
     isEmpty: function( value ) {
-      var result = (value === undefined || value === null || value === "");
+      var result = (value === undefined || value === null || value === "" || (value.hasOwnProperty("length") && value.length == 0));
 
       return result;
     },
 
+    // @-@:p0 move to general utils
     isNotEmpty: function( value ) {
       return !this.isEmpty( value );
     },

@@ -48,11 +48,9 @@ var tzCssBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param tzStyleTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(tzStyleTagNode) {
-      var templateId = tzStyleTagNode.getAttribute("templateId");
-
-      // get the attributes
+      // build the context
       var context = {
-        "rawCss": tzDomHelper.getInnerHtmlWithDefault(templateId)
+        "rawCss": tzDomHelper.getInnerHtml(tzStyleTagNode.getAttribute("templateId"))
       };
 
       // render the result
@@ -67,9 +65,11 @@ var tzCssBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      *            - rawCss the raw styles to render into the given containerNode.
      */
     render: function(containerNode, context) {
-      var styleElement = document.createElement("style");
-      styleElement.insertAdjacentHTML("afterbegin", context.rawCss);
-      containerNode.appendChild(styleElement);
+      if (tzDomHelper.isEmpty(context.rawCss)) {
+        tzDomHelper.createElementWithAdjacentHtml(containerNode, "p", '{"style.color":"red"}', "Raw CSS is missing");
+      } else {
+        tzDomHelper.createElementWithAdjacentHtml(containerNode, "style", null, context.rawCss);
+      }
     }
   }
 

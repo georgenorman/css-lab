@@ -24,14 +24,6 @@
   <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico"/>
   <style>
     @import "css/all-css.css";
-
-    /*
-      Use the value of the h2 id as the header text, so that the ID and header will stay in sync and only need to be specified once.
-      Cheap "hack" works here because titles have no spaces.
-    */
-    h2:before {
-      content: attr(id);
-    }
   </style>
 </head>
 <body onload="cssLabModule.handleOnLoad();">
@@ -41,19 +33,42 @@
 </header>
 
 <main>
-  <cssLabAbout style="margin-top:12px;"/>
+  <cssLabAbout style="margin-top:12px;"></cssLabAbout>
 
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Opacity"></h2>
+  <h2 id="overview">Overview</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p style="margin-bottom:0;">
+    This page experiments with the CSS features of Opacity, Visibility, Display and RGBa.
+
+    One common use of these features is to hide (or obscure) an element, while optionally collapsing or preserving the element's space, events and focus.
+    The table bellow illustrates how an element behaves when it can't be seen.
+  </p>
+
+  <div class="tz-display-styles-matrix">
+    <table>
+      <tr><th>Property: Value</th><th>Collapsed</th><th>Receives Events</th><th>Receives Focus</th></tr>
+      <tr><td>opacity: 0</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>visibility: hidden</td><td>No</td><td>No</td><td>No</td></tr>
+      <tr><td>display: none</td><td>Yes</td><td>No</td><td>No</td></tr>
+    </table>
+  </div>
+
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="opacity">Opacity</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>Specifies the transparency of a rendered element, without affecting the space it occupies, its handling of events or its ability to receive focus.</p>
 
   <p>Also see <a href="#RGBa">RGBa</a>.</p>
 
-  <h3 id="Opacity.1">opacity: 1</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="opacity.1">opacity: 1</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is fully opaque.</p>
 
@@ -65,7 +80,9 @@
 
   <tzCssHtmlExample htmlTemplateId="fullyOpaqueHtml" width="400px"></tzCssHtmlExample>
 
-  <h3 id="Opacity.0.5">opacity: 0.5</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="opacity.0.5">opacity: 0.5</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is 50% transparent.</p>
 
@@ -77,7 +94,9 @@
 
   <tzCssHtmlExample htmlTemplateId="partiallyOpaqueHtml" width="400px"></tzCssHtmlExample>
 
-  <h3 id="Opacity.0">opacity: 0</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="opacity.0">opacity: 0</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is invisible, but still occupies the space, remains a focus target and can accept events (e.g., mouse-over can cause the cursor to change).</p>
 
@@ -89,7 +108,9 @@
 
   <tzCssHtmlExample htmlTemplateId="invisibleHtml" width="400px"></tzCssHtmlExample>
 
-  <h3 tzBulletPointFail id="Opacity.irreversible">Irreversible Opacity</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointFail id="opacity.irreversible">Irreversible Opacity</h3>
+  <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-fail">
     The opacity of a nested element is calculated by multiplying the opacity of all parent elements.
@@ -115,10 +136,12 @@
   <tzCssHtmlExample htmlTemplateId="irreversibleHtml" width="400px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Visibility"></h2>
+  <h2 id="visibility">Visibility</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <h3 id="Visibility.visible">visibility:visible</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="visibility.visible">visibility:visible</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is displayed normally and accepts events and focus.</p>
 
@@ -132,7 +155,9 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="visibilityVisibleHtml" width="400px"></tzCssHtmlExample>
 
-  <h3 id="Visibility.hidden">visibility:hidden</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="visibility.hidden">visibility:hidden</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is visually transparent, but the space it occupies remains, and it doesn't receive events or focus.</p>
 
@@ -147,10 +172,12 @@ After the DIV.
   <tzCssHtmlExample htmlTemplateId="visibilityHiddenHtml" width="400px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="Display"></h2>
+  <h2 id="display">Display</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <h3 id="Display.block">display:block</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.block">display:block</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is displayed as a block element (e.g., &lt;div&gt;) and accepts events and focus.</p>
 
@@ -164,7 +191,9 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayBlockHtml" width="400px"></tzCssHtmlExample>
 
-  <h3 id="Display.block.margin+padding">display:block (margin+padding)</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.block.margin+padding">display:block (margin+padding)</h3>
+  <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="displayBlockWithPadHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -176,7 +205,9 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayBlockWithPadHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.inline">display:inline</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.inline">display:inline</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is displayed inline (e.g., &lt;span&gt;) and accepts events and focus.</p>
 
@@ -190,7 +221,9 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayInlineHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.inline.margin+padding">display:inline (margin+padding)</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.inline.margin+padding">display:inline (margin+padding)</h3>
+  <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="displayInlineWithPadHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -202,9 +235,11 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayInlineWithPadHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 tzBulletPointPass id="Display.inline-block">display:inline-block</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="display.inline-block">display:inline-block</h3>
+  <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass" iconStyle="margin-top:0;">The element is rendered as a box, but flows as if it were an inline element.</tzBulletPoint>
+  <tzBulletPoint iconClass="tz-bullet-point-pass">The element is rendered as a box, but flows as if it were an inline element.</tzBulletPoint>
 
 <script type="multiline-template" id="displayInlineBlockHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -216,7 +251,9 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayInlineBlockHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.inline-block.margin+padding">display:inline-block (margin+padding)</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.inline-block.margin+padding">display:inline-block (margin+padding)</h3>
+  <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="displayInlineBlockWithPadHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -228,7 +265,9 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayInlineBlockWithPadHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.none">display:none</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.none">display:none</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is not displayed and does not accept events or focus.</p>
 
@@ -242,7 +281,9 @@ After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayNoneHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.list-item">display:list-item</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.list-item">display:list-item</h3>
+  <!-- `````````````````````````````````` -->
 
   <p>The element is displayed as a list item element (i.e., &lt;li&gt;).</p>
 
@@ -256,7 +297,9 @@ After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayListItemHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.table">display:table</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.table">display:table</h3>
+  <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="displayTableHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -268,7 +311,33 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayTableHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.grid">display:grid</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.table-cell">display:table-cell</h3>
+  <!-- `````````````````````````````````` -->
+
+<script type="multiline-template" id="displayTableCellCss">
+.center-text {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+}
+</script>
+
+<script type="multiline-template" id="displayTableCellHtml">
+Before the DIV. Before the DIV. Before the DIV.
+<div class="divInner center-text">
+  Centered
+</div>
+After the DIV. After the DIV. After the DIV.
+</script>
+
+  <tzCssHtmlExample templateId="displayTableCell" width="550px"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.grid">display:grid</h3>
+  <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="displayGridHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -280,7 +349,9 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample htmlTemplateId="displayGridHtml" width="550px"></tzCssHtmlExample>
 
-  <h3 id="Display.inline-grid">display:inline-grid</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="display.inline-grid">display:inline-grid</h3>
+  <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="displayInlineGridHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -293,10 +364,12 @@ After the DIV. After the DIV. After the DIV.
   <tzCssHtmlExample htmlTemplateId="displayInlineGridHtml" width="550px"></tzCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="RGBa"></h2>
+  <h2 id="rgba">RGBa</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <h3 id="RGBa.alpha-0.1">Overlay with alpha of 0.1</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="rgba.alpha-0.1">Overlay with alpha of 0.1</h3>
+  <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="rgbaCss">
 .overlay {
@@ -327,7 +400,9 @@ After the DIV. After the DIV. After the DIV.
 
   <tzCssHtmlExample cssTemplateId="rgbaCss" htmlTemplateId="rgba1Html" width="580px"></tzCssHtmlExample>
 
-  <h3 id="RGBa.alpha-0.6">Overlay with alpha of 0.6</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 id="rgba.alpha-0.6">Overlay with alpha of 0.6</h3>
+  <!-- `````````````````````````````````` -->
 
 <script type="multiline-template" id="rgba2Html">
 <div style="position:relative;">

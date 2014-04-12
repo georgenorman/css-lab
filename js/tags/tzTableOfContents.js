@@ -8,8 +8,6 @@
  ~ --------------------------------------------------------------
  */
 
-//document.createElement("tzTableOfContents");
-
 /**
  * The &lt;tzTableOfContents&gt; tag auto-generates a simple two-level Table of Contents, inside the element selected by the given tocClassName.
  * A default title of "Table of Contents" will be used if the optionalTitle is not provided.
@@ -94,8 +92,7 @@ var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
       }
 
       // start ToC
-      var toc = document.createElement("ul");
-      toc.className = "toc";// tzDomHelper.coalesce(cssClassName, "toc"); // default to "toc"
+      var toc = tzDomHelper.createElement(null, "ul", '{"className":"'+tzDomHelper.coalesce(context.cssClassName, "toc")+'"}'); // default to "toc"
 
       // generate list of level-1 and level-2 ToC items
       for (var i = 0; i < level1NodeList.length; i++) {
@@ -119,9 +116,7 @@ var tzTableOfContentsTag = (function(tzDomHelper, tzCustomTagHelper) {
 
       // add heading
       context.title = tzDomHelper.coalesce(context.title, "Table of Contents");
-      var heading = document.createElement("h2");
-      heading.insertAdjacentHTML("afterbegin", "<b>" + context.title + "</b>");
-      containerNode.appendChild(heading);
+      tzDomHelper.createElementWithAdjacentHtml(containerNode,"h2", null, "<b>" + context.title + "</b>");
 
       // add all items to ToC element
       containerNode.appendChild(toc);

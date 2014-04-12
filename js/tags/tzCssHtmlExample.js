@@ -8,8 +8,6 @@
  ~ --------------------------------------------------------------
  */
 
-//document.createElement("tzCssHtmlExample");
-
 /*
  * The <tzCssHtmlExample> tag renders the CSS style, CSS style code-example, HTML code-example
  * and then the live HTML, for the result, using the code templates identified by the
@@ -38,13 +36,16 @@
  * <tzCssHtmlExample templateId="simpleTemplate" width="750px">
  *   <cssComment>A comment rendered beneath the CSS header.</cssComment>
  *   <htmlComment>A comment rendered beneath the HTML header.</htmlComment>
- *   <tzResultComment>A comment rendered beneath the Result header.</tzResultComment>
+ *   <resultComment>A comment rendered beneath the Result header.</resultComment>
  * </tzCssHtmlExample>
- *
  *
  */
 var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, tzHtmlBlock, tzCodeExample) {
   "use strict";
+
+  var cssCommentExpression = new RegExp("<cssComment>(.+?)<\/cssComment>", "ig");
+  var htmlCommentExpression = new RegExp("<htmlComment>(.+?)<\/htmlComment>", "ig");
+  var resultCommentExpression = new RegExp("<resultComment>(.+?)<\/resultComment>", "ig");
 
   return {
     getTagName: function() {
@@ -73,6 +74,7 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, 
      * @param tzHtmlCssExampleTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(tzHtmlCssExampleTagNode) {
+      // get the template IDs from the tag
       var cssTemplateId;
       var htmlTemplateId;
       if (tzDomHelper.isNotEmpty(tzHtmlCssExampleTagNode.getAttribute("templateId"))) {
@@ -83,27 +85,39 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, 
         htmlTemplateId = tzHtmlCssExampleTagNode.getAttribute("htmlTemplateId");
       }
 
-      // get the attributes
+      // get css info from the tag
+      var cssError = "";
       var cssComment = "";
       var rawCss = "";
       if (tzDomHelper.isNotEmpty(cssTemplateId)) {
-        cssComment = tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzCssComment");
-        rawCss = tzDomHelper.getInnerHtmlWithDefault(cssTemplateId);
+        cssComment = tzCustomTagHelper.getFirstMatchedGroup(tzHtmlCssExampleTagNode, cssCommentExpression);
+        rawCss = tzDomHelper.getInnerHtml(cssTemplateId);
+
+        if (tzDomHelper.isEmpty(rawCss)) {
+          cssError = "CSS Template was not found for given ID: " + cssTemplateId;
+        }
       }
 
+      // build the context
       var context = {
         "cssComment": cssComment,
         "rawCss": rawCss,
-        "htmlComment": tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzHtmlComment"),
-        "rawHtml": tzDomHelper.getInnerHtmlWithDefault(htmlTemplateId),
-        "resultComment": tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlCssExampleTagNode, "tzResultComment"),
-        "width": tzHtmlCssExampleTagNode.getAttribute("width")
+        "htmlComment": tzCustomTagHelper.getFirstMatchedGroup(tzHtmlCssExampleTagNode, htmlCommentExpression),
+        "rawHtml": tzDomHelper.getInnerHtml(htmlTemplateId),
+        "resultComment": tzCustomTagHelper.getFirstMatchedGroup(tzHtmlCssExampleTagNode, resultCommentExpression),
+        "width": tzHtmlCssExampleTagNode.getAttribute("width"),
+        "height": tzHtmlCssExampleTagNode.getAttribute("height")
       };
 
       // remove child nodes (e.g., optional comment nodes)
       tzDomHelper.removeAllChildNodes(tzHtmlCssExampleTagNode);
 
-      // render the result
+      // check for error
+      if (tzDomHelper.isNotEmpty(cssError)) {
+        tzDomHelper.createElementWithAdjacentHtml(tzHtmlCssExampleTagNode, "p", '{"style.color":"red"}', cssError);
+      }
+
+      // render the result (without CSS if error was encountered)
       this.render(tzHtmlCssExampleTagNode, context);
     },
 
@@ -118,6 +132,7 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, 
      *            - rawHtml the HTML code to insert.
      *            - resultComment optional comment to render above the live result.
      *            - width optional width (hack) to force the zebra stripes to fill the entire code area when scrolling is required.
+     *            - height optional height.
      */
     render: function(containerNode, context) {
       // render the live CSS, if present
@@ -141,10 +156,11 @@ var tzCssHtmlExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCssBlock, 
         "width": context.width,
         "rawCode": context.rawHtml});
 
-      // render the live result
+      // render the live HTML code
       tzHtmlBlock.render(containerNode, {
         "heading": "Rendered Result",
         "resultComment": context.resultComment,
+        "height": context.height,
         "rawHtml": context.rawHtml});
     }
 

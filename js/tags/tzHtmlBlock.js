@@ -13,13 +13,17 @@
  *
  * The tag attributes are read from the tzCodeExample element, as shown in the example below:
  *
- *    <tzHtmlBlock templateId="basicBoxModelHtml" heading="Rendered Result"></tzHtmlBlock>
+ *    <tzHtmlBlock templateId="basicBoxModelHtml" heading="Rendered Result">
+ *      <comment>Optional Comment</comment>
+ *    </tzHtmlBlock>
  *
  * @attribute templateId - ID of the element containing the raw HTML code to render.
  * @attribute heading - heading text [optional]
  */
 var tzHtmlBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
   "use strict";
+
+  var commentExpression = new RegExp("<comment>(.+?)</comment>", "ig");
 
   return {
     getTagName: function() {
@@ -49,13 +53,20 @@ var tzHtmlBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
      */
     renderTag: function(tzHtmlTagNode) {
       var templateId = tzHtmlTagNode.getAttribute("templateId");
+      var heading = tzHtmlTagNode.getAttribute("heading");
+      if (tzDomHelper.isEmpty(heading)) {
+        heading = "Rendered Result";
+      }
 
-      // get the attributes
+      // build the context
       var context = {
-        "heading": tzHtmlTagNode.getAttribute("heading"),
-        "resultComment": tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzHtmlTagNode, "tzResultComment"),
+        "heading": heading,
+        "resultComment": tzCustomTagHelper.getFirstMatchedGroup(tzHtmlTagNode, commentExpression),
         "rawHtml": tzDomHelper.getInnerHtml(templateId)
       };
+
+      // remove all child nodes, previously added from render (or renderAll).
+      tzDomHelper.removeAllChildNodes(tzHtmlTagNode);
 
       // render the result
       this.render(tzHtmlTagNode, context);
@@ -73,24 +84,19 @@ var tzHtmlBlockTag = (function(tzDomHelper, tzCustomTagHelper) {
     render: function(containerNode, context) {
       // render optional heading, if present
       if (tzDomHelper.isNotEmpty(context.heading)) {
-        var headingElement = document.createElement("h4");
-        headingElement.insertAdjacentHTML("afterbegin", context.heading);
-        containerNode.appendChild(headingElement);
+        tzDomHelper.createElementWithAdjacentHtml(containerNode, "h4", null, context.heading);
       }
 
       // render optional result comment, if present
       if (tzDomHelper.isNotEmpty(context.resultComment)) {
-        var commentElement = document.createElement("p");
-        commentElement.className += " tz-html-block-comment";
-        commentElement.insertAdjacentHTML("afterbegin", context.resultComment);
-        containerNode.appendChild(commentElement);
+        tzDomHelper.createElementWithAdjacentHtml(containerNode, "p", '{"className":"tz-html-block-comment"}', context.resultComment);
       }
 
       // render raw HTML from the template
-      var divElement = document.createElement("div");
-      divElement.className += " tz-html-block";
-      divElement.insertAdjacentHTML("afterbegin", context.rawHtml);
-      containerNode.appendChild(divElement);
+      var div = tzDomHelper.createElementWithAdjacentHtml(containerNode, "div", '{"className":"tz-html-block"}', context.rawHtml);
+      if (tzDomHelper.isNotEmpty(context.height)) {
+        div.style.height = context.height;
+      }
     }
   }
 }(tzDomHelperModule, tzCustomTagHelperModule));

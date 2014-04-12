@@ -9,13 +9,18 @@
  */
 
 /**
- * The <tzCodeExample> tag renders an optional heading, followed by a <code> block with the XML escaped text
+ * The <tzCodeExample> tag renders an optional heading and comment, followed by a <code> block with the XML escaped text
  * extracted from the element with the specified templateId.
  *
  * The tag attributes are read from the tzCodeExample element, as shown in the examples below:
  *
- *    <tzCodeExample templateId="basicBoxModelHtml" heading="HTML" lang="*ml"></tzCodeExample>
- *    <tzCodeExample templateId="commonCss" lang="css"></tzCodeExample>
+ *   <tzCodeExample templateId="tzCodeExampleHtmlTemplate" heading="HTML" lang="*ml" width="350px">
+ *     <comment>HTML tzCodeExample comment.</comment>
+ *   </tzCodeExample>
+ *
+ *   <tzCodeExample templateId="tzCodeExampleCssTemplate" heading="CSS" lang="css" width="300px">
+ *     <comment>CSS tzCodeExample comment.</comment>
+ *   </tzCodeExample>
  *
  * @attribute templateId - ID of the element containing the HTML or JavaScript code to render.
  * @attribute heading - heading text [optional]
@@ -24,6 +29,8 @@
  */
 var tzCodeExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCodeHighlighter) {
   "use strict";
+
+  var commentExpression = new RegExp("<comment>(.+?)<\/comment>", "ig");
 
   return {
     getTagName: function() {
@@ -54,16 +61,16 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCodeHighlight
     renderTag: function(tzCodeExampleTagNode) {
       var templateId = tzCodeExampleTagNode.getAttribute("templateId");
 
-      // get the attributes
+      // build the context
       var context = {
         "heading": tzCodeExampleTagNode.getAttribute("heading"),
-        "codeBlockComment": tzDomHelper.getFirstChildElementInnerHtmlByTagName(tzCodeExampleTagNode, "tzCodeBlockComment"),
+        "codeBlockComment": tzCustomTagHelper.getFirstMatchedGroup(tzCodeExampleTagNode, commentExpression),
         "lang": tzCodeExampleTagNode.getAttribute("lang"),
         "width": tzCodeExampleTagNode.getAttribute("width"),
-        "rawCode": tzDomHelper.getInnerHtmlWithDefault(templateId)
+        "rawCode": tzDomHelper.getInnerHtml(templateId)
       };
 
-      // remove child nodes (e.g., optional codeBlockComment node)
+      // remove the child nodes (e.g., optional codeBlockComment node)
       tzDomHelper.removeAllChildNodes(tzCodeExampleTagNode);
 
       // render the result
@@ -84,41 +91,38 @@ var tzCodeExampleTag = (function(tzDomHelper, tzCustomTagHelper, tzCodeHighlight
     render: function(containerNode, context) {
       // render optional heading, if present
       if (tzDomHelper.isNotEmpty(context.heading)) {
-        var headingElement = document.createElement("h4");
-        headingElement.insertAdjacentHTML("afterbegin", context.heading);
-        containerNode.appendChild(headingElement);
+        tzDomHelper.createElementWithAdjacentHtml(containerNode, "h4", null, context.heading);
       }
 
       // render optional HTML comment, if present
       if (tzDomHelper.isNotEmpty(context.codeBlockComment)) {
-        var commentElement = document.createElement("p");
-        commentElement.className += " tz-code-example-comment";
-        commentElement.insertAdjacentHTML("afterbegin", context.codeBlockComment);
-        containerNode.appendChild(commentElement);
+        tzDomHelper.createElementWithAdjacentHtml(containerNode, "p", '{"className":"tz-code-example-comment"}', context.codeBlockComment);
       }
 
-      var olElement = document.createElement("ol");
-      if (tzDomHelper.isNotEmpty(context.width)) {
-        olElement.style.width = context.width;
+      // render raw code
+      if (tzDomHelper.isEmpty(context.rawCode)) {
+        // error - missing rawCode
+        tzDomHelper.createElementWithAdjacentHtml(containerNode, "p", '{"style.color":"red"}', "Raw Code is missing");
+      } else {
+        // create <code> block for the code listing
+        var codeElement = tzDomHelper.createElement(null, "code", '{"className":"tz-code-example"}');
+        var olElement = tzDomHelper.createElement(codeElement, "ol");
+        if (tzDomHelper.isNotEmpty(context.width)) {
+          olElement.style.width = context.width;
+        }
+
+        // create a list item for each line (to display line numbers).
+        var codeLines = context.rawCode.split("\n");
+        for (var i = 0; i < codeLines.length; i++) {
+          var escapedCodeLine = tzDomHelper.xmlEscape(codeLines[i]);
+          // @-@:p0 Highlighter should be applied to the complete inner HTML, and not line-by-line as done here, but
+          //        the closing list-item (</li>) breaks the span with the style, so keeping it simple and broken, for now.
+          tzDomHelper.createElementWithAdjacentHtml(olElement, "li", null, " " + tzCodeHighlighter.highlight(escapedCodeLine, context.lang));
+        }
+
+        containerNode.appendChild(codeElement);
       }
-
-      // create a list item for each line (to display line numbers).
-      var codeLines = context.rawCode.split("\n");
-      for (var i = 0; i < codeLines.length; i++) {
-        var escapedCodeLine = tzDomHelper.xmlEscape(codeLines[i]);
-        // @-@:p0 Highlighter should be applied to the complete inner HTML, and not line-by-line as done here, but
-        //        the closing list-item (</li>) breaks the span with the style, so keeping it simple and broken, for now.
-        var liElement = document.createElement("li");
-        liElement.insertAdjacentHTML("afterbegin", " " + tzCodeHighlighter.highlight(escapedCodeLine, context.lang));
-        olElement.appendChild(liElement);
-      }
-
-      var codeElement = document.createElement("code");
-      codeElement.className += " tz-code-example";
-      codeElement.appendChild(olElement);
-
-      containerNode.appendChild(codeElement);
-    },
+     },
 
     /**
      * Refresh the tag (by removing the child elements and re-rendering the code example).

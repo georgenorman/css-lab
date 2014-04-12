@@ -32,73 +32,86 @@
 </header>
 
 <main>
-  <cssLabAbout style="margin-top:12px;"/>
+  <cssLabAbout style="margin-top:12px;"></cssLabAbout>
 
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="basicBoxModel">Basic Box Model</h2>
+  <h2 id="overview">Overview</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    The CSS box model represents the space occupied by an element. It consists of four areas: margin, border, padding, and content.
-    The image below shows a &lt;div&gt; with a 10px margin, 20px border, 30px padding and 100px content region.
+    The CSS box model represents the space occupied by an element and consists of four areas: <b>margin, border, padding, and content</b>.
+    The image below shows a block element with a 10px margin, 20px border, 30px padding and 100px content region.
+  </p>
+  <img src="img/box-model.png" class="image-frame" style="margin-top:0;">
+  <p>
+    Although most HTML elements have these properties, it's important to note that setting one doesn't always
+    mean that it will render in the way shown above.
+    For example, a margin edge can be collapsed, overlapped or transferred to another element.
+    Many examples in this lab will show that setting the top-edge of a margin will sometimes cause it to be transferred to the top-edge of an ancestor.
+  </p>
+  <p>
+    This is a common theme in CSS.
+    Setting a value will sometimes have only a partial effect or affect a different element altogether or have no affect at all
+    (e.g., setting the opacity to 1 can have no affect but setting it to 0.7 will, but only partially).
   </p>
 
-<script type="multiline-template" id="basicBoxModelHtml">
-<div style="margin:10px; border:20px solid red; padding:30px; width:100px; height:100px; opacity:0.5;" >
-  <!-- Content goes here -->
-</div>
-</script>
-
-  <tzCodeExample templateId="basicBoxModelHtml" heading="HTML" lang="*ml" width="750px"></tzCodeExample>
-
-  <img src="img/box-model.png" class="image-frame">
-
-
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="commonCss">Shared CSS</h2>
+  <h3 id="overview.commonCss">Shared CSS</h3>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
     This section contains CSS that's shared by all experiments on this page.
-    All defined classes use the default static position.
+    These common classes use the default static position, which can't be inherited, so they will remain static unless explicitly set.
+    Also, there is no margin or padding used, except for extension classes (e.g., the "with-margin" class).
+    These styles will often be applied to three nested divs: <i>outermost</i>, which contains <i>middleGrid</i>, which in turn contains <i>innermost</i>.
   </p>
+
+  <div style="background-color:#ccc; width:190px; height:185px; text-align:center; margin:20px;">
+    <b>Outermost</b>
+    <div class="middle grid" style="width:150px; height:150px; margin-left:20px;">
+      <b style="background:#ddd;">MiddleGrid</b>
+      <div class="innermost" style="width:70px; height:70px; margin-left:20px; opacity:.6;">
+        <b>Innermost</b>
+      </div>
+    </div>
+  </div>
 
 <script type="multiline-template" id="tmplCommonCss">
 /* A gray box, to serve as the outermost container. */
-.outermost-div {
-  background-color: #ccc;
+.outermost {
   width: 240px; /* content width */
   height: 240px; /* content height */
-  padding: 0;
-  margin: 0;
+  background-color: #ccc;
 }
 
-/* A blue grid, to be nested inside of outermost. */
-.grid.middle-grid {
+/* A grid, nested within outermost. */
+.middle.grid {
   width: 220px; /* content width */
   height: 220px; /* content height */
-  margin: 10px;
 }
 
-/* A semi-transparent box, with margin, padding and redish border, to be nested inside of middle-grid. */
-.inner-box {
-  margin: 10px;
+/* A content box, nested within middle. */
+.innermost {
   border: 20px solid #f00;
-  padding: 30px;
-  opacity: 0.5;
-}
-
-/* A simple 100px x 100px content box, to be nested inside of inner-box. */
-.content-area {
-  color: #fff;
-  background-color: #047;
   width: 100px; /* content width */
   height: 100px; /* content height */
+  color: #fff;
+  background-color: #047;
   text-align: center;
-  display: table-cell;
-  vertical-align: middle;
+  opacity: 0.6;
+}
+
+/* A version of innermost with a 10px margin. */
+.innermost.with-margin {
+  margin: 20px;
+}
+
+/* A smaller version of innermost. */
+.innermost.mini {
+  width: 50px; /* content width */
+  height: 50px; /* content height */
 }
 </script>
 
@@ -106,224 +119,377 @@
 
   <tzCodeExample templateId="tmplCommonCss" lang="css" width="750px"></tzCodeExample>
 
-  <p>
-    <span class="note">Note: The text is centered using the <b>table-cell</b> technique described by <i>lluisaznar</i>
-    <a href="http://stackoverflow.com/questions/732337/how-do-i-vertically-align-something-inside-a-span-tag">here</a></span>.
-  </p>
-
-  <!-- `````````````````````````````````` -->
-  <h2 tzBulletPointPass id="positionAbsolute">Position - Absolute</h2>
-  <!-- `````````````````````````````````` -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 tzBulletPointPass id="basicMargin">Basic Margin and Position</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    This series of experiments uses a set of nested divs, with <i>middleGrid</i> and <i>innerBox</i> having <b>position:absolute</b>.
-    This avoids issues with <a href="positioning.html#relativeToStatic.topMarginTransfer">Top Margin Transfer</a>.
-  </p>
+    This section consists of basic experiments where setting the margin on an element affects only that element and not a different element (or both).
+  <p>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="positionAbsolute.content">With Content Area</h3>
-  <!-- `````````````````````````````````` -->
-
-  <tzBulletPoint iconClass="tz-bullet-point-pass" iconStyle="margin-top:0;">
-    <p style="">This experiment includes a single 100px by 100px content area.</p>
-  </tzBulletPoint>
-
-<script type="multiline-template" id="basicBoxModelPositionAbsoluteWithContentHtml">
-<div class="outermost-div" id="outermost_010">
-  <div class="grid middle-grid" style="position:absolute;" id="middleGrid_010">
-    <div class="inner-box" style="position:absolute;" id="innerBox_010">
-      <div class="content-area">CONTENT<br>100px x 100px</div>
-    </div>
-  </div>
-</div>
-</script>
-
-
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionAbsoluteWithContentHtml" width="750px">
-    <tzResultComment>
-      Summary: <i>outermost</i> has no border, padding or margin; <i>middleGrid</i> has a 10px margin and position:absolute;
-      <i>innerBox</i> also uses position:absolute and has a 10px margin, 20px redish border, 30px padding and 100px x 100px content area.
-    </tzResultComment>
-  </tzCssHtmlExample>
-
-  <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermost_010": "position"}, {"middleGrid_010": "position"}, {"innerBox_010": "position"}]}' useShortItems="true"></tzDisplayStyles>
-
-  <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="positionAbsolute.sansContent">Sans Content Area</h3>
-  <!-- `````````````````````````````````` -->
-
-  <tzBulletPoint iconClass="tz-bullet-point-pass" iconStyle="margin-top:2px;">
-    This experiment keeps everything the same as <a href="#positionAbsolute.content">Position - Absolute, With Content Area</a>,
-    except the center content-area box has been removed.
-  </tzBulletPoint>
-
-<script type="multiline-template" id="basicBoxModelPositionAbsoluteSansContentHtml">
-<div class="outermost-div" id="outermost_020">
-  <div class="grid middle-grid" style="position:absolute;" id="middleGrid_020">
-    <div class="inner-box" style="position:absolute; id="innerBox_020">
-    </div>
-  </div>
-</div>
-</script>
-
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionAbsoluteSansContentHtml" width="750px"></tzCssHtmlExample>
-
-  <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermost_020": "position"}, {"middleGrid_020": "position"}, {"innerBox_020": "position"}]}' useShortItems="true"></tzDisplayStyles>
-
-  <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="positionAbsolute.multiInnerAbsolute">Multiple Absolute Inner Boxes</h3>
+  <h3 tzBulletPointPass id="basicMargin.absoluteInStatic">Absolute in Static</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    This experiment keeps everything the same as <a href="#positionAbsolute.sansContent">Position - Absolute, Sans Content Area</a>,
-    except now there are multiple innerBoxes. Since position is absolute, they don't flow around each other.
-    Instead, they stack on top of each other (unless positioned manually, as in this example).
-  </tzBulletPoint>
-
-<script type="multiline-template" id="basicBoxModelPositionAbsoluteMultiAbsoluteInnerHtml">
-<div class="outermost-div" id="outermost_030">
-  <div class="grid middle-grid" style="position:absolute;" id="middleGrid_030">
-    <div class="inner-box" style="position:absolute;" id="innerBox_030"></div>
-    <div class="inner-box" style="position:absolute; top:30px; left:30px;" id="innerBox_031"></div>
-  </div>
-</div>
-</script>
-
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionAbsoluteMultiAbsoluteInnerHtml" width="750px"></tzCssHtmlExample>
-
-  <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermost_030": "position"}, {"middleGrid_030": "position"}, {"innerBox_030": "position"}, {"innerBox_031": "position"}]}' useShortItems="true"></tzDisplayStyles>
-
-  <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="positionAbsolute.multiInnerStatic">Multiple Static Inner Boxes</h3>
-  <!-- `````````````````````````````````` -->
-
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
-    This experiment is the same as above, except now the multiple innerBoxes are static (static boxes nested inside of absolute boxes).
-    Note: If the innerBoxes were relative positioned, the results would be the same.
-
-    <p style="margin-bottom:0;">
-      The following behaviours of the innerBoxes can be observed:
+    <p>
+      <b>Innermost</b> is given a 20px margin.
+      Since it's an absolute-positioned div inside a static one, the results are as expected:
+      There's a 20px margin all around, with no side-effects.
     </p>
-    <ul>
-      <li>They flow around each other</li>
-      <li>They stretch horizontally, to fill the space of their parent container (<i>middleGrid</i>), unless width or margin are explicitly set as is the case for the second innerBox.</li>
-      <li>The top margin of the lower box overlaps the bottom margin of its above sibling.</li>
-    </ul>
+    <p>
+      <b>MiddleGrid</b> was not given a margin, since it's a static div nested inside a static div.
+      Adding a margin would trigger the <a href="boxModel.html#marginCaveats.topMarginTransfer">Top Margin Transfer</a> effect.
+    </p>
   </tzBulletPoint>
 
-<script type="multiline-template" id="basicBoxModelPositionAbsoluteMultiStaticInnerHtml">
-<div class="outermost-div" style="height:300px;" id="outermost_040">
-  <div class="grid middle-grid" style="position:absolute; height:260px" id="middleGrid_040">
-    <div class="inner-box" id="innerBox_040"></div>
-    <div class="inner-box" id="innerBox_041" style="width:10px; margin:auto"></div>
+<script type="multiline-template" id="positionAbsoluteInStaticHtml">
+<div class="outermost" id="outermost_120">
+  <div class="middle grid" id="middleGrid_120">
+    <div class="innermost with-margin" style="position:absolute;" id="innermost_120">
+      <br>innermost
+    </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionAbsoluteMultiStaticInnerHtml" width="750px"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="positionAbsoluteInStaticHtml" width="750px"></tzCssHtmlExample>
 
-  <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermost_040": "position"}, {"middleGrid_040": "position"}, {"innerBox_040": "position"}, {"innerBox_041": "position"}]}' useShortItems="true"></tzDisplayStyles>
+  <tzDisplayStyles width="500px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_120, middleGrid_120, innermost_120</elementIds>
+  </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h2 tzBulletPointFail id="positionStatic">Position - Static</h2>
+  <h3 tzBulletPointPass id="basicMargin.staticInAbsolute">Static in Absolute</h3>
   <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    <p>
+      <b>Innermost</b> is given a 20px margin.
+      Since it's a static-positioned div inside an absolute one, the results are as expected:
+      There's a 20px margin all around, with no side-effects.
+    </p>
+    <p>
+      <b>MiddleGrid</b> has been given a 10px margin.
+      Since it's an absolute div nested inside a static one, the results are also as expected:
+      10px margin all around, with no side-effects.
+    </p>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="positionStaticInAbsoluteHtml">
+<div class="outermost" id="outermost_130">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_130">
+    <div class="innermost with-margin" id="innermost_130">
+      <br>innermost
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="positionStaticInAbsoluteHtml" width="750px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="500px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_130, middleGrid_130, innermost_130</elementIds>
+  </tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="basicMargin.absoluteInRelative">Absolute in Relative</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    <p>
+      <b>Innermost</b> is given a 20px margin.
+      Since it's an absolute-positioned div inside a relative div, the results are the expected 20px margin all around, with no side-effects.
+    </p>
+    <p>
+      <b>MiddleGrid</b> was not given a margin.
+      Since it's a relative div nested inside a static one, adding a margin would result in the <a href="#marginCaveats.topMarginTransfer">Top Margin Transfer</a> effect.
+    </p>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="positionAbsoluteInRelativeHtml">
+<div class="outermost" id="outermost_140">
+  <div class="middle grid" style="position:relative;" id="middleGrid_140">
+    <div class="innermost with-margin" style="position:absolute;" id="innermost_140">
+      <br>innermost
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="positionAbsoluteInRelativeHtml" width="750px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="500px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_140, middleGrid_140, innermost_140</elementIds>
+  </tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="basicMargin.relativeInAbsolute">Relative in Absolute</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    <p>
+      <b>Innermost</b> is given a 20px margin.
+      Since it's a relative-positioned div inside an absolute one, the results are as expected:
+      20px margin all around, with no side-effects.
+    </p>
+    <p>
+      <b>MiddleGrid</b> was given a 10px margin.
+      Since it's an absolute div nested inside a static one, the results are also as expected:
+      10px margin all around, with no side-effects.
+    </p>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="positionRelativeInAbsoluteHtml">
+<div class="outermost" id="outermost_150">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_150">
+    <div class="innermost with-margin" style="position:relative;" id="innermost_150">
+      <br>innermost
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="positionRelativeInAbsoluteHtml" width="750px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="500px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_150, middleGrid_150, innermost_150</elementIds>
+  </tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="basicMargin.absoluteInAbsolute">Absolute in Absolute</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    <p>
+      <b>Innermost</b> is given a 20px margin.
+      Since it's an absolute-positioned div inside an absolute div, the results are the expected 20px margin all around, with no side-effects.
+    </p>
+    <p>
+      <b>MiddleGrid</b> was given a 10px margin.
+      Since it's an absolute div nested inside a static one, the results are also as expected:
+      10px margin all around, with no side-effects.
+    </p>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="positionAbsoluteInAbsoluteHtml">
+<div class="outermost" id="outermost_160">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_160">
+    <div class="innermost with-margin" style="position:absolute;" id="innermost_160">
+      <br>innermost
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="positionAbsoluteInAbsoluteHtml" width="750px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="500px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_160, middleGrid_160, innermost_160</elementIds>
+  </tzDisplayStyles>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="marginCaveats">Margin Caveats</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
-    This series of experiments uses a set of nested divs, with <i>middleGrid</i> and <i>innerBox</i> having <b>position:static</b> (the default position).
-    This causes issues with <a href="positioning.html#relativeToStatic.topMarginTransfer">Top Margin Transfer</a>.
-  </p>
+    The margin of a block-level element can collapse, overlap or be transferred to another element, depending on a variety of circumstances.
+    This section experiments with some of these effects.
+  <p>
 
-  <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointFail id="positionStatic.content">With Content Area</h3>
+    <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointFail id="marginCaveats.topMarginTransfer">Top Margin Transfer (TMT)</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-fail">
-    This experiment includes a single 100px by 100px content area.
-    Since position is now static, the top margin of <i>innerBox</i> is transferred to the outermost div (as evidenced by the more than 10px gap above the outermost div).
+    <p>
+      When a static or relative-positioned block-level element is nested inside of a static or relative-positioned parent,
+      its top margin will be transferred up the hierarchy until a suitable ancestor is found.
+      This is true for blocks of static elements nested in static elements, relative nested in static, static nested in relative and relative nested in relative.
+    </p>
+    <p>
+      For example, the experiment below uses a relatively positioned <i>innermost</i> div with a 20px margin, nested inside of two statically positioned ancestor divs.
+      As expected, this pushes the <i>innermost</i> div 20px to the right, relative to its parent, <i>middle</i> div.
+    </p>
+    <p>
+      <span style="color:#f83;">Surprisingly, the top margin has no effect on the <i>innermost</i> div's distance from the top of <i>middle</i> div.
+      Instead, the top margin bypasses both the <i>innermost</i> and the <i>middle</i> divs and is directly transferred to the top of the <i>outermost</i> div, pushing it down by 20px
+      (as evidenced by the more than 20px gap above <i>outermost</i>).</span>
+    </p>
   </tzBulletPoint>
 
-<script type="multiline-template" id="basicBoxModelPositionStaticHtml">
-<div class="outermost-div" id="outermost_110">
-  <div class="grid middle-grid" style="position:static;" id="middleGrid_110">
-    <div class="inner-box" id="innerBox_110">
-      <div class="content-area">CONTENT<br>100px x 100px</div>
+<script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">
+<div class="outermost" id="outermost_100">
+  <div class="middle grid" id="middleGrid_100">
+    <div style="position:relative; margin:20px;" class="innermost" id="innermost_100">
+      <br>innermost
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionStaticHtml" width="750px">
-    <tzResultComment>
-      Summary: <i>outermost</i> has no border, padding or margin; <i>middleGrid</i> has a 10px margin and position:static; <i>innerBox</i> has a 10px margin.
-    </tzResultComment>
-  </tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="tmplExampleRelInStatic10pxMarginHtml" width="640px"></tzCssHtmlExample>
 
-  <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermost_110": "position"}, {"middleGrid_110": "position"}, {"innerBox_110": "position"}]}' useShortItems="true"></tzDisplayStyles>
-
-  <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointFail id="positionStatic.border">Position - Static with Border</h3>
-  <!-- `````````````````````````````````` -->
-
-  <tzBulletPoint iconClass="tz-bullet-point-fail">
-    Similar to what was found in the Positioning lab, by adding a top border to an outer div, the Margin Transfer "feature" can be blocked.
-    The example below, shows that adding a top border to <i>middleGrid</i>, protects it from the margin transfer.
-    However, <i>outermost</i> is still affected by the margin transfer, as evidenced by the more than 10px gap above the <i>outermost</i> div.
-  </tzBulletPoint>
-
-<script type="multiline-template" id="basicBoxModelPositionStaticWithBorderHtml">
-<div class="outermost-div" id="outermostPswb">
-  <div class="grid middle-grid" style="position:static; border-top:thin solid red;" id="middleGridPswb">
-    <div class="inner-box" id="innerBoxPswb">
-      <div class="content-area">CONTENT<br>100px x 100px</div>
-    </div>
-  </div>
-</div>
-</script>
-
-
-  <tzCssHtmlExample htmlTemplateId="basicBoxModelPositionStaticWithBorderHtml" width="750px">
-    <tzResultComment>
-      Summary: <i>outermost</i> has no border, padding or margin; <i>middleGrid</i> has a 10px margin, position:static and a thin <b>top border</b>; <i>innerBox</i> has a 10px margin.
-    </tzResultComment>
-  </tzCssHtmlExample>
-
-  <b>Current 'position' styles:</b>
-  <tzDisplayStyles items='{"idStylePairs":[{"outermostPswb": "position"}, {"middleGridPswb": "position"}, {"innerBoxPswb": "position"}]}' useShortItems="true"></tzDisplayStyles>
-
+  <tzDisplayStyles width="600px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_100, middleGrid_100, innermost_100</elementIds>
+  </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointFail id="positionStatic.padding">Position - Static with Padding</h3>
+  <h3 tzBulletPointFail id="marginCaveats.marginTransferPaddingWorkarounds">TMT Padding Workarounds</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-fail">
-    Adding some padding to the outermost div can also mitigate the affects of Margin Transfer, when using static divs.
-    Furthermore, the end result can be made to look exactly like the example that uses position:absolute, but with a lot of finagling of the outer and inner divs.
+    Adding some padding to the outermost div can mitigate the affects of <a href="#marginCaveats.topMarginTransfer">Top Margin Transfer</a>, when using static divs, but requires a lot of finagling of the outer and inner divs.
   </tzBulletPoint>
 
-<script type="multiline-template" id="basicBoxModelPositionStaticWithPaddingCss">
-.grid.middle-grid-pswp {
-  width: 200px;
-  height: 200px;
-  margin: 0;
+<script type="multiline-template" id="marginTransferPaddingWorkaroundsPaddingCss">
+.middle-pswp.grid {
+  width: 180px;
+  height: 180px;
 }
 </script>
 
-<script type="multiline-template" id="basicBoxModelPositionStaticWithPaddingHtml">
-<div class="outermost-div" style="padding:10px 0 0 10px; width:230px; height:230px;" id="outermostPswp">
-  <div class="grid middle-grid-pswp" style="position:static; padding:10px;" id="middleGridPswp">
-    <div class="inner-box" style="margin:0;" id="innerBoxPswp">
-      <div class="content-area">CONTENT<br>100px x 100px</div>
+<script type="multiline-template" id="marginTransferPaddingWorkaroundsPaddingHtml">
+<div class="outermost" style="padding:10px 0 0 10px; width:230px; height:230px;" id="outermost_110">
+  <div class="middle-pswp grid" style="margin:0; padding:20px;" id="middleGrid_110">
+    <div class="innermost with-margin" style="margin:0;" id="innermost_110">
+      <br>innermost
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample templateId="basicBoxModelPositionStaticWithPadding" width="750px"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="marginTransferPaddingWorkaroundsPadding" width="770px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="560px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_110, middleGrid_110, innermost_110</elementIds>
+  </tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointFail id="marginCaveats.marginTransferBorderWorkarounds">TMT Border Workarounds</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
+    Top Margin Transfer can be circumvented by adding a border to the <i>outermost</i> (or <i>middle</i>) div.
+    The example below shows that by adding a border to <i>outermost</i>, the margin transfer from <i>innermost</i> is blocked.
+    Instead, the top margin is now transferred to the <i>middle</i> div.
+    Alternatively, adding a border to the <i>middle</i> div blocks the margin transfer to both <i>middle</i> and <i>outermost</i> divs all at once
+    (i.e., adding a border or padding to an outer div blocks the propagation of the margin transfer feature).
+  </tzBulletPoint>
+
+<script type="multiline-template" id="marginTransferBorderWorkaroundsHtml">
+<div class="outermost" style="border-top:1px solid red;" id="outermost_115">
+  <div class="middle grid" id="middleGrid_115">
+    <div style="margin:20px; position:relative;" class="innermost" id="innermost_115">
+      CONTENT<br>100px x 100px
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="marginTransferBorderWorkaroundsHtml" width="840px" height="250px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="600px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_115, middleGrid_115, innermost_115</elementIds>
+  </tzDisplayStyles>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="border">Border</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>
+    TODO
+  <p>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 tzBulletPointPass id="verticalCentering">Vertical Centering</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    The text in innermost can be easily centered by using the table-cell technique
+    described by <i>lluisaznar</i> <a href="http://stackoverflow.com/questions/732337/how-do-i-vertically-align-something-inside-a-span-tag">here</a></span>.
+  </tzBulletPoint>
+
+<script type="multiline-template" id="positionAbsoluteInAbsoluteCenterCss">
+.center-text {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  width: 100px; /* content width */
+  height: 100px; /* content height */
+}
+</script>
+
+<script type="multiline-template" id="positionAbsoluteInAbsoluteCenterHtml">
+<div class="outermost" id="outermost_200">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_200">
+    <div class="innermost with-margin" style="position:absolute;" id="innermost_200">
+      <div class="center-text" id="centerText_200">
+        CONTENT<br>100px x 100px
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample templateId="positionAbsoluteInAbsoluteCenter" width="750px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="560px">
+    <styleNames>position, margin, padding, display, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/contentRegion.png</legendImages>
+    <elementIds>outermost_200, middleGrid_200, innermost_200, centerText_200</elementIds>
+  </tzDisplayStyles>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 tzBulletPointPass id="multipleInnerBoxes">Multiple Inner Boxes</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>
+    This series of experiments shows how multiple inner boxes behave in the box model.
+  </p>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="multipleInnerBoxes.absolute">Multiple Absolute Inner Boxes</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    This experiment uses two absolute positioned innermost boxes.
+    Since position is absolute, they don't flow around each other.
+    Instead, they stack on top of each other (unless positioned manually, as in this example).
+  </tzBulletPoint>
+
+<script type="multiline-template" id="multipleInnerBoxesAbsoluteHtml">
+<div class="outermost" id="outermost_300">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_300">
+    <div class="innermost with-margin mini" style="position:absolute;" id="innermost_300"></div>
+    <div class="innermost with-margin mini" style="position:absolute; top:30px; left:30px;" id="innermost_301"></div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="multipleInnerBoxesAbsoluteHtml" width="850px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="500px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_300, middleGrid_300, innermost_300, innermost_301</elementIds>
+  </tzDisplayStyles>
 
 </main>
 

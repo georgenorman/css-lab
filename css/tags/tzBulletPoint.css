@@ -7,7 +7,7 @@
 
 .tz-bullet-point-left {
   float: left;
-  margin-top: 4px;
+  margin-top: 0;
 }
 
 .tz-bullet-point-pass {
@@ -15,6 +15,7 @@
   border: 1px solid green;
   padding: 1px 3px 1px 3px;
   border-radius: 50%;
+  font-size: 11px;
 }
 
 .tz-bullet-point-pass::after {
@@ -30,5 +31,26 @@
   content: "\2620";
   font-style: normal;
   font-weight: bold;
-  font-size: 26px;
+  font-size: 22px;
+}
+
+.tz-bullet-point-star {
+  color: gold;
+}
+
+.tz-bullet-point-star::after {
+  content: "\2605";
+  font-style: normal;
+  font-size: 18px;
+}
+
+.tz-bullet-point-info {
+  color: #06f;
+}
+
+.tz-bullet-point-info::after {
+  content: "\24D8";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
 }

@@ -11,6 +11,8 @@
 var tzCustomTagHelperModule = (function( tzDomHelper ) {
   "use strict";
 
+  var templateVariableExpression = new RegExp( "{{(.*?)}}", "g" );
+
   return {
     /**
      * Return a generated template ID, by concatenating "TagTemplate" to the tagModule's tag name.
@@ -69,17 +71,14 @@ var tzCustomTagHelperModule = (function( tzDomHelper ) {
 
     /**
      * Render the custom tag, into the given containerNode, using an HTML template
-     * that may have variables that need transliteration using the given context.
+     * that may have variables needing transliteration using the given context.
      *
      * @param containerNode where to render the result.
      * @param template the HTML template used to render the tag.
      * @param context a custom-tag specific JSON object that contains property values used for the transliteration process of the HTML template.
      */
     renderTagFromTemplate: function( containerNode, template, context ) { // context defined here is used by eval($1) below. The template must use {{context.foo}}.
-      var evaluatedTemplate;
-      var re = new RegExp( "{{(.*?)}}", "g" );
-
-      evaluatedTemplate = template.replace( re, function( $0, $1 ) {
+      var evaluatedTemplate = template.replace( templateVariableExpression, function( $0, $1 ) {
         var result = eval( $1 ); // @-@:p1(geo) Check out "eval is evil" - investigate alternate solutions
 
         return result;
@@ -100,6 +99,21 @@ var tzCustomTagHelperModule = (function( tzDomHelper ) {
         result = '<span style="color:red;">Template was not found: ' + templateId + '</span>';
       }
 
+      return result;
+    },
+
+    /**
+     * Return the first group, from the given tagNode, matching the given innerTagExpression.
+     *
+     * @param tagNode
+     * @param innerTagExpression
+     * @returns {*}
+     */
+    getFirstMatchedGroup: function(tagNode, innerTagExpression) {
+      var result = null;
+      if (tagNode.innerHTML.match(innerTagExpression)) {
+        result = tagNode.innerHTML.match(innerTagExpression)[0].replace(innerTagExpression, "$1");
+      }
       return result;
     }
   }

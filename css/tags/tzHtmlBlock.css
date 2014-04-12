@@ -14,7 +14,7 @@
 .tz-html-block {
   margin: 8px 6px;
   border: thin dashed #ccc;
-  padding: 6px 12px;
+  padding: 3px;
   width: 93%;
   overflow: auto;
 }

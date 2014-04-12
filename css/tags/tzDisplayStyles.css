@@ -6,33 +6,36 @@
 */
 
 
-/* Generic */
+/* Matrix */
 
-.tz-highlight-comment {
-  color: #008200;
+div.tz-display-styles-matrix {
+  width: 93%;
+  overflow: auto;
 }
 
-/* *ML */
-
-.tz-highlight-tag-name {
-  color: #3f7f7f;
+div.tz-display-styles-matrix > table {
+  margin: 8px 0 0 6px;
+  border-collapse:collapse;
+  border: 1px solid #ccc;
 }
 
-.tz-highlight-attribute-name {
-  color: #990099;
+div.tz-display-styles-matrix > table tr > th {
+  padding: 4px;
+  color: #555;
+  background-color: #ececec;
+  border-left: 1px solid #ccc;
 }
 
-.tz-highlight-attribute-value {
-  color: #2a00ff;
+div.tz-display-styles-matrix > table tr > td {
+  padding: 4px;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
 }
 
-/* CSS */
-
-.tz-highlight-css-selector {
-  color: #354B5E;
-  font-weight: bold;
+div.tz-display-styles-matrix > table tr > td:first-child {
+  border-left: none;
 }
 
-.tz-highlight-css-property {
-  color: #00c;
+div.tz-display-styles-matrix > table tr > td.center {
+  text-align: center;
 }

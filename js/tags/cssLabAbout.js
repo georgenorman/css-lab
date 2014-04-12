@@ -8,8 +8,6 @@
  ~ --------------------------------------------------------------
  */
 
-//document.createElement("cssLabAbout");
-
 /*
  * The <cssLabAbout> tag renders a common introduction, displayed across all of the
  * ThruZero CSS Lab projects and pages. There can be only one Introduction section per page.
@@ -37,7 +35,6 @@ var cssLabAboutTag = (function(tzDomHelper, tzCustomTagHelper) {
      * Render the first <cssLabAbout> tag on the page - only one tag per page is supported.
      */
     renderAll: function() {
-      // there can be only one 'About Application' per page.
       tzCustomTagHelper.renderFirst(this);
     },
 
@@ -56,7 +53,6 @@ var cssLabAboutTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param aboutTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(aboutTagNode) {
-      // render the result
       this.render(aboutTagNode);
     },
 
@@ -66,7 +62,6 @@ var cssLabAboutTag = (function(tzDomHelper, tzCustomTagHelper) {
      * @param containerNode where to render the result.
      */
     render: function(containerNode) {
-      // set the display style to block
       containerNode.style.display = 'block';
 
       //var template = tzCustomTagHelper.getTemplate(this.getTagName() + "Template"); // @-@:p1(geo) Experimental

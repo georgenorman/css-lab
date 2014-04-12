@@ -23,3 +23,10 @@ body {
 img {
   max-width: 100%;
 }
+
+/* http://css-tricks.com/snippets/css/clear-fix/ */
+.group:after {
+  content: "";
+  display: block; /* use block instead of table, to avoid extra space after group */
+  clear: both;
+}
