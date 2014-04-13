@@ -76,7 +76,7 @@
   background: #bbb;
 }
 
-/* Content for left. */
+/* Content for right. */
 .right::before {
   content: "Float Right. Float Right. Float Right. Float Right. Float...";
 }
@@ -88,13 +88,13 @@
 
 /* Content for main. */
 .main::before {
-  content: "Main Content. Main Content. Main Content. Main Content. Main Content. Main Content.";
+  content: "Main Content. Main Content. Main Content. Main Content.";
 }
 .main::after {
-  content: "Main Content. Main Content. Main Content. Main Content. Main Content. Main Content.";
+  content: "Main Content. Main Content. Main Content. Main Content. Main Content. Main Content. Main Content. Main Content.";
 }
 
-/* Image */
+/* A left or right image */
 img.left, img.right {
   padding:6px;
 }
@@ -109,24 +109,28 @@ img.left, img.right {
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="basicFloats.floatLeftNoFrills">Float Left No Frills</h3>
+  <h3 id="basicFloats.floatLeftNoFrills">Float Left No Frills</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    <b>left</b> is floated left and is 100px wide.
-    Height is not set.
-    It has no margin, border or padding.
+    The <b>left</b> div is floated left and has a fixed width.
+    Height, margin, border and padding are not set.
   </tzBulletPoint>
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    <b>main</b> is not floated.
-    Height and width are not set.
-    It has no margin, border or padding.
+    The <b>main</b> div is not floated.
+    Height, width, margin, border and padding are not set.
    </tzBulletPoint>
 
   <tzBulletPoint class="special-note" iconClass="tz-bullet-point-info">
-    Notice that the width of <b>main</b> has expanded to fill outermost, but the height only expands to contain its own content.
-    The left div is essentially floated on top of main, in the upper-left corner and the non-block contents of main flows around it.
+    Notice that the left div floats on top of the main div, in the upper-left corner.
+    Furthermore, all child block elements of main are unaffected by the float.
+    They remain in the flow of the main div.
+    However, all non-block child elements of main are affected and flow around the left div, but within the confines of their parent block elements.
+  </tzBulletPoint>
+
+  <tzBulletPoint iconClass="tz-bullet-point-info">
+    The width of <b>main</b> has expanded to fill outermost, but the height only expands to contain its own content.
   </tzBulletPoint>
 
   <tzBulletPoint iconClass="tz-bullet-point-info">
@@ -135,13 +139,22 @@ img.left, img.right {
   </tzBulletPoint>
 
 <script type="multiline-template" id="basicFloats_floatLeftNoFrillsHtml">
-<div class="outermost" id="outermost_bf10">
+<div class="outermost" style="height:170px;" id="outermost_bf10">
   <div class="left" id="left_bf10"></div>
-  <div class="main" id="main_bf10">This is a test. This is a test.</div>
+  <div class="main" id="main_bf10">
+    <div style="border:1px solid #f83; margin:3px;">
+      <div style="border:1px solid #f00; margin:3px;">
+        <img src="img/tz-icon-16.png" style="margin:3px;">
+        Nested Block element.
+      </div>
+      This is in a Block element.
+    </div>
+    This is a test.
+  </div>
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="basicFloats_floatLeftNoFrillsHtml" width="520px"></tzCssHtmlExample>
+  <tzCssHtmlExample htmlTemplateId="basicFloats_floatLeftNoFrillsHtml" width="480px"></tzCssHtmlExample>
 
   <tzDisplayStyles width="560px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
@@ -149,16 +162,16 @@ img.left, img.right {
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="basicFloats.floatLeftWithPadding">Float Left with Padding</h3>
+  <h3 id="basicFloats.floatLeftWithPadding">Float Left with Padding</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    <b>left</b> is the same as before, but this time it has some padding.
+    The <b>left</b> div is the same as before, but this time it has some padding.
     The padding for <b>left</b> works as expected.
   </tzBulletPoint>
 
   <tzBulletPoint iconClass="tz-bullet-point-fail">
-    <b>main</b> is the same as before, but now has padding.
+    The <b>main</b> div is the same as before, but now has padding and the extra test content has been removed.
       <span class="special-note">
         Notice that the padding has zero impact on the text that flows around <b>left</b>,
         but does affect the text anywhere it touches <b>outermost</b>.
@@ -181,15 +194,15 @@ img.left, img.right {
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="basicFloats.floatLeftWithPaddingMargin">Float Left with Padding and Margin</h3>
+  <h3 id="basicFloats.floatLeftWithPaddingMargin">Float Left with Padding and Margin</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    <b>left</b> is the same as before, but this time a right margin has been added to pad the main text.
+    The <b>left</b> div is the same as before, but this time a right margin has been added to pad the main text.
   </tzBulletPoint>
 
   <tzBulletPoint iconClass="tz-bullet-point-fail">
-    <b>main</b> is also the same as before, but this time its height has been set to 100%, to fill the outermost container.
+    The <b>main</b> div is also the same as before, but this time its height has been set to 100%, to fill the outermost container.
     <span class="special-note">Notice that the padding, added by a previous experiment, has caused the background to overflow, now that the height is 100%.</span>
   </tzBulletPoint>
 
@@ -202,25 +215,25 @@ img.left, img.right {
 
   <tzCssHtmlExample htmlTemplateId="basicFloats_floatLeftWithPaddingMarginHtml" height="160px" width="640px"></tzCssHtmlExample>
 
-  <tzDisplayStyles width="560px">
-    <styleNames>float, width, margin, padding, border</styleNames>
+  <tzDisplayStyles width="610px">
+    <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf30, left_bf30, main_bf30</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="basicFloats.floatLeftWithOverflow">Float Left with Overflow</h3>
+  <h3 id="basicFloats.floatLeftWithOverflow">Float Left with Overflow Hidden</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    <b>left</b> is the same as before.
+    The <b>left</b> div is the same as before.
   </tzBulletPoint>
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    <b>main</b> is the same as before.</span>
+    The <b>main</b> div is the same as before.
   </tzBulletPoint>
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    <b>outermost</b> now has overflow:hidden.</span>
+    The <b>outermost</b> div now has overflow:hidden.
   </tzBulletPoint>
 
 <script type="multiline-template" id="basicFloats_floatLeftWithOverflowHtml">
@@ -232,18 +245,18 @@ img.left, img.right {
 
   <tzCssHtmlExample htmlTemplateId="basicFloats_floatLeftWithOverflowHtml" width="640px"></tzCssHtmlExample>
 
-  <tzDisplayStyles width="560px">
-    <styleNames>float, width, margin, padding, border</styleNames>
+  <tzDisplayStyles width="610px">
+    <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf40, left_bf40, main_bf40</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="basicFloats.floatRightWithOverflow">Float Right with Overflow</h3>
+  <h3 id="basicFloats.floatRightWithOverflow">Float Right with Overflow Hidden</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-pass">
-    Everything is the same as the previous experiment, except now left div has been replaced by <b>right</b>.
-    Also, the left margin on the float has been changed to a right margin.
+    Everything is the same as the previous experiment, except now, the left div has been replaced by a <b>right</b> div
+    (and it has a right margin to push out the main text a bit).
   </tzBulletPoint>
 
 <script type="multiline-template" id="basicFloats_floatRightWithOverflowHtml">
@@ -255,8 +268,8 @@ img.left, img.right {
 
   <tzCssHtmlExample htmlTemplateId="basicFloats_floatRightWithOverflowHtml" width="640px"></tzCssHtmlExample>
 
-  <tzDisplayStyles width="560px">
-    <styleNames>float, width, margin, padding, border</styleNames>
+  <tzDisplayStyles width="590px">
+    <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf50, right_bf50, main_bf50</elementIds>
   </tzDisplayStyles>
 
@@ -265,7 +278,7 @@ img.left, img.right {
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="compoundFloats.floatLeftRight">Float Left and Right</h3>
+  <h3 id="compoundFloats.floatLeftRight">Float Left and Right</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-info">
@@ -292,13 +305,13 @@ img.left, img.right {
 
   <tzCssHtmlExample htmlTemplateId="compoundFloats_floatLeftRightHtml" width="640px"></tzCssHtmlExample>
 
-  <tzDisplayStyles width="560px">
-    <styleNames>float, width, margin, padding, border</styleNames>
+  <tzDisplayStyles width="610px">
+    <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_cf10, left_cf10, right_cf10, main_cf10</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="compoundFloats.floatImages">Float Images</h3>
+  <h3 id="compoundFloats.floatImages">Float Images</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-info">
@@ -315,13 +328,13 @@ img.left, img.right {
 
   <tzCssHtmlExample htmlTemplateId="compoundFloats_floatImagesHtml" width="680px"></tzCssHtmlExample>
 
-  <tzDisplayStyles width="560px">
-    <styleNames>float, width, margin, padding, border</styleNames>
+  <tzDisplayStyles width="590px">
+    <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_cf20, left_cf20, right_cf20, main_cf20</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="compoundFloats.simulatedPageLayout">Simulated Page Layout</h3>
+  <h3 id="compoundFloats.simulatedPageLayout">Simulated Page Layout</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-info">
@@ -329,53 +342,203 @@ img.left, img.right {
   </tzBulletPoint>
 
 <script type="multiline-template" id="compoundFloats_simulatedPageLayoutCss">
+/* outermost layout - fixed width and height. */
 .outermost.layout {
   overflow: hidden;
   height: 260px;
   width: 400px;
 }
 
+/* simple layout header */
 .header {
   margin-bottom: 3px;
   padding: 3px;
   width: 400px;
-  background: #555;
+  background: linear-gradient(45deg, #777, #fcfcfc);
   color: white;
   vertical-align: top;
 }
 
+/* simple layout footer */
 .footer {
   margin-top: 3px;
   padding: 3px 6px 3px 3px;
   width: 391px;
-  background: #555;
+  background: linear-gradient(45deg, #fcfcfc, #777);
   color: white;
   text-align: right;
 }
 </script>
 
 <script type="multiline-template" id="compoundFloats_simulatedPageLayoutHtml">
-<div class="outermost layout" id="outermost_cf30">
-  <div class="header" id="header_cf30">
-    <img src="./img/tz-icon-16.png"> Header
-  </div>
-  <div class="left" style="margin-right:6px; padding:3px 6px 13px;" id="left_cf30"></div>
-  <img src="./img/scenic/Yosemite.png" class="right" style="margin-left:6px;" id="right_cf30">
-  <div class="main" style="padding:0 6px;" id="main_cf30">
+<div class="outermost layout" id="outermost_cf40">
+  <div class="header" id="header_cf40"><img src="./img/tz-icon-16.png"> Header</div>
+  <div class="left" style="margin-right:6px; padding:3px 6px 13px;" id="left_cf40"></div>
+  <img src="./img/scenic/Yosemite.png" class="right" style="margin-left:6px;" id="right_cf40">
+  <div class="main" style="padding:0 6px;" id="main_cf40">
       More Content. More Content. More Content. More Content. More Content.
       <hr style="margin-top:6px;">
       More Content. More Content. More Content. More Content. More Content.
   </div>
-  <div class="footer" id="footer_cf30">Footer</div>
+  <div class="footer" id="footer_cf40">Footer</div>
 </div>
 </script>
 
-  <tzCssHtmlExample templateId="compoundFloats_simulatedPageLayout" width="670px"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="compoundFloats_simulatedPageLayout" width="680px"></tzCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
-    <styleNames>float, width, margin, padding, border</styleNames>
-    <elementIds>outermost_cf30, header_cf30, left_cf30, right_cf30, main_cf30, footer_cf30</elementIds>
+  <tzDisplayStyles width="650px">
+    <styleNames>float, height, width, margin, padding, border</styleNames>
+    <elementIds>outermost_cf40, header_cf40, left_cf40, right_cf40, main_cf40, footer_cf40</elementIds>
   </tzDisplayStyles>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="multipleLeftFloats">Multiple Left Floats</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="multipleLeftFloats.noMargin">Sans Margin</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-info">
+    All child divs are floated left and flow horizontally within the confines of their parent container (but overflow vertically).
+    As with the other experiments, by default, there is no margin, border, padding or height set.
+  </tzBulletPoint>
+
+<script type="multiline-template" id="multipleLeftFloats_noMarginHtml">
+<div class="outermost" id="outermost_mlf10">
+  <div class="left" style="background:#ff0097;" id="left_mlf10"></div>
+  <div class="left" style="background:#00aba9;" id="left_mlf11"></div>
+  <div class="left" style="background:#8cbf26;" id="left_mlf12"></div>
+  <div class="left" style="background:#a05000;" id="left_mlf13"></div>
+  <div class="left" style="background:#e671b8;" id="left_mlf14"></div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="multipleLeftFloats_noMarginHtml" width="520px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="550px">
+    <styleNames>float, height, width, margin, padding, border</styleNames>
+    <elementIds>outermost_mlf10, left_mlf10, left_mlf11, left_mlf12, left_mlf13, left_mlf14</elementIds>
+  </tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="multipleLeftFloats.withMargin">With Margin</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-info">
+    Same as above, but now a small margin has been added to the first div.
+    This pushes the second and third divs over, causing the third div to wrap, ending up under the second div
+    (since the bottom margin of the first div gives it something to float to).
+    The fourth div floats to the left edge of the outermost container (as the first div does).
+  </tzBulletPoint>
+
+<script type="multiline-template" id="multipleLeftFloats_withMarginHtml">
+<div class="outermost" style="">
+  <div class="left" style="margin:3px; background:#ff0097;"></div>
+  <div class="left" style="background:#00aba9;"></div>
+  <div class="left" style="background:#8cbf26;"></div>
+  <div class="left" style="background:#a05000;"></div>
+  <div class="left" style="background:#e671b8;"></div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="multipleLeftFloats_withMarginHtml" width="480px"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="multipleLeftFloats.withMbp">With Margin, Border and Padding</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-info">
+    Margin, border and padding are added, plus, the outermost container's size is adjusted to fit the contents
+    using the following formula:
+    <pre>  3 * (width + 2 * (margin+border+padding) )</pre>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="multipleLeftFloats_withMbpCss">
+/* add some padding to the outermost div */
+.outermost.mbp {
+  padding: 2px;
+}
+
+/* add margin, border and padding to all of the nested divs */
+.outermost.mbp > div {
+  float: left;
+  margin: 3px;
+  border: 2px solid #000;
+  padding: 3px;
+  width: 100px;
+  height: 100px;
+  color: white;
+  text-align: center;
+}
+</script>
+
+<script type="multiline-template" id="multipleLeftFloats_withMbpHtml">
+<div class="outermost mbp" style="height:348px; width:348px;">
+  <div class="magenta-bg">magenta-bg magenta-bg</div>
+  <div class="teal-bg">teal-bg teal-bg teal-bg</div>
+  <div class="lime-bg">lime-bg lime-bg lime-bg</div>
+  <div class="brown-bg">brown-bg brown-bg brown-bg</div>
+  <div class="pink-bg">pink-bg pink-bg pink-bg</div>
+  <div class="orange-bg">orange-bg orange-bg</div>
+  <div class="blue-bg">blue-bg blue-bg blue-bg</div>
+  <div class="red-bg">red-bg red-bg red-bg</div>
+  <div class="green-bg">green-bg green-bg</div>
+</div>
+</script>
+
+  <tzCssHtmlExample templateId="multipleLeftFloats_withMbp" width="450px"></tzCssHtmlExample>
+
+  <!-- `````````````````````````````````` -->
+  <h3 id="multipleLeftFloats.tableCell">Vertical Centering</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-info">
+    Same as the previous experiment, but does not use floats.
+    Instead, uses <i>display: table-cell</i>, so the text can be vertically aligned.
+  </tzBulletPoint>
+
+<script type="multiline-template" id="multipleLeftFloats_tableCellCss">
+/* add some padding to the outermost div */
+.outermost.table-cell {
+  padding: 2px;
+}
+
+/* add margin, border and padding to all of the nested divs */
+.outermost.table-cell > div {
+  float: left;
+  margin: 3px;
+  border: 2px solid #000;
+  padding: 3px;
+}
+
+/* center the text in the nested divs */
+.outermost.table-cell > div > div {
+  color: white;
+  display: table-cell;
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+</script>
+
+<script type="multiline-template" id="multipleLeftFloats_tableCellHtml">
+<div class="outermost table-cell" style="height:348px; width:348px;">
+  <div class="magenta-bg"><div>magenta-bg magenta-bg</div></div>
+  <div class="teal-bg"><div>teal-bg teal-bg teal-bg</div></div>
+  <div class="lime-bg"><div>lime-bg lime-bg lime-bg</div></div>
+  <div class="brown-bg"><div>brown-bg brown-bg brown-bg</div></div>
+  <div class="pink-bg"><div>pink-bg pink-bg pink-bg</div></div>
+  <div class="orange-bg"><div>orange-bg orange-bg</div></div>
+  <div class="blue-bg"><div>blue-bg blue-bg blue-bg</div></div>
+  <div class="red-bg"><div>red-bg red-bg red-bg</div></div>
+  <div class="green-bg"><div>green-bg green-bg</div></div>
+</div>
+</script>
+
+  <tzCssHtmlExample templateId="multipleLeftFloats_tableCell" width="500px"></tzCssHtmlExample>
 
 </main>
 

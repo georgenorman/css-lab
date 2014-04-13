@@ -151,3 +151,44 @@ footer:after {
   color: #f83;;
 }
 
+/* ---------------------------------
+ * Background Colors
+ * --------------------------------- */
+
+/* http://stackoverflow.com/questions/11578867/is-there-a-list-of-standard-tile-colors-for-metro-style-windows-8-apps */
+
+.magenta-bg {
+  background: #ff0097;
+}
+
+.teal-bg {
+  background: #00aba9;
+}
+
+.lime-bg {
+  background: #8cbf26;
+}
+
+.brown-bg {
+  background: #a05000;
+}
+
+.pink-bg {
+  background: #e671b8;
+}
+
+.orange-bg {
+  background: #f09609;
+}
+
+.blue-bg {
+  background: #1ba1e2;
+}
+
+.red-bg {
+  background: #e51400;
+}
+
+.green-bg {
+  background: #339933;
+}

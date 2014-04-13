@@ -124,7 +124,6 @@ var tzDisplayStylesTag = (function(tzDomHelper, tzCustomTagHelper) {
     /**
      * Render the given displayStylesTagNode.
      *
-     * @param title optional heading for the style list.
      * @param displayStylesTagNode the node to retrieve the attributes from and then render the result to.
      */
     renderTag: function(displayStylesTagNode) {
