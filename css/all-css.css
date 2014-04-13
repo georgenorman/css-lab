@@ -25,5 +25,8 @@
 /* Common CSS for all Labs */
 @import "tzLab.css";
 
+/* CSS Lab tags */
+@import "tags/cssLabAbout.css";
+
 /* CSS Lab specific */
 @import "cssLab.css";

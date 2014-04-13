@@ -9,6 +9,7 @@
 /* Matrix */
 
 div.tz-display-styles-matrix {
+  margin-bottom: 28px;
   width: 93%;
   overflow: auto;
 }

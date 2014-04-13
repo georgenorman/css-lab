@@ -32,7 +32,7 @@
 </header>
 
 <main>
-  <cssLabAbout style="margin-top:12px;"></cssLabAbout>
+  <cssLabAbout></cssLabAbout>
 
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
@@ -130,7 +130,7 @@
   <tzCodeExample templateId="tmplCommonCss" lang="css" width="600px"></tzCodeExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 tzBulletPointFail id="absoluteToRelative">Absolute To Relative</h2>
+  <h2 id="absoluteToRelative">Absolute To Relative</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
@@ -149,14 +149,14 @@
     </p>
     <p>
       <b>MiddleGrid</b> was not given a margin, since it's a relative div nested inside a static div.
-      To add a margin would trigger the <a href="boxModel.html#marginCaveats.topMarginTransfer">Top Margin Transfer</a> issue.
+      To add a margin would trigger the <a href="boxModel.html#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> issue.
     </p>
   </tzBulletPoint>
 
 <script type="multiline-template" id="absoluteToRelative4pmHtml">
-<div class="outermost" id="outermost_110">
-  <div class="middle grid" style="position:relative;" id="middleGrid_110">
-    <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost" id="innermost_110">
+<div class="outermost" id="outermost_atr10">
+  <div class="middle grid" style="position:relative;" id="middleGrid_atr10">
+    <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost" id="innermost_atr10">
       <br>innermost
     </div>
   </div>
@@ -168,7 +168,7 @@
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_110, middleGrid_110, innermost_110</elementIds>
+    <elementIds>outermost_atr10, middleGrid_atr10, innermost_atr10</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
@@ -185,16 +185,16 @@
     </p>
     <p>
       <b>MiddleGrid</b> was not given a margin, since it's a relative div nested inside a static div.
-      Adding a margin would have triggered the <a href="boxModel.html#marginCaveats.topMarginTransfer">Top Margin Transfer</a> issue.
+      Adding a margin would have triggered the <a href="boxModel.html#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> issue.
     </p>
   </tzBulletPoint>
 
 <script type="multiline-template" id="absoluteToRelativeHtml">
-<div class="outermost" id="outermost_120">
-  <div class="middle grid" style="position:relative;" id="middleGrid_120">
-    <div style="top:40px; left:40px; position:absolute; margin:10px;" class="innermost mini" id="innermost_1201">
+<div class="outermost" id="outermost_atr20">
+  <div class="middle grid" style="position:relative;" id="middleGrid_atr20">
+    <div style="top:40px; left:40px; position:absolute; margin:10px;" class="innermost mini" id="innermost_atr201">
     </div>
-    <div style="top:80px; left:80px; position:absolute; margin:10px;" class="innermost mini" id="innermost_1202">
+    <div style="top:80px; left:80px; position:absolute; margin:10px;" class="innermost mini" id="innermost_atr202">
     </div>
   </div>
 </div>
@@ -205,7 +205,7 @@
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_120, middleGrid_120, innermost_1201, innermost_1202</elementIds>
+    <elementIds>outermost_atr20, middleGrid_atr20, innermost_atr201, innermost_atr202</elementIds>
   </tzDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -228,14 +228,14 @@
     </p>
     <p>
       <b>MiddleGrid</b> was not given a margin, since it's a relative div nested inside a static div.
-      To add a margin would trigger the <a href="boxModel.html#marginCaveats.topMarginTransfer">Top Margin Transfer</a> issue.
+      To add a margin would trigger the <a href="boxModel.html#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> issue.
     </p>
   </tzBulletPoint>
 
 <script type="multiline-template" id="relativeToAbsolute4pmHtml">
-<div class="outermost" id="outermost_210">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_210">
-    <div style="top:40px; left:40px; margin:20px; position:relative;" class="innermost" id="innermost_210">
+<div class="outermost" id="outermost_rta10">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_rta10">
+    <div style="top:40px; left:40px; margin:20px; position:relative;" class="innermost" id="innermost_rta10">
       <br>innermost
     </div>
   </div>
@@ -247,7 +247,7 @@
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_210, middleGrid_210, innermost_210</elementIds>
+    <elementIds>outermost_rta10, middleGrid_rta10, innermost_rta10</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
@@ -260,11 +260,11 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="exampleRelToAbsoluteOverlapHtml">
-<div class="outermost" id="outermost_220">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_220">
-    <div style="top:60px; left:40px; position:relative;" class="innermost mini" id="innermost_2201">
+<div class="outermost" id="outermost_rta20">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_rta20">
+    <div style="top:60px; left:40px; position:relative;" class="innermost mini" id="innermost_rta201">
     </div>
-    <div style="top:0; left:80px; position:relative;" class="innermost mini" id="innermost_2202">
+    <div style="top:0; left:80px; position:relative;" class="innermost mini" id="innermost_rta202">
     </div>
   </div>
 </div>
@@ -275,7 +275,7 @@
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_220, middleGrid_220, innermost_2201, innermost_2202</elementIds>
+    <elementIds>outermost_rta20, middleGrid_rta20, innermost_rta201, innermost_rta202</elementIds>
   </tzDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -303,9 +303,9 @@
   </tzBulletPoint>
 
   <script type="multiline-template" id="absoluteToAbsolute4pmHtml">
-<div class="outermost" id="outermost_310">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_310">
-    <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost" id="innermost_310">
+<div class="outermost" id="outermost_ata10">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_ata10">
+    <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost" id="innermost_ata10">
       <br>innermost
     </div>
   </div>
@@ -317,7 +317,7 @@
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_310, middleGrid_310, innermost_310</elementIds>
+    <elementIds>outermost_ata10, middleGrid_ata10, innermost_ata10</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
@@ -330,11 +330,11 @@
 
 
   <script type="multiline-template" id="absoluteToAbsoluteOverlapHtml">
-<div class="outermost" id="outermost_320">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_320">
-    <div style="top:40px; left:40px; position:absolute;" class="innermost mini" id="innermost_3201">
+<div class="outermost" id="outermost_ata20">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_ata20">
+    <div style="top:40px; left:40px; position:absolute;" class="innermost mini" id="innermost_ata201">
     </div>
-    <div style="top:80px; left:80px; position:absolute;" class="innermost mini" id="innermost_3202">
+    <div style="top:80px; left:80px; position:absolute;" class="innermost mini" id="innermost_ata202">
     </div>
   </div>
 </div>
@@ -345,7 +345,7 @@
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_320, middleGrid_320, innermost_3201, innermost_3202</elementIds>
+    <elementIds>outermost_ata20, middleGrid_ata20, innermost_ata201, innermost_ata202</elementIds>
   </tzDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -376,12 +376,12 @@
 
 <script type="multiline-template" id="fixedWithStaticBtnHtml">
 <div>
-  <button onclick="tzDomHelperModule.show('inner_410'); return false;">Show Fixed with Static Button</a>
+  <button onclick="tzDomHelperModule.show('inner_fp10'); return false;">Show Fixed with Static Button</a>
 </div>
 
-<div id="outermost_410">
-  <div class="fixed-example-1" id="inner_410">
-    <button onclick="tzDomHelperModule.hide('inner_410'); return false;"
+<div id="outermost_fp10">
+  <div class="fixed-example-1" id="inner_fp10">
+    <button onclick="tzDomHelperModule.hide('inner_fp10'); return false;"
             style="float:right; margin:6px; height:21px;" id="staticBtnEx1">Close</button>
     <p style="margin-top:30px; padding:12px; text-align:center; color:#999">
       This div position is fixed, relative to the browser window.
@@ -395,7 +395,7 @@
 
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
-    <elementIds>outermost_410, inner_410, staticBtnEx1</elementIds>
+    <elementIds>outermost_fp10, inner_fp10, staticBtnEx1</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
@@ -408,12 +408,12 @@
 
 <script type="multiline-template" id="fixedWithRelativeBtnHtml">
 <div>
-  <button onclick="tzDomHelperModule.show('inner_420'); return false;">Show Fixed with Relative Button</a>
+  <button onclick="tzDomHelperModule.show('inner_fp20'); return false;">Show Fixed with Relative Button</a>
 </div>
 
-<div id="outermost_420">
-  <div class="fixed-example-1" id="inner_420">
-    <button onclick="tzDomHelperModule.hide('inner_420'); return false;"
+<div id="outermost_fp20">
+  <div class="fixed-example-1" id="inner_fp20">
+    <button onclick="tzDomHelperModule.hide('inner_fp20'); return false;"
             style="position:relative; top:150px; left:195px; height:21px;" id="relativeBtnEx1">Close</button>
     <p style="margin-top:30px; padding:12px; text-align:center; color:#999"">
       This div position is fixed, relative to the browser window.
@@ -427,7 +427,7 @@
 
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
-    <elementIds>outermost_420, inner_420, relativeBtnEx1</elementIds>
+    <elementIds>outermost_fp20, inner_fp20, relativeBtnEx1</elementIds>
   </tzDisplayStyles>
 
 </main>

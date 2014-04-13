@@ -5,11 +5,29 @@
   ~     http://www.apache.org/licenses/LICENSE-2.0
 */
 
-.tz-bullet-point-left {
+/* ---------------------------------
+ * Layout
+ * --------------------------------- */
+
+tzBulletPoint {
+  display: block;
+  margin-top:12px;
+}
+
+tzBulletPoint > div > div:nth-child(1) {
   float: left;
   margin-top: 0;
 }
 
+tzBulletPoint > div > div:nth-child(2) > p:first-child {
+  margin-top: 0;
+}
+
+/* ---------------------------------
+ * Icons
+ * --------------------------------- */
+
+/* PASS */
 .tz-bullet-point-pass {
   color: green;
   border: 1px solid green;
@@ -23,6 +41,7 @@
   font-style: normal;
 }
 
+/* FAIL */
 .tz-bullet-point-fail {
   color: #f83;
 }
@@ -34,6 +53,7 @@
   font-size: 22px;
 }
 
+/* STAR */
 .tz-bullet-point-star {
   color: gold;
 }
@@ -44,6 +64,7 @@
   font-size: 18px;
 }
 
+/* INFO */
 .tz-bullet-point-info {
   color: #06f;
 }

@@ -73,18 +73,19 @@ header h1 a.labHome {
  * --------------------------------- */
 
 h2 {
+  margin-top: 20px;
   border-bottom: 1px solid #999;
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-top: 12px;
   color: #669;
 }
 
 h3 {
-  border-bottom: 1px dashed #ccc;
-  margin-top: 14px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  margin: 18px 18px 0 0;
+  border-top: 1px dashed #bbb;
+  border-bottom: 1px dashed #bbb;
+  padding-top: 3px;
+  padding-bottom: 3px;
   color: #669;
   font-style: italic;
 }
@@ -136,8 +137,17 @@ footer:after {
 
 .image-frame {
   margin-top: 16px;
+  border: 2px solid #ccc;
   padding: 8px;
   box-shadow: 3px 3px 4px #000;
-  border: 2px solid #ccc;
   max-width: 96%;
 }
+
+/* ---------------------------------
+ * Notes
+ * --------------------------------- */
+
+.special-note {
+  color: #f83;;
+}
+

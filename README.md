@@ -18,6 +18,6 @@ instead, I want to explore it on foot, even if it means sinking to my eyebrows i
 * [Box Model](http://www.thruzero.com/pages/jcat3/css-lab/boxModel.html)
 * [Positioning](http://www.thruzero.com/pages/jcat3/css-lab/positioning.html)
 * Modal Dialog (in progress)
-* Floats (in progress)
+* [Floats](http://www.thruzero.com/pages/jcat3/css-lab/floats.html)
 * [Transparency/Display](http://www.thruzero.com/pages/jcat3/css-lab/transparencyDisplay.html)
 * [Filters](http://www.thruzero.com/pages/jcat3/css-lab/filters.html)

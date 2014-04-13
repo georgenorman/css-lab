@@ -25,7 +25,7 @@ var tzBulletPointTag = (function(tzDomHelper, tzCustomTagHelper) {
 
   var template =
       ['<div class="group" {{context.styleAttribute}}>',
-       '  <div class="tz-bullet-point-left"><i class="{{context.iconClass}}"></i></div>',
+       '  <div><i class="{{context.iconClass}}"></i></div>',
        '  <div style="margin-left:{{context.leftColumnWidth}};">{{context.rawRightColumnHtml}}</div>',
        '</div>'
       ].join('\n');

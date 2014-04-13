@@ -32,7 +32,7 @@
 </header>
 
 <main>
-  <cssLabAbout style="margin-top:12px;"></cssLabAbout>
+  <cssLabAbout></cssLabAbout>
 
   <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
 
@@ -43,6 +43,7 @@
   <p>
     The CSS box model represents the space occupied by an element and consists of four areas: <b>margin, border, padding, and content</b>.
     The image below shows a block element with a 10px margin, 20px border, 30px padding and 100px content region.
+    The resulting box height and width is 220px by 220px.
   </p>
   <img src="img/box-model.png" class="image-frame" style="margin-top:0;">
   <p>
@@ -54,7 +55,8 @@
   <p>
     This is a common theme in CSS.
     Setting a value will sometimes have only a partial effect or affect a different element altogether or have no affect at all
-    (e.g., setting the opacity to 1 can have no affect but setting it to 0.7 will, but only partially).
+    (e.g., setting the opacity to 1 can have no affect but setting it to 0.6 can, but instead of appearing as 0.6 it may appear as 0.3 -
+    see <a href="./transparencyDisplay.html#opacity.irreversible">Irreversible Opacity</a>).
   </p>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -139,14 +141,14 @@
     </p>
     <p>
       <b>MiddleGrid</b> was not given a margin, since it's a static div nested inside a static div.
-      Adding a margin would trigger the <a href="boxModel.html#marginCaveats.topMarginTransfer">Top Margin Transfer</a> effect.
+      Adding a margin would trigger the <a href="boxModel.html#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> effect.
     </p>
   </tzBulletPoint>
 
 <script type="multiline-template" id="positionAbsoluteInStaticHtml">
-<div class="outermost" id="outermost_120">
-  <div class="middle grid" id="middleGrid_120">
-    <div class="innermost with-margin" style="position:absolute;" id="innermost_120">
+<div class="outermost" id="outermost_bm10">
+  <div class="middle grid" id="middleGrid_bm10">
+    <div class="innermost with-margin" style="position:absolute;" id="innermost_bm10">
       <br>innermost
     </div>
   </div>
@@ -158,7 +160,7 @@
   <tzDisplayStyles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_120, middleGrid_120, innermost_120</elementIds>
+    <elementIds>outermost_bm10, middleGrid_bm10, innermost_bm10</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
@@ -179,9 +181,9 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="positionStaticInAbsoluteHtml">
-<div class="outermost" id="outermost_130">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_130">
-    <div class="innermost with-margin" id="innermost_130">
+<div class="outermost" id="outermost_bm20">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm20">
+    <div class="innermost with-margin" id="innermost_bm20">
       <br>innermost
     </div>
   </div>
@@ -193,7 +195,7 @@
   <tzDisplayStyles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_130, middleGrid_130, innermost_130</elementIds>
+    <elementIds>outermost_bm20, middleGrid_bm20, innermost_bm20</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
@@ -207,14 +209,14 @@
     </p>
     <p>
       <b>MiddleGrid</b> was not given a margin.
-      Since it's a relative div nested inside a static one, adding a margin would result in the <a href="#marginCaveats.topMarginTransfer">Top Margin Transfer</a> effect.
+      Since it's a relative div nested inside a static one, adding a margin would result in the <a href="#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> effect.
     </p>
   </tzBulletPoint>
 
 <script type="multiline-template" id="positionAbsoluteInRelativeHtml">
-<div class="outermost" id="outermost_140">
-  <div class="middle grid" style="position:relative;" id="middleGrid_140">
-    <div class="innermost with-margin" style="position:absolute;" id="innermost_140">
+<div class="outermost" id="outermost_bm30">
+  <div class="middle grid" style="position:relative;" id="middleGrid_bm30">
+    <div class="innermost with-margin" style="position:absolute;" id="innermost_bm30">
       <br>innermost
     </div>
   </div>
@@ -226,7 +228,7 @@
   <tzDisplayStyles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_140, middleGrid_140, innermost_140</elementIds>
+    <elementIds>outermost_bm30, middleGrid_bm30, innermost_bm30</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
@@ -247,9 +249,9 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="positionRelativeInAbsoluteHtml">
-<div class="outermost" id="outermost_150">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_150">
-    <div class="innermost with-margin" style="position:relative;" id="innermost_150">
+<div class="outermost" id="outermost_bm40">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm40">
+    <div class="innermost with-margin" style="position:relative;" id="innermost_bm40">
       <br>innermost
     </div>
   </div>
@@ -261,7 +263,7 @@
   <tzDisplayStyles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_150, middleGrid_150, innermost_150</elementIds>
+    <elementIds>outermost_bm40, middleGrid_bm40, innermost_bm40</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
@@ -281,9 +283,9 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="positionAbsoluteInAbsoluteHtml">
-<div class="outermost" id="outermost_160">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_160">
-    <div class="innermost with-margin" style="position:absolute;" id="innermost_160">
+<div class="outermost" id="outermost_bm50">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm50">
+    <div class="innermost with-margin" style="position:absolute;" id="innermost_bm50">
       <br>innermost
     </div>
   </div>
@@ -295,11 +297,11 @@
   <tzDisplayStyles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_160, middleGrid_160, innermost_160</elementIds>
+    <elementIds>outermost_bm50, middleGrid_bm50, innermost_bm50</elementIds>
   </tzDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="marginCaveats">Margin Caveats</h2>
+  <h2 tzBulletPointFail id="marginCaveats">Margin Caveats</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
@@ -307,31 +309,62 @@
     This section experiments with some of these effects.
   <p>
 
-    <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointFail id="marginCaveats.topMarginTransfer">Top Margin Transfer (TMT)</h3>
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointFail id="marginCaveats.verticalMarginTransfer">Vertical Margin Transfer (VMT)</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-fail">
     <p>
       When a static or relative-positioned block-level element is nested inside of a static or relative-positioned parent,
-      its top margin will be transferred up the hierarchy until a suitable ancestor is found.
+      its top and bottom margins may be transferred up the hierarchy until a suitable ancestor is found.
       This is true for blocks of static elements nested in static elements, relative nested in static, static nested in relative and relative nested in relative.
     </p>
     <p>
-      For example, the experiment below uses a relatively positioned <i>innermost</i> div with a 20px margin, nested inside of two statically positioned ancestor divs.
-      As expected, this pushes the <i>innermost</i> div 20px to the right, relative to its parent, <i>middle</i> div.
+      For example, the experiment below uses a relatively positioned <i>innermost</i> div with a 20px margin, nested inside of a single statically positioned ancestor div.
+      As expected, this pushes the <i>innermost</i> div 20px to the right, relative to its parent, <i>outermost</i> div.
     </p>
     <p>
-      <span style="color:#f83;">Surprisingly, the top margin has no effect on the <i>innermost</i> div's distance from the top of <i>middle</i> div.
-      Instead, the top margin bypasses both the <i>innermost</i> and the <i>middle</i> divs and is directly transferred to the top of the <i>outermost</i> div, pushing it down by 20px
-      (as evidenced by the more than 20px gap above <i>outermost</i>).</span>
+      <span class="special-note">Surprisingly, the top and bottom margins have no effect on the <i>innermost</i> div's distance from the top of <i>outermost</i>.
+      Instead, the top and bottom margins bypasses the <i>innermost</i> div and are directly transferred to the top of the <i>outermost</i> div, pushing it down by 20px
+      (as evidenced by the more than 20px gap above <i>outermost</i>) as well as pushing the display wrapper down at the bottom.</span>
+    </p>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="verticalMarginTransferHtml">
+<div class="grid" id="outermost_mc00">
+  <div class="innermost with-margin" style="position:relative;" id="innermost_mc00">
+    <br>innermost
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="verticalMarginTransferHtml" width="640px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="600px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_mc00, innermost_mc00</elementIds>
+  </tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointFail id="marginCaveats.topMarginTransfer">Top Margin Transfer</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
+    <p>
+    This experiment highlights the affect of Vertical Margin Transfer on the top margin (using the same div structure as most of the other examples on this page).
+    The bottom margin is not affected in this scenario, because the content height of the ancestor divs are explicitly set.
+    </p>
+    <p class="special-note">
+      As can be seen in the Rendered Result, the 20px margin defined by the <i>with-margin</i> class and provided to the innermost div, has been transferred to the top of the outermost div
+      (as evidenced by the more than 20px gap above <i>outermost</i>).
     </p>
   </tzBulletPoint>
 
 <script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">
-<div class="outermost" id="outermost_100">
-  <div class="middle grid" id="middleGrid_100">
-    <div style="position:relative; margin:20px;" class="innermost" id="innermost_100">
+<div class="outermost" id="outermost_mc10">
+  <div class="middle grid" id="middleGrid_mc10">
+    <div class="innermost with-margin" style="position:relative;" id="innermost_mc10">
       <br>innermost
     </div>
   </div>
@@ -343,48 +376,77 @@
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_100, middleGrid_100, innermost_100</elementIds>
+    <elementIds>outermost_mc10, middleGrid_mc10, innermost_mc10</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointFail id="marginCaveats.marginTransferPaddingWorkarounds">TMT Padding Workarounds</h3>
+  <h3 tzBulletPointFail id="marginCaveats.marginTransferContentWorkarounds">Content Workaround for VMT</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-fail">
-    Adding some padding to the outermost div can mitigate the affects of <a href="#marginCaveats.topMarginTransfer">Top Margin Transfer</a>, when using static divs, but requires a lot of finagling of the outer and inner divs.
+    Adding some content to the middle div can block the affects of <a href="#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a>, when using static or relative divs.
+    The top margin of the innermost div is now applied to the innermost div instead of outermost.
   </tzBulletPoint>
 
-<script type="multiline-template" id="marginTransferPaddingWorkaroundsPaddingCss">
+<script type="multiline-template" id="marginTransferContentWorkaroundsPaddingCss">
 .middle-pswp.grid {
   width: 180px;
   height: 180px;
 }
 </script>
 
-<script type="multiline-template" id="marginTransferPaddingWorkaroundsPaddingHtml">
-<div class="outermost" style="padding:10px 0 0 10px; width:230px; height:230px;" id="outermost_110">
-  <div class="middle-pswp grid" style="margin:0; padding:20px;" id="middleGrid_110">
-    <div class="innermost with-margin" style="margin:0;" id="innermost_110">
+<script type="multiline-template" id="marginTransferContentWorkaroundsPaddingHtml">
+<div class="outermost" style="width:230px; height:230px;" id="outermost_mc20">
+  <div class="middle grid" style="margin:0;" id="middleGrid_mc20">
+    <b>Prevent Margin from transferring to the Outermost div.</b>
+    <div class="innermost with-margin" id="innermost_mc20">
       <br>innermost
     </div>
   </div>
 </div>
 </script>
 
-  <tzCssHtmlExample templateId="marginTransferPaddingWorkaroundsPadding" width="770px"></tzCssHtmlExample>
+  <tzCssHtmlExample templateId="marginTransferContentWorkaroundsPadding" width="770px"></tzCssHtmlExample>
 
   <tzDisplayStyles width="560px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_110, middleGrid_110, innermost_110</elementIds>
+    <elementIds>outermost_mc20, middleGrid_mc20, innermost_mc20</elementIds>
   </tzDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointFail id="marginCaveats.marginTransferBorderWorkarounds">TMT Border Workarounds</h3>
+  <h3 tzBulletPointFail id="marginCaveats.marginTransferPaddingWorkarounds">Padding Workaround for VMT</h3>
   <!-- `````````````````````````````````` -->
 
   <tzBulletPoint iconClass="tz-bullet-point-fail">
-    Top Margin Transfer can be circumvented by adding a border to the <i>outermost</i> (or <i>middle</i>) div.
+    Adding some padding to the outermost div can also mitigate the affects of <a href="#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a>,
+    but requires a lot of finagling of the outer and inner divs and is off by 1px.
+  </tzBulletPoint>
+
+<script type="multiline-template" id="marginTransferPaddingWorkaroundsPaddingHtml">
+<div class="outermost" style="padding:10px 0 0 10px; width:230px; height:230px;" id="outermost_mc30">
+  <div class="middle grid" style="margin:0; padding:1px;" id="middleGrid_mc30">
+    <div class="innermost with-margin" id="innermost_mc30">
+      <br>innermost
+    </div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample htmlTemplateId="marginTransferPaddingWorkaroundsPaddingHtml" width="770px"></tzCssHtmlExample>
+
+  <tzDisplayStyles width="560px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_mc30, middleGrid_mc30, innermost_mc30</elementIds>
+  </tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointFail id="marginCaveats.marginTransferBorderWorkarounds">Border Workaround for VMT</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-fail">
+    Vertical Margin Transfer can be circumvented by adding a border to the <i>outermost</i> (or <i>middle</i>) div.
     The example below shows that by adding a border to <i>outermost</i>, the margin transfer from <i>innermost</i> is blocked.
     Instead, the top margin is now transferred to the <i>middle</i> div.
     Alternatively, adding a border to the <i>middle</i> div blocks the margin transfer to both <i>middle</i> and <i>outermost</i> divs all at once
@@ -392,10 +454,10 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="marginTransferBorderWorkaroundsHtml">
-<div class="outermost" style="border-top:1px solid red;" id="outermost_115">
-  <div class="middle grid" id="middleGrid_115">
-    <div style="margin:20px; position:relative;" class="innermost" id="innermost_115">
-      CONTENT<br>100px x 100px
+<div class="outermost" style="border-top:1px solid red;" id="outermost_mc40">
+  <div class="middle grid" id="middleGrid_mc40">
+    <div class="innermost" style="margin:20px; position:relative;" id="innermost_mc40">
+      <br>innermost
     </div>
   </div>
 </div>
@@ -406,11 +468,19 @@
   <tzDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_115, middleGrid_115, innermost_115</elementIds>
+    <elementIds>outermost_mc40, middleGrid_mc40, innermost_mc40</elementIds>
   </tzDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="border">Border</h2>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <p>
+    TODO
+  <p>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <h2 id="padding">Padding</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
@@ -437,11 +507,11 @@
 </script>
 
 <script type="multiline-template" id="positionAbsoluteInAbsoluteCenterHtml">
-<div class="outermost" id="outermost_200">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_200">
-    <div class="innermost with-margin" style="position:absolute;" id="innermost_200">
-      <div class="center-text" id="centerText_200">
-        CONTENT<br>100px x 100px
+<div class="outermost" id="outermost_vc00">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_vc00">
+    <div class="innermost with-margin" style="position:absolute;" id="innermost_vc00">
+      <div class="center-text" id="centerText_vc00">
+        <br>innermost
       </div>
     </div>
   </div>
@@ -453,7 +523,7 @@
   <tzDisplayStyles width="560px">
     <styleNames>position, margin, padding, display, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/contentRegion.png</legendImages>
-    <elementIds>outermost_200, middleGrid_200, innermost_200, centerText_200</elementIds>
+    <elementIds>outermost_vc00, middleGrid_vc00, innermost_vc00, centerText_vc00</elementIds>
   </tzDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -475,10 +545,10 @@
   </tzBulletPoint>
 
 <script type="multiline-template" id="multipleInnerBoxesAbsoluteHtml">
-<div class="outermost" id="outermost_300">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_300">
-    <div class="innermost with-margin mini" style="position:absolute;" id="innermost_300"></div>
-    <div class="innermost with-margin mini" style="position:absolute; top:30px; left:30px;" id="innermost_301"></div>
+<div class="outermost" id="outermost_mib00">
+  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_mib00">
+    <div class="innermost with-margin mini" style="position:absolute;" id="innermost_mib00"></div>
+    <div class="innermost with-margin mini" style="position:absolute; top:30px; left:30px;" id="innermost_mib01"></div>
   </div>
 </div>
 </script>
@@ -488,7 +558,68 @@
   <tzDisplayStyles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
-    <elementIds>outermost_300, middleGrid_300, innermost_300, innermost_301</elementIds>
+    <elementIds>outermost_mib00, middleGrid_mib00, innermost_mib00, innermost_mib01</elementIds>
+  </tzDisplayStyles>
+
+  <!-- `````````````````````````````````` -->
+  <h3 tzBulletPointPass id="multipleInnerBoxes.static">Multiple Static Inner Boxes</h3>
+  <!-- `````````````````````````````````` -->
+
+  <tzBulletPoint iconClass="tz-bullet-point-pass">
+    This experiment is the same as above, except now the innermost boxes are static (static boxes nested inside of an absolute box).
+    Note: If the innermost boxes were relative positioned, the results would be the same.
+
+    <p style="margin-bottom:0;">
+      The following behaviours of the innermost boxes can be observed:
+    </p>
+    <ul>
+      <li>Block elements flow vertically.</li>
+      <li>A block element that doesn't set a width, will stretch horizontally to fill the space of its parent container (e.g., <i>middleGrid</i>).</li>
+      <li>A block element that doesn't set a height, will stretch vertically to accommodate the space required by its children.</li>
+      <li>
+        Margins can overlap.
+        For example, the <i>top</i> margin of a block element can overlap the <i>bottom</i> margin of a sibling block above it.
+        As shown below,the top of the box with "Margins will Overlap", overlaps the bottom margin of the box above it
+        (as evidenced by the 20px gap between them, instead of the expected 40px gap).
+      </li>
+      <li>Using margin:auto, causes the horizontal margins to fill the empty space, which horizontally centers the div.</li>
+      <li>Using display:inline-block, causes a block element to be rendered as a block element, but flow as if it were an inline element.</li>
+    </ul>
+  </tzBulletPoint>
+
+<script type="multiline-template" id="multipleInnerBoxesStaticCss">
+.innermost-sans-content {
+  margin: 20px;
+  border: 20px solid #f00;
+  color: #fff;
+  background-color: #047;
+  opacity: 0.5;
+}
+</script>
+
+<script type="multiline-template" id="multipleInnerBoxesStaticHtml">
+<div class="outermost" style="width:290px; height:480px;" id="outermost_mib10">
+  <div class="grid middle" style="position:absolute; margin:10px; width:270px; height:460px;" id="middleGrid_mib10">
+    <div class="innermost-sans-content" id="innermost_mib10">Width and height are not set for this element.</div>
+    <div class="innermost with-margin mini" id="innermost_mib11">Margins will Overlap</div>
+    <div class="innermost with-margin mini" style="margin:auto;" id="innermost_mib12">margin: auto</div>
+    This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.<br>
+    <div class="innermost with-margin mini" style="display:inline-block;" id="innermost_mib13">inline-block</div>
+    <div class="innermost with-margin mini" style="display:inline-block;" id="innermost_mib14">inline-block</div>
+  </div>
+</div>
+</script>
+
+  <tzCssHtmlExample templateId="multipleInnerBoxesStatic" width="820px">
+    <tzResultComment>
+      Static boxes flow and stretch.
+    </tzResultComment>
+  </tzCssHtmlExample>
+
+  <tzDisplayStyles width="500px">
+    <styleNames>position, margin, padding, border</styleNames>
+    <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png, ./img/innermost.png, ./img/innermost.png, ./img/innermost.png</legendImages>
+    <elementIds>outermost_mib10, middleGrid_mib10, innermost_mib10, innermost_mib11, innermost_mib12, innermost_mib13, innermost_mib14</elementIds>
   </tzDisplayStyles>
 
 </main>
