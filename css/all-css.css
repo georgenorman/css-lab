@@ -12,18 +12,7 @@
   ~ --------------------------------------------------------------
 */
 
-@import "base.css";
-
-/* Common tags for all Labs */
-@import "tags/tzBulletPoint.css";
-@import "tags/tzCodeExample.css";
-@import "tags/tzCodeHighlighter.css";
-@import "tags/tzDisplayStyles.css";
-@import "tags/tzHtmlBlock.css";
-@import "tags/tzTableOfContents.css";
-
-/* Common CSS for all Labs */
-@import "tzLab.css";
+@import "labKit-1.0.0-SNAPSHOT-min.css";
 
 /* CSS Lab tags */
 @import "tags/cssLabAbout.css";

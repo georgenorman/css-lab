@@ -22,14 +22,7 @@ var cssLabModule = (function(tzDomHelper) {
       setupHeader();
 
       // Tags common to all Labs
-      tzTableOfContentsTag.renderAll();
-      tzCssBlockTag.renderAll();
-      tzCodeExampleTag.renderAll();
-      tzHtmlBlockTag.renderAll();
-      tzCssHtmlExampleTag.renderAll();
-      tzDisplayStylesTag.renderAll();
-      tzAncestorStylesTag.renderAll();
-      tzBulletPointTag.renderAll();
+      baseKitModule.handleOnLoad();
 
       // Tags specific to CSS Lab
       cssLabAboutTag.renderAll();

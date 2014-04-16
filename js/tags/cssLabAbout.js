@@ -4,7 +4,7 @@
  ~     http://www.apache.org/licenses/LICENSE-2.0
  ~
  ~ --------------------------------------------------------------
- ~ Renders <tzAboutPage> tags - sharable among all projects.
+ ~ Renders <cssLabAbout> tags - sharable among all projects.
  ~ --------------------------------------------------------------
  */
 

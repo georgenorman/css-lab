@@ -35,7 +35,7 @@
 <main>
   <cssLabAbout></cssLabAbout>
 
-  <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
+  <lkTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lkTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="overview">Overview</h2>
@@ -45,10 +45,10 @@
     This page experiments with the CSS features of Opacity, Visibility, Display and RGBa.
 
     One common use of these features is to hide (or obscure) an element, while optionally collapsing or preserving the element's space, events and focus.
-    The table bellow illustrates how an element behaves when it can't be seen.
+    The table below illustrates how an element behaves when it can't be seen.
   </p>
 
-  <div class="tz-display-styles-matrix">
+  <div class="lk-display-styles-matrix">
     <table>
       <tr><th>Property: Value</th><th>Collapsed</th><th>Receives Events</th><th>Receives Focus</th></tr>
       <tr><td>opacity: 0</td><td>No</td><td>Yes</td><td>Yes</td></tr>
@@ -78,7 +78,7 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="fullyOpaqueHtml" width="400px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="fullyOpaqueHtml" width="400px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="opacity.0.5">opacity: 0.5</h3>
@@ -92,7 +92,7 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="partiallyOpaqueHtml" width="400px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="partiallyOpaqueHtml" width="400px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="opacity.0">opacity: 0</h3>
@@ -106,17 +106,17 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="invisibleHtml" width="400px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="invisibleHtml" width="400px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointFail id="opacity.irreversible">Irreversible Opacity</h3>
+  <h3 lkBulletPointFail id="opacity.irreversible">Irreversible Opacity</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-fail">
+  <lkBulletPoint iconClass="lk-bullet-point-fail">
     The opacity of a nested element is calculated by multiplying the opacity of all parent elements.
     For example, if the opacity of an outer element is set to 0.5, then setting the opacity of a nested element to 1.0 results
     in the nested element having an opacity of 0.5 * 1.0 = 0.5 (no change).
-  </tzBulletPoint>
+  </lkBulletPoint>
 
 <script type="multiline-template" id="irreversibleHtml">
 <div style="opacity:1;">
@@ -133,7 +133,7 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="irreversibleHtml" width="400px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="irreversibleHtml" width="400px"></lkCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="visibility">Visibility</h2>
@@ -153,7 +153,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="visibilityVisibleHtml" width="400px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="visibilityVisibleHtml" width="400px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="visibility.hidden">visibility:hidden</h3>
@@ -169,7 +169,7 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="visibilityHiddenHtml" width="400px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="visibilityHiddenHtml" width="400px"></lkCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="display">Display</h2>
@@ -189,7 +189,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayBlockHtml" width="400px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayBlockHtml" width="400px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.block.margin+padding">display:block (margin+padding)</h3>
@@ -203,7 +203,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayBlockWithPadHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayBlockWithPadHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.inline">display:inline</h3>
@@ -219,7 +219,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayInlineHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.inline.margin+padding">display:inline (margin+padding)</h3>
@@ -233,13 +233,13 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineWithPadHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayInlineWithPadHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="display.inline-block">display:inline-block</h3>
+  <h3 lkBulletPointPass id="display.inline-block">display:inline-block</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">The element is rendered as a box, but flows as if it were an inline element.</tzBulletPoint>
+  <lkBulletPoint iconClass="lk-bullet-point-pass">The element is rendered as a box, but flows as if it were an inline element.</lkBulletPoint>
 
 <script type="multiline-template" id="displayInlineBlockHtml">
 Before the DIV. Before the DIV. Before the DIV.
@@ -249,7 +249,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineBlockHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayInlineBlockHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.inline-block.margin+padding">display:inline-block (margin+padding)</h3>
@@ -263,7 +263,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineBlockWithPadHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayInlineBlockWithPadHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.none">display:none</h3>
@@ -279,7 +279,7 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayNoneHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayNoneHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.list-item">display:list-item</h3>
@@ -295,7 +295,7 @@ Before the DIV.
 After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayListItemHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayListItemHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.table">display:table</h3>
@@ -309,7 +309,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayTableHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayTableHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.table-cell">display:table-cell</h3>
@@ -333,7 +333,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample templateId="displayTableCell" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample templateId="displayTableCell" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.grid">display:grid</h3>
@@ -347,7 +347,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayGridHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayGridHtml" width="550px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="display.inline-grid">display:inline-grid</h3>
@@ -361,7 +361,7 @@ Before the DIV. Before the DIV. Before the DIV.
 After the DIV. After the DIV. After the DIV.
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="displayInlineGridHtml" width="550px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="displayInlineGridHtml" width="550px"></lkCssHtmlExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="rgba">RGBa</h2>
@@ -398,7 +398,7 @@ After the DIV. After the DIV. After the DIV.
 </div>
 </script>
 
-  <tzCssHtmlExample cssTemplateId="rgbaCss" htmlTemplateId="rgba1Html" width="580px"></tzCssHtmlExample>
+  <lkCssHtmlExample cssTemplateId="rgbaCss" htmlTemplateId="rgba1Html" width="580px"></lkCssHtmlExample>
 
   <!-- `````````````````````````````````` -->
   <h3 id="rgba.alpha-0.6">Overlay with alpha of 0.6</h3>
@@ -420,7 +420,7 @@ After the DIV. After the DIV. After the DIV.
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="rgba2Html" width="580px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="rgba2Html" width="580px"></lkCssHtmlExample>
 
   </main>
 

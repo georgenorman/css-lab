@@ -34,7 +34,7 @@
 <main>
   <cssLabAbout></cssLabAbout>
 
-  <tzTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></tzTableOfContents>
+  <lkTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lkTableOfContents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="overview">Overview</h2>
@@ -125,9 +125,9 @@
 }
 </script>
 
-  <tzCssBlock templateId="tmplCommonCss"></tzCssBlock>
+  <lkCssBlock templateId="tmplCommonCss"></lkCssBlock>
 
-  <tzCodeExample templateId="tmplCommonCss" lang="css" width="600px"></tzCodeExample>
+  <lkCodeExample templateId="tmplCommonCss" lang="css" width="600px"></lkCodeExample>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="absoluteToRelative">Absolute To Relative</h2>
@@ -138,10 +138,10 @@
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="absoluteToRelative.20pxMargin">Innermost with Margin</h3>
+  <h3 lkBulletPointPass id="absoluteToRelative.20pxMargin">Innermost with Margin</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <lkBulletPoint iconClass="lk-bullet-point-pass">
     <p>
       <b>Innermost</b> is positioned 40px from the top and 40px from the left of <i>MiddleGrid</i> and is given a 20px margin.
       Since it's an absolute-positioned div inside a relative one, the results are as expected:
@@ -151,7 +151,7 @@
       <b>MiddleGrid</b> was not given a margin, since it's a relative div nested inside a static div.
       To add a margin would trigger the <a href="boxModel.html#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> issue.
     </p>
-  </tzBulletPoint>
+  </lkBulletPoint>
 
 <script type="multiline-template" id="absoluteToRelative4pmHtml">
 <div class="outermost" id="outermost_atr10">
@@ -163,19 +163,19 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="absoluteToRelative4pmHtml" width="840px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="absoluteToRelative4pmHtml" width="840px"></lkCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
+  <lkDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_atr10, middleGrid_atr10, innermost_atr10</elementIds>
-  </tzDisplayStyles>
+  </lkDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointFail id="absoluteToRelative.overlap">Two Innermost Boxes Overlap</h3>
+  <h3 lkBulletPointFail id="absoluteToRelative.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-fail">
+  <lkBulletPoint iconClass="lk-bullet-point-fail">
     <p>
       The first <b>innermost</b> div is positioned 40px from the top and left of the <i>middle</i> div.
       The second <b>innermost</b> div is positioned 80px from the top and left of the <i>middle</i> div.
@@ -187,7 +187,7 @@
       <b>MiddleGrid</b> was not given a margin, since it's a relative div nested inside a static div.
       Adding a margin would have triggered the <a href="boxModel.html#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> issue.
     </p>
-  </tzBulletPoint>
+  </lkBulletPoint>
 
 <script type="multiline-template" id="absoluteToRelativeHtml">
 <div class="outermost" id="outermost_atr20">
@@ -200,16 +200,16 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="absoluteToRelativeHtml" width="840px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="absoluteToRelativeHtml" width="840px"></lkCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
+  <lkDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_atr20, middleGrid_atr20, innermost_atr201, innermost_atr202</elementIds>
-  </tzDisplayStyles>
+  </lkDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 tzBulletPointPass id="relativeToAbsolute">Relative To Absolute</h2>
+  <h2 lkBulletPointPass id="relativeToAbsolute">Relative To Absolute</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
@@ -217,10 +217,10 @@
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="relativeToAbsolute.40pxMargin">Innermost and Middle with Margins</h3>
+  <h3 lkBulletPointPass id="relativeToAbsolute.40pxMargin">Innermost and Middle with Margins</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <lkBulletPoint iconClass="lk-bullet-point-pass">
     <p>
       <b>Innermost</b> is positioned 40px from the top and 40px from the left of <i>MiddleGrid</i> and is given a 20px margin.
       Since it's an absolute-positioned div inside a relative one, the results are as expected:
@@ -230,7 +230,7 @@
       <b>MiddleGrid</b> was not given a margin, since it's a relative div nested inside a static div.
       To add a margin would trigger the <a href="boxModel.html#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> issue.
     </p>
-  </tzBulletPoint>
+  </lkBulletPoint>
 
 <script type="multiline-template" id="relativeToAbsolute4pmHtml">
 <div class="outermost" id="outermost_rta10">
@@ -242,22 +242,22 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="relativeToAbsolute4pmHtml" width="840px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="relativeToAbsolute4pmHtml" width="840px"></lkCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
+  <lkDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_rta10, middleGrid_rta10, innermost_rta10</elementIds>
-  </tzDisplayStyles>
+  </lkDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="relativeToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
+  <h3 lkBulletPointPass id="relativeToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <lkBulletPoint iconClass="lk-bullet-point-pass">
     In this experiment, two relative <i>innermost</i> divs are nested within the absolute <i>middle</i> div.
     Managing the positions of the <i>innermost</i> divs can be cumbersome, because of the way the space occupied by the relative div is preserved.
-  </tzBulletPoint>
+  </lkBulletPoint>
 
 <script type="multiline-template" id="exampleRelToAbsoluteOverlapHtml">
 <div class="outermost" id="outermost_rta20">
@@ -270,16 +270,16 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="exampleRelToAbsoluteOverlapHtml" width="740px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="exampleRelToAbsoluteOverlapHtml" width="740px"></lkCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
+  <lkDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_rta20, middleGrid_rta20, innermost_rta201, innermost_rta202</elementIds>
-  </tzDisplayStyles>
+  </lkDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 tzBulletPointPass id="absoluteToAbsolute">Absolute To Absolute</h2>
+  <h2 lkBulletPointPass id="absoluteToAbsolute">Absolute To Absolute</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <p>
@@ -287,10 +287,10 @@
   </p>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="absoluteToAbsolute.40pxMargin">Innermost and Middle with Margins</h3>
+  <h3 lkBulletPointPass id="absoluteToAbsolute.40pxMargin">Innermost and Middle with Margins</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <lkBulletPoint iconClass="lk-bullet-point-pass">
     <p>
       <b>Innermost</b> is positioned 40px from the top and 40px from the left of <i>MiddleGrid</i> and is given a 20px margin.
       Since it's an absolute-positioned div inside an absolute one, the results are as expected:
@@ -300,7 +300,7 @@
       <b>MiddleGrid</b> was also given a margin (10px).
       Since it's an absolute div nested inside an absolute one, its results are as expected: a 10px margin all around, with no side-effects..
     </p>
-  </tzBulletPoint>
+  </lkBulletPoint>
 
   <script type="multiline-template" id="absoluteToAbsolute4pmHtml">
 <div class="outermost" id="outermost_ata10">
@@ -312,21 +312,21 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="absoluteToAbsolute4pmHtml" width="800px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="absoluteToAbsolute4pmHtml" width="800px"></lkCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
+  <lkDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_ata10, middleGrid_ata10, innermost_ata10</elementIds>
-  </tzDisplayStyles>
+  </lkDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="absoluteToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
+  <h3 lkBulletPointPass id="absoluteToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <lkBulletPoint iconClass="lk-bullet-point-pass">
     This experiment shows that multiple absolute boxes are easy to position and adjust with margins.
-  </tzBulletPoint>
+  </lkBulletPoint>
 
 
   <script type="multiline-template" id="absoluteToAbsoluteOverlapHtml">
@@ -340,26 +340,26 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="absoluteToAbsoluteOverlapHtml" width="720px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="absoluteToAbsoluteOverlapHtml" width="720px"></lkCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
+  <lkDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_ata20, middleGrid_ata20, innermost_ata201, innermost_ata202</elementIds>
-  </tzDisplayStyles>
+  </lkDisplayStyles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 tzBulletPointPass id="fixedPosition">Fixed Position</h2>
+  <h2 lkBulletPointPass id="fixedPosition">Fixed Position</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="fixedPosition.staticButton">Fixed &lt;div&gt; with Static &lt;button&gt;</h3>
+  <h3 lkBulletPointPass id="fixedPosition.staticButton">Fixed &lt;div&gt; with Static &lt;button&gt;</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <lkBulletPoint iconClass="lk-bullet-point-pass">
     This experiment shows a fixed div with statically positioned inner elements.
     The outer container doesn't matter much, because the fixed inner div is hoisted out of it's parent container and displayed at the fixed position specified by its top/right/bottom/left properties.
-  </tzBulletPoint>
+  </lkBulletPoint>
 
 <script type="multiline-template" id="fixedWithStaticBtnCss">
 .fixed-example-1 {
@@ -376,12 +376,12 @@
 
 <script type="multiline-template" id="fixedWithStaticBtnHtml">
 <div>
-  <button onclick="tzDomHelperModule.show('inner_fp10'); return false;">Show Fixed with Static Button</a>
+  <button onclick="lkDomHelperModule.show('inner_fp10'); return false;">Show Fixed with Static Button</a>
 </div>
 
 <div id="outermost_fp10">
   <div class="fixed-example-1" id="inner_fp10">
-    <button onclick="tzDomHelperModule.hide('inner_fp10'); return false;"
+    <button onclick="lkDomHelperModule.hide('inner_fp10'); return false;"
             style="float:right; margin:6px; height:21px;" id="staticBtnEx1">Close</button>
     <p style="margin-top:30px; padding:12px; text-align:center; color:#999">
       This div position is fixed, relative to the browser window.
@@ -391,29 +391,29 @@
 </div>
 </script>
 
-  <tzCssHtmlExample templateId="fixedWithStaticBtn" width="840px"></tzCssHtmlExample>
+  <lkCssHtmlExample templateId="fixedWithStaticBtn" width="840px"></lkCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
+  <lkDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <elementIds>outermost_fp10, inner_fp10, staticBtnEx1</elementIds>
-  </tzDisplayStyles>
+  </lkDisplayStyles>
 
   <!-- `````````````````````````````````` -->
-  <h3 tzBulletPointPass id="fixedPosition.relativeButton">Fixed &lt;div&gt; with Relative &lt;button&gt;</h3>
+  <h3 lkBulletPointPass id="fixedPosition.relativeButton">Fixed &lt;div&gt; with Relative &lt;button&gt;</h3>
   <!-- `````````````````````````````````` -->
 
-  <tzBulletPoint iconClass="tz-bullet-point-pass">
+  <lkBulletPoint iconClass="lk-bullet-point-pass">
     Same as above, but now the button has been changed from static to relative and is positioned to the bottom-right corner.
-  </tzBulletPoint>
+  </lkBulletPoint>
 
 <script type="multiline-template" id="fixedWithRelativeBtnHtml">
 <div>
-  <button onclick="tzDomHelperModule.show('inner_fp20'); return false;">Show Fixed with Relative Button</a>
+  <button onclick="lkDomHelperModule.show('inner_fp20'); return false;">Show Fixed with Relative Button</a>
 </div>
 
 <div id="outermost_fp20">
   <div class="fixed-example-1" id="inner_fp20">
-    <button onclick="tzDomHelperModule.hide('inner_fp20'); return false;"
+    <button onclick="lkDomHelperModule.hide('inner_fp20'); return false;"
             style="position:relative; top:150px; left:195px; height:21px;" id="relativeBtnEx1">Close</button>
     <p style="margin-top:30px; padding:12px; text-align:center; color:#999"">
       This div position is fixed, relative to the browser window.
@@ -423,12 +423,12 @@
 </div>
 </script>
 
-  <tzCssHtmlExample htmlTemplateId="fixedWithRelativeBtnHtml" width="840px"></tzCssHtmlExample>
+  <lkCssHtmlExample htmlTemplateId="fixedWithRelativeBtnHtml" width="840px"></lkCssHtmlExample>
 
-  <tzDisplayStyles width="600px">
+  <lkDisplayStyles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <elementIds>outermost_fp20, inner_fp20, relativeBtnEx1</elementIds>
-  </tzDisplayStyles>
+  </lkDisplayStyles>
 
 </main>
 
