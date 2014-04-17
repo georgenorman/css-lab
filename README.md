@@ -2,13 +2,20 @@
 
 CSS experiments for the [CSS Overview](http://www.thruzero.com/jcat3/apps/resources/resources.jsf?rid=css.overview) at ThruZero.
 
-## Caveats
+## Description
 
-The purpose of CSS Lab is to explore CSS.
+The primary purpose of *CSS Lab* is to explore CSS.
+Partly to dig deeper into the mystery of why things don't work as expected (which always seems to happen as deadlines loom),
+and partly just to play around with some new *CSS3* features.
+
+A further purpose is to gain experience with JavaScript.
+CSS Lab is built using *Lab Kit JS*, which is a JavaScript library created to keep the example code in sync with the rendered results (the rendered results are created using the example code).
+Lab Kit JS is also used to generate the *Table of Contents* for each page, which automatically keeps it in sync with the document sections.
+
 Third-party libraries (e.g., jQuery) are not used, because that would interfere with the goal of getting exposed to the fundamentals
 (i.e., using jQuery would be like exploring the Amazon by jet - instead, I want to explore it on foot, even if it means sinking to my eyebrows in quicksand).
 
-## Demo
+## Experiments
 
 * At Rules (in progress)
 * [Selectors](http://www.thruzero.com/pages/jcat3/css-lab/selectors.html)
