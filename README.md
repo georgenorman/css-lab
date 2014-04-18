@@ -17,14 +17,15 @@ Third-party libraries (e.g., jQuery) are not used, because that would interfere 
 
 ## Experiments
 
-* At Rules (in progress)
-* [Selectors](http://www.thruzero.com/pages/jcat3/css-lab/selectors.html)
-* [Box Model](http://www.thruzero.com/pages/jcat3/css-lab/boxModel.html)
-* [Positioning](http://www.thruzero.com/pages/jcat3/css-lab/positioning.html)
-* Modal Dialog (in progress)
-* [Floats](http://www.thruzero.com/pages/jcat3/css-lab/floats.html)
-* [Transparency/Display](http://www.thruzero.com/pages/jcat3/css-lab/transparencyDisplay.html)
-* [Filters](http://www.thruzero.com/pages/jcat3/css-lab/filters.html)
+* [CSS Lab Demo](http://www.thruzero.com/pages/jcat3/css-lab/index.html)
+  * At Rules (in progress)
+  * [Selectors](http://www.thruzero.com/pages/jcat3/css-lab/selectors.html)
+  * [Box Model](http://www.thruzero.com/pages/jcat3/css-lab/boxModel.html)
+  * [Positioning](http://www.thruzero.com/pages/jcat3/css-lab/positioning.html)
+  * Modal Dialog (in progress)
+  * [Floats](http://www.thruzero.com/pages/jcat3/css-lab/floats.html)
+  * [Transparency/Display](http://www.thruzero.com/pages/jcat3/css-lab/transparencyDisplay.html)
+  * [Filters](http://www.thruzero.com/pages/jcat3/css-lab/filters.html)
 
 ## License
 
