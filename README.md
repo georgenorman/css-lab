@@ -9,8 +9,8 @@ Partly to dig deeper into the mystery of why things don't work as expected (whic
 and partly just to play around with some new *CSS3* features.
 
 A further purpose is to gain experience with JavaScript.
-CSS Lab is built using *Lab Kit JS*, which is a JavaScript library created to keep the example code in sync with the rendered results (the rendered results are created using the example code).
-Lab Kit JS is also used to generate the *Table of Contents* for each page, which automatically keeps it in sync with the document sections.
+CSS Lab is built using [LabKit JS](https://github.com/georgenorman/lab-kit-js/blob/master/README.md), which is a JavaScript library created to keep the example code in sync with the rendered results (the rendered results are created using the example code).
+LabKit JS is also used to generate the *Table of Contents* for each page, which automatically keeps it in sync with the document sections.
 
 Third-party libraries (e.g., jQuery) are not used, because that would interfere with the goal of getting exposed to the fundamentals
 (i.e., using jQuery would be like exploring the Amazon by jet - instead, I want to explore it on foot, even if it means sinking to my eyebrows in quicksand).
