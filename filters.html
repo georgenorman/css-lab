@@ -32,9 +32,9 @@
 </header>
 
 <main>
-  <cssLabAbout></cssLabAbout>
+  <css-lab-about></css-lab-about>
 
-  <lkTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lkTableOfContents>
+  <lk-table-of-contents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lk-table-of-contents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="grayscale">Grayscale</h2>
@@ -60,7 +60,7 @@
 <img class="filter-gray" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterGray" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterGray" width="500px"></lk-css-html-example>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="sepia">Sepia</h2>
@@ -86,7 +86,7 @@
 <img class="filter-sepia" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterSepia" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterSepia" width="500px"></lk-css-html-example>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="brightness">Brightness</h2>
@@ -112,7 +112,7 @@
 <img class="filter-brightness" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterBrightness" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterBrightness" width="500px"></lk-css-html-example>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="contrast">Contrast</h2>
@@ -138,7 +138,7 @@
 <img class="filter-contrast" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterContrast" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterContrast" width="500px"></lk-css-html-example>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="blur">Blur</h2>
@@ -164,7 +164,7 @@
 <img class="filter-blur" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterBlur" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterBlur" width="500px"></lk-css-html-example>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="drop-shadow">Drop Shadow</h2>
@@ -190,16 +190,16 @@
 <img class="filter-drop-shadow" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterShadow" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterShadow" width="500px"></lk-css-html-example>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointFail id="drop-shadow.caveat-border">With Border</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-fail">
+  <lk-bullet-point iconClass="lk-bullet-point-fail">
     Adding a border to the image, causes the border and the image to both have drop-shadows.
     This is not the effect I was looking for.
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="filterShadowBorderCss">
 .drop-shadow_border {
@@ -214,18 +214,18 @@
 <img class="drop-shadow_border" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterShadowBorder" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterShadowBorder" width="500px"></lk-css-html-example>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointFail id="drop-shadow.caveat-inherited">Inherited from Div</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-fail">
+  <lk-bullet-point iconClass="lk-bullet-point-fail">
     Take the previous example and nest the image inside of a div, then move the drop-shadow from the image to the div.
     Unfortunately, the drop-shadow is inherited by the image and the shadow is applied to both the div and the image.
     Attempting to override the filter on the image is ignored.
     This is still not the effect I was looking for.
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="filterShadowInheritedCss">
 .drop-shadow_inherited {
@@ -248,16 +248,16 @@
 </div>
 </script>
 
-  <lkCssHtmlExample templateId="filterShadowInherited" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterShadowInherited" width="500px"></lk-css-html-example>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="drop-shadow.caveat-boxShadow">Box Shadow</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     Abandon the drop-shadow filter altogether and use box-shadow instead.
     This is exactly the effect I was looking for.
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="filterBoxShadowCss">
 .box-shadow {
@@ -271,7 +271,7 @@
 <img class="box-shadow" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterBoxShadow" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterBoxShadow" width="500px"></lk-css-html-example>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="hue-rotate">Hue Rotate</h2>
@@ -297,7 +297,7 @@
 <img class="filter-hue-rotate" src="./img/scenic/Yosemite.png">
 </script>
 
-  <lkCssHtmlExample templateId="filterHueRotate" width="500px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="filterHueRotate" width="500px"></lk-css-html-example>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="opacity">Opacity</h2>
@@ -376,12 +376,12 @@
 </div>
 </script>
 
-  <lkCssHtmlExample templateId="filterOpacity" width="500px">
+  <lk-css-html-example templateId="filterOpacity" width="500px">
     <lkResultComment>
       At 20% opacity, the image overlay barely obscures the text.
       At 80% opacity, the image overlay mostly obscures the text.
     </lkResultComment>
-  </lkCssHtmlExample>
+  </lk-css-html-example>
 
 </main>
 

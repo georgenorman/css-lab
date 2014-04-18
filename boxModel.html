@@ -32,9 +32,9 @@
 </header>
 
 <main>
-  <cssLabAbout></cssLabAbout>
+  <css-lab-about></css-lab-about>
 
-  <lkTableOfContents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lkTableOfContents>
+  <lk-table-of-contents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lk-table-of-contents>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="overview">Overview</h2>
@@ -117,9 +117,9 @@
 }
 </script>
 
-  <lkCssBlock templateId="tmplCommonCss"></lkCssBlock>
+  <lk-css-block templateId="tmplCommonCss"></lk-css-block>
 
-  <lkCodeExample templateId="tmplCommonCss" lang="css" width="750px"></lkCodeExample>
+  <lk-code-example templateId="tmplCommonCss" lang="css" width="750px"></lk-code-example>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointPass id="basicMargin">Basic Margin and Position</h2>
@@ -133,7 +133,7 @@
   <h3 lkBulletPointPass id="basicMargin.absoluteInStatic">Absolute in Static</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     <p>
       <b>Innermost</b> is given a 20px margin.
       Since it's an absolute-positioned div inside a static one, the results are as expected:
@@ -143,7 +143,7 @@
       <b>MiddleGrid</b> was not given a margin, since it's a static div nested inside a static div.
       Adding a margin would trigger the <a href="boxModel.html#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> effect.
     </p>
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="positionAbsoluteInStaticHtml">
 <div class="outermost" id="outermost_bm10">
@@ -155,19 +155,19 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="positionAbsoluteInStaticHtml" width="750px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="positionAbsoluteInStaticHtml" width="750px"></lk-css-html-example>
 
-  <lkDisplayStyles width="500px">
+  <lk-display-styles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_bm10, middleGrid_bm10, innermost_bm10</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="basicMargin.staticInAbsolute">Static in Absolute</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     <p>
       <b>Innermost</b> is given a 20px margin.
       Since it's a static-positioned div inside an absolute one, the results are as expected:
@@ -178,7 +178,7 @@
       Since it's an absolute div nested inside a static one, the results are also as expected:
       10px margin all around, with no side-effects.
     </p>
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="positionStaticInAbsoluteHtml">
 <div class="outermost" id="outermost_bm20">
@@ -190,19 +190,19 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="positionStaticInAbsoluteHtml" width="750px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="positionStaticInAbsoluteHtml" width="750px"></lk-css-html-example>
 
-  <lkDisplayStyles width="500px">
+  <lk-display-styles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_bm20, middleGrid_bm20, innermost_bm20</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="basicMargin.absoluteInRelative">Absolute in Relative</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     <p>
       <b>Innermost</b> is given a 20px margin.
       Since it's an absolute-positioned div inside a relative div, the results are the expected 20px margin all around, with no side-effects.
@@ -211,7 +211,7 @@
       <b>MiddleGrid</b> was not given a margin.
       Since it's a relative div nested inside a static one, adding a margin would result in the <a href="#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a> effect.
     </p>
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="positionAbsoluteInRelativeHtml">
 <div class="outermost" id="outermost_bm30">
@@ -223,19 +223,19 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="positionAbsoluteInRelativeHtml" width="750px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="positionAbsoluteInRelativeHtml" width="750px"></lk-css-html-example>
 
-  <lkDisplayStyles width="500px">
+  <lk-display-styles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_bm30, middleGrid_bm30, innermost_bm30</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="basicMargin.relativeInAbsolute">Relative in Absolute</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     <p>
       <b>Innermost</b> is given a 20px margin.
       Since it's a relative-positioned div inside an absolute one, the results are as expected:
@@ -246,7 +246,7 @@
       Since it's an absolute div nested inside a static one, the results are also as expected:
       10px margin all around, with no side-effects.
     </p>
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="positionRelativeInAbsoluteHtml">
 <div class="outermost" id="outermost_bm40">
@@ -258,19 +258,19 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="positionRelativeInAbsoluteHtml" width="750px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="positionRelativeInAbsoluteHtml" width="750px"></lk-css-html-example>
 
-  <lkDisplayStyles width="500px">
+  <lk-display-styles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_bm40, middleGrid_bm40, innermost_bm40</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="basicMargin.absoluteInAbsolute">Absolute in Absolute</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     <p>
       <b>Innermost</b> is given a 20px margin.
       Since it's an absolute-positioned div inside an absolute div, the results are the expected 20px margin all around, with no side-effects.
@@ -280,7 +280,7 @@
       Since it's an absolute div nested inside a static one, the results are also as expected:
       10px margin all around, with no side-effects.
     </p>
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="positionAbsoluteInAbsoluteHtml">
 <div class="outermost" id="outermost_bm50">
@@ -292,13 +292,13 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="positionAbsoluteInAbsoluteHtml" width="750px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="positionAbsoluteInAbsoluteHtml" width="750px"></lk-css-html-example>
 
-  <lkDisplayStyles width="500px">
+  <lk-display-styles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_bm50, middleGrid_bm50, innermost_bm50</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointFail id="marginCaveats">Margin Caveats</h2>
@@ -313,7 +313,7 @@
   <h3 lkBulletPointFail id="marginCaveats.verticalMarginTransfer">Vertical Margin Transfer (VMT)</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-fail">
+  <lk-bullet-point iconClass="lk-bullet-point-fail">
     <p>
       When a static or relative-positioned block-level element is nested inside of a static or relative-positioned parent,
       its top and bottom margins may be transferred up the hierarchy until a suitable ancestor is found.
@@ -328,7 +328,7 @@
       Instead, the top and bottom margins bypasses the <i>innermost</i> div and are directly transferred to the top of the <i>outermost</i> div, pushing it down by 20px
       (as evidenced by the more than 20px gap above <i>outermost</i>) as well as pushing the display wrapper down at the bottom.</span>
     </p>
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="verticalMarginTransferHtml">
 <div class="grid" id="outermost_mc00">
@@ -338,19 +338,19 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="verticalMarginTransferHtml" width="640px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="verticalMarginTransferHtml" width="640px"></lk-css-html-example>
 
-  <lkDisplayStyles width="600px">
+  <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_mc00, innermost_mc00</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointFail id="marginCaveats.topMarginTransfer">Top Margin Transfer</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-fail">
+  <lk-bullet-point iconClass="lk-bullet-point-fail">
     <p>
     This experiment highlights the affect of Vertical Margin Transfer on the top margin (using the same div structure as most of the other examples on this page).
     The bottom margin is not affected in this scenario, because the content height of the ancestor divs are explicitly set.
@@ -359,7 +359,7 @@
       As can be seen in the Rendered Result, the 20px margin defined by the <i>with-margin</i> class and provided to the innermost div, has been transferred to the top of the outermost div
       (as evidenced by the more than 20px gap above <i>outermost</i>).
     </p>
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">
 <div class="outermost" id="outermost_mc10">
@@ -371,22 +371,22 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="tmplExampleRelInStatic10pxMarginHtml" width="640px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="tmplExampleRelInStatic10pxMarginHtml" width="640px"></lk-css-html-example>
 
-  <lkDisplayStyles width="600px">
+  <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_mc10, middleGrid_mc10, innermost_mc10</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointFail id="marginCaveats.marginTransferContentWorkarounds">Content Workaround for VMT</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-fail">
+  <lk-bullet-point iconClass="lk-bullet-point-fail">
     Adding some content to the middle div can block the affects of <a href="#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a>, when using static or relative divs.
     The top margin of the innermost div is now applied to the innermost div instead of outermost.
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="marginTransferContentWorkaroundsPaddingCss">
 .middle-pswp.grid {
@@ -406,22 +406,22 @@
 </div>
 </script>
 
-  <lkCssHtmlExample templateId="marginTransferContentWorkaroundsPadding" width="770px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="marginTransferContentWorkaroundsPadding" width="770px"></lk-css-html-example>
 
-  <lkDisplayStyles width="560px">
+  <lk-display-styles width="560px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_mc20, middleGrid_mc20, innermost_mc20</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointFail id="marginCaveats.marginTransferPaddingWorkarounds">Padding Workaround for VMT</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-fail">
+  <lk-bullet-point iconClass="lk-bullet-point-fail">
     Adding some padding to the outermost div can also mitigate the affects of <a href="#marginCaveats.verticalMarginTransfer">Vertical Margin Transfer</a>,
     but requires a lot of finagling of the outer and inner divs and is off by 1px.
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="marginTransferPaddingWorkaroundsPaddingHtml">
 <div class="outermost" style="padding:10px 0 0 10px; width:230px; height:230px;" id="outermost_mc30">
@@ -433,25 +433,25 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="marginTransferPaddingWorkaroundsPaddingHtml" width="770px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="marginTransferPaddingWorkaroundsPaddingHtml" width="770px"></lk-css-html-example>
 
-  <lkDisplayStyles width="560px">
+  <lk-display-styles width="560px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_mc30, middleGrid_mc30, innermost_mc30</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointFail id="marginCaveats.marginTransferBorderWorkarounds">Border Workaround for VMT</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-fail">
+  <lk-bullet-point iconClass="lk-bullet-point-fail">
     Vertical Margin Transfer can be circumvented by adding a border to the <i>outermost</i> (or <i>middle</i>) div.
     The example below shows that by adding a border to <i>outermost</i>, the margin transfer from <i>innermost</i> is blocked.
     Instead, the top margin is now transferred to the <i>middle</i> div.
     Alternatively, adding a border to the <i>middle</i> div blocks the margin transfer to both <i>middle</i> and <i>outermost</i> divs all at once
     (i.e., adding a border or padding to an outer div blocks the propagation of the margin transfer feature).
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="marginTransferBorderWorkaroundsHtml">
 <div class="outermost" style="border-top:1px solid red;" id="outermost_mc40">
@@ -463,13 +463,13 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="marginTransferBorderWorkaroundsHtml" width="840px" height="250px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="marginTransferBorderWorkaroundsHtml" width="840px" height="250px"></lk-css-html-example>
 
-  <lkDisplayStyles width="600px">
+  <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_mc40, middleGrid_mc40, innermost_mc40</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="border">Border</h2>
@@ -491,10 +491,10 @@
   <h2 lkBulletPointPass id="verticalCentering">Vertical Centering</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     The multi-line text in innermost can be easily centered by using the table-cell technique
     described by <i>lluisaznar</i> <a href="http://stackoverflow.com/questions/732337/how-do-i-vertically-align-something-inside-a-span-tag">here</a>.
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="positionAbsoluteInAbsoluteCenterCss">
 .center-text {
@@ -518,13 +518,13 @@
 </div>
 </script>
 
-  <lkCssHtmlExample templateId="positionAbsoluteInAbsoluteCenter" width="750px"></lkCssHtmlExample>
+  <lk-css-html-example templateId="positionAbsoluteInAbsoluteCenter" width="750px"></lk-css-html-example>
 
-  <lkDisplayStyles width="560px">
+  <lk-display-styles width="560px">
     <styleNames>position, margin, padding, display, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/contentRegion.png</legendImages>
     <elementIds>outermost_vc00, middleGrid_vc00, innermost_vc00, centerText_vc00</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointPass id="multipleInnerBoxes">Multiple Inner Boxes</h2>
@@ -538,11 +538,11 @@
   <h3 lkBulletPointPass id="multipleInnerBoxes.absolute">Multiple Absolute Inner Boxes</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     This experiment uses two absolute positioned innermost boxes.
     Since position is absolute, they don't flow around each other.
     Instead, they stack on top of each other (unless positioned manually, as in this example).
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="multipleInnerBoxesAbsoluteHtml">
 <div class="outermost" id="outermost_mib00">
@@ -553,19 +553,19 @@
 </div>
 </script>
 
-  <lkCssHtmlExample htmlTemplateId="multipleInnerBoxesAbsoluteHtml" width="850px"></lkCssHtmlExample>
+  <lk-css-html-example htmlTemplateId="multipleInnerBoxesAbsoluteHtml" width="850px"></lk-css-html-example>
 
-  <lkDisplayStyles width="500px">
+  <lk-display-styles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_mib00, middleGrid_mib00, innermost_mib00, innermost_mib01</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="multipleInnerBoxes.static">Multiple Static Inner Boxes</h3>
   <!-- `````````````````````````````````` -->
 
-  <lkBulletPoint iconClass="lk-bullet-point-pass">
+  <lk-bullet-point iconClass="lk-bullet-point-pass">
     This experiment is the same as above, except now the innermost boxes are static (static boxes nested inside of an absolute box).
     Note: If the innermost boxes were relative positioned, the results would be the same.
 
@@ -585,7 +585,7 @@
       <li>Using margin:auto, causes the horizontal margins to fill the empty space, which horizontally centers the div.</li>
       <li>Using display:inline-block, causes a block element to be rendered as a block element, but flow as if it were an inline element.</li>
     </ul>
-  </lkBulletPoint>
+  </lk-bullet-point>
 
 <script type="multiline-template" id="multipleInnerBoxesStaticCss">
 .innermost-sans-content {
@@ -610,17 +610,17 @@
 </div>
 </script>
 
-  <lkCssHtmlExample templateId="multipleInnerBoxesStatic" width="820px">
+  <lk-css-html-example templateId="multipleInnerBoxesStatic" width="820px">
     <lkResultComment>
       Static boxes flow and stretch.
     </lkResultComment>
-  </lkCssHtmlExample>
+  </lk-css-html-example>
 
-  <lkDisplayStyles width="500px">
+  <lk-display-styles width="500px">
     <styleNames>position, margin, padding, border</styleNames>
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png, ./img/innermost.png, ./img/innermost.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_mib10, middleGrid_mib10, innermost_mib10, innermost_mib11, innermost_mib12, innermost_mib13, innermost_mib14</elementIds>
-  </lkDisplayStyles>
+  </lk-display-styles>
 
 </main>
 
