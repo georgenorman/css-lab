@@ -8,7 +8,7 @@
   ~ --------------------------------------------------------------
  */
 
-var cssLabModule = (function(tzDomHelper) {
+var cssLabModule = (function(tzDomHelper, tzLogHelper) {
   "use strict";
 
   var cssLabHome = "./index.html";
@@ -18,7 +18,10 @@ var cssLabModule = (function(tzDomHelper) {
      * Do page setup (e.g., render all tags).
      */
     handleOnLoad: function() {
-      //
+      // enable/disable logging
+      tzLogHelper.disableLogging();
+
+      // add a link back to the CSS Lab home page
       setupHeader();
 
       // Tags common to all Labs
@@ -40,4 +43,4 @@ var cssLabModule = (function(tzDomHelper) {
     tzDomHelper.createElement(h1, "a", '{"href":"'+cssLabHome+'", "className":"labHome"}');
   }
 
-}(tzDomHelperModule));
+}(tzDomHelperModule, tzLogHelperModule));

@@ -13,7 +13,7 @@
  */
 
 /* Common helper libs */
-document.write('<script type="text/javascript" src="js/labKit-1.0.0-SNAPSHOT-min.js"></script>');
+document.write('<script type="text/javascript" src="lib/js/labkit-1.0.0-SNAPSHOT-min.js"></script>');
 
 /* CSS Lab specific */
 document.write('<script type="text/javascript" src="js/tags/cssLabAbout.js?v2"></script>');

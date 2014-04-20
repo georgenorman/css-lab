@@ -12,7 +12,7 @@
   ~ --------------------------------------------------------------
 */
 
-@import "labKit-1.0.0-SNAPSHOT-min.css";
+@import "../lib/css/labkit-1.0.0-SNAPSHOT-min.css";
 
 /* CSS Lab tags */
 @import "tags/cssLabAbout.css";
