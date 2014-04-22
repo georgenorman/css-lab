@@ -10,6 +10,7 @@
   ~
   ~ For production, replace this file with the minified contents
   ~ of all of the imported files below.
+  ~ Or, replace the all-javascript.js include in the HTML file (e.g., at build time).
   ~ --------------------------------------------------------------
   ~
  */
