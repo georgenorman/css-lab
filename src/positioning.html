@@ -31,7 +31,8 @@
   <h1>Positioning</h1>
 </header>
 
-<main>
+<progress class="page-load-progress">Loading...</progress>
+<main class="hide">
   <css-lab-about></css-lab-about>
 
   <lk-table-of-contents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lk-table-of-contents>
@@ -69,6 +70,8 @@
     </li>
   </ul>
 
+  <lk-back-to></lk-back-to>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="commonCss">Shared CSS</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -78,7 +81,7 @@
     The styles are applied to three nested divs: <i>outermost</i>, which contains <i>middleGrid</i>, which in turn contains <i>innermost</i>.
   </p>
 
-  <div style="background-color:#ccc; width:190px; height:185px; text-align:center; margin:20px;">
+  <div class="example-code-structure">
     <b>Outermost</b>
     <div class="middle grid" style="width:150px; height:150px; margin-left:20px;">
       <b style="background:#ddd;">MiddleGrid</b>
@@ -129,6 +132,8 @@
 
   <lk-code-example templateId="tmplCommonCss" lang="css" width="600px"></lk-code-example>
 
+  <lk-back-to></lk-back-to>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="absoluteToRelative">Absolute To Relative</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -171,8 +176,10 @@
     <elementIds>outermost_atr10, middleGrid_atr10, innermost_atr10</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
-  <h3 lkBulletPointFail id="absoluteToRelative.overlap">Two Innermost Boxes Overlap</h3>
+  <h3 lkBulletPointPass id="absoluteToRelative.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
 
   <lk-bullet-point iconClass="lk-bullet-point-fail">
@@ -207,6 +214,8 @@
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_atr20, middleGrid_atr20, innermost_atr201, innermost_atr202</elementIds>
   </lk-display-styles>
+
+  <lk-back-to></lk-back-to>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointPass id="relativeToAbsolute">Relative To Absolute</h2>
@@ -250,6 +259,8 @@
     <elementIds>outermost_rta10, middleGrid_rta10, innermost_rta10</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="relativeToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
@@ -277,6 +288,8 @@
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_rta20, middleGrid_rta20, innermost_rta201, innermost_rta202</elementIds>
   </lk-display-styles>
+
+  <lk-back-to></lk-back-to>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointPass id="absoluteToAbsolute">Absolute To Absolute</h2>
@@ -320,6 +333,8 @@
     <elementIds>outermost_ata10, middleGrid_ata10, innermost_ata10</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="absoluteToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
   <!-- `````````````````````````````````` -->
@@ -347,6 +362,8 @@
     <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
     <elementIds>outermost_ata20, middleGrid_ata20, innermost_ata201, innermost_ata202</elementIds>
   </lk-display-styles>
+
+  <lk-back-to></lk-back-to>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointPass id="fixedPosition">Fixed Position</h2>
@@ -398,6 +415,8 @@
     <elementIds>outermost_fp10, inner_fp10, staticBtnEx1</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="fixedPosition.relativeButton">Fixed &lt;div&gt; with Relative &lt;button&gt;</h3>
   <!-- `````````````````````````````````` -->
@@ -430,10 +449,13 @@
     <elementIds>outermost_fp20, inner_fp20, relativeBtnEx1</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
 </main>
 
 <footer></footer>
 
+<style>@import url(http://fonts.googleapis.com/css?family=Open+Sans);</style>
 <script type="text/javascript" src="js/all-javascript.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 

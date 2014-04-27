@@ -29,10 +29,11 @@
 <body onload="cssLabModule.handleOnLoad();">
 
 <header>
-  <h1>Transparency/Display</h1>
+  <h1>Trans/Display</h1>
 </header>
 
-<main>
+<progress class="page-load-progress">Loading...</progress>
+<main class="hide">
 <css-lab-about></css-lab-about>
 
 <lk-table-of-contents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lk-table-of-contents>
@@ -57,6 +58,7 @@
   </table>
 </div>
 
+<lk-back-to></lk-back-to>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="opacity">Opacity</h2>
@@ -80,6 +82,8 @@
 
 <lk-css-html-example htmlTemplateId="fullyOpaqueHtml" width="400px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="opacity.0.5">opacity: 0.5</h3>
 <!-- `````````````````````````````````` -->
@@ -94,6 +98,8 @@
 
 <lk-css-html-example htmlTemplateId="partiallyOpaqueHtml" width="400px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="opacity.0">opacity: 0</h3>
 <!-- `````````````````````````````````` -->
@@ -107,6 +113,8 @@
 </script>
 
 <lk-css-html-example htmlTemplateId="invisibleHtml" width="400px"></lk-css-html-example>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="opacity.irreversible">Irreversible Opacity</h3>
@@ -135,6 +143,8 @@
 
 <lk-css-html-example htmlTemplateId="irreversibleHtml" width="400px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="visibility">Visibility</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -155,6 +165,8 @@ After the DIV. After the DIV. After the DIV.
 
 <lk-css-html-example htmlTemplateId="visibilityVisibleHtml" width="400px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="visibility.hidden">visibility:hidden</h3>
 <!-- `````````````````````````````````` -->
@@ -170,6 +182,8 @@ After the DIV.
 </script>
 
 <lk-css-html-example htmlTemplateId="visibilityHiddenHtml" width="400px"></lk-css-html-example>
+
+<lk-back-to></lk-back-to>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="display">Display</h2>
@@ -191,6 +205,8 @@ After the DIV. After the DIV. After the DIV.
 
 <lk-css-html-example htmlTemplateId="displayBlockHtml" width="400px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="display.block.margin+padding">display:block (margin+padding)</h3>
 <!-- `````````````````````````````````` -->
@@ -204,6 +220,8 @@ After the DIV. After the DIV. After the DIV.
 </script>
 
 <lk-css-html-example htmlTemplateId="displayBlockWithPadHtml" width="550px"></lk-css-html-example>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 id="display.inline">display:inline</h3>
@@ -221,6 +239,8 @@ After the DIV. After the DIV. After the DIV.
 
 <lk-css-html-example htmlTemplateId="displayInlineHtml" height="20px" width="550px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="display.inline.margin+padding">display:inline (margin+padding)</h3>
 <!-- `````````````````````````````````` -->
@@ -234,6 +254,8 @@ After the DIV. After the DIV. After the DIV.
 </script>
 
 <lk-css-html-example htmlTemplateId="displayInlineWithPadHtml" height="20px" width="550px"></lk-css-html-example>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="display.inline-block">display:inline-block</h3>
@@ -251,6 +273,8 @@ After the DIV. After the DIV. After the DIV.
 
 <lk-css-html-example htmlTemplateId="displayInlineBlockHtml" width="550px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="display.inline-block.margin+padding">display:inline-block (margin+padding)</h3>
 <!-- `````````````````````````````````` -->
@@ -264,6 +288,8 @@ After the DIV. After the DIV. After the DIV.
 </script>
 
 <lk-css-html-example htmlTemplateId="displayInlineBlockWithPadHtml" width="550px"></lk-css-html-example>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 id="display.none">display:none</h3>
@@ -281,6 +307,8 @@ After the DIV.
 
 <lk-css-html-example htmlTemplateId="displayNoneHtml" width="550px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="display.list-item">display:list-item</h3>
 <!-- `````````````````````````````````` -->
@@ -297,6 +325,8 @@ After the DIV.
 
 <lk-css-html-example htmlTemplateId="displayListItemHtml" width="550px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="display.table">display:table</h3>
 <!-- `````````````````````````````````` -->
@@ -310,6 +340,8 @@ After the DIV. After the DIV. After the DIV.
 </script>
 
 <lk-css-html-example htmlTemplateId="displayTableHtml" width="550px"></lk-css-html-example>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 id="display.table-cell">display:table-cell</h3>
@@ -335,6 +367,8 @@ After the DIV. After the DIV. After the DIV.
 
 <lk-css-html-example templateId="displayTableCell" width="550px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="display.grid">display:grid</h3>
 <!-- `````````````````````````````````` -->
@@ -349,6 +383,8 @@ After the DIV. After the DIV. After the DIV.
 
 <lk-css-html-example htmlTemplateId="displayGridHtml" width="550px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="display.inline-grid">display:inline-grid</h3>
 <!-- `````````````````````````````````` -->
@@ -362,6 +398,8 @@ After the DIV. After the DIV. After the DIV.
 </script>
 
 <lk-css-html-example htmlTemplateId="displayInlineGridHtml" width="550px"></lk-css-html-example>
+
+<lk-back-to></lk-back-to>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="rgba">RGBa</h2>
@@ -400,6 +438,8 @@ After the DIV. After the DIV. After the DIV.
 
 <lk-css-html-example cssTemplateId="rgbaCss" htmlTemplateId="rgba1Html" width="580px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 id="rgba.alpha-0.6">Overlay with alpha of 0.6</h3>
 <!-- `````````````````````````````````` -->
@@ -422,10 +462,13 @@ After the DIV. After the DIV. After the DIV.
 
 <lk-css-html-example htmlTemplateId="rgba2Html" width="580px"></lk-css-html-example>
 
+<lk-back-to></lk-back-to>
+
 </main>
 
 <footer></footer>
 
+<style>@import url(http://fonts.googleapis.com/css?family=Open+Sans);</style>
 <script type="text/javascript" src="js/all-javascript.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 </html>

@@ -8,6 +8,29 @@
   ~
 */
 
+
+/* ---------------------------------
+ * Soften the background a bit
+ * --------------------------------- */
+
+body {
+  background: #fdfdfd;
+
+  font-family: 'Open Sans', 'sans-serif';
+  font-size: 14px;
+}
+
+b {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* override the code.lk-code-example css, because body background is not #fff */
+code.lk-code-example {
+  /* hack to shade gutter, without also shading the code area. */
+  background-image: -webkit-gradient(linear, 0% 0%, 40% 0%, from(#efefef), to(#fdfdfd) );
+  background: linear-gradient(to right, #efefef, #fdfdfd 40%);
+}
+
 /* ---------------------------------
  * Inner-div box (to outline rendered example and show hover events)
  * --------------------------------- */
@@ -60,4 +83,16 @@
   border: 7px solid #B2E0B2;
   margin: 0 -2px 61px 6px;
   display: inline-block;
+}
+
+/* ---------------------------------
+ * Example code structure
+ * --------------------------------- */
+
+.example-code-structure {
+  background-color:#ccc;
+  width:190px;
+  height:185px;
+  text-align:center;
+  margin:20px;
 }

@@ -22,6 +22,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico"/>
+
   <style>
     @import "css/all-css.css";
   </style>
@@ -31,7 +32,8 @@
   <h1>Box Model</h1>
 </header>
 
-<main>
+<progress class="page-load-progress">Loading...</progress>
+<main class="hide">
 <css-lab-about></css-lab-about>
 
 <lk-table-of-contents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lk-table-of-contents>
@@ -41,8 +43,8 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <p>
-  The CSS box model represents the space occupied by an element and consists of four areas: <b>margin, border, padding, and content</b>.
-  The image below shows a block element with a 10px margin, 20px border, 30px padding and 100px content region.
+  The CSS box model represents the space occupied by an element and consists of four areas: <b>margin, border, padding, and content region (width and height)</b>.
+  The image below shows a block element with a 10px margin, 20px border, 30px padding and a width and height of 100px.
   The resulting box height and width is 220px by 220px.
 </p>
 <img src="img/box-model.png" class="image-frame" style="margin-top:0;">
@@ -59,6 +61,8 @@
   see <a href="./transparencyDisplay.html#opacity.irreversible">Irreversible Opacity</a>).
 </p>
 
+<lk-back-to></lk-back-to>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h3 id="overview.commonCss">Shared CSS</h3>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -70,7 +74,7 @@
   These styles will often be applied to three nested divs: <i>outermost</i>, which contains <i>middleGrid</i>, which in turn contains <i>innermost</i>.
 </p>
 
-<div style="background-color:#ccc; width:190px; height:185px; text-align:center; margin:20px;">
+<div class="example-code-structure">
   <b>Outermost</b>
   <div class="middle grid" style="width:150px; height:150px; margin-left:20px;">
     <b style="background:#ddd;">MiddleGrid</b>
@@ -121,6 +125,8 @@
 
 <lk-code-example templateId="tmplCommonCss" lang="css" width="750px"></lk-code-example>
 
+<lk-back-to></lk-back-to>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 lkBulletPointPass id="basicMargin">Basic Margin and Position</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -129,7 +135,7 @@
   This section consists of basic experiments where setting the margin on an element affects only that element and not a different element (or both).
 <p>
 
-  <!-- `````````````````````````````````` -->
+<!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.absoluteInStatic">Absolute in Static</h3>
 <!-- `````````````````````````````````` -->
 
@@ -162,6 +168,8 @@
   <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
   <elementIds>outermost_bm10, middleGrid_bm10, innermost_bm10</elementIds>
 </lk-display-styles>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.staticInAbsolute">Static in Absolute</h3>
@@ -198,6 +206,8 @@
   <elementIds>outermost_bm20, middleGrid_bm20, innermost_bm20</elementIds>
 </lk-display-styles>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.absoluteInRelative">Absolute in Relative</h3>
 <!-- `````````````````````````````````` -->
@@ -230,6 +240,8 @@
   <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
   <elementIds>outermost_bm30, middleGrid_bm30, innermost_bm30</elementIds>
 </lk-display-styles>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.relativeInAbsolute">Relative in Absolute</h3>
@@ -266,6 +278,8 @@
   <elementIds>outermost_bm40, middleGrid_bm40, innermost_bm40</elementIds>
 </lk-display-styles>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.absoluteInAbsolute">Absolute in Absolute</h3>
 <!-- `````````````````````````````````` -->
@@ -299,6 +313,8 @@
   <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
   <elementIds>outermost_bm50, middleGrid_bm50, innermost_bm50</elementIds>
 </lk-display-styles>
+
+<lk-back-to></lk-back-to>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 lkBulletPointFail id="marginCaveats">Margin Caveats</h2>
@@ -346,6 +362,8 @@
   <elementIds>outermost_mc00, innermost_mc00</elementIds>
 </lk-display-styles>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="marginCaveats.topMarginTransfer">Top Margin Transfer</h3>
 <!-- `````````````````````````````````` -->
@@ -378,6 +396,8 @@
   <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
   <elementIds>outermost_mc10, middleGrid_mc10, innermost_mc10</elementIds>
 </lk-display-styles>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="marginCaveats.marginTransferContentWorkarounds">Content Workaround for VMT</h3>
@@ -414,6 +434,8 @@
   <elementIds>outermost_mc20, middleGrid_mc20, innermost_mc20</elementIds>
 </lk-display-styles>
 
+<lk-back-to></lk-back-to>
+
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="marginCaveats.marginTransferPaddingWorkarounds">Padding Workaround for VMT</h3>
 <!-- `````````````````````````````````` -->
@@ -440,6 +462,8 @@
   <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
   <elementIds>outermost_mc30, middleGrid_mc30, innermost_mc30</elementIds>
 </lk-display-styles>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="marginCaveats.marginTransferBorderWorkarounds">Border Workaround for VMT</h3>
@@ -470,6 +494,8 @@
   <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png</legendImages>
   <elementIds>outermost_mc40, middleGrid_mc40, innermost_mc40</elementIds>
 </lk-display-styles>
+
+<lk-back-to></lk-back-to>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="border">Border</h2>
@@ -526,6 +552,8 @@
   <elementIds>outermost_vc00, middleGrid_vc00, innermost_vc00, centerText_vc00</elementIds>
 </lk-display-styles>
 
+<lk-back-to></lk-back-to>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 lkBulletPointPass id="multipleInnerBoxes">Multiple Inner Boxes</h2>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -560,6 +588,8 @@
   <legendImages>./img/outermost.png, ./img/middleGrid.png, ./img/innermost.png, ./img/innermost.png</legendImages>
   <elementIds>outermost_mib00, middleGrid_mib00, innermost_mib00, innermost_mib01</elementIds>
 </lk-display-styles>
+
+<lk-back-to></lk-back-to>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="multipleInnerBoxes.static">Multiple Static Inner Boxes</h3>
@@ -611,9 +641,9 @@
 </script>
 
 <lk-css-html-example templateId="multipleInnerBoxesStatic" width="820px">
-  <lkResultComment>
+  <resultComment>
     Static boxes flow and stretch.
-  </lkResultComment>
+  </resultComment>
 </lk-css-html-example>
 
 <lk-display-styles width="500px">
@@ -622,10 +652,13 @@
   <elementIds>outermost_mib10, middleGrid_mib10, innermost_mib10, innermost_mib11, innermost_mib12, innermost_mib13, innermost_mib14</elementIds>
 </lk-display-styles>
 
+<lk-back-to></lk-back-to>
+
 </main>
 
 <footer></footer>
 
+<style>@import url(http://fonts.googleapis.com/css?family=Open+Sans);</style>
 <script type="text/javascript" src="js/all-javascript.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 </html>

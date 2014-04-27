@@ -31,7 +31,8 @@
   <h1>Filters</h1>
 </header>
 
-<main>
+<progress class="page-load-progress">Loading...</progress>
+<main class="hide">
   <css-lab-about></css-lab-about>
 
   <lk-table-of-contents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lk-table-of-contents>
@@ -62,6 +63,8 @@
 
   <lk-css-html-example templateId="filterGray" width="500px"></lk-css-html-example>
 
+  <lk-back-to></lk-back-to>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="sepia">Sepia</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -87,6 +90,8 @@
 </script>
 
   <lk-css-html-example templateId="filterSepia" width="500px"></lk-css-html-example>
+
+  <lk-back-to></lk-back-to>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="brightness">Brightness</h2>
@@ -114,6 +119,8 @@
 
   <lk-css-html-example templateId="filterBrightness" width="500px"></lk-css-html-example>
 
+  <lk-back-to></lk-back-to>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="contrast">Contrast</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -139,6 +146,8 @@
 </script>
 
   <lk-css-html-example templateId="filterContrast" width="500px"></lk-css-html-example>
+
+  <lk-back-to></lk-back-to>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="blur">Blur</h2>
@@ -166,6 +175,8 @@
 
   <lk-css-html-example templateId="filterBlur" width="500px"></lk-css-html-example>
 
+  <lk-back-to></lk-back-to>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="drop-shadow">Drop Shadow</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -192,6 +203,8 @@
 
   <lk-css-html-example templateId="filterShadow" width="500px"></lk-css-html-example>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointFail id="drop-shadow.caveat-border">With Border</h3>
   <!-- `````````````````````````````````` -->
@@ -215,6 +228,8 @@
 </script>
 
   <lk-css-html-example templateId="filterShadowBorder" width="500px"></lk-css-html-example>
+
+  <lk-back-to></lk-back-to>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointFail id="drop-shadow.caveat-inherited">Inherited from Div</h3>
@@ -250,6 +265,8 @@
 
   <lk-css-html-example templateId="filterShadowInherited" width="500px"></lk-css-html-example>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="drop-shadow.caveat-boxShadow">Box Shadow</h3>
   <!-- `````````````````````````````````` -->
@@ -272,6 +289,8 @@
 </script>
 
   <lk-css-html-example templateId="filterBoxShadow" width="500px"></lk-css-html-example>
+
+  <lk-back-to></lk-back-to>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="hue-rotate">Hue Rotate</h2>
@@ -298,6 +317,8 @@
 </script>
 
   <lk-css-html-example templateId="filterHueRotate" width="500px"></lk-css-html-example>
+
+  <lk-back-to></lk-back-to>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="opacity">Opacity</h2>
@@ -383,10 +404,13 @@
     </lkResultComment>
   </lk-css-html-example>
 
+  <lk-back-to></lk-back-to>
+
 </main>
 
 <footer></footer>
 
+<style>@import url(http://fonts.googleapis.com/css?family=Open+Sans);</style>
 <script type="text/javascript" src="js/all-javascript.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 </html>

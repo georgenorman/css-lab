@@ -31,7 +31,8 @@
   <h1>Floats</h1>
 </header>
 
-<main>
+<progress class="page-load-progress">Loading...</progress>
+<main class="hide">
   <css-lab-about></css-lab-about>
 
   <lk-table-of-contents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lk-table-of-contents>
@@ -107,6 +108,8 @@ img.left, img.right {
 
   <lk-code-example templateId="overviewCommonCss" lang="css" width="700px"></lk-code-example>
 
+  <lk-back-to></lk-back-to>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="basicFloats">Basic Floats</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -164,6 +167,8 @@ img.left, img.right {
     <elementIds>outermost_bf10, left_bf10, main_bf10</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 id="basicFloats.floatLeftWithPadding">Float Left with Padding</h3>
   <!-- `````````````````````````````````` -->
@@ -196,6 +201,8 @@ img.left, img.right {
     <elementIds>outermost_bf20, left_bf20, main_bf20</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 id="basicFloats.floatLeftWithPaddingMargin">Float Left with Padding and Margin</h3>
   <!-- `````````````````````````````````` -->
@@ -222,6 +229,8 @@ img.left, img.right {
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf30, left_bf30, main_bf30</elementIds>
   </lk-display-styles>
+
+  <lk-back-to></lk-back-to>
 
   <!-- `````````````````````````````````` -->
   <h3 id="basicFloats.floatLeftWithOverflow">Float Left with Overflow Hidden</h3>
@@ -253,6 +262,8 @@ img.left, img.right {
     <elementIds>outermost_bf40, left_bf40, main_bf40</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 id="basicFloats.floatRightWithOverflow">Float Right with Overflow Hidden</h3>
   <!-- `````````````````````````````````` -->
@@ -275,6 +286,8 @@ img.left, img.right {
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf50, right_bf50, main_bf50</elementIds>
   </lk-display-styles>
+
+  <lk-back-to></lk-back-to>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="compoundFloats">Compound Floats</h2>
@@ -313,6 +326,8 @@ img.left, img.right {
     <elementIds>outermost_cf10, left_cf10, right_cf10, main_cf10</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 id="compoundFloats.floatImages">Float Images</h3>
   <!-- `````````````````````````````````` -->
@@ -335,6 +350,8 @@ img.left, img.right {
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_cf20, left_cf20, right_cf20, main_cf20</elementIds>
   </lk-display-styles>
+
+  <lk-back-to></lk-back-to>
 
   <!-- `````````````````````````````````` -->
   <h3 id="compoundFloats.simulatedPageLayout">Simulated Page Layout</h3>
@@ -394,6 +411,8 @@ img.left, img.right {
     <elementIds>outermost_cf40, header_cf40, left_cf40, right_cf40, main_cf40, footer_cf40</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="multipleLeftFloats">Multiple Left Floats</h2>
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -424,6 +443,8 @@ img.left, img.right {
     <elementIds>outermost_mlf10, left_mlf10, left_mlf11, left_mlf12, left_mlf13, left_mlf14</elementIds>
   </lk-display-styles>
 
+  <lk-back-to></lk-back-to>
+
   <!-- `````````````````````````````````` -->
   <h3 id="multipleLeftFloats.withMargin">With Margin</h3>
   <!-- `````````````````````````````````` -->
@@ -446,6 +467,8 @@ img.left, img.right {
 </script>
 
   <lk-css-html-example htmlTemplateId="multipleLeftFloats_withMarginHtml" width="480px"></lk-css-html-example>
+
+  <lk-back-to></lk-back-to>
 
   <!-- `````````````````````````````````` -->
   <h3 id="multipleLeftFloats.withMbp">With Margin, Border and Padding</h3>
@@ -493,6 +516,8 @@ img.left, img.right {
 </script>
 
   <lk-css-html-example templateId="multipleLeftFloats_withMbp" width="450px"></lk-css-html-example>
+
+  <lk-back-to></lk-back-to>
 
   <!-- `````````````````````````````````` -->
   <h3 id="multipleLeftFloats.tableCell">Vertical Centering</h3>
@@ -545,10 +570,13 @@ img.left, img.right {
 
   <lk-css-html-example templateId="multipleLeftFloats_tableCell" width="500px"></lk-css-html-example>
 
+  <lk-back-to></lk-back-to>
+
 </main>
 
 <footer></footer>
 
+<style>@import url(http://fonts.googleapis.com/css?family=Open+Sans);</style>
 <script type="text/javascript" src="js/all-javascript.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 </html>

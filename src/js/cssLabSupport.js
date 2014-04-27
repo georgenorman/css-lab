@@ -24,11 +24,17 @@ var cssLabModule = (function(tzDomHelper, tzLogHelper) {
       // add a link back to the CSS Lab home page
       setupHeader();
 
+      // set global "back-to" links
+      lkBackToTag.setGlobalLinks({"⬅ To Index":"./index.html", "⬆ To Table of Contents":"#tableOfContents"});
+
       // Tags common to all Labs
       baseKitModule.handleOnLoad();
 
       // Tags specific to CSS Lab
       cssLabAboutTag.renderAll();
+
+      // hide progress bar, show content
+      baseKitModule.handlePageLoadCompleted("page-load-progress");
     }
   };
 
