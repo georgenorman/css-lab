@@ -310,6 +310,10 @@ lk-back-to {
   white-space: nowrap;
 }
 
+lk-back-to > a {
+  margin-right: 12px;
+}
+
 
 
 /* ==================================================================
