@@ -27,6 +27,26 @@ Third-party libraries (e.g., jQuery) are not used, because that would interfere 
   * [Transparency/Display](http://www.thruzero.com/pages/jcat3/css-lab/transparencyDisplay.html)
   * [Filters](http://www.thruzero.com/pages/jcat3/css-lab/filters.html)
 
+## Building a Release
+
+### Setup
+
+The project's build process uses Node.js and Grunt.
+If you don't have Grunt, you can follow the [Getting Started](http://gruntjs.com/getting-started) guide.
+Next, just do an `npm install` which will install Grunt locally as well as all of the project dependencies:
+
+```bash
+npm install
+```
+
+### Default Build
+
+The default build cleans the target directory and generates the current release.
+
+```bash
+grunt
+```
+
 ## License
 
 Copyright 2014 George Norman
