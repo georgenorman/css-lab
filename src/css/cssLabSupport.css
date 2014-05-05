@@ -16,20 +16,14 @@
 body {
   background: #fdfdfd;
 
-  font-family: 'Open Sans', 'sans-serif';
   font-size: 14px;
   line-height: 1.4
 ;
 }
 
-b {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
 /* override the code.lk-code-example css, because body background is not #fff */
 code.lk-code-example {
   /* hack to shade gutter, without also shading the code area. */
-  background-image: -webkit-gradient(linear, 0% 0%, 40% 0%, from(#efefef), to(#fdfdfd) );
   background: linear-gradient(to right, #efefef, #fdfdfd 40%);
 }
 

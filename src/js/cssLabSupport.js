@@ -22,18 +22,18 @@ var cssLabModule = (function(tzDomHelper, tzLogHelper) {
       tzLogHelper.disableLogging();
 
       // add a link back to the CSS Lab home page
-      setupHeader();
+      setupHeader(cssLabHome);
 
-      // set global "back-to" links
-      lkBackToTag.setGlobalLinks({"⬅ To Index":"./index.html", "⬆ To Table of Contents":"#tableOfContents"});
+      // set global "back-to" links (so they don't need to be passed into each <lk-back-to> tag).
+      lkBackToTag.setGlobalLinks({"⬅ To Index":cssLabHome, "⬆ To Table of Contents":"#tableOfContents"});
 
-      // Tags common to all Labs
+      // render the baseKit tags (these are tags that are common to all Labs)
       baseKitModule.handleOnLoad();
 
-      // Tags specific to CSS Lab
+      // render the tags that are specific to CSS Lab
       cssLabAboutTag.renderAll();
 
-      // hide progress bar, show content
+      // hide the progress bar, show content
       baseKitModule.handlePageLoadCompleted("page-load-progress");
     }
   };
@@ -43,7 +43,7 @@ var cssLabModule = (function(tzDomHelper, tzLogHelper) {
   // ----------------------------------------------
 
   /** add a link back to the CSS Lab home page (overlaying the logo background image in the header). */
-  function setupHeader() {
+  function setupHeader(cssLabHome) {
     var h1 = tzDomHelper.getFirstElementByTagName("h1");
 
     tzDomHelper.createElement(h1, "a", '{"href":"'+cssLabHome+'", "className":"labHome"}');

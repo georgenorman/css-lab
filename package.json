@@ -1,0 +1,54 @@
+{
+  "name": "css-lab",
+  "version": "1.0.0-SNAPSHOT",
+  "title": "CSS Lab",
+  "description": "A simple JavaScript library that helps build web pages with live CSS and HTML examples.",
+  "keywords": [
+    "javascript",
+    "css",
+    "html"
+  ],
+  "homepage": "https://github.com/georgenorman/css-lab",
+  "author": {
+    "name": "George Norman",
+    "url": "http://www.thruzero.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/georgenorman/css-lab.git"
+  },
+  "bugs": "https://github.com/georgenorman/css-lab/issues",
+  "license": {
+    "type": "Apache License, Version 2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-cssmin": "^0.8.0",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-autoprefixer": "^0.7.3",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-text-replace": "^0.3.11"
+  },
+  "_comment1": "** ----------------------------------------------------------------- **",
+  "_comment2": "** For now, manually manage the order of all files [REVISIT]  **",
+  "_comment3": "** ----------------------------------------------------------------- **",
+  "cssLabFiles": {
+    "cssLabFragmentsJs": [
+      "src/js/tags/cssLabAbout.js",
+      "src/js/cssLabSupport.js"
+    ],
+    "cssLabFragmentsCss": [
+      "src/css/tags/cssLabAbout.css",
+      "src/css/cssLabSupport.css"
+    ],
+    "libJs": [
+      "lib/js/labkit-1.0.0-SNAPSHOT-min.js"
+    ],
+    "libCss": [
+      "lib/css/labkit-1.0.0-SNAPSHOT-min.css"
+    ]
+  }
+}
