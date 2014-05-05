@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         '  ~ cssLab-<%= pkg.version %>.${EXT}\n' +
         '  ~ Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
         '  ~ Licensed under the <%= pkg.license.type %>: <%= pkg.license.url %>\n' +
-        '*/\n\n';
+        '*/\n';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -66,6 +66,7 @@ module.exports = function(grunt) {
         }
       },
       options: {
+        preserveComments: 'some',
         sourceMap: true
       }
     },

@@ -45,10 +45,10 @@
       "src/css/cssLabSupport.css"
     ],
     "libJs": [
-      "lib/js/labkit-1.0.0-SNAPSHOT-min.js"
+      "lib/js/labkit-1.0.0-SNAPSHOT.js"
     ],
     "libCss": [
-      "lib/css/labkit-1.0.0-SNAPSHOT-min.css"
+      "lib/css/labkit-1.0.0-SNAPSHOT.css"
     ]
   }
 }
