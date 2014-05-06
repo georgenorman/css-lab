@@ -17,8 +17,7 @@ body {
   background: #fdfdfd;
 
   font-size: 14px;
-  line-height: 1.4
-;
+  line-height: 1.4;
 }
 
 /* override the code.lk-code-example css, because body background is not #fff */
