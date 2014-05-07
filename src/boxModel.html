@@ -68,8 +68,9 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <p>
-  This section contains CSS that's shared by all experiments on this page.
-  These common classes use the default static position, which can't be inherited, so they will remain static unless explicitly set.
+  This section defines styles shared by all experiments on this page.
+  Each class uses the default static position.
+  Since position can't be inherited, the position remains static unless explicitly set.
   Also, there is no margin or padding used, except for extension classes (e.g., the "with-margin" class).
   These styles will often be applied to three nested divs: <i>outermost</i>, which contains <i>middleGrid</i>, which in turn contains <i>innermost</i>.
 </p>
@@ -93,7 +94,7 @@
 }
 
 /* A grid, nested within outermost. */
-  .middle.grid {
+.middle.grid {
   width: 220px; /* content width */
   height: 220px; /* content height */
 }
