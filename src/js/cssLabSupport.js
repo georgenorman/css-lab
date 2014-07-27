@@ -8,6 +8,11 @@
   ~ --------------------------------------------------------------
  */
 
+/**
+ * Manages CSS Lab (e.g., causes all tags to be rendered, etc).
+ *
+ * @module cssLabModule
+ */
 var cssLabModule = (function(tzDomHelper, tzLogHelper) {
   "use strict";
 

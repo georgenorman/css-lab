@@ -119,6 +119,15 @@ module.exports = function(grunt) {
           {expand: true, flatten: true, src: ['src/img/scenic/*'], dest: 'releases/<%= pkg.version %>/img/scenic/'}
         ]
       }
+    },
+
+    jsdoc : {
+      dist : {
+        src: ['src/js/*.js', 'src/js/*/*.js', 'test/*.js', 'src/js/README.md'],
+        options: {
+          destination: 'releases/<%= pkg.version %>/jsdoc'
+        }
+      }
     }
   });
 
@@ -131,13 +140,15 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('grunt-jsdoc');
 
   // register sub-tasks
   grunt.registerTask('assemble-fragments', ['concat:cssLabFragments', 'concat:libFragments']);
   grunt.registerTask('assemble-final', ['concat:cssLabCssFinal', 'concat:cssLabJsFinal']);
 
   // register main task(s)
-  grunt.registerTask('release', ['assemble-fragments', 'assemble-final', 'uglify:cssLab', 'autoprefixer:cssLab', 'cssmin:cssLab', 'replace:cssLab', 'copy:release']);
+  grunt.registerTask('docs', ['jsdoc']);
+  grunt.registerTask('release', ['assemble-fragments', 'assemble-final', 'uglify:cssLab', 'autoprefixer:cssLab', 'cssmin:cssLab', 'replace:cssLab', 'copy:release', 'docs']);
 
   // register default task
   grunt.registerTask('default', ['clean', 'release']);

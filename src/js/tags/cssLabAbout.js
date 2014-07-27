@@ -8,13 +8,16 @@
  ~ --------------------------------------------------------------
  */
 
-/*
- * The <css-lab-about> tag renders a common introduction, displayed across all of the
- * ThruZero CSS Lab projects and pages. There can be only one Introduction section per page.
- *
+/**
+ * The &lt;css-lab-about&gt; tag renders a common introduction, displayed across all of the
+ * CSS Lab projects and pages. There can be only one Introduction section per page.
+ *<p>
  * Example:
+ * <pre style="background:#eee; padding:6px;">
+ *   &lt;css-lab-about style="margin-top:12px;"/&gt;
+ * </pre>
  *
- *   <css-lab-about style="margin-top:12px;"/>
+ * @module cssLabAboutTag
  */
 var cssLabAboutTag = (function(tzDomHelper, tzCustomTagHelper) {
   "use strict";
@@ -32,14 +35,14 @@ var cssLabAboutTag = (function(tzDomHelper, tzCustomTagHelper) {
     },
 
     /**
-     * Render the first <css-lab-about> tag on the page - only one tag per page is supported.
+     * Render the first &lt;css-lab-about&gt; tag on the page - only one tag per page is supported.
      */
     renderAll: function() {
       tzCustomTagHelper.renderFirst(this);
     },
 
     /**
-     * Render the <css-lab-about> tag identified by the given tagId.
+     * Render the &lt;css-lab-about&gt; tag identified by the given tagId.
      *
      * @param tagId ID of the tag to render.
      */
