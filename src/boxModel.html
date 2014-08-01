@@ -61,7 +61,7 @@
   see <a href="./transparencyDisplay.html#opacity.irreversible">Irreversible Opacity</a>).
 </p>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h3 id="overview.commonCss">Shared CSS</h3>
@@ -85,48 +85,46 @@
   </div>
 </div>
 
-<script type="multiline-template" id="tmplCommonCss">
-/* A gray box, to serve as the outermost container. */
-.outermost {
-  width: 240px; /* content width */
-  height: 240px; /* content height */
-  background-color: #ccc;
-}
+<lk-css-example width="750px">
+  <script type="multiline-template">
+    /* A gray box, to serve as the outermost container. */
+    .outermost {
+      width: 240px; /* content width */
+      height: 240px; /* content height */
+      background-color: #ccc;
+    }
 
-/* A grid, nested within outermost. */
-.middle.grid {
-  width: 220px; /* content width */
-  height: 220px; /* content height */
-}
+    /* A grid, nested within outermost. */
+    .middle.grid {
+      width: 220px; /* content width */
+      height: 220px; /* content height */
+    }
 
-/* A content box, nested within middle. */
-.innermost {
-  border: 20px solid #f00;
-  width: 100px; /* content width */
-  height: 100px; /* content height */
-  color: #fff;
-  background-color: #047;
-  text-align: center;
-  opacity: 0.6;
-}
+    /* A content box, nested within middle. */
+    .innermost {
+      border: 20px solid #f00;
+      width: 100px; /* content width */
+      height: 100px; /* content height */
+      color: #fff;
+      background-color: #047;
+      text-align: center;
+      opacity: 0.6;
+    }
 
-/* A version of innermost with a 10px margin. */
-.innermost.with-margin {
-  margin: 20px;
-}
+    /* A version of innermost with a 10px margin. */
+    .innermost.with-margin {
+      margin: 20px;
+    }
 
-/* A smaller version of innermost. */
-.innermost.mini {
-  width: 50px; /* content width */
-  height: 50px; /* content height */
-}
-</script>
+    /* A smaller version of innermost. */
+    .innermost.mini {
+      width: 50px; /* content width */
+      height: 50px; /* content height */
+    }
+  </script>
+</lk-css-example>
 
-<lk-css-block templateId="tmplCommonCss"></lk-css-block>
-
-<lk-code-example templateId="tmplCommonCss" lang="css" width="750px"></lk-code-example>
-
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 lkBulletPointPass id="basicMargin">Basic Margin and Position</h2>
@@ -152,17 +150,17 @@
   </p>
 </lk-bullet-point>
 
-<script type="multiline-template" id="positionAbsoluteInStaticHtml">
-<div class="outermost" id="outermost_bm10">
-  <div class="middle grid" id="middleGrid_bm10">
-    <div class="innermost with-margin" style="position:absolute;" id="innermost_bm10">
-      <br>innermost
+<lk-html-example width="750px">
+  <script type="multiline-template">
+    <div class="outermost" id="outermost_bm10">
+      <div class="middle grid" id="middleGrid_bm10">
+        <div class="innermost with-margin" style="position:absolute;" id="innermost_bm10">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="positionAbsoluteInStaticHtml" width="750px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="500px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -170,7 +168,7 @@
   <elementIds>outermost_bm10, middleGrid_bm10, innermost_bm10</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.staticInAbsolute">Static in Absolute</h3>
@@ -189,17 +187,17 @@
   </p>
 </lk-bullet-point>
 
-<script type="multiline-template" id="positionStaticInAbsoluteHtml">
-<div class="outermost" id="outermost_bm20">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm20">
-    <div class="innermost with-margin" id="innermost_bm20">
-      <br>innermost
+<lk-html-example width="750px">
+  <script type="multiline-template">
+    <div class="outermost" id="outermost_bm20">
+      <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm20">
+        <div class="innermost with-margin" id="innermost_bm20">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="positionStaticInAbsoluteHtml" width="750px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="500px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -207,7 +205,7 @@
   <elementIds>outermost_bm20, middleGrid_bm20, innermost_bm20</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.absoluteInRelative">Absolute in Relative</h3>
@@ -224,17 +222,17 @@
   </p>
 </lk-bullet-point>
 
-<script type="multiline-template" id="positionAbsoluteInRelativeHtml">
-<div class="outermost" id="outermost_bm30">
-  <div class="middle grid" style="position:relative;" id="middleGrid_bm30">
-    <div class="innermost with-margin" style="position:absolute;" id="innermost_bm30">
-      <br>innermost
+<lk-html-example width="750px">
+  <script type="multiline-template">
+    <div class="outermost" id="outermost_bm30">
+      <div class="middle grid" style="position:relative;" id="middleGrid_bm30">
+        <div class="innermost with-margin" style="position:absolute;" id="innermost_bm30">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="positionAbsoluteInRelativeHtml" width="750px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="500px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -242,7 +240,7 @@
   <elementIds>outermost_bm30, middleGrid_bm30, innermost_bm30</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.relativeInAbsolute">Relative in Absolute</h3>
@@ -261,17 +259,17 @@
   </p>
 </lk-bullet-point>
 
-<script type="multiline-template" id="positionRelativeInAbsoluteHtml">
-<div class="outermost" id="outermost_bm40">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm40">
-    <div class="innermost with-margin" style="position:relative;" id="innermost_bm40">
-      <br>innermost
+<lk-html-example width="750px">
+  <script type="multiline-template">
+    <div class="outermost" id="outermost_bm40">
+      <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm40">
+        <div class="innermost with-margin" style="position:relative;" id="innermost_bm40">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="positionRelativeInAbsoluteHtml" width="750px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="500px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -279,7 +277,7 @@
   <elementIds>outermost_bm40, middleGrid_bm40, innermost_bm40</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="basicMargin.absoluteInAbsolute">Absolute in Absolute</h3>
@@ -297,17 +295,17 @@
   </p>
 </lk-bullet-point>
 
-<script type="multiline-template" id="positionAbsoluteInAbsoluteHtml">
-<div class="outermost" id="outermost_bm50">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm50">
-    <div class="innermost with-margin" style="position:absolute;" id="innermost_bm50">
-      <br>innermost
+<lk-html-example width="750px">
+  <script type="multiline-template">
+    <div class="outermost" id="outermost_bm50">
+      <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_bm50">
+        <div class="innermost with-margin" style="position:absolute;" id="innermost_bm50">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="positionAbsoluteInAbsoluteHtml" width="750px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="500px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -315,7 +313,7 @@
   <elementIds>outermost_bm50, middleGrid_bm50, innermost_bm50</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 lkBulletPointFail id="marginCaveats">Margin Caveats</h2>
@@ -347,15 +345,15 @@
   </p>
 </lk-bullet-point>
 
-<script type="multiline-template" id="verticalMarginTransferHtml">
-<div class="grid" id="outermost_mc00">
-  <div class="innermost with-margin" style="position:relative;" id="innermost_mc00">
-    <br>innermost
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="verticalMarginTransferHtml" width="640px"></lk-css-html-example>
+<lk-html-example width="640px">
+  <script type="multiline-template">
+    <div class="grid" id="outermost_mc00">
+      <div class="innermost with-margin" style="position:relative;" id="innermost_mc00">
+        <br>innermost
+      </div>
+    </div>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="600px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -363,7 +361,7 @@
   <elementIds>outermost_mc00, innermost_mc00</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="marginCaveats.topMarginTransfer">Top Margin Transfer</h3>
@@ -380,17 +378,17 @@
   </p>
 </lk-bullet-point>
 
-<script type="multiline-template" id="tmplExampleRelInStatic10pxMarginHtml">
-<div class="outermost" id="outermost_mc10">
-  <div class="middle grid" id="middleGrid_mc10">
-    <div class="innermost with-margin" style="position:relative;" id="innermost_mc10">
-      <br>innermost
+<lk-html-example width="640px">
+  <script type="multiline-template">
+    <div class="outermost" id="outermost_mc10">
+      <div class="middle grid" id="middleGrid_mc10">
+        <div class="innermost with-margin" style="position:relative;" id="innermost_mc10">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="tmplExampleRelInStatic10pxMarginHtml" width="640px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="600px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -398,7 +396,7 @@
   <elementIds>outermost_mc10, middleGrid_mc10, innermost_mc10</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="marginCaveats.marginTransferContentWorkarounds">Content Workaround for VMT</h3>
@@ -409,25 +407,28 @@
   The top margin of the innermost div is now applied to the innermost div instead of outermost.
 </lk-bullet-point>
 
-<script type="multiline-template" id="marginTransferContentWorkaroundsPaddingCss">
-.middle-pswp.grid {
-  width: 180px;
-  height: 180px;
-}
-</script>
+<lk-css-example width="770px">
+  <script type="multiline-template">
+    .middle-pswp.grid {
+      width: 180px;
+      height: 180px;
+    }
+  </script>
+</lk-css-example>
 
-<script type="multiline-template" id="marginTransferContentWorkaroundsPaddingHtml">
-<div class="outermost" style="width:230px; height:230px;" id="outermost_mc20">
-  <div class="middle grid" style="margin:0;" id="middleGrid_mc20">
-    <b>Prevent Margin from transferring to the Outermost div.</b>
-    <div class="innermost with-margin" id="innermost_mc20">
-      <br>innermost
+
+<lk-html-example width="770px">
+  <script type="multiline-template">
+    <div class="outermost" style="width:230px; height:230px;" id="outermost_mc20">
+      <div class="middle grid" style="margin:0;" id="middleGrid_mc20">
+        <b>Prevent Margin from transferring to the Outermost div.</b>
+        <div class="innermost with-margin" id="innermost_mc20">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example templateId="marginTransferContentWorkaroundsPadding" width="770px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="560px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -435,7 +436,7 @@
   <elementIds>outermost_mc20, middleGrid_mc20, innermost_mc20</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="marginCaveats.marginTransferPaddingWorkarounds">Padding Workaround for VMT</h3>
@@ -446,17 +447,17 @@
   but requires a lot of finagling of the outer and inner divs and is off by 1px.
 </lk-bullet-point>
 
-<script type="multiline-template" id="marginTransferPaddingWorkaroundsPaddingHtml">
-<div class="outermost" style="padding:10px 0 0 10px; width:230px; height:230px;" id="outermost_mc30">
-  <div class="middle grid" style="margin:0; padding:1px;" id="middleGrid_mc30">
-    <div class="innermost with-margin" id="innermost_mc30">
-      <br>innermost
+<lk-html-example width="770px">
+  <script type="multiline-template">
+    <div class="outermost" style="padding:10px 0 0 10px; width:230px; height:230px;" id="outermost_mc30">
+      <div class="middle grid" style="margin:0; padding:1px;" id="middleGrid_mc30">
+        <div class="innermost with-margin" id="innermost_mc30">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="marginTransferPaddingWorkaroundsPaddingHtml" width="770px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="560px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -464,7 +465,7 @@
   <elementIds>outermost_mc30, middleGrid_mc30, innermost_mc30</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointFail id="marginCaveats.marginTransferBorderWorkarounds">Border Workaround for VMT</h3>
@@ -478,17 +479,17 @@
   (i.e., adding a border or padding to an outer div blocks the propagation of the margin transfer feature).
 </lk-bullet-point>
 
-<script type="multiline-template" id="marginTransferBorderWorkaroundsHtml">
-<div class="outermost" style="border-top:1px solid red;" id="outermost_mc40">
-  <div class="middle grid" id="middleGrid_mc40">
-    <div class="innermost" style="margin:20px; position:relative;" id="innermost_mc40">
-      <br>innermost
+<lk-html-example width="840px" height="250px">
+  <script type="multiline-template">
+    <div class="outermost" style="border-top:1px solid red;" id="outermost_mc40">
+      <div class="middle grid" id="middleGrid_mc40">
+        <div class="innermost" style="margin:20px; position:relative;" id="innermost_mc40">
+          <br>innermost
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="marginTransferBorderWorkaroundsHtml" width="840px" height="250px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="600px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -496,7 +497,7 @@
   <elementIds>outermost_mc40, middleGrid_mc40, innermost_mc40</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="border">Border</h2>
@@ -523,29 +524,31 @@
   described by <i>lluisaznar</i> <a href="http://stackoverflow.com/questions/732337/how-do-i-vertically-align-something-inside-a-span-tag">here</a>.
 </lk-bullet-point>
 
-<script type="multiline-template" id="positionAbsoluteInAbsoluteCenterCss">
-.center-text {
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  width: 100px; /* content width */
-  height: 100px; /* content height */
-}
-</script>
+<lk-css-example width="750px">
+  <script type="multiline-template">
+    .center-text {
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      width: 100px; /* content width */
+      height: 100px; /* content height */
+    }
+  </script>
+</lk-css-example>
 
-<script type="multiline-template" id="positionAbsoluteInAbsoluteCenterHtml">
-<div class="outermost" id="outermost_vc00">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_vc00">
-    <div class="innermost with-margin" style="position:absolute;" id="innermost_vc00">
-      <div class="center-text" id="centerText_vc00">
-        CONTENT<br>100px x 100px
+<lk-html-example width="750px">
+  <script type="multiline-template">
+    <div class="outermost" id="outermost_vc00">
+      <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_vc00">
+        <div class="innermost with-margin" style="position:absolute;" id="innermost_vc00">
+          <div class="center-text" id="centerText_vc00">
+            CONTENT<br>100px x 100px
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example templateId="positionAbsoluteInAbsoluteCenter" width="750px"></lk-css-html-example>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="560px">
   <styleNames>position, margin, padding, display, border</styleNames>
@@ -553,7 +556,7 @@
   <elementIds>outermost_vc00, middleGrid_vc00, innermost_vc00, centerText_vc00</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 lkBulletPointPass id="multipleInnerBoxes">Multiple Inner Boxes</h2>
@@ -573,16 +576,16 @@
   Instead, they stack on top of each other (unless positioned manually, as in this example).
 </lk-bullet-point>
 
-<script type="multiline-template" id="multipleInnerBoxesAbsoluteHtml">
-<div class="outermost" id="outermost_mib00">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_mib00">
-    <div class="innermost with-margin mini" style="position:absolute;" id="innermost_mib00"></div>
-    <div class="innermost with-margin mini" style="position:absolute; top:30px; left:30px;" id="innermost_mib01"></div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example htmlTemplateId="multipleInnerBoxesAbsoluteHtml" width="850px"></lk-css-html-example>
+<lk-html-example width="850px">
+  <script type="multiline-template">
+    <div class="outermost" id="outermost_mib00">
+      <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_mib00">
+        <div class="innermost with-margin mini" style="position:absolute;" id="innermost_mib00"></div>
+        <div class="innermost with-margin mini" style="position:absolute; top:30px; left:30px;" id="innermost_mib01"></div>
+      </div>
+    </div>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="500px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -590,7 +593,7 @@
   <elementIds>outermost_mib00, middleGrid_mib00, innermost_mib00, innermost_mib01</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 lkBulletPointPass id="multipleInnerBoxes.static">Multiple Static Inner Boxes</h3>
@@ -618,34 +621,36 @@
   </ul>
 </lk-bullet-point>
 
-<script type="multiline-template" id="multipleInnerBoxesStaticCss">
-.innermost-sans-content {
-  margin: 20px;
-  border: 20px solid #f00;
-  color: #fff;
-  background-color: #047;
-  opacity: 0.5;
-}
-</script>
+<lk-css-example width="820px">
+  <script type="multiline-template">
+    .innermost-sans-content {
+      margin: 20px;
+      border: 20px solid #f00;
+      color: #fff;
+      background-color: #047;
+      opacity: 0.5;
+    }
+  </script>
+</lk-css-example>
 
-<script type="multiline-template" id="multipleInnerBoxesStaticHtml">
-<div class="outermost" style="width:290px; height:480px;" id="outermost_mib10">
-  <div class="grid middle" style="position:absolute; margin:10px; width:270px; height:460px;" id="middleGrid_mib10">
-    <div class="innermost-sans-content" id="innermost_mib10">Width and height are not set for this element.</div>
-    <div class="innermost with-margin mini" id="innermost_mib11">Margins will Overlap</div>
-    <div class="innermost with-margin mini" style="margin:auto;" id="innermost_mib12">margin: auto</div>
-    This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.<br>
-    <div class="innermost with-margin mini" style="display:inline-block;" id="innermost_mib13">inline-block</div>
-    <div class="innermost with-margin mini" style="display:inline-block;" id="innermost_mib14">inline-block</div>
-  </div>
-</div>
-</script>
-
-<lk-css-html-example templateId="multipleInnerBoxesStatic" width="820px">
+<lk-html-example width="820px">
   <resultComment>
     Static boxes flow and stretch.
   </resultComment>
-</lk-css-html-example>
+
+  <script type="multiline-template">
+    <div class="outermost" style="width:290px; height:480px;" id="outermost_mib10">
+      <div class="grid middle" style="position:absolute; margin:10px; width:270px; height:460px;" id="middleGrid_mib10">
+        <div class="innermost-sans-content" id="innermost_mib10">Width and height are not set for this element.</div>
+        <div class="innermost with-margin mini" id="innermost_mib11">Margins will Overlap</div>
+        <div class="innermost with-margin mini" style="margin:auto;" id="innermost_mib12">margin: auto</div>
+        This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.<br>
+        <div class="innermost with-margin mini" style="display:inline-block;" id="innermost_mib13">inline-block</div>
+        <div class="innermost with-margin mini" style="display:inline-block;" id="innermost_mib14">inline-block</div>
+      </div>
+    </div>
+  </script>
+</lk-html-example>
 
 <lk-display-styles width="500px">
   <styleNames>position, margin, padding, border</styleNames>
@@ -653,7 +658,7 @@
   <elementIds>outermost_mib10, middleGrid_mib10, innermost_mib10, innermost_mib11, innermost_mib12, innermost_mib13, innermost_mib14</elementIds>
 </lk-display-styles>
 
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 </main>
 

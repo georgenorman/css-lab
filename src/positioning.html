@@ -71,7 +71,7 @@
     </li>
   </ul>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="commonCss">Shared CSS</h2>
@@ -92,48 +92,47 @@
     </div>
   </div>
 
-<script type="multiline-template" id="tmplCommonCss">
-/* A gray box, to serve as the outermost container. */
-.outermost {
-  width: 240px; /* content width */
-  height: 240px; /* content height */
-  background-color: #ccc;
-}
+  <lk-css-example width="600px">
+    <script type="multiline-template">
+      /* A gray box, to serve as the outermost container. */
+      .outermost {
+        width: 240px; /* content width */
+        height: 240px; /* content height */
+        background-color: #ccc;
+      }
 
-/* A grid, nested within outermost. */
-.middle.grid {
-  width: 220px; /* content width */
-  height: 220px; /* content height */
-}
+      /* A grid, nested within outermost. */
+      .middle.grid {
+        width: 220px; /* content width */
+        height: 220px; /* content height */
+      }
 
-/* A content box, nested within middle. */
-.innermost {
-  border: 20px solid #f00;
-  width: 100px; /* content width */
-  height: 100px; /* content height */
-  color: #fff;
-  background-color: #047;
-  text-align: center;
-  opacity: 0.6;
-}
+      /* A content box, nested within middle. */
+      .innermost {
+        border: 20px solid #f00;
+        width: 100px; /* content width */
+        height: 100px; /* content height */
+        color: #fff;
+        background-color: #047;
+        text-align: center;
+        opacity: 0.6;
+      }
 
-/* A version of innermost with a 10px margin. */
-.innermost.with-margin {
-  margin: 10px;
-}
+      /* A version of innermost with a 10px margin. */
+      .innermost.with-margin {
+        margin: 10px;
+      }
 
-/* A smaller version of innermost. */
-.innermost.mini {
-  width: 50px; /* content width */
-  height: 50px; /* content height */
-}
-</script>
+      /* A smaller version of innermost. */
+      .innermost.mini {
+        width: 50px; /* content width */
+        height: 50px; /* content height */
+      }
+    </script>
 
-  <lk-css-block templateId="tmplCommonCss"></lk-css-block>
+  </lk-css-example>
 
-  <lk-code-example templateId="tmplCommonCss" lang="css" width="600px"></lk-code-example>
-
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="absoluteToRelative">Absolute To Relative</h2>
@@ -159,17 +158,17 @@
     </p>
   </lk-bullet-point>
 
-<script type="multiline-template" id="absoluteToRelative4pmHtml">
-<div class="outermost" id="outermost_atr10">
-  <div class="middle grid" style="position:relative;" id="middleGrid_atr10">
-    <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost" id="innermost_atr10">
-      <br>innermost
-    </div>
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="absoluteToRelative4pmHtml" width="840px"></lk-css-html-example>
+  <lk-html-example width="840px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_atr10">
+        <div class="middle grid" style="position:relative;" id="middleGrid_atr10">
+          <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost" id="innermost_atr10">
+            <br>innermost
+          </div>
+        </div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
@@ -177,7 +176,7 @@
     <elementIds>outermost_atr10, middleGrid_atr10, innermost_atr10</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="absoluteToRelative.overlap">Two Innermost Boxes Overlap</h3>
@@ -197,18 +196,18 @@
     </p>
   </lk-bullet-point>
 
-<script type="multiline-template" id="absoluteToRelativeHtml">
-<div class="outermost" id="outermost_atr20">
-  <div class="middle grid" style="position:relative;" id="middleGrid_atr20">
-    <div style="top:40px; left:40px; position:absolute; margin:10px;" class="innermost mini" id="innermost_atr201">
-    </div>
-    <div style="top:80px; left:80px; position:absolute; margin:10px;" class="innermost mini" id="innermost_atr202">
-    </div>
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="absoluteToRelativeHtml" width="840px"></lk-css-html-example>
+  <lk-html-example width="840px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_atr20">
+        <div class="middle grid" style="position:relative;" id="middleGrid_atr20">
+          <div style="top:40px; left:40px; position:absolute; margin:10px;" class="innermost mini" id="innermost_atr201">
+          </div>
+          <div style="top:80px; left:80px; position:absolute; margin:10px;" class="innermost mini" id="innermost_atr202">
+          </div>
+        </div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
@@ -216,7 +215,7 @@
     <elementIds>outermost_atr20, middleGrid_atr20, innermost_atr201, innermost_atr202</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointPass id="relativeToAbsolute">Relative To Absolute</h2>
@@ -242,17 +241,17 @@
     </p>
   </lk-bullet-point>
 
-<script type="multiline-template" id="relativeToAbsolute4pmHtml">
-<div class="outermost" id="outermost_rta10">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_rta10">
-    <div style="top:40px; left:40px; margin:20px; position:relative;" class="innermost" id="innermost_rta10">
-      <br>innermost
-    </div>
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="relativeToAbsolute4pmHtml" width="840px"></lk-css-html-example>
+  <lk-html-example width="840px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_rta10">
+        <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_rta10">
+          <div style="top:40px; left:40px; margin:20px; position:relative;" class="innermost" id="innermost_rta10">
+            <br>innermost
+          </div>
+        </div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
@@ -260,7 +259,7 @@
     <elementIds>outermost_rta10, middleGrid_rta10, innermost_rta10</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="relativeToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
@@ -271,18 +270,18 @@
     Managing the positions of the <i>innermost</i> divs can be cumbersome, because of the way the space occupied by the relative div is preserved.
   </lk-bullet-point>
 
-<script type="multiline-template" id="exampleRelToAbsoluteOverlapHtml">
-<div class="outermost" id="outermost_rta20">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_rta20">
-    <div style="top:60px; left:40px; position:relative;" class="innermost mini" id="innermost_rta201">
-    </div>
-    <div style="top:0; left:80px; position:relative;" class="innermost mini" id="innermost_rta202">
-    </div>
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="exampleRelToAbsoluteOverlapHtml" width="740px"></lk-css-html-example>
+  <lk-html-example width="740px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_rta20">
+        <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_rta20">
+          <div style="top:60px; left:40px; position:relative;" class="innermost mini" id="innermost_rta201">
+          </div>
+          <div style="top:0; left:80px; position:relative;" class="innermost mini" id="innermost_rta202">
+          </div>
+        </div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
@@ -290,7 +289,7 @@
     <elementIds>outermost_rta20, middleGrid_rta20, innermost_rta201, innermost_rta202</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointPass id="absoluteToAbsolute">Absolute To Absolute</h2>
@@ -316,17 +315,17 @@
     </p>
   </lk-bullet-point>
 
-  <script type="multiline-template" id="absoluteToAbsolute4pmHtml">
-<div class="outermost" id="outermost_ata10">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_ata10">
-    <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost" id="innermost_ata10">
-      <br>innermost
-    </div>
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="absoluteToAbsolute4pmHtml" width="800px"></lk-css-html-example>
+  <lk-html-example width="800px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_ata10">
+        <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_ata10">
+          <div style="top:40px; left:40px; margin:20px; position:absolute;" class="innermost" id="innermost_ata10">
+            <br>innermost
+          </div>
+        </div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
@@ -334,7 +333,7 @@
     <elementIds>outermost_ata10, middleGrid_ata10, innermost_ata10</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="absoluteToAbsolute.overlap">Two Innermost Boxes Overlap</h3>
@@ -344,19 +343,18 @@
     This experiment shows that multiple absolute boxes are easy to position and adjust with margins.
   </lk-bullet-point>
 
-
-  <script type="multiline-template" id="absoluteToAbsoluteOverlapHtml">
-<div class="outermost" id="outermost_ata20">
-  <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_ata20">
-    <div style="top:40px; left:40px; position:absolute;" class="innermost mini" id="innermost_ata201">
-    </div>
-    <div style="top:80px; left:80px; position:absolute;" class="innermost mini" id="innermost_ata202">
-    </div>
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="absoluteToAbsoluteOverlapHtml" width="720px"></lk-css-html-example>
+  <lk-html-example width="720px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_ata20">
+        <div class="middle grid" style="position:absolute; margin:10px;" id="middleGrid_ata20">
+          <div style="top:40px; left:40px; position:absolute;" class="innermost mini" id="innermost_ata201">
+          </div>
+          <div style="top:80px; left:80px; position:absolute;" class="innermost mini" id="innermost_ata202">
+          </div>
+        </div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
@@ -364,7 +362,7 @@
     <elementIds>outermost_ata20, middleGrid_ata20, innermost_ata201, innermost_ata202</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 lkBulletPointPass id="fixedPosition">Fixed Position</h2>
@@ -379,44 +377,46 @@
     The outer container doesn't matter much, because the fixed inner div is hoisted out of it's parent container and displayed at the fixed position specified by its top/right/bottom/left properties.
   </lk-bullet-point>
 
-<script type="multiline-template" id="fixedWithStaticBtnCss">
-.fixed-example-1 {
-  position: fixed;
-  top: 20%;
-  left: 10%;
-  width: 250px;
-  height: 180px;
-  background: #333;
-  border: 8px solid #999;
-  display: none;
-}
-</script>
+  <lk-css-example width="840px">
+    <script type="multiline-template">
+      .fixed-example-1 {
+        position: fixed;
+        top: 20%;
+        left: 10%;
+        width: 250px;
+        height: 180px;
+        background: #333;
+        border: 8px solid #999;
+        display: none;
+      }
+    </script>
+  </lk-css-example>
 
-<script type="multiline-template" id="fixedWithStaticBtnHtml">
-<div>
-  <button onclick="tzDomHelperModule.show('inner_fp10'); return false;">Show Fixed with Static Button</a>
-</div>
+  <lk-html-example width="840px">
+    <script type="multiline-template">
+      <div>
+        <button onclick="tzDomHelperModule.show('inner_fp10'); return false;">Show Fixed with Static Button</button>
+      </div>
 
-<div id="outermost_fp10">
-  <div class="fixed-example-1" id="inner_fp10">
-    <button onclick="tzDomHelperModule.hide('inner_fp10'); return false;"
-            style="float:right; margin:6px; height:21px;" id="staticBtnEx1">Close</button>
-    <p style="margin-top:30px; padding:12px; text-align:center; color:#999">
-      This div position is fixed, relative to the browser window.
-      Scrolling the window does not affect its position.
-    </p>
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example templateId="fixedWithStaticBtn" width="840px"></lk-css-html-example>
+      <div id="outermost_fp10">
+        <div class="fixed-example-1" id="inner_fp10">
+          <button onclick="tzDomHelperModule.hide('inner_fp10'); return false;"
+                  style="float:right; margin:6px; height:21px;" id="staticBtnEx1">Close</button>
+          <p style="margin-top:30px; padding:12px; text-align:center; color:#999">
+            This div position is fixed, relative to the browser window.
+            Scrolling the window does not affect its position.
+          </p>
+        </div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <elementIds>outermost_fp10, inner_fp10, staticBtnEx1</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 lkBulletPointPass id="fixedPosition.relativeButton">Fixed &lt;div&gt; with Relative &lt;button&gt;</h3>
@@ -426,31 +426,31 @@
     Same as above, but now the button has been changed from static to relative and is positioned to the bottom-right corner.
   </lk-bullet-point>
 
-<script type="multiline-template" id="fixedWithRelativeBtnHtml">
-<div>
-  <button onclick="tzDomHelperModule.show('inner_fp20'); return false;">Show Fixed with Relative Button</a>
-</div>
+  <lk-html-example width="840px">
+    <script type="multiline-template">
+      <div>
+        <button onclick="tzDomHelperModule.show('inner_fp20'); return false;">Show Fixed with Relative Button</button>
+      </div>
 
-<div id="outermost_fp20">
-  <div class="fixed-example-1" id="inner_fp20">
-    <button onclick="tzDomHelperModule.hide('inner_fp20'); return false;"
-            style="position:relative; top:150px; left:195px; height:21px;" id="relativeBtnEx1">Close</button>
-    <p style="margin-top:30px; padding:12px; text-align:center; color:#999"">
-      This div position is fixed, relative to the browser window.
-      Scrolling the window does not affect its position.
-    </p>
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="fixedWithRelativeBtnHtml" width="840px"></lk-css-html-example>
+      <div id="outermost_fp20">
+        <div class="fixed-example-1" id="inner_fp20">
+          <button onclick="tzDomHelperModule.hide('inner_fp20'); return false;"
+                  style="position:relative; top:150px; left:195px; height:21px;" id="relativeBtnEx1">Close</button>
+          <p style="margin-top:30px; padding:12px; text-align:center; color:#999">
+            This div position is fixed, relative to the browser window.
+            Scrolling the window does not affect its position.
+          </p>
+        </div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="600px">
     <styleNames>position, margin, padding, border</styleNames>
     <elementIds>outermost_fp20, inner_fp20, relativeBtnEx1</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
 </main>
 

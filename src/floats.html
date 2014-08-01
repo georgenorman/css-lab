@@ -50,66 +50,64 @@
     This section contains CSS that's shared by all experiments on this page.
   </p>
 
-<script type="multiline-template" id="overviewCommonCss">
-/* Outermost container. */
-.outermost {
-  border: 1px solid #000;
-  height: 140px; /* content height */
-  width: 300px; /* content width */
-}
+  <lk-css-example>
+    <script type="multiline-template">
+      /* Outermost container. */
+      .outermost {
+        border: 1px solid #000;
+        height: 140px; /* content height */
+        width: 300px; /* content width */
+      }
 
-/* A box floated left. */
-.left {
-  float: left;
-  width: 100px; /* content width */
-  color: #fff;
-}
+      /* A box floated left. */
+      .left {
+        float: left;
+        width: 100px; /* content width */
+        color: #fff;
+      }
 
-/* Content for left. */
-.left::before {
-  content: "Float Left. Float Left. Float Left. Float Left. Float...";
-}
+      /* Content for left. */
+      .left::before {
+        content: "Float Left. Float Left. Float Left. Float Left. Float...";
+      }
 
-/* A box floated right. */
-.right {
-  float: right;
-  width: 100px; /* content width */
-  background: #bbb;
-}
+      /* A box floated right. */
+      .right {
+        float: right;
+        width: 100px; /* content width */
+        background: #bbb;
+      }
 
-/* Content for right. */
-.right::before {
-  content: "Float Right. Float Right. Float Right. Float Right. Float...";
-}
+      /* Content for right. */
+      .right::before {
+        content: "Float Right. Float Right. Float Right. Float Right. Float...";
+      }
 
-/* A box not floated. */
-.main {
-  background: #eee;
-}
+      /* A box not floated. */
+      .main {
+        background: #eee;
+      }
 
-/* Content for main. */
-.main::before {
-  content: "Main Content. Main Content. Main Content. Main Content. ";
-}
-.main::after {
-  content: "Main Content. Main Content. Main Content. Main Content. Main Content. Main Content. Main Content. Main Content. ";
-}
+      /* Content for main. */
+      .main::before {
+        content: "Main Content. Main Content. Main Content. Main Content. ";
+      }
+      .main::after {
+        content: "Main Content. Main Content. Main Content. Main Content. Main Content. Main Content. Main Content. Main Content. ";
+      }
 
-/* A left or right image */
-img.left, img.right {
-  padding:6px;
-}
+      /* A left or right image */
+      img.left, img.right {
+        padding:6px;
+      }
 
-.gray-bg {
-  background: #777;
-}
-</script>
+      .gray-bg {
+        background: #777;
+      }
+    </script>
+  </lk-css-example>
 
-  <lk-css-block templateId="overviewCommonCss"></lk-css-block>
-
-  <lk-code-example templateId="overviewCommonCss" lang="css" width="700px"></lk-code-example>
-
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="basicFloats">Basic Floats</h2>
@@ -145,30 +143,30 @@ img.left, img.right {
     Text has been added to the main div (e.g., "This is a test"), to validate that normal text is selectable.
   </lk-bullet-point>
 
-<script type="multiline-template" id="basicFloats_floatLeftNoFrillsHtml">
-<div class="outermost" style="height:170px;" id="outermost_bf10">
-  <div class="left gray-bg" id="left_bf10"></div>
-  <div class="main" id="main_bf10">
-    <div style="border:1px solid #f83; margin:3px;">
-      <div style="border:1px solid #f00; margin:3px;">
-        <img src="img/middleGrid.png" style="margin:3px;">
-        Nested Block element.
+  <lk-html-example width="480px">
+    <script type="multiline-template">
+      <div class="outermost" style="height:170px;" id="outermost_bf10">
+        <div class="left gray-bg" id="left_bf10"></div>
+        <div class="main" id="main_bf10">
+          <div style="border:1px solid #f83; margin:3px;">
+            <div style="border:1px solid #f00; margin:3px;">
+              <img src="img/middleGrid.png" style="margin:3px;">
+              Nested Block element.
+            </div>
+            This is in a Block element.
+          </div>
+          This is a test.
+        </div>
       </div>
-      This is in a Block element.
-    </div>
-    This is a test.
-  </div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="basicFloats_floatLeftNoFrillsHtml" width="480px"></lk-css-html-example>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="560px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf10, left_bf10, main_bf10</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="basicFloats.floatLeftWithPadding">Float Left with Padding</h3>
@@ -188,21 +186,21 @@ img.left, img.right {
       </span>
   </lk-bullet-point>
 
-<script type="multiline-template" id="basicFloats_floatLeftWithPaddingHtml">
-<div class="outermost" id="outermost_bf20">
-  <div class="left gray-bg" style="padding:3px 6px 13px;" id="left_bf20"></div>
-  <div class="main" style="padding:3px 6px;" id="main_bf20"></div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="basicFloats_floatLeftWithPaddingHtml" height="165px" width="520px"></lk-css-html-example>
+  <lk-html-example height="165px" width="520px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_bf20">
+        <div class="left gray-bg" style="padding:3px 6px 13px;" id="left_bf20"></div>
+        <div class="main" style="padding:3px 6px;" id="main_bf20"></div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="560px">
     <styleNames>float, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf20, left_bf20, main_bf20</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="basicFloats.floatLeftWithPaddingMargin">Float Left with Padding and Margin</h3>
@@ -217,21 +215,21 @@ img.left, img.right {
     <span class="special-note">Notice that the padding, added by a previous experiment, has caused the background to overflow, now that the height is 100%.</span>
   </lk-bullet-point>
 
-<script type="multiline-template" id="basicFloats_floatLeftWithPaddingMarginHtml">
-<div class="outermost" id="outermost_bf30">
-  <div class="left gray-bg" style="margin-right:6px; padding:3px 6px 13px;" id="left_bf30"></div>
-  <div class="main" style="padding:3px 6px; height:100%;" id="main_bf30"></div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="basicFloats_floatLeftWithPaddingMarginHtml" height="160px" width="640px"></lk-css-html-example>
+  <lk-html-example height="160px" width="640px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_bf30">
+        <div class="left gray-bg" style="margin-right:6px; padding:3px 6px 13px;" id="left_bf30"></div>
+        <div class="main" style="padding:3px 6px; height:100%;" id="main_bf30"></div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="610px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf30, left_bf30, main_bf30</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="basicFloats.floatLeftWithOverflow">Float Left with Overflow Hidden</h3>
@@ -249,21 +247,21 @@ img.left, img.right {
     The <b>outermost</b> div now has overflow:hidden.
   </lk-bullet-point>
 
-<script type="multiline-template" id="basicFloats_floatLeftWithOverflowHtml">
-<div class="outermost" style="overflow:hidden;" id="outermost_bf40">
-  <div class="left gray-bg" style="margin-right:6px; padding:3px 6px 13px;" id="left_bf40"></div>
-  <div class="main" style="padding:3px 6px; height:100%;" id="main_bf40"></div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="basicFloats_floatLeftWithOverflowHtml" width="640px"></lk-css-html-example>
+  <lk-html-example width="640px">
+    <script type="multiline-template">
+      <div class="outermost" style="overflow:hidden;" id="outermost_bf40">
+        <div class="left gray-bg" style="margin-right:6px; padding:3px 6px 13px;" id="left_bf40"></div>
+        <div class="main" style="padding:3px 6px; height:100%;" id="main_bf40"></div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="610px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf40, left_bf40, main_bf40</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="basicFloats.floatRightWithOverflow">Float Right with Overflow Hidden</h3>
@@ -274,21 +272,21 @@ img.left, img.right {
     (and it has a right margin to push out the main text a bit).
   </lk-bullet-point>
 
-<script type="multiline-template" id="basicFloats_floatRightWithOverflowHtml">
-<div class="outermost" style="overflow:hidden;" id="outermost_bf50">
-  <div class="right" style="margin-left:6px; padding:3px 6px 13px;" id="right_bf50"></div>
-  <div class="main" style="padding:3px 6px; height:100%;" id="main_bf50"></div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="basicFloats_floatRightWithOverflowHtml" width="640px"></lk-css-html-example>
+  <lk-html-example width="640px">
+    <script type="multiline-template">
+      <div class="outermost" style="overflow:hidden;" id="outermost_bf50">
+        <div class="right" style="margin-left:6px; padding:3px 6px 13px;" id="right_bf50"></div>
+        <div class="main" style="padding:3px 6px; height:100%;" id="main_bf50"></div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="590px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_bf50, right_bf50, main_bf50</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="compoundFloats">Compound Floats</h2>
@@ -312,22 +310,22 @@ img.left, img.right {
     However, the background of main does not cover 100% of the area.
   </lk-bullet-point>
 
-<script type="multiline-template" id="compoundFloats_floatLeftRightHtml">
-<div class="outermost" style="overflow:scroll;" id="outermost_cf10">
-  <div class="left gray-bg" style="margin-right:6px; padding:3px 6px 13px;" id="left_cf10"></div>
-  <div class="right" style="margin-left:6px; padding:3px 6px 13px;" id="right_cf10"></div>
-  <div class="main" style="padding:3px 6px; height:100%;" id="main_cf10"></div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="compoundFloats_floatLeftRightHtml" width="640px"></lk-css-html-example>
+  <lk-html-example width="640px">
+    <script type="multiline-template">
+      <div class="outermost" style="overflow:scroll;" id="outermost_cf10">
+        <div class="left gray-bg" style="margin-right:6px; padding:3px 6px 13px;" id="left_cf10"></div>
+        <div class="right" style="margin-left:6px; padding:3px 6px 13px;" id="right_cf10"></div>
+        <div class="main" style="padding:3px 6px; height:100%;" id="main_cf10"></div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="610px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_cf10, left_cf10, right_cf10, main_cf10</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="compoundFloats.floatImages">Float Images</h3>
@@ -337,22 +335,22 @@ img.left, img.right {
     Same as the "Float Left and Right" experiment, except divs have been replaced by images.
   </lk-bullet-point>
 
-<script type="multiline-template" id="compoundFloats_floatImagesHtml">
-<div class="outermost" style="overflow:scroll; height: 240px;" id="outermost_cf20">
-  <img src="./img/scenic/Yosemite.png" class="left gray-bg" style="margin-right:6px;" id="left_cf20">
-  <img src="./img/scenic/Yosemite.png" class="right" style="margin-left:6px;" id="right_cf20">
-  <div class="main" style="padding:3px 6px; height:100%;" id="main_cf20"></div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="compoundFloats_floatImagesHtml" width="680px"></lk-css-html-example>
+  <lk-html-example width="680px">
+    <script type="multiline-template">
+      <div class="outermost" style="overflow:scroll; height: 240px;" id="outermost_cf20">
+        <img src="./img/scenic/Yosemite.png" class="left gray-bg" style="margin-right:6px;" id="left_cf20">
+        <img src="./img/scenic/Yosemite.png" class="right" style="margin-left:6px;" id="right_cf20">
+        <div class="main" style="padding:3px 6px; height:100%;" id="main_cf20"></div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="590px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_cf20, left_cf20, right_cf20, main_cf20</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="compoundFloats.simulatedPageLayout">Simulated Page Layout</h3>
@@ -362,57 +360,59 @@ img.left, img.right {
     Probably a bogus experiment, but a fun exercise nevertheless.
   </lk-bullet-point>
 
-<script type="multiline-template" id="compoundFloats_simulatedPageLayoutCss">
-/* outermost layout - fixed width and height. */
-.outermost.layout {
-  overflow: hidden;
-  height: 260px;
-  width: 400px;
-}
+  <lk-css-example width="680px">
+    <script type="multiline-template">
+      /* outermost layout - fixed width and height. */
+      .outermost.layout {
+        overflow: hidden;
+        height: 260px;
+        width: 400px;
+      }
 
-/* simple layout header */
-.header {
-  margin-bottom: 3px;
-  padding: 3px;
-  width: 400px;
-  background: linear-gradient(45deg, #777, #fcfcfc);
-  color: white;
-  vertical-align: top;
-}
+      /* simple layout header */
+      .header {
+        margin-bottom: 3px;
+        padding: 3px;
+        width: 400px;
+        background: linear-gradient(45deg, #777, #fcfcfc);
+        color: white;
+        vertical-align: top;
+      }
 
-/* simple layout footer */
-.footer {
-  margin-top: 3px;
-  padding: 3px 6px 3px 3px;
-  width: 391px;
-  background: linear-gradient(45deg, #fcfcfc, #777);
-  color: white;
-  text-align: right;
-}
-</script>
+      /* simple layout footer */
+      .footer {
+        margin-top: 3px;
+        padding: 3px 6px 3px 3px;
+        width: 391px;
+        background: linear-gradient(45deg, #fcfcfc, #777);
+        color: white;
+        text-align: right;
+      }
+    </script>
+  </lk-css-example>
 
-<script type="multiline-template" id="compoundFloats_simulatedPageLayoutHtml">
-<div class="outermost layout" id="outermost_cf40">
-  <div class="header" id="header_cf40"><img src="img/favicon.ico"> Header</div>
-  <div class="left gray-bg" style="margin-right:6px; padding:3px 6px 13px;" id="left_cf40"></div>
-  <img src="./img/scenic/Yosemite.png" class="right" style="margin-left:6px;" id="right_cf40">
-  <div class="main" style="padding:0 6px;" id="main_cf40">
-      More Content. More Content. More Content. More Content. More Content.
-      <hr style="margin-top:6px;">
-      More Content. More Content. More Content. More Content. More Content.
-  </div>
-  <div class="footer" id="footer_cf40">Footer</div>
-</div>
-</script>
-
-  <lk-css-html-example templateId="compoundFloats_simulatedPageLayout" width="680px"></lk-css-html-example>
+  <lk-html-example width="680px">
+    <script type="multiline-template">
+      <div class="outermost layout" id="outermost_cf40">
+        <div class="header" id="header_cf40"><img src="img/favicon.ico"> Header</div>
+        <div class="left gray-bg" style="margin-right:6px; padding:3px 6px 13px;" id="left_cf40"></div>
+        <img src="./img/scenic/Yosemite.png" class="right" style="margin-left:6px;" id="right_cf40">
+        <div class="main" style="padding:0 6px;" id="main_cf40">
+          More Content. More Content. More Content. More Content. More Content.
+          <hr style="margin-top:6px;">
+          More Content. More Content. More Content. More Content. More Content.
+        </div>
+        <div class="footer" id="footer_cf40">Footer</div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="650px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_cf40, header_cf40, left_cf40, right_cf40, main_cf40, footer_cf40</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <h2 id="multipleLeftFloats">Multiple Left Floats</h2>
@@ -427,24 +427,24 @@ img.left, img.right {
     As with the other experiments, by default, there is no margin, border, padding or height set.
   </lk-bullet-point>
 
-<script type="multiline-template" id="multipleLeftFloats_noMarginHtml">
-<div class="outermost" id="outermost_mlf10">
-  <div class="left magenta-bg" id="left_mlf10"></div>
-  <div class="left teal-bg" id="left_mlf11"></div>
-  <div class="left lime-bg" id="left_mlf12"></div>
-  <div class="left brown-bg" id="left_mlf13"></div>
-  <div class="left pink-bg" id="left_mlf14"></div>
-</div>
-</script>
-
-  <lk-css-html-example htmlTemplateId="multipleLeftFloats_noMarginHtml" width="520px"></lk-css-html-example>
+  <lk-html-example width="520px">
+    <script type="multiline-template">
+      <div class="outermost" id="outermost_mlf10">
+        <div class="left magenta-bg" id="left_mlf10"></div>
+        <div class="left teal-bg" id="left_mlf11"></div>
+        <div class="left lime-bg" id="left_mlf12"></div>
+        <div class="left brown-bg" id="left_mlf13"></div>
+        <div class="left pink-bg" id="left_mlf14"></div>
+      </div>
+    </script>
+  </lk-html-example>
 
   <lk-display-styles width="550px">
     <styleNames>float, height, width, margin, padding, border</styleNames>
     <elementIds>outermost_mlf10, left_mlf10, left_mlf11, left_mlf12, left_mlf13, left_mlf14</elementIds>
   </lk-display-styles>
 
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="multipleLeftFloats.withMargin">With Margin</h3>
@@ -457,19 +457,19 @@ img.left, img.right {
     The fourth div floats to the left edge of the outermost container (as the first div does).
   </lk-bullet-point>
 
-<script type="multiline-template" id="multipleLeftFloats_withMarginHtml">
-<div class="outermost" style="">
-  <div class="left magenta-bg" style="margin:3px; background:#ff0097;"></div>
-  <div class="left teal-bg" style="background:#00aba9;"></div>
-  <div class="left lime-bg" style="background:#8cbf26;"></div>
-  <div class="left brown-bg" style="background:#a05000;"></div>
-  <div class="left pink-bg" style="background:#e671b8;"></div>
-</div>
-</script>
+  <lk-html-example width="480px">
+    <script type="multiline-template">
+      <div class="outermost" style="">
+        <div class="left magenta-bg" style="margin:3px; background:#ff0097;"></div>
+        <div class="left teal-bg" style="background:#00aba9;"></div>
+        <div class="left lime-bg" style="background:#8cbf26;"></div>
+        <div class="left brown-bg" style="background:#a05000;"></div>
+        <div class="left pink-bg" style="background:#e671b8;"></div>
+      </div>
+    </script>
+  </lk-html-example>
 
-  <lk-css-html-example htmlTemplateId="multipleLeftFloats_withMarginHtml" width="480px"></lk-css-html-example>
-
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="multipleLeftFloats.withMbp">With Margin, Border and Padding</h3>
@@ -483,42 +483,44 @@ img.left, img.right {
     <p>3 * (width + 2 * (margin+border+padding) )</p>
   </lk-bullet-point>
 
-<script type="multiline-template" id="multipleLeftFloats_withMbpCss">
-/* add some padding to the outermost div */
-.outermost.mbp {
-  padding: 2px;
-}
+  <lk-css-example width="450px">
+    <script type="multiline-template">
+      /* add some padding to the outermost div */
+      .outermost.mbp {
+        padding: 2px;
+      }
 
-/* add margin, border and padding to all of the nested divs */
-.outermost.mbp > div {
-  float: left;
-  margin: 3px;
-  border: 2px solid #000;
-  padding: 3px;
-  width: 100px;
-  height: 100px;
-  color: white;
-  text-align: center;
-}
-</script>
+      /* add margin, border and padding to all of the nested divs */
+      .outermost.mbp > div {
+        float: left;
+        margin: 3px;
+        border: 2px solid #000;
+        padding: 3px;
+        width: 100px;
+        height: 100px;
+        color: white;
+        text-align: center;
+      }
+    </script>
+  </lk-css-example>
 
-<script type="multiline-template" id="multipleLeftFloats_withMbpHtml">
-<div class="outermost mbp" style="height:348px; width:348px;">
-  <div class="magenta-bg">magenta-bg magenta-bg</div>
-  <div class="teal-bg">teal-bg teal-bg teal-bg</div>
-  <div class="lime-bg">lime-bg lime-bg lime-bg</div>
-  <div class="brown-bg">brown-bg brown-bg brown-bg</div>
-  <div class="pink-bg">pink-bg pink-bg pink-bg</div>
-  <div class="orange-bg">orange-bg orange-bg</div>
-  <div class="blue-bg">blue-bg blue-bg blue-bg</div>
-  <div class="red-bg">red-bg red-bg red-bg</div>
-  <div class="green-bg">green-bg green-bg</div>
-</div>
-</script>
+  <lk-html-example width="450px">
+    <script type="multiline-template">
+      <div class="outermost mbp" style="height:348px; width:348px;">
+        <div class="magenta-bg">magenta-bg magenta-bg</div>
+        <div class="teal-bg">teal-bg teal-bg teal-bg</div>
+        <div class="lime-bg">lime-bg lime-bg lime-bg</div>
+        <div class="brown-bg">brown-bg brown-bg brown-bg</div>
+        <div class="pink-bg">pink-bg pink-bg pink-bg</div>
+        <div class="orange-bg">orange-bg orange-bg</div>
+        <div class="blue-bg">blue-bg blue-bg blue-bg</div>
+        <div class="red-bg">red-bg red-bg red-bg</div>
+        <div class="green-bg">green-bg green-bg</div>
+      </div>
+    </script>
+  </lk-html-example>
 
-  <lk-css-html-example templateId="multipleLeftFloats_withMbp" width="450px"></lk-css-html-example>
-
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
   <!-- `````````````````````````````````` -->
   <h3 id="multipleLeftFloats.tableCell">Vertical Centering</h3>
@@ -529,49 +531,50 @@ img.left, img.right {
     Instead, uses <i>display: table-cell</i>, so the text can be vertically aligned.
   </lk-bullet-point>
 
-<script type="multiline-template" id="multipleLeftFloats_tableCellCss">
-/* add some padding to the outermost div */
-.outermost.table-cell {
-  padding: 2px;
-}
+  <lk-css-example width="500px">
+    <script type="multiline-template">
+      /* add some padding to the outermost div */
+      .outermost.table-cell {
+        padding: 2px;
+      }
 
-/* add margin, border and padding to all of the nested divs */
-.outermost.table-cell > div {
-  float: left;
-  margin: 3px;
-  border: 2px solid #000;
-  padding: 3px;
-}
+      /* add margin, border and padding to all of the nested divs */
+      .outermost.table-cell > div {
+        float: left;
+        margin: 3px;
+        border: 2px solid #000;
+        padding: 3px;
+      }
 
-/* center the text in the nested divs */
-.outermost.table-cell > div > div {
-  color: white;
-  display: table-cell;
-  width: 100px;
-  height: 100px;
-  vertical-align: middle;
-  text-align: center;
-}
+      /* center the text in the nested divs */
+      .outermost.table-cell > div > div {
+        color: white;
+        display: table-cell;
+        width: 100px;
+        height: 100px;
+        vertical-align: middle;
+        text-align: center;
+      }
+    </script>
+  </lk-css-example>
 
-</script>
+  <lk-html-example width="500px">
+    <script type="multiline-template">
+      <div class="outermost table-cell" style="height:348px; width:348px;">
+        <div class="magenta-bg"><div>magenta-bg magenta-bg</div></div>
+        <div class="teal-bg"><div>teal-bg teal-bg teal-bg</div></div>
+        <div class="lime-bg"><div>lime-bg lime-bg lime-bg</div></div>
+        <div class="brown-bg"><div>brown-bg brown-bg brown-bg</div></div>
+        <div class="pink-bg"><div>pink-bg pink-bg pink-bg</div></div>
+        <div class="orange-bg"><div>orange-bg orange-bg</div></div>
+        <div class="blue-bg"><div>blue-bg blue-bg blue-bg</div></div>
+        <div class="red-bg"><div>red-bg red-bg red-bg</div></div>
+        <div class="green-bg"><div>green-bg green-bg</div></div>
+      </div>
+    </script>
+  </lk-html-example>
 
-<script type="multiline-template" id="multipleLeftFloats_tableCellHtml">
-<div class="outermost table-cell" style="height:348px; width:348px;">
-  <div class="magenta-bg"><div>magenta-bg magenta-bg</div></div>
-  <div class="teal-bg"><div>teal-bg teal-bg teal-bg</div></div>
-  <div class="lime-bg"><div>lime-bg lime-bg lime-bg</div></div>
-  <div class="brown-bg"><div>brown-bg brown-bg brown-bg</div></div>
-  <div class="pink-bg"><div>pink-bg pink-bg pink-bg</div></div>
-  <div class="orange-bg"><div>orange-bg orange-bg</div></div>
-  <div class="blue-bg"><div>blue-bg blue-bg blue-bg</div></div>
-  <div class="red-bg"><div>red-bg red-bg red-bg</div></div>
-  <div class="green-bg"><div>green-bg green-bg</div></div>
-</div>
-</script>
-
-  <lk-css-html-example templateId="multipleLeftFloats_tableCell" width="500px"></lk-css-html-example>
-
-  <lk-back-to></lk-back-to>
+  <lk-navigation-bar></lk-navigation-bar>
 
 </main>
 

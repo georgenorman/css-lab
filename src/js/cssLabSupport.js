@@ -29,8 +29,8 @@ var cssLabModule = (function(tzDomHelper, tzLogHelper) {
       // add a link back to the CSS Lab home page
       setupHeader(cssLabHome);
 
-      // set global "back-to" links (so they don't need to be passed into each <lk-back-to> tag).
-      lkBackToTag.setGlobalLinks({"⬅ To Index":cssLabHome, "⬆ To Table of Contents":"#tableOfContents"});
+      // set global "back-to" links (so they don't need to be passed into each <lk-navigation-bar> tag).
+      lkNavigationBarTag.setGlobalLinks({"⬅ To Index":cssLabHome, "⬆ To Table of Contents":"#tableOfContents"});
 
       // render the baseKit tags (these are tags that are common to all Labs)
       baseKitModule.handleOnLoad();

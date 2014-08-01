@@ -38,50 +38,48 @@
 
 <lk-table-of-contents class="toc" level1ItemsTagName="h2" level2ItemsTagName="h3"></lk-table-of-contents>
 
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="overview">Overview</h2>
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h2 id="overview">Overview</h2>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <p>
   This section contains CSS that's shared by most experiments on this page.
 </p>
 
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h3 id="overview.commonCss">Shared CSS</h3>
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h3 id="overview.commonCss">Shared CSS</h3>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-<script type="multiline-template" id="commonCss">
-.box div {
-  padding: 3px;
-  border-bottom: 1px dashed #ddd;
-}
+<lk-css-example width="500px">
+  <script type="multiline-template">
+    .box div {
+      padding: 3px;
+      border-bottom: 1px dashed #ddd;
+    }
 
-.box div:last-child {
-  border-bottom: none;
-}
+    .box div:last-child {
+      border-bottom: none;
+    }
 
-.not-supported {
-  color: #888;
-  font-style: italic;
-  background: #eee;
-}
+    .not-supported {
+      color: #888;
+      font-style: italic;
+      background: #eee;
+    }
 
-.extra-small-background {background: #800; color: #fff;}
-.small-background {background: #080; color: #fff;}
-.medium-background {background: #008; color: #fff;}
-.large-background {background: #808; color: #fff;}
-.extra-large-background {background: #f00; color: #fff;}
-</script>
+    .extra-small-background {background: #800; color: #fff;}
+    .small-background {background: #080; color: #fff;}
+    .medium-background {background: #008; color: #fff;}
+    .large-background {background: #808; color: #fff;}
+    .extra-large-background {background: #f00; color: #fff;}
+  </script>
+</lk-css-example>
 
-  <lk-css-block templateId="commonCss"></lk-css-block>
+<lk-navigation-bar></lk-navigation-bar>
 
-  <lk-code-example templateId="commonCss" lang="css" width="500px"></lk-code-example>
-
-  <lk-back-to></lk-back-to>
-
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <h2 id="mediaQueries">Media Queries</h2>
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h2 id="mediaQueries">Media Queries</h2>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <p>
   See this MDN Developer Guide <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries">CSS media queries</a>.
@@ -92,195 +90,201 @@
   They are set to: 400, 800, 1200 and 1600 pixels.
 </lk-bullet-point>
 
-  <!-- `````````````````````````````````` -->
-  <h3 id="mediaQueries.maxWidth">max-width</h3>
-  <!-- `````````````````````````````````` -->
+<!-- `````````````````````````````````` -->
+<h3 id="mediaQueries.maxWidth">max-width</h3>
+<!-- `````````````````````````````````` -->
 
-  <p>
-    Defines a maximum width for the view (e.g., browser window).
-    As long as the view's width is below this value, the query resolves to true and its rules are applied.
-    Once it exceeds this value, the query resolves to false and its rules are no longer applied.
-  </p>
+<p>
+  Defines a maximum width for the view (e.g., browser window).
+  As long as the view's width is below this value, the query resolves to true and its rules are applied.
+  Once it exceeds this value, the query resolves to false and its rules are no longer applied.
+</p>
 
-<script type="multiline-template" id="mediaQueries_maxWidthCss">
-/* Extra small */
-/* For mobile-first design, this would not be defined here (it would be the default). */
-@media (max-width: 400px) {
-  .extra-small-or-lower {
-    background: #800;
-    color: #fff;
-  }
-}
+<lk-css-example width="630px">
+  <script type="multiline-template">
+    /* Extra small */
+    /* For mobile-first design, this would not be defined here (it would be the default). */
+    @media (max-width: 400px) {
+      .extra-small-or-lower {
+        background: #800;
+        color: #fff;
+      }
+    }
 
-/* Small */
-@media (max-width: 800px) {
-  .small-or-lower {
-    background: #080;
-    color: #fff;
-  }
-}
+    /* Small */
+    @media (max-width: 800px) {
+      .small-or-lower {
+        background: #080;
+        color: #fff;
+      }
+    }
 
-/* Medium */
-@media (max-width: 1200px) {
-  .medium-or-lower {
-    background: #008;
-    color: #fff;
-  }
-}
+    /* Medium */
+    @media (max-width: 1200px) {
+      .medium-or-lower {
+        background: #008;
+        color: #fff;
+      }
+    }
 
-/* Large */
-@media (max-width: 1600px) {
-  .large-or-lower {
-    background: #808;
-    color: #fff;
-  }
-}
-</script>
-
-<script type="multiline-template" id="mediaQueries_maxWidthHtml">
-<div class="box">
-  <div class="extra-small-or-lower">Extra small or lower (max-width: 400px)</div>
-  <div class="small-or-lower">Small or lower (max-width: 800px)</div>
-  <div class="medium-or-lower">Medium or lower (max-width: 1200px)</div>
-  <div class="large-or-lower">Large or lower (max-width: 1600px)</div>
-  <div class="not-supported">Extra large (not supported)</div>
-</div>
-</script>
-
-<lk-css-html-example templateId="mediaQueries_maxWidth" width="630px">
-  <resultComment>The query evaluates to true as long as the view-width is less than or equal to the specified max-width.</resultComment>
-</lk-css-html-example>
-
-  <lk-back-to></lk-back-to>
-
-  <!-- `````````````````````````````````` -->
-  <h3 id="mediaQueries.minWidth">min-width</h3>
-  <!-- `````````````````````````````````` -->
-
-  <p>
-    Defines a minimum width for the view (e.g., browser window).
-    As long as the view's width is above this value, the query resolves to true and its rules are applied.
-    Once it falls below this value, the query resolves to false and its rules are no longer applied.
-  </p>
-
-  <script type="multiline-template" id="mediaQueries_minWidthCss">
-/* Small */
-/* For mobile-first design, this would not be defined here (it would be the default). */
-@media (min-width: 400px) {
-  .small-or-wider {
-    background: #080;
-    color: #fff;
-  }
-}
-
-/* Medium */
-@media (min-width: 800px) {
-  .medium-or-wider {
-    background: #008;
-    color: #fff;
-  }
-}
-
-/* Large */
-@media (min-width: 1200px) {
-  .large-or-wider {
-    background: #808;
-    color: #fff;
-  }
-}
-
-/* Extra large */
-@media (min-width: 1600px) {
-  .extra-large-or-wider {
-    background: #f00;
-    color: #fff;
-  }
-}
+    /* Large */
+    @media (max-width: 1600px) {
+      .large-or-lower {
+        background: #808;
+        color: #fff;
+      }
+    }
   </script>
+</lk-css-example>
 
-<script type="multiline-template" id="mediaQueries_minWidthHtml">
-<div class="box">
-  <div class="not-supported">Extra small (not supported)</div>
-  <div class="small-or-wider">Small or wider (min-width: 400px)</div>
-  <div class="medium-or-wider">Medium or wider (min-width: 800px)</div>
-  <div class="large-or-wider">Large or wider (min-width: 1200px)</div>
-  <div class="extra-large-or-wider">Extra large or wider (min-width: 1600px)</div>
-</div>
-</script>
+<lk-html-example width="630px">
+  <resultComment>The query evaluates to true as long as the view-width is less than or equal to the specified max-width.</resultComment>
 
-  <lk-css-html-example templateId="mediaQueries_minWidth" width="630px">
-    <resultComment>The query evaluates to true as long as the view-width is greater than or equal to the specified min-width.</resultComment>
-  </lk-css-html-example>
+  <script type="multiline-template">
+    <div class="box">
+      <div class="extra-small-or-lower">Extra small or lower (max-width: 400px)</div>
+      <div class="small-or-lower">Small or lower (max-width: 800px)</div>
+      <div class="medium-or-lower">Medium or lower (max-width: 1200px)</div>
+      <div class="large-or-lower">Large or lower (max-width: 1600px)</div>
+      <div class="not-supported">Extra large (not supported)</div>
+    </div>
+  </script>
+</lk-html-example>
 
-  <lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
-  <!-- `````````````````````````````````` -->
-  <h3 id="mediaQueries.logicalOperatorsAnd">Logical Operator (and)</h3>
-  <!-- `````````````````````````````````` -->
+<!-- `````````````````````````````````` -->
+<h3 id="mediaQueries.minWidth">min-width</h3>
+<!-- `````````````````````````````````` -->
 
-  <p>
-    The <i>and</i> operator enables a bracket to be defined using multiple queries
-    (e.g., a min and max value can be applied at the same time to define a range).
-    This experiment defines a series of breakpoints, so only one breakpoint resolves to true for a particular range of view widths.
-  </p>
+<p>
+  Defines a minimum width for the view (e.g., browser window).
+  As long as the view's width is above this value, the query resolves to true and its rules are applied.
+  Once it falls below this value, the query resolves to false and its rules are no longer applied.
+</p>
 
-<script type="multiline-template" id="mediaQueries_logicalOperatorsAndCss">
-/* Extra small */
-@media (max-width: 399px) {
-  .while-in-min-399 {
-    background: #800;
-    color: #fff;
-  }
-}
+<lk-css-example width="630px">
+  <script type="multiline-template">
+    /* Small */
+    /* For mobile-first design, this would not be defined here (it would be the default). */
+    @media (min-width: 400px) {
+      .small-or-wider {
+        background: #080;
+        color: #fff;
+      }
+    }
 
-/* Small */
-@media (min-width: 400px) and (max-width: 799px) {
-  .while-in-400-799 {
-    background: #080;
-    color: #fff;
-  }
-}
+    /* Medium */
+    @media (min-width: 800px) {
+      .medium-or-wider {
+        background: #008;
+        color: #fff;
+      }
+    }
 
-/* Medium */
-@media (min-width: 800px) and (max-width: 1199px) {
-  .while-in-800-1199 {
-    background: #008;
-    color: #fff;
-  }
-}
+    /* Large */
+    @media (min-width: 1200px) {
+      .large-or-wider {
+        background: #808;
+        color: #fff;
+      }
+    }
 
-/* Large */
-@media (min-width: 1200px) and (max-width: 1599px) {
-  .while-in-1200-1599 {
-    background: #808;
-    color: #fff;
-  }
-}
+    /* Extra large */
+    @media (min-width: 1600px) {
+      .extra-large-or-wider {
+        background: #f00;
+        color: #fff;
+      }
+    }
+  </script>
+</lk-css-example>
 
-/* Extra large */
-@media (min-width: 1600px) {
-  .while-in-1600-max {
-    background: #f00;
-    color: #fff;
-  }
-}
-</script>
+<lk-html-example width="630px">
+  <resultComment>The query evaluates to true as long as the view-width is greater than or equal to the specified min-width.</resultComment>
 
-<script type="multiline-template" id="mediaQueries_logicalOperatorsAndHtml">
-<div class="box">
-  <div class="while-in-min-399">Extra Small (399px or lower)</div>
-  <div class="while-in-400-799">Small (400px - 799px)</div>
-  <div class="while-in-800-1199">Medium (800px - 1199px)</div>
-  <div class="while-in-1200-1599">Large (1200px - 1599px)</div>
-  <div class="while-in-1600-max">Extra Large (1600px and larger)</div>
-</div>
-</script>
+  <script type="multiline-template">
+    <div class="box">
+      <div class="not-supported">Extra small (not supported)</div>
+      <div class="small-or-wider">Small or wider (min-width: 400px)</div>
+      <div class="medium-or-wider">Medium or wider (min-width: 800px)</div>
+      <div class="large-or-wider">Large or wider (min-width: 1200px)</div>
+      <div class="extra-large-or-wider">Extra large or wider (min-width: 1600px)</div>
+    </div>
+  </script>
+</lk-html-example>
 
-<lk-css-html-example templateId="mediaQueries_logicalOperatorsAnd" width="520px">
+<lk-navigation-bar></lk-navigation-bar>
+
+<!-- `````````````````````````````````` -->
+<h3 id="mediaQueries.logicalOperatorsAnd">Logical Operator (and)</h3>
+<!-- `````````````````````````````````` -->
+
+<p>
+  The <i>and</i> operator enables a bracket to be defined using multiple queries
+  (e.g., a min and max value can be applied at the same time to define a range).
+  This experiment defines a series of breakpoints, so only one breakpoint resolves to true for a particular range of view widths.
+</p>
+
+<lk-css-example width="520px">
+  <script type="multiline-template">
+    /* Extra small */
+    @media (max-width: 399px) {
+      .while-in-min-399 {
+        background: #800;
+        color: #fff;
+      }
+    }
+
+    /* Small */
+    @media (min-width: 400px) and (max-width: 799px) {
+      .while-in-400-799 {
+        background: #080;
+        color: #fff;
+      }
+    }
+
+    /* Medium */
+    @media (min-width: 800px) and (max-width: 1199px) {
+      .while-in-800-1199 {
+        background: #008;
+        color: #fff;
+      }
+    }
+
+    /* Large */
+    @media (min-width: 1200px) and (max-width: 1599px) {
+      .while-in-1200-1599 {
+        background: #808;
+        color: #fff;
+      }
+    }
+
+    /* Extra large */
+    @media (min-width: 1600px) {
+      .while-in-1600-max {
+        background: #f00;
+        color: #fff;
+      }
+    }
+  </script>
+</lk-css-example>
+
+<lk-html-example width="520px">
   <resultComment>Highlight a particular element only while the view width is in range.</resultComment>
-</lk-css-html-example>
 
-<lk-back-to></lk-back-to>
+  <script type="multiline-template">
+    <div class="box">
+      <div class="while-in-min-399">Extra Small (399px or lower)</div>
+      <div class="while-in-400-799">Small (400px - 799px)</div>
+      <div class="while-in-800-1199">Medium (800px - 1199px)</div>
+      <div class="while-in-1200-1599">Large (1200px - 1599px)</div>
+      <div class="while-in-1600-max">Extra Large (1600px and larger)</div>
+    </div>
+  </script>
+</lk-html-example>
+
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- `````````````````````````````````` -->
 <h3 id="mediaQueries.hideShowBlock">Hide and Show</h3>
@@ -290,114 +294,119 @@
   Same as previous experiment, but now the rules have been changed to hide and show elements based on view size.
 </p>
 
-<script type="multiline-template" id="mediaQueries_hideShowBlockCss">
-/* Hide and show extra small */
-@media (max-width: 399px) {
-  .hide-extra-small {
-    display: none;
-  }
-  .hide-small, .hide-medium, .hide-large, .hide-extra-large {
-    display: block;
-  }
+<lk-css-example width="660px">
 
-  .show-extra-small {
-    display: block;
-  }
-  .show-small, .show-medium, .show-large, .show-extra-large {
-    display: none;
-  }
-}
+  <script type="multiline-template">
+    /* Hide and show extra small */
+    @media (max-width: 399px) {
+      .hide-extra-small {
+        display: none;
+      }
+      .hide-small, .hide-medium, .hide-large, .hide-extra-large {
+        display: block;
+      }
 
-/* Hide and show small */
-@media (min-width: 400px) and (max-width: 799px) {
-  .hide-small {
-    display: none;
-  }
-  .hide-extra-small, .hide-medium, .hide-large, .hide-extra-large {
-    display: block;
-  }
+      .show-extra-small {
+        display: block;
+      }
+      .show-small, .show-medium, .show-large, .show-extra-large {
+        display: none;
+      }
+    }
 
-  .show-small {
-    display: block;
-  }
-  .show-extra-small, .show-medium, .show-large, .show-extra-large {
-    display: none;
-  }
-}
+    /* Hide and show small */
+    @media (min-width: 400px) and (max-width: 799px) {
+      .hide-small {
+        display: none;
+      }
+      .hide-extra-small, .hide-medium, .hide-large, .hide-extra-large {
+        display: block;
+      }
 
-/* Hide and show medium */
-@media (min-width: 800px) and (max-width: 1199px) {
-  .hide-medium {
-    display: none;
-  }
-  .hide-extra-small, .hide-small, .hide-large, .hide-extra-large {
-    display: block;
-  }
+      .show-small {
+        display: block;
+      }
+      .show-extra-small, .show-medium, .show-large, .show-extra-large {
+        display: none;
+      }
+    }
 
-  .show-medium {
-    display: block;
-  }
-  .show-extra-small, .show-small, .show-large, .show-extra-large {
-    display: none;
-  }
-}
+    /* Hide and show medium */
+    @media (min-width: 800px) and (max-width: 1199px) {
+      .hide-medium {
+        display: none;
+      }
+      .hide-extra-small, .hide-small, .hide-large, .hide-extra-large {
+        display: block;
+      }
 
-/* Hide and show large */
-@media (min-width: 1200px) and (max-width: 1599px) {
-  .hide-large {
-    display: none;
-  }
-  .hide-extra-small, .hide-small, .hide-medium, .hide-extra-large {
-    display: block;
-  }
+      .show-medium {
+        display: block;
+      }
+      .show-extra-small, .show-small, .show-large, .show-extra-large {
+        display: none;
+      }
+    }
 
-  .show-large {
-    display: block;
-  }
-  .show-extra-small, .show-small, .show-medium, .show-extra-large {
-    display: none;
-  }
-}
+    /* Hide and show large */
+    @media (min-width: 1200px) and (max-width: 1599px) {
+      .hide-large {
+        display: none;
+      }
+      .hide-extra-small, .hide-small, .hide-medium, .hide-extra-large {
+        display: block;
+      }
 
-/* Hide and show extra large */
-@media (min-width: 1600px) {
-  .hide-extra-large {
-    display: none;
-  }
-  .hide-extra-small, .hide-small, .hide-medium, .hide-large {
-    display: block;
-  }
+      .show-large {
+        display: block;
+      }
+      .show-extra-small, .show-small, .show-medium, .show-extra-large {
+        display: none;
+      }
+    }
 
-  .show-extra-large {
-    display: block;
-  }
-  .show-extra-small, .show-small, .show-medium, .show-large {
-    display: none;
-  }
-}
-</script>
+    /* Hide and show extra large */
+    @media (min-width: 1600px) {
+      .hide-extra-large {
+        display: none;
+      }
+      .hide-extra-small, .hide-small, .hide-medium, .hide-large {
+        display: block;
+      }
 
-<script type="multiline-template" id="mediaQueries_hideShowBlockHtml">
-<div class="box">
-  <h4>Hide blocks at size</h4>
-  <div class="extra-small-background hide-extra-small">Extra Small (max-width: 399px)</div>
-  <div class="small-background hide-small">Small (400px - 799px)</div>
-  <div class="medium-background hide-medium">Medium (800px - 1199px)</div>
-  <div class="large-background hide-large">Large (1200px - 1599px)</div>
-  <div class="extra-large-background hide-extra-large">Extra Large (min-width: 1600px)</div>
-  <h4>Show blocks at size</h4>
-  <div class="extra-small-background show-extra-small">Extra Small (max-width: 399px)</div>
-  <div class="small-background show-small">Small (400px - 799px)</div>
-  <div class="medium-background show-medium">Medium (800px - 1199px)</div>
-  <div class="large-background show-large">Large (1200px - 1599px)</div>
-  <div class="extra-large-background show-extra-large">Extra Large (min-width: 1600px)</div>
-</div>
-</script>
+      .show-extra-large {
+        display: block;
+      }
+      .show-extra-small, .show-small, .show-medium, .show-large {
+        display: none;
+      }
+    }
+  </script>
+</lk-css-example>
 
-<lk-css-html-example templateId="mediaQueries_hideShowBlock" width="660px">
-</lk-css-html-example>
+<lk-html-example width="660px">
 
-<lk-back-to></lk-back-to>
+  <script type="multiline-template">
+    <div class="box">
+      <h4>Hide blocks at size</h4>
+
+      <div class="extra-small-background hide-extra-small">Extra Small (max-width: 399px)</div>
+      <div class="small-background hide-small">Small (400px - 799px)</div>
+      <div class="medium-background hide-medium">Medium (800px - 1199px)</div>
+      <div class="large-background hide-large">Large (1200px - 1599px)</div>
+      <div class="extra-large-background hide-extra-large">Extra Large (min-width: 1600px)</div>
+      <h4>Show blocks at size</h4>
+
+      <div class="extra-small-background show-extra-small">Extra Small (max-width: 399px)</div>
+      <div class="small-background show-small">Small (400px - 799px)</div>
+      <div class="medium-background show-medium">Medium (800px - 1199px)</div>
+      <div class="large-background show-large">Large (1200px - 1599px)</div>
+      <div class="extra-large-background show-extra-large">Extra Large (min-width: 1600px)</div>
+    </div>
+  </script>
+</lk-html-example>
+
+<lk-navigation-bar></lk-navigation-bar>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <h2 id="responsiveImages">Responsive Images</h2>
@@ -408,34 +417,36 @@
   This experiment enables the browser to scale the image as the view size changes.
 </p>
 
-<script type="multiline-template" id="responsiveImagesCss">
-.responsive-img {
-  max-width: 100%;
-  height: auto;
+<lk-css-example>
+  <script type="multiline-template">
+    .responsive-img {
+      max-width: 100%;
+      height: auto;
 
-  /* decorative shadow */
-  box-shadow: 6px 6px 8px #000;
-  border: 1px solid #ccc;
-  padding: 12px;
-  background:#fff;
-}
-</script>
+      /* decorative shadow */
+      box-shadow: 6px 6px 8px #000;
+      border: 1px solid #ccc;
+      padding: 12px;
+      background:#fff;
+    }
+  </script>
+</lk-css-example>
 
-<script type="multiline-template" id="responsiveImagesHtml">
-<div style="padding:10px 40px 10px 10px; background:#eee;">
-<img class="responsive-img" src="./img/scenic/Yosemite-lg.jpg">
-</div>
-</script>
+<lk-html-example>
+  <script type="multiline-template">
+    <div style="padding:10px 40px 10px 10px; background:#eee;">
+      <img class="responsive-img" src="./img/scenic/Yosemite-lg.jpg">
+    </div>
+  </script>
+</lk-html-example>
 
-<lk-css-html-example templateId="responsiveImages">
-</lk-css-html-example>
-
-<lk-back-to></lk-back-to>
+<lk-navigation-bar></lk-navigation-bar>
 
 </main>
 
 <footer></footer>
 
-<script type="text/javascript" src="js/all-javascript.js"></script> <!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
+<script type="text/javascript" src="js/all-javascript.js"></script>
+<!-- http://stackoverflow.com/questions/5220313/where-should-js-scripts-go-in-an-html-file -->
 </body>
 </html>
