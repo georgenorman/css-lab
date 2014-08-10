@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     // https://github.com/gruntjs/grunt-contrib-clean
-    clean: ["target"],
+    clean: ["target", 'releases/<%= pkg.version %>'],
 
     // https://github.com/gruntjs/grunt-contrib-concat/blob/master/docs/concat-examples.md
     concat: {
@@ -114,8 +114,9 @@ module.exports = function(grunt) {
           {expand: true, flatten: true, src: ['target/js/csslab-<%= pkg.version %>.js', 'target/js/csslab-<%= pkg.version %>-min.js'], dest: 'releases/<%= pkg.version %>/js/'},
           {expand: true, flatten: true, src: ['target/css/csslab-<%= pkg.version %>.css', 'target/css/csslab-<%= pkg.version %>-min.css'], dest: 'releases/<%= pkg.version %>/css/'},
           {expand: true, flatten: true, src: ['target/*.html'], dest: 'releases/<%= pkg.version %>/'},
+          {expand: true, flatten: true, src: ['lib/img/*'], dest: 'releases/<%= pkg.version %>/img/'},
+          {expand: true, flatten: true, src: ['lib/img/logo/*'], dest: 'releases/<%= pkg.version %>/img/logo/'},
           {expand: true, flatten: true, src: ['src/img/*'], dest: 'releases/<%= pkg.version %>/img/'},
-          {expand: true, flatten: true, src: ['src/img/logo/*'], dest: 'releases/<%= pkg.version %>/img/logo/'},
           {expand: true, flatten: true, src: ['src/img/scenic/*'], dest: 'releases/<%= pkg.version %>/img/scenic/'}
         ]
       }
@@ -148,8 +149,8 @@ module.exports = function(grunt) {
 
   // register main task(s)
   grunt.registerTask('docs', ['jsdoc']);
-  grunt.registerTask('release', ['assemble-fragments', 'assemble-final', 'uglify:cssLab', 'autoprefixer:cssLab', 'cssmin:cssLab', 'replace:cssLab', 'copy:release', 'docs']);
+  grunt.registerTask('release', ['clean', 'assemble-fragments', 'assemble-final', 'uglify:cssLab', 'autoprefixer:cssLab', 'cssmin:cssLab', 'replace:cssLab', 'copy:release', 'docs']);
 
   // register default task
-  grunt.registerTask('default', ['clean', 'release']);
+  grunt.registerTask('default', ['release']);
 };
