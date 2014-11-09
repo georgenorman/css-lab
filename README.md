@@ -22,10 +22,17 @@ Third-party libraries (e.g., jQuery) are not used, because that would interfere 
   * [Selectors](http://www.thruzero.com/pages/jcat3/css-lab/selectors.html)
   * [Box Model](http://www.thruzero.com/pages/jcat3/css-lab/boxModel.html)
   * [Positioning](http://www.thruzero.com/pages/jcat3/css-lab/positioning.html)
-  * Modal Dialog (in progress)
   * [Floats](http://www.thruzero.com/pages/jcat3/css-lab/floats.html)
   * [Transparency/Display](http://www.thruzero.com/pages/jcat3/css-lab/transparencyDisplay.html)
   * [Filters](http://www.thruzero.com/pages/jcat3/css-lab/filters.html)
+  * Modal Dialog (in progress)
+
+## Testing Locally
+
+Just cd to the project directory and open the ```src/index.html``` file in your browser.
+The CSS and JavaScript files will be accessed in a non-minified and non-amalgamated way.
+
+Alternatively, you can perform a build, which will optimize the CSS and JavaScript files for deployment.
 
 ## Building a Release
 
